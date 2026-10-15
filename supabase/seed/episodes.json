@@ -1,0 +1,2629 @@
+{
+  "series": {
+    "breaking-bad": [
+      {
+        "season": 1,
+        "episode": 1,
+        "title": "Pilot",
+        "runtimeMinutes": 59
+      },
+      {
+        "season": 1,
+        "episode": 2,
+        "title": "Cat's in the Bag...",
+        "runtimeMinutes": 49
+      },
+      {
+        "season": 1,
+        "episode": 3,
+        "title": "...And the Bag's in the River",
+        "runtimeMinutes": 49
+      },
+      {
+        "season": 1,
+        "episode": 4,
+        "title": "Cancer Man",
+        "runtimeMinutes": 49
+      },
+      {
+        "season": 1,
+        "episode": 5,
+        "title": "Gray Matter",
+        "runtimeMinutes": 49
+      },
+      {
+        "season": 1,
+        "episode": 6,
+        "title": "Crazy Handful of Nothin'",
+        "runtimeMinutes": 49
+      },
+      {
+        "season": 1,
+        "episode": 7,
+        "title": "A No Rough Stuff Type Deal",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 2,
+        "episode": 1,
+        "title": "Seven Thirty-Seven",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 2,
+        "episode": 2,
+        "title": "Grilled",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 2,
+        "episode": 3,
+        "title": "Bit by a Dead Bee",
+        "runtimeMinutes": 47
+      },
+      {
+        "season": 2,
+        "episode": 4,
+        "title": "Down",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 2,
+        "episode": 5,
+        "title": "Breakage",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 2,
+        "episode": 6,
+        "title": "Peekaboo",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 2,
+        "episode": 7,
+        "title": "Negro y Azul",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 2,
+        "episode": 8,
+        "title": "Better Call Saul",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 2,
+        "episode": 9,
+        "title": "4 Days Out",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 2,
+        "episode": 10,
+        "title": "Over",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 2,
+        "episode": 11,
+        "title": "Mandala",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 2,
+        "episode": 12,
+        "title": "Phoenix",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 2,
+        "episode": 13,
+        "title": "ABQ",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 1,
+        "title": "No Más",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 2,
+        "title": "Caballo sin Nombre",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 3,
+        "title": "I.F.T.",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 4,
+        "title": "Green Light",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 5,
+        "title": "Más",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 6,
+        "title": "Sunset",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 7,
+        "title": "One Minute",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 8,
+        "title": "I See You",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 9,
+        "title": "Kafkaesque",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 10,
+        "title": "Fly",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 11,
+        "title": "Abiquiu",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 12,
+        "title": "Half Measures",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 13,
+        "title": "Full Measure",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 4,
+        "episode": 1,
+        "title": "Box Cutter",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 4,
+        "episode": 2,
+        "title": "Thirty-Eight Snub",
+        "runtimeMinutes": 46
+      },
+      {
+        "season": 4,
+        "episode": 3,
+        "title": "Open House",
+        "runtimeMinutes": 47
+      },
+      {
+        "season": 4,
+        "episode": 4,
+        "title": "Bullet Points",
+        "runtimeMinutes": 46
+      },
+      {
+        "season": 4,
+        "episode": 5,
+        "title": "Shotgun",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 4,
+        "episode": 6,
+        "title": "Cornered",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 4,
+        "episode": 7,
+        "title": "Problem Dog",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 4,
+        "episode": 8,
+        "title": "Hermanos",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 4,
+        "episode": 9,
+        "title": "Bug",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 4,
+        "episode": 10,
+        "title": "Salud",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 4,
+        "episode": 11,
+        "title": "Crawl Space",
+        "runtimeMinutes": 47
+      },
+      {
+        "season": 4,
+        "episode": 12,
+        "title": "End Times",
+        "runtimeMinutes": 46
+      },
+      {
+        "season": 4,
+        "episode": 13,
+        "title": "Face Off",
+        "runtimeMinutes": 51
+      },
+      {
+        "season": 5,
+        "episode": 1,
+        "title": "Live Free or Die",
+        "runtimeMinutes": 43
+      },
+      {
+        "season": 5,
+        "episode": 2,
+        "title": "Madrigal",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 5,
+        "episode": 3,
+        "title": "Hazard Pay",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 5,
+        "episode": 4,
+        "title": "Fifty-One",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 5,
+        "episode": 5,
+        "title": "Dead Freight",
+        "runtimeMinutes": 49
+      },
+      {
+        "season": 5,
+        "episode": 6,
+        "title": "Buyout",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 5,
+        "episode": 7,
+        "title": "Say My Name",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 5,
+        "episode": 8,
+        "title": "Gliding Over All",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 5,
+        "episode": 9,
+        "title": "Blood Money",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 5,
+        "episode": 10,
+        "title": "Buried",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 5,
+        "episode": 11,
+        "title": "Confessions",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 5,
+        "episode": 12,
+        "title": "Rabid Dog",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 5,
+        "episode": 13,
+        "title": "To'hajiilee",
+        "runtimeMinutes": 47
+      },
+      {
+        "season": 5,
+        "episode": 14,
+        "title": "Ozymandias",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 5,
+        "episode": 15,
+        "title": "Granite State",
+        "runtimeMinutes": 54
+      },
+      {
+        "season": 5,
+        "episode": 16,
+        "title": "Felina",
+        "runtimeMinutes": 56
+      }
+    ],
+    "succession": [
+      {
+        "season": 1,
+        "episode": 1,
+        "title": "Celebration",
+        "runtimeMinutes": 62
+      },
+      {
+        "season": 1,
+        "episode": 2,
+        "title": "Sh*t Show at the F**k Factory",
+        "runtimeMinutes": 59
+      },
+      {
+        "season": 1,
+        "episode": 3,
+        "title": "Lifeboats",
+        "runtimeMinutes": 58
+      },
+      {
+        "season": 1,
+        "episode": 4,
+        "title": "Sad Sack Wasp Trap",
+        "runtimeMinutes": 58
+      },
+      {
+        "season": 1,
+        "episode": 5,
+        "title": "I Went to Market",
+        "runtimeMinutes": 56
+      },
+      {
+        "season": 1,
+        "episode": 6,
+        "title": "Which Side Are You On?",
+        "runtimeMinutes": 58
+      },
+      {
+        "season": 1,
+        "episode": 7,
+        "title": "Austerlitz",
+        "runtimeMinutes": 58
+      },
+      {
+        "season": 1,
+        "episode": 8,
+        "title": "Prague",
+        "runtimeMinutes": 56
+      },
+      {
+        "season": 1,
+        "episode": 9,
+        "title": "Pre-Nuptial",
+        "runtimeMinutes": 58
+      },
+      {
+        "season": 1,
+        "episode": 10,
+        "title": "Nobody Is Ever Missing",
+        "runtimeMinutes": 66
+      },
+      {
+        "season": 2,
+        "episode": 1,
+        "title": "The Summer Palace",
+        "runtimeMinutes": 59
+      },
+      {
+        "season": 2,
+        "episode": 2,
+        "title": "Vaulter",
+        "runtimeMinutes": 58
+      },
+      {
+        "season": 2,
+        "episode": 3,
+        "title": "Hunting",
+        "runtimeMinutes": 59
+      },
+      {
+        "season": 2,
+        "episode": 4,
+        "title": "Safe Room",
+        "runtimeMinutes": 58
+      },
+      {
+        "season": 2,
+        "episode": 5,
+        "title": "Tern Haven",
+        "runtimeMinutes": 60
+      },
+      {
+        "season": 2,
+        "episode": 6,
+        "title": "Argestes",
+        "runtimeMinutes": 58
+      },
+      {
+        "season": 2,
+        "episode": 7,
+        "title": "Return",
+        "runtimeMinutes": 58
+      },
+      {
+        "season": 2,
+        "episode": 8,
+        "title": "Dundee",
+        "runtimeMinutes": 60
+      },
+      {
+        "season": 2,
+        "episode": 9,
+        "title": "DC",
+        "runtimeMinutes": 61
+      },
+      {
+        "season": 2,
+        "episode": 10,
+        "title": "This Is Not for Tears",
+        "runtimeMinutes": 69
+      },
+      {
+        "season": 3,
+        "episode": 1,
+        "title": "Secession",
+        "runtimeMinutes": 57
+      },
+      {
+        "season": 3,
+        "episode": 2,
+        "title": "Mass in Time of War",
+        "runtimeMinutes": 59
+      },
+      {
+        "season": 3,
+        "episode": 3,
+        "title": "The Disruption",
+        "runtimeMinutes": 59
+      },
+      {
+        "season": 3,
+        "episode": 4,
+        "title": "Lion in the Meadow",
+        "runtimeMinutes": 59
+      },
+      {
+        "season": 3,
+        "episode": 5,
+        "title": "Retired Janitors of Idaho",
+        "runtimeMinutes": 60
+      },
+      {
+        "season": 3,
+        "episode": 6,
+        "title": "What It Takes",
+        "runtimeMinutes": 58
+      },
+      {
+        "season": 3,
+        "episode": 7,
+        "title": "Too Much Birthday",
+        "runtimeMinutes": 58
+      },
+      {
+        "season": 3,
+        "episode": 8,
+        "title": "Chiantishire",
+        "runtimeMinutes": 64
+      },
+      {
+        "season": 3,
+        "episode": 9,
+        "title": "All the Bells Say",
+        "runtimeMinutes": 65
+      },
+      {
+        "season": 4,
+        "episode": 1,
+        "title": "The Munsters",
+        "runtimeMinutes": 61
+      },
+      {
+        "season": 4,
+        "episode": 2,
+        "title": "Rehearsal",
+        "runtimeMinutes": 59
+      },
+      {
+        "season": 4,
+        "episode": 3,
+        "title": "Connor's Wedding",
+        "runtimeMinutes": 62
+      },
+      {
+        "season": 4,
+        "episode": 4,
+        "title": "Honeymoon States",
+        "runtimeMinutes": 60
+      },
+      {
+        "season": 4,
+        "episode": 5,
+        "title": "Kill List",
+        "runtimeMinutes": 61
+      },
+      {
+        "season": 4,
+        "episode": 6,
+        "title": "Living+",
+        "runtimeMinutes": 63
+      },
+      {
+        "season": 4,
+        "episode": 7,
+        "title": "Tailgate Party",
+        "runtimeMinutes": 62
+      },
+      {
+        "season": 4,
+        "episode": 8,
+        "title": "America Decides",
+        "runtimeMinutes": 66
+      },
+      {
+        "season": 4,
+        "episode": 9,
+        "title": "Church and State",
+        "runtimeMinutes": 74
+      },
+      {
+        "season": 4,
+        "episode": 10,
+        "title": "With Open Eyes",
+        "runtimeMinutes": 89
+      }
+    ],
+    "the-crown": [
+      {
+        "season": 1,
+        "episode": 1,
+        "title": "Wolferton Splash",
+        "runtimeMinutes": 57
+      },
+      {
+        "season": 1,
+        "episode": 2,
+        "title": "Hyde Park Corner",
+        "runtimeMinutes": 61
+      },
+      {
+        "season": 1,
+        "episode": 3,
+        "title": "Windsor",
+        "runtimeMinutes": 59
+      },
+      {
+        "season": 1,
+        "episode": 4,
+        "title": "Act of God",
+        "runtimeMinutes": 58
+      },
+      {
+        "season": 1,
+        "episode": 5,
+        "title": "Smoke and Mirrors",
+        "runtimeMinutes": 55
+      },
+      {
+        "season": 1,
+        "episode": 6,
+        "title": "Gelignite",
+        "runtimeMinutes": 58
+      },
+      {
+        "season": 1,
+        "episode": 7,
+        "title": "Scientia Potentia Est",
+        "runtimeMinutes": 59
+      },
+      {
+        "season": 1,
+        "episode": 8,
+        "title": "Pride & Joy",
+        "runtimeMinutes": 58
+      },
+      {
+        "season": 1,
+        "episode": 9,
+        "title": "Assassins",
+        "runtimeMinutes": 60
+      },
+      {
+        "season": 1,
+        "episode": 10,
+        "title": "Gloriana",
+        "runtimeMinutes": 55
+      },
+      {
+        "season": 2,
+        "episode": 1,
+        "title": "Misadventure",
+        "runtimeMinutes": 57
+      },
+      {
+        "season": 2,
+        "episode": 2,
+        "title": "A Company of Men",
+        "runtimeMinutes": 55
+      },
+      {
+        "season": 2,
+        "episode": 3,
+        "title": "Lisbon",
+        "runtimeMinutes": 56
+      },
+      {
+        "season": 2,
+        "episode": 4,
+        "title": "Beryl",
+        "runtimeMinutes": 61
+      },
+      {
+        "season": 2,
+        "episode": 5,
+        "title": "Marionettes",
+        "runtimeMinutes": 61
+      },
+      {
+        "season": 2,
+        "episode": 6,
+        "title": "Vergangenheit",
+        "runtimeMinutes": 62
+      },
+      {
+        "season": 2,
+        "episode": 7,
+        "title": "Matrimonium",
+        "runtimeMinutes": 60
+      },
+      {
+        "season": 2,
+        "episode": 8,
+        "title": "Dear Mrs. Kennedy",
+        "runtimeMinutes": 57
+      },
+      {
+        "season": 2,
+        "episode": 9,
+        "title": "Paterfamilias",
+        "runtimeMinutes": 60
+      },
+      {
+        "season": 2,
+        "episode": 10,
+        "title": "Mystery Man",
+        "runtimeMinutes": 59
+      },
+      {
+        "season": 3,
+        "episode": 1,
+        "title": "Olding",
+        "runtimeMinutes": 47
+      },
+      {
+        "season": 3,
+        "episode": 2,
+        "title": "Margaretology",
+        "runtimeMinutes": 47
+      },
+      {
+        "season": 3,
+        "episode": 3,
+        "title": "Aberfan",
+        "runtimeMinutes": 55
+      },
+      {
+        "season": 3,
+        "episode": 4,
+        "title": "Bubbikins",
+        "runtimeMinutes": 59
+      },
+      {
+        "season": 3,
+        "episode": 5,
+        "title": "Coup",
+        "runtimeMinutes": 57
+      },
+      {
+        "season": 3,
+        "episode": 6,
+        "title": "Tywysog Cymru",
+        "runtimeMinutes": 55
+      },
+      {
+        "season": 3,
+        "episode": 7,
+        "title": "Moondust",
+        "runtimeMinutes": 56
+      },
+      {
+        "season": 3,
+        "episode": 8,
+        "title": "Dangling Man",
+        "runtimeMinutes": 47
+      },
+      {
+        "season": 3,
+        "episode": 9,
+        "title": "Imbroglio",
+        "runtimeMinutes": 47
+      },
+      {
+        "season": 3,
+        "episode": 10,
+        "title": "Cri de Coeur",
+        "runtimeMinutes": 58
+      },
+      {
+        "season": 4,
+        "episode": 1,
+        "title": "Gold Stick",
+        "runtimeMinutes": 54
+      },
+      {
+        "season": 4,
+        "episode": 2,
+        "title": "The Balmoral Test",
+        "runtimeMinutes": 57
+      },
+      {
+        "season": 4,
+        "episode": 3,
+        "title": "Fairytale",
+        "runtimeMinutes": 56
+      },
+      {
+        "season": 4,
+        "episode": 4,
+        "title": "Favourites",
+        "runtimeMinutes": 60
+      },
+      {
+        "season": 4,
+        "episode": 5,
+        "title": "Fagan",
+        "runtimeMinutes": 52
+      },
+      {
+        "season": 4,
+        "episode": 6,
+        "title": "Terra Nullius",
+        "runtimeMinutes": 54
+      },
+      {
+        "season": 4,
+        "episode": 7,
+        "title": "The Hereditary Principle",
+        "runtimeMinutes": 50
+      },
+      {
+        "season": 4,
+        "episode": 8,
+        "title": "48:1",
+        "runtimeMinutes": 53
+      },
+      {
+        "season": 4,
+        "episode": 9,
+        "title": "Avalanche",
+        "runtimeMinutes": 49
+      },
+      {
+        "season": 4,
+        "episode": 10,
+        "title": "War",
+        "runtimeMinutes": 54
+      },
+      {
+        "season": 5,
+        "episode": 1,
+        "title": "Queen Victoria Syndrome",
+        "runtimeMinutes": 56
+      },
+      {
+        "season": 5,
+        "episode": 2,
+        "title": "The System",
+        "runtimeMinutes": 50
+      },
+      {
+        "season": 5,
+        "episode": 3,
+        "title": "Mou Mou",
+        "runtimeMinutes": 53
+      },
+      {
+        "season": 5,
+        "episode": 4,
+        "title": "Annus Horribilis",
+        "runtimeMinutes": 54
+      },
+      {
+        "season": 5,
+        "episode": 5,
+        "title": "The Way Ahead",
+        "runtimeMinutes": 50
+      },
+      {
+        "season": 5,
+        "episode": 6,
+        "title": "Ipatiev House",
+        "runtimeMinutes": 59
+      },
+      {
+        "season": 5,
+        "episode": 7,
+        "title": "No Woman's Land",
+        "runtimeMinutes": 52
+      },
+      {
+        "season": 5,
+        "episode": 8,
+        "title": "Gunpowder",
+        "runtimeMinutes": 56
+      },
+      {
+        "season": 5,
+        "episode": 9,
+        "title": "Couple 31",
+        "runtimeMinutes": 53
+      },
+      {
+        "season": 5,
+        "episode": 10,
+        "title": "Decommissioned",
+        "runtimeMinutes": 52
+      },
+      {
+        "season": 6,
+        "episode": 1,
+        "title": "Persona Non Grata",
+        "runtimeMinutes": 52
+      },
+      {
+        "season": 6,
+        "episode": 2,
+        "title": "Two Photographs",
+        "runtimeMinutes": 40
+      },
+      {
+        "season": 6,
+        "episode": 3,
+        "title": "Dis-Moi Oui",
+        "runtimeMinutes": 57
+      },
+      {
+        "season": 6,
+        "episode": 4,
+        "title": "Aftermath",
+        "runtimeMinutes": 53
+      },
+      {
+        "season": 6,
+        "episode": 5,
+        "title": "Willsmania",
+        "runtimeMinutes": 53
+      },
+      {
+        "season": 6,
+        "episode": 6,
+        "title": "Ruritania",
+        "runtimeMinutes": 49
+      },
+      {
+        "season": 6,
+        "episode": 7,
+        "title": "Alma Mater",
+        "runtimeMinutes": 50
+      },
+      {
+        "season": 6,
+        "episode": 8,
+        "title": "Ritz",
+        "runtimeMinutes": 51
+      },
+      {
+        "season": 6,
+        "episode": 9,
+        "title": "Hope Street",
+        "runtimeMinutes": 53
+      },
+      {
+        "season": 6,
+        "episode": 10,
+        "title": "Sleep, Dearie Sleep",
+        "runtimeMinutes": 73
+      }
+    ],
+    "normal-people": [
+      {
+        "season": 1,
+        "episode": 1,
+        "title": "Episode 1",
+        "runtimeMinutes": 29
+      },
+      {
+        "season": 1,
+        "episode": 2,
+        "title": "Episode 2",
+        "runtimeMinutes": 28
+      },
+      {
+        "season": 1,
+        "episode": 3,
+        "title": "Episode 3",
+        "runtimeMinutes": 33
+      },
+      {
+        "season": 1,
+        "episode": 4,
+        "title": "Episode 4",
+        "runtimeMinutes": 31
+      },
+      {
+        "season": 1,
+        "episode": 5,
+        "title": "Episode 5",
+        "runtimeMinutes": 31
+      },
+      {
+        "season": 1,
+        "episode": 6,
+        "title": "Episode 6",
+        "runtimeMinutes": 33
+      },
+      {
+        "season": 1,
+        "episode": 7,
+        "title": "Episode 7",
+        "runtimeMinutes": 27
+      },
+      {
+        "season": 1,
+        "episode": 8,
+        "title": "Episode 8",
+        "runtimeMinutes": 28
+      },
+      {
+        "season": 1,
+        "episode": 9,
+        "title": "Episode 9",
+        "runtimeMinutes": 22
+      },
+      {
+        "season": 1,
+        "episode": 10,
+        "title": "Episode 10",
+        "runtimeMinutes": 26
+      },
+      {
+        "season": 1,
+        "episode": 11,
+        "title": "Episode 11",
+        "runtimeMinutes": 28
+      },
+      {
+        "season": 1,
+        "episode": 12,
+        "title": "Episode 12",
+        "runtimeMinutes": 23
+      }
+    ],
+    "better-call-saul": [
+      {
+        "season": 1,
+        "episode": 1,
+        "title": "Uno",
+        "runtimeMinutes": 54
+      },
+      {
+        "season": 1,
+        "episode": 2,
+        "title": "Mijo",
+        "runtimeMinutes": 47
+      },
+      {
+        "season": 1,
+        "episode": 3,
+        "title": "Nacho",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 1,
+        "episode": 4,
+        "title": "Hero",
+        "runtimeMinutes": 47
+      },
+      {
+        "season": 1,
+        "episode": 5,
+        "title": "Alpine Shepherd Boy",
+        "runtimeMinutes": 45
+      },
+      {
+        "season": 1,
+        "episode": 6,
+        "title": "Five-O",
+        "runtimeMinutes": 43
+      },
+      {
+        "season": 1,
+        "episode": 7,
+        "title": "Bingo",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 1,
+        "episode": 8,
+        "title": "RICO",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 1,
+        "episode": 9,
+        "title": "Pimento",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 1,
+        "episode": 10,
+        "title": "Marco",
+        "runtimeMinutes": 50
+      },
+      {
+        "season": 2,
+        "episode": 1,
+        "title": "Switch",
+        "runtimeMinutes": 47
+      },
+      {
+        "season": 2,
+        "episode": 2,
+        "title": "Cobbler",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 2,
+        "episode": 3,
+        "title": "Amarillo",
+        "runtimeMinutes": 43
+      },
+      {
+        "season": 2,
+        "episode": 4,
+        "title": "Gloves Off",
+        "runtimeMinutes": 44
+      },
+      {
+        "season": 2,
+        "episode": 5,
+        "title": "Rebecca",
+        "runtimeMinutes": 46
+      },
+      {
+        "season": 2,
+        "episode": 6,
+        "title": "Bali Ha'i",
+        "runtimeMinutes": 47
+      },
+      {
+        "season": 2,
+        "episode": 7,
+        "title": "Inflatable",
+        "runtimeMinutes": 43
+      },
+      {
+        "season": 2,
+        "episode": 8,
+        "title": "Fifi",
+        "runtimeMinutes": 49
+      },
+      {
+        "season": 2,
+        "episode": 9,
+        "title": "Nailed",
+        "runtimeMinutes": 50
+      },
+      {
+        "season": 2,
+        "episode": 10,
+        "title": "Klick",
+        "runtimeMinutes": 49
+      },
+      {
+        "season": 3,
+        "episode": 1,
+        "title": "Mabel",
+        "runtimeMinutes": 52
+      },
+      {
+        "season": 3,
+        "episode": 2,
+        "title": "Witness",
+        "runtimeMinutes": 52
+      },
+      {
+        "season": 3,
+        "episode": 3,
+        "title": "Sunk Costs",
+        "runtimeMinutes": 46
+      },
+      {
+        "season": 3,
+        "episode": 4,
+        "title": "Sabrosito",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 5,
+        "title": "Chicanery",
+        "runtimeMinutes": 50
+      },
+      {
+        "season": 3,
+        "episode": 6,
+        "title": "Off Brand",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 7,
+        "title": "Expenses",
+        "runtimeMinutes": 53
+      },
+      {
+        "season": 3,
+        "episode": 8,
+        "title": "Slip",
+        "runtimeMinutes": 49
+      },
+      {
+        "season": 3,
+        "episode": 9,
+        "title": "Fall",
+        "runtimeMinutes": 50
+      },
+      {
+        "season": 3,
+        "episode": 10,
+        "title": "Lantern",
+        "runtimeMinutes": 57
+      },
+      {
+        "season": 4,
+        "episode": 1,
+        "title": "Smoke",
+        "runtimeMinutes": 49
+      },
+      {
+        "season": 4,
+        "episode": 2,
+        "title": "Breathe",
+        "runtimeMinutes": 46
+      },
+      {
+        "season": 4,
+        "episode": 3,
+        "title": "Something Beautiful",
+        "runtimeMinutes": 43
+      },
+      {
+        "season": 4,
+        "episode": 4,
+        "title": "Talk",
+        "runtimeMinutes": 47
+      },
+      {
+        "season": 4,
+        "episode": 5,
+        "title": "Quite a Ride",
+        "runtimeMinutes": 53
+      },
+      {
+        "season": 4,
+        "episode": 6,
+        "title": "Piñata",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 4,
+        "episode": 7,
+        "title": "Something Stupid",
+        "runtimeMinutes": 42
+      },
+      {
+        "season": 4,
+        "episode": 8,
+        "title": "Coushatta",
+        "runtimeMinutes": 53
+      },
+      {
+        "season": 4,
+        "episode": 9,
+        "title": "Wiedersehen",
+        "runtimeMinutes": 55
+      },
+      {
+        "season": 4,
+        "episode": 10,
+        "title": "Winner",
+        "runtimeMinutes": 61
+      },
+      {
+        "season": 5,
+        "episode": 1,
+        "title": "Magic Man",
+        "runtimeMinutes": 55
+      },
+      {
+        "season": 5,
+        "episode": 2,
+        "title": "50% Off",
+        "runtimeMinutes": 46
+      },
+      {
+        "season": 5,
+        "episode": 3,
+        "title": "The Guy for This",
+        "runtimeMinutes": 55
+      },
+      {
+        "season": 5,
+        "episode": 4,
+        "title": "Namaste",
+        "runtimeMinutes": 47
+      },
+      {
+        "season": 5,
+        "episode": 5,
+        "title": "Dedicado a Max",
+        "runtimeMinutes": 51
+      },
+      {
+        "season": 5,
+        "episode": 6,
+        "title": "Wexler v. Goodman",
+        "runtimeMinutes": 52
+      },
+      {
+        "season": 5,
+        "episode": 7,
+        "title": "JMM",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 5,
+        "episode": 8,
+        "title": "Bagman",
+        "runtimeMinutes": 55
+      },
+      {
+        "season": 5,
+        "episode": 9,
+        "title": "Bad Choice Road",
+        "runtimeMinutes": 60
+      },
+      {
+        "season": 5,
+        "episode": 10,
+        "title": "Something Unforgivable",
+        "runtimeMinutes": 61
+      },
+      {
+        "season": 6,
+        "episode": 1,
+        "title": "Wine and Roses",
+        "runtimeMinutes": 56
+      },
+      {
+        "season": 6,
+        "episode": 2,
+        "title": "Carrot and Stick",
+        "runtimeMinutes": 60
+      },
+      {
+        "season": 6,
+        "episode": 3,
+        "title": "Rock and Hard Place",
+        "runtimeMinutes": 47
+      },
+      {
+        "season": 6,
+        "episode": 4,
+        "title": "Hit and Run",
+        "runtimeMinutes": 45
+      },
+      {
+        "season": 6,
+        "episode": 5,
+        "title": "Black and Blue",
+        "runtimeMinutes": 52
+      },
+      {
+        "season": 6,
+        "episode": 6,
+        "title": "Axe and Grind",
+        "runtimeMinutes": 45
+      },
+      {
+        "season": 6,
+        "episode": 7,
+        "title": "Plan and Execution",
+        "runtimeMinutes": 51
+      },
+      {
+        "season": 6,
+        "episode": 8,
+        "title": "Point and Shoot",
+        "runtimeMinutes": 50
+      },
+      {
+        "season": 6,
+        "episode": 9,
+        "title": "Fun and Games",
+        "runtimeMinutes": 57
+      },
+      {
+        "season": 6,
+        "episode": 10,
+        "title": "Nippy",
+        "runtimeMinutes": 52
+      },
+      {
+        "season": 6,
+        "episode": 11,
+        "title": "Breaking Bad",
+        "runtimeMinutes": 58
+      },
+      {
+        "season": 6,
+        "episode": 12,
+        "title": "Waterworks",
+        "runtimeMinutes": 59
+      },
+      {
+        "season": 6,
+        "episode": 13,
+        "title": "Saul Gone",
+        "runtimeMinutes": 70
+      }
+    ],
+    "mad-men": [
+      {
+        "season": 1,
+        "episode": 1,
+        "title": "Smoke Gets in Your Eyes",
+        "runtimeMinutes": 49
+      },
+      {
+        "season": 1,
+        "episode": 2,
+        "title": "Ladies Room",
+        "runtimeMinutes": 47
+      },
+      {
+        "season": 1,
+        "episode": 3,
+        "title": "Marriage of Figaro",
+        "runtimeMinutes": 44
+      },
+      {
+        "season": 1,
+        "episode": 4,
+        "title": "New Amsterdam",
+        "runtimeMinutes": 45
+      },
+      {
+        "season": 1,
+        "episode": 5,
+        "title": "5G",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 1,
+        "episode": 6,
+        "title": "Babylon",
+        "runtimeMinutes": 47
+      },
+      {
+        "season": 1,
+        "episode": 7,
+        "title": "Red in the Face",
+        "runtimeMinutes": 47
+      },
+      {
+        "season": 1,
+        "episode": 8,
+        "title": "The Hobo Code",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 1,
+        "episode": 9,
+        "title": "Shoot",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 1,
+        "episode": 10,
+        "title": "Long Weekend",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 1,
+        "episode": 11,
+        "title": "Indian Summer",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 1,
+        "episode": 12,
+        "title": "Nixon vs. Kennedy",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 1,
+        "episode": 13,
+        "title": "The Wheel",
+        "runtimeMinutes": 49
+      },
+      {
+        "season": 2,
+        "episode": 1,
+        "title": "For Those Who Think Young",
+        "runtimeMinutes": 49
+      },
+      {
+        "season": 2,
+        "episode": 2,
+        "title": "Flight 1",
+        "runtimeMinutes": 49
+      },
+      {
+        "season": 2,
+        "episode": 3,
+        "title": "The Benefactor",
+        "runtimeMinutes": 47
+      },
+      {
+        "season": 2,
+        "episode": 4,
+        "title": "Three Sundays",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 2,
+        "episode": 5,
+        "title": "The New Girl",
+        "runtimeMinutes": 49
+      },
+      {
+        "season": 2,
+        "episode": 6,
+        "title": "Maidenform",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 2,
+        "episode": 7,
+        "title": "The Gold Violin",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 2,
+        "episode": 8,
+        "title": "A Night to Remember",
+        "runtimeMinutes": 49
+      },
+      {
+        "season": 2,
+        "episode": 9,
+        "title": "Six Month Leave",
+        "runtimeMinutes": 49
+      },
+      {
+        "season": 2,
+        "episode": 10,
+        "title": "The Inheritance",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 2,
+        "episode": 11,
+        "title": "The Jet Set",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 2,
+        "episode": 12,
+        "title": "The Mountain King",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 2,
+        "episode": 13,
+        "title": "Meditations in an Emergency",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 1,
+        "title": "Out of Town",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 2,
+        "title": "Love Among the Ruins",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 3,
+        "title": "My Old Kentucky Home",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 4,
+        "title": "The Arrangements",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 5,
+        "title": "The Fog",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 6,
+        "title": "Guy Walks Into an Advertising Agency",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 7,
+        "title": "Seven Twenty Three",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 8,
+        "title": "Souvenir",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 9,
+        "title": "Wee Small Hours",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 10,
+        "title": "The Color Blue",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 11,
+        "title": "The Gypsy and the Hobo",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 3,
+        "episode": 12,
+        "title": "The Grown-Ups",
+        "runtimeMinutes": 47
+      },
+      {
+        "season": 3,
+        "episode": 13,
+        "title": "Shut the Door. Have a Seat",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 4,
+        "episode": 1,
+        "title": "Public Relations",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 4,
+        "episode": 2,
+        "title": "Christmas Comes But Once a Year",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 4,
+        "episode": 3,
+        "title": "The Good News",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 4,
+        "episode": 4,
+        "title": "The Rejected",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 4,
+        "episode": 5,
+        "title": "The Chrysanthemum and the Sword",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 4,
+        "episode": 6,
+        "title": "Waldorf Stories",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 4,
+        "episode": 7,
+        "title": "The Suitcase",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 4,
+        "episode": 8,
+        "title": "The Summer Man",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 4,
+        "episode": 9,
+        "title": "The Beautiful Girls",
+        "runtimeMinutes": 47
+      },
+      {
+        "season": 4,
+        "episode": 10,
+        "title": "Hands and Knees",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 4,
+        "episode": 11,
+        "title": "Chinese Wall",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 4,
+        "episode": 12,
+        "title": "Blowing Smoke",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 4,
+        "episode": 13,
+        "title": "Tomorrowland",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 5,
+        "episode": 1,
+        "title": "A Little Kiss (1)",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 5,
+        "episode": 2,
+        "title": "A Little Kiss (2)",
+        "runtimeMinutes": 47
+      },
+      {
+        "season": 5,
+        "episode": 3,
+        "title": "Tea Leaves",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 5,
+        "episode": 4,
+        "title": "Mystery Date",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 5,
+        "episode": 5,
+        "title": "Signal 30",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 5,
+        "episode": 6,
+        "title": "Far Away Places",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 5,
+        "episode": 7,
+        "title": "At the Codfish Ball",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 5,
+        "episode": 8,
+        "title": "Lady Lazarus",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 5,
+        "episode": 9,
+        "title": "Dark Shadows",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 5,
+        "episode": 10,
+        "title": "Christmas Waltz",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 5,
+        "episode": 11,
+        "title": "The Other Woman",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 5,
+        "episode": 12,
+        "title": "Commissions and Fees",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 5,
+        "episode": 13,
+        "title": "The Phantom",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 6,
+        "episode": 1,
+        "title": "The Doorway (1)",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 6,
+        "episode": 2,
+        "title": "The Doorway (2)",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 6,
+        "episode": 3,
+        "title": "Collaborators",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 6,
+        "episode": 4,
+        "title": "To Have and to Hold",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 6,
+        "episode": 5,
+        "title": "The Flood",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 6,
+        "episode": 6,
+        "title": "For Immediate Release",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 6,
+        "episode": 7,
+        "title": "Man With a Plan",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 6,
+        "episode": 8,
+        "title": "The Crash",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 6,
+        "episode": 9,
+        "title": "The Better Half",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 6,
+        "episode": 10,
+        "title": "A Tale of Two Cities",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 6,
+        "episode": 11,
+        "title": "Favors",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 6,
+        "episode": 12,
+        "title": "The Quality of Mercy",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 6,
+        "episode": 13,
+        "title": "In Care Of",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 7,
+        "episode": 1,
+        "title": "Time Zones",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 7,
+        "episode": 2,
+        "title": "A Day's Work",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 7,
+        "episode": 3,
+        "title": "Field Trip",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 7,
+        "episode": 4,
+        "title": "The Monolith",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 7,
+        "episode": 5,
+        "title": "The Runaways",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 7,
+        "episode": 6,
+        "title": "The Strategy",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 7,
+        "episode": 7,
+        "title": "Waterloo",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 7,
+        "episode": 8,
+        "title": "Severance",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 7,
+        "episode": 9,
+        "title": "New Business",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 7,
+        "episode": 10,
+        "title": "The Forecast",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 7,
+        "episode": 11,
+        "title": "Time & Life",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 7,
+        "episode": 12,
+        "title": "Lost Horizon",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 7,
+        "episode": 13,
+        "title": "The Milk and Honey Route",
+        "runtimeMinutes": 54
+      },
+      {
+        "season": 7,
+        "episode": 14,
+        "title": "Person to Person",
+        "runtimeMinutes": 58
+      }
+    ],
+    "chernobyl": [
+      {
+        "season": 1,
+        "episode": 1,
+        "title": "1:23:45",
+        "runtimeMinutes": 61
+      },
+      {
+        "season": 1,
+        "episode": 2,
+        "title": "Please Remain Calm",
+        "runtimeMinutes": 66
+      },
+      {
+        "season": 1,
+        "episode": 3,
+        "title": "Open Wide, O Earth",
+        "runtimeMinutes": 64
+      },
+      {
+        "season": 1,
+        "episode": 4,
+        "title": "The Happiness of All Mankind",
+        "runtimeMinutes": 67
+      },
+      {
+        "season": 1,
+        "episode": 5,
+        "title": "Vichnaya Pamyat",
+        "runtimeMinutes": 73
+      }
+    ],
+    "the-sopranos": [
+      {
+        "season": 1,
+        "episode": 1,
+        "title": "The Sopranos",
+        "runtimeMinutes": 60
+      },
+      {
+        "season": 1,
+        "episode": 2,
+        "title": "46 Long",
+        "runtimeMinutes": 50
+      },
+      {
+        "season": 1,
+        "episode": 3,
+        "title": "Denial, Anger, Acceptance",
+        "runtimeMinutes": 45
+      },
+      {
+        "season": 1,
+        "episode": 4,
+        "title": "Meadowlands",
+        "runtimeMinutes": 53
+      },
+      {
+        "season": 1,
+        "episode": 5,
+        "title": "College",
+        "runtimeMinutes": 57
+      },
+      {
+        "season": 1,
+        "episode": 6,
+        "title": "Pax Soprana",
+        "runtimeMinutes": 50
+      },
+      {
+        "season": 1,
+        "episode": 7,
+        "title": "Down Neck",
+        "runtimeMinutes": 52
+      },
+      {
+        "season": 1,
+        "episode": 8,
+        "title": "The Legend of Tennessee Moltisanti",
+        "runtimeMinutes": 49
+      },
+      {
+        "season": 1,
+        "episode": 9,
+        "title": "Boca",
+        "runtimeMinutes": 52
+      },
+      {
+        "season": 1,
+        "episode": 10,
+        "title": "A Hit Is a Hit",
+        "runtimeMinutes": 53
+      },
+      {
+        "season": 1,
+        "episode": 11,
+        "title": "Nobody Knows Anything",
+        "runtimeMinutes": 50
+      },
+      {
+        "season": 1,
+        "episode": 12,
+        "title": "Isabella",
+        "runtimeMinutes": 47
+      },
+      {
+        "season": 1,
+        "episode": 13,
+        "title": "I Dream of Jeannie Cusamano",
+        "runtimeMinutes": 61
+      },
+      {
+        "season": 2,
+        "episode": 1,
+        "title": "Guy Walks into a Psychiatrist's Office",
+        "runtimeMinutes": 49
+      },
+      {
+        "season": 2,
+        "episode": 2,
+        "title": "Do Not Resuscitate",
+        "runtimeMinutes": 50
+      },
+      {
+        "season": 2,
+        "episode": 3,
+        "title": "Toodle-Fucking-Oo",
+        "runtimeMinutes": 51
+      },
+      {
+        "season": 2,
+        "episode": 4,
+        "title": "Commendatori",
+        "runtimeMinutes": 52
+      },
+      {
+        "season": 2,
+        "episode": 5,
+        "title": "Big Girls Don't Cry",
+        "runtimeMinutes": 52
+      },
+      {
+        "season": 2,
+        "episode": 6,
+        "title": "The Happy Wanderer",
+        "runtimeMinutes": 51
+      },
+      {
+        "season": 2,
+        "episode": 7,
+        "title": "D-Girl",
+        "runtimeMinutes": 56
+      },
+      {
+        "season": 2,
+        "episode": 8,
+        "title": "Full Leather Jacket",
+        "runtimeMinutes": 43
+      },
+      {
+        "season": 2,
+        "episode": 9,
+        "title": "From Where to Eternity",
+        "runtimeMinutes": 55
+      },
+      {
+        "season": 2,
+        "episode": 10,
+        "title": "Bust Out",
+        "runtimeMinutes": 59
+      },
+      {
+        "season": 2,
+        "episode": 11,
+        "title": "House Arrest",
+        "runtimeMinutes": 57
+      },
+      {
+        "season": 2,
+        "episode": 12,
+        "title": "The Knight in White Satin Armor",
+        "runtimeMinutes": 60
+      },
+      {
+        "season": 2,
+        "episode": 13,
+        "title": "Funhouse",
+        "runtimeMinutes": 59
+      },
+      {
+        "season": 3,
+        "episode": 1,
+        "title": "Mr. Ruggerio's Neighborhood",
+        "runtimeMinutes": 49
+      },
+      {
+        "season": 3,
+        "episode": 2,
+        "title": "Proshai, Livushka",
+        "runtimeMinutes": 57
+      },
+      {
+        "season": 3,
+        "episode": 3,
+        "title": "Fortunate Son",
+        "runtimeMinutes": 59
+      },
+      {
+        "season": 3,
+        "episode": 4,
+        "title": "Employee of the Month",
+        "runtimeMinutes": 53
+      },
+      {
+        "season": 3,
+        "episode": 5,
+        "title": "Another Toothpick",
+        "runtimeMinutes": 60
+      },
+      {
+        "season": 3,
+        "episode": 6,
+        "title": "University",
+        "runtimeMinutes": 49
+      },
+      {
+        "season": 3,
+        "episode": 7,
+        "title": "Second Opinion",
+        "runtimeMinutes": 60
+      },
+      {
+        "season": 3,
+        "episode": 8,
+        "title": "He Is Risen",
+        "runtimeMinutes": 54
+      },
+      {
+        "season": 3,
+        "episode": 9,
+        "title": "The Telltale Moozadell",
+        "runtimeMinutes": 56
+      },
+      {
+        "season": 3,
+        "episode": 10,
+        "title": "To Save Us All from Satan's Power",
+        "runtimeMinutes": 46
+      },
+      {
+        "season": 3,
+        "episode": 11,
+        "title": "Pine Barrens",
+        "runtimeMinutes": 60
+      },
+      {
+        "season": 3,
+        "episode": 12,
+        "title": "Amour Fou",
+        "runtimeMinutes": 60
+      },
+      {
+        "season": 3,
+        "episode": 13,
+        "title": "Army of One",
+        "runtimeMinutes": 60
+      },
+      {
+        "season": 4,
+        "episode": 1,
+        "title": "For All Debts Public and Private",
+        "runtimeMinutes": 58
+      },
+      {
+        "season": 4,
+        "episode": 2,
+        "title": "No-Show",
+        "runtimeMinutes": 58
+      },
+      {
+        "season": 4,
+        "episode": 3,
+        "title": "Christopher",
+        "runtimeMinutes": 54
+      },
+      {
+        "season": 4,
+        "episode": 4,
+        "title": "The Weight",
+        "runtimeMinutes": 58
+      },
+      {
+        "season": 4,
+        "episode": 5,
+        "title": "Pie-O-My",
+        "runtimeMinutes": 55
+      },
+      {
+        "season": 4,
+        "episode": 6,
+        "title": "Everybody Hurts",
+        "runtimeMinutes": 55
+      },
+      {
+        "season": 4,
+        "episode": 7,
+        "title": "Watching Too Much Television",
+        "runtimeMinutes": 54
+      },
+      {
+        "season": 4,
+        "episode": 8,
+        "title": "Mergers and Acquisitions",
+        "runtimeMinutes": 56
+      },
+      {
+        "season": 4,
+        "episode": 9,
+        "title": "Whoever Did This",
+        "runtimeMinutes": 58
+      },
+      {
+        "season": 4,
+        "episode": 10,
+        "title": "The Strong, Silent Type",
+        "runtimeMinutes": 53
+      },
+      {
+        "season": 4,
+        "episode": 11,
+        "title": "Calling All Cars",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 4,
+        "episode": 12,
+        "title": "Eloise",
+        "runtimeMinutes": 56
+      },
+      {
+        "season": 4,
+        "episode": 13,
+        "title": "Whitecaps",
+        "runtimeMinutes": 75
+      },
+      {
+        "season": 5,
+        "episode": 1,
+        "title": "Two Tonys",
+        "runtimeMinutes": 54
+      },
+      {
+        "season": 5,
+        "episode": 2,
+        "title": "Rat Pack",
+        "runtimeMinutes": 57
+      },
+      {
+        "season": 5,
+        "episode": 3,
+        "title": "Where's Johnny?",
+        "runtimeMinutes": 55
+      },
+      {
+        "season": 5,
+        "episode": 4,
+        "title": "All Happy Families",
+        "runtimeMinutes": 53
+      },
+      {
+        "season": 5,
+        "episode": 5,
+        "title": "Irregular Around the Margins",
+        "runtimeMinutes": 52
+      },
+      {
+        "season": 5,
+        "episode": 6,
+        "title": "Sentimental Education",
+        "runtimeMinutes": 55
+      },
+      {
+        "season": 5,
+        "episode": 7,
+        "title": "In Camelot",
+        "runtimeMinutes": 55
+      },
+      {
+        "season": 5,
+        "episode": 8,
+        "title": "Marco Polo",
+        "runtimeMinutes": 54
+      },
+      {
+        "season": 5,
+        "episode": 9,
+        "title": "Unidentified Black Males",
+        "runtimeMinutes": 59
+      },
+      {
+        "season": 5,
+        "episode": 10,
+        "title": "Cold Cuts",
+        "runtimeMinutes": 53
+      },
+      {
+        "season": 5,
+        "episode": 11,
+        "title": "The Test Dream",
+        "runtimeMinutes": 50
+      },
+      {
+        "season": 5,
+        "episode": 12,
+        "title": "Long Term Parking",
+        "runtimeMinutes": 57
+      },
+      {
+        "season": 5,
+        "episode": 13,
+        "title": "All Due Respect",
+        "runtimeMinutes": 55
+      },
+      {
+        "season": 6,
+        "episode": 1,
+        "title": "Members Only",
+        "runtimeMinutes": 52
+      },
+      {
+        "season": 6,
+        "episode": 2,
+        "title": "Join the Club",
+        "runtimeMinutes": 54
+      },
+      {
+        "season": 6,
+        "episode": 3,
+        "title": "Mayham",
+        "runtimeMinutes": 56
+      },
+      {
+        "season": 6,
+        "episode": 4,
+        "title": "The Fleshy Part of the Thigh",
+        "runtimeMinutes": 58
+      },
+      {
+        "season": 6,
+        "episode": 5,
+        "title": "Mr. & Mrs. John Sacrimoni Request...",
+        "runtimeMinutes": 53
+      },
+      {
+        "season": 6,
+        "episode": 6,
+        "title": "Live Free or Die",
+        "runtimeMinutes": 55
+      },
+      {
+        "season": 6,
+        "episode": 7,
+        "title": "Luxury Lounge",
+        "runtimeMinutes": 55
+      },
+      {
+        "season": 6,
+        "episode": 8,
+        "title": "Johnny Cakes",
+        "runtimeMinutes": 54
+      },
+      {
+        "season": 6,
+        "episode": 9,
+        "title": "The Ride",
+        "runtimeMinutes": 54
+      },
+      {
+        "season": 6,
+        "episode": 10,
+        "title": "Moe n' Joe",
+        "runtimeMinutes": 54
+      },
+      {
+        "season": 6,
+        "episode": 11,
+        "title": "Cold Stones",
+        "runtimeMinutes": 56
+      },
+      {
+        "season": 6,
+        "episode": 12,
+        "title": "Kaisha",
+        "runtimeMinutes": 59
+      },
+      {
+        "season": 6,
+        "episode": 13,
+        "title": "Soprano Home Movies",
+        "runtimeMinutes": 52
+      },
+      {
+        "season": 6,
+        "episode": 14,
+        "title": "Stage 5",
+        "runtimeMinutes": 56
+      },
+      {
+        "season": 6,
+        "episode": 15,
+        "title": "Remember When",
+        "runtimeMinutes": 58
+      },
+      {
+        "season": 6,
+        "episode": 16,
+        "title": "Chasing It",
+        "runtimeMinutes": 50
+      },
+      {
+        "season": 6,
+        "episode": 17,
+        "title": "Walk Like a Man",
+        "runtimeMinutes": 56
+      },
+      {
+        "season": 6,
+        "episode": 18,
+        "title": "Kennedy and Heidi",
+        "runtimeMinutes": 53
+      },
+      {
+        "season": 6,
+        "episode": 19,
+        "title": "The Second Coming",
+        "runtimeMinutes": 53
+      },
+      {
+        "season": 6,
+        "episode": 20,
+        "title": "The Blue Comet",
+        "runtimeMinutes": 51
+      },
+      {
+        "season": 6,
+        "episode": 21,
+        "title": "Made in America",
+        "runtimeMinutes": 61
+      }
+    ],
+    "mare-of-easttown": [
+      {
+        "season": 1,
+        "episode": 1,
+        "title": "Miss Lady Hawk Herself",
+        "runtimeMinutes": 58
+      },
+      {
+        "season": 1,
+        "episode": 2,
+        "title": "Fathers",
+        "runtimeMinutes": 58
+      },
+      {
+        "season": 1,
+        "episode": 3,
+        "title": "Enter Number Two",
+        "runtimeMinutes": 59
+      },
+      {
+        "season": 1,
+        "episode": 4,
+        "title": "Poor Sisyphus",
+        "runtimeMinutes": 56
+      },
+      {
+        "season": 1,
+        "episode": 5,
+        "title": "Illusions",
+        "runtimeMinutes": 59
+      },
+      {
+        "season": 1,
+        "episode": 6,
+        "title": "Sore Must Be the Storm",
+        "runtimeMinutes": 59
+      },
+      {
+        "season": 1,
+        "episode": 7,
+        "title": "Sacrament",
+        "runtimeMinutes": 66
+      }
+    ],
+    "the-queens-gambit": [
+      {
+        "season": 1,
+        "episode": 1,
+        "title": "Openings",
+        "runtimeMinutes": 59
+      },
+      {
+        "season": 1,
+        "episode": 2,
+        "title": "Exchanges",
+        "runtimeMinutes": 65
+      },
+      {
+        "season": 1,
+        "episode": 3,
+        "title": "Doubled Pawns",
+        "runtimeMinutes": 46
+      },
+      {
+        "season": 1,
+        "episode": 4,
+        "title": "Middle Game",
+        "runtimeMinutes": 49
+      },
+      {
+        "season": 1,
+        "episode": 5,
+        "title": "Fork",
+        "runtimeMinutes": 48
+      },
+      {
+        "season": 1,
+        "episode": 6,
+        "title": "Adjournment",
+        "runtimeMinutes": 60
+      },
+      {
+        "season": 1,
+        "episode": 7,
+        "title": "End Game",
+        "runtimeMinutes": 68
+      }
+    ]
+  },
+  "notes": [
+    "Source: TMDB season pages (themoviedb.org/tv/<id>/season/<n>?language=en-US), scraped 2026-10-15.",
+    "All runtimes are TMDB per-episode values; none estimated.",
+    "The Sopranos season 6 and Mad Men season 7 were aired in two parts; TMDB numbers each as a single season (S6E1-21 and S7E1-14), which matches the expected totals.",
+    "Normal People episodes have no names on TMDB (titled \"Episode 1\"...\"Episode 12\").",
+    "Succession S1E2 title is censored on TMDB as \"Sh*t Show at the F**k Factory\"."
+  ]
+}

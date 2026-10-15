@@ -5,8 +5,10 @@ import MyListButton from '../components/MyListButton.jsx';
 import TitleCard from '../components/TitleCard.jsx';
 import ShareButton from '../components/ShareButton.jsx';
 import ReviewsSection from '../components/ReviewsSection.jsx';
-import { StarDisplay } from '../components/StarRating.jsx';
-import { useReviews } from '../state/ReviewsContext.jsx';
+import ThumbsRating from '../components/ThumbsRating.jsx';
+import EpisodeList from '../components/EpisodeList.jsx';
+import { RATINGS, useReviews } from '../state/ReviewsContext.jsx';
+import { isResumable, useProgress } from '../state/ProgressContext.jsx';
 import { ArrowLeftIcon, PlayIcon } from '../components/Icons.jsx';
 import {
   formatEpisodes,
@@ -42,8 +44,15 @@ function TitleDetails({ title }) {
   const from = location.state?.from;
   const hasHistory = location.key !== 'default';
   const playable = getPlayable(title);
-  const rated = useReviews().summary(title.id);
-  const related = getTitlesByType(title.type).filter((t) => t.id !== title.id).slice(0, 6);
+  const reviewsApi = useReviews();
+  const rated = reviewsApi.summary(title.id);
+  const saved = useProgress().getProgress(title.id);
+  const resumable = isResumable(saved);
+  const minutesLeft = resumable ? Math.max(1, Math.round((saved.duration - saved.position) / 60)) : 0;
+  const watchedPct = resumable ? Math.round((saved.position / saved.duration) * 100) : 0;
+  const related = getTitlesByType(title.type)
+    .filter((t) => t.id !== title.id)
+    .slice(0, 6);
 
   const goBack = () => (hasHistory && from ? navigate(-1) : navigate('/'));
 
@@ -65,6 +74,8 @@ function TitleDetails({ title }) {
         <div className="details-hero__art" aria-hidden="true">
           <SmartImage
             src={title.heroSrc}
+            srcSet={title.heroSrcSet}
+            sizes="100vw"
             alt=""
             fallbackText=""
             fetchPriority="high"
@@ -83,6 +94,8 @@ function TitleDetails({ title }) {
             <div className="details-hero__poster">
               <SmartImage
                 src={title.posterSrc}
+                srcSet={title.posterSrcSet}
+                sizes="(max-width: 700px) 60vw, 320px"
                 alt={`Poster for ${title.title}`}
                 fallbackText={title.title}
                 width="780"
@@ -107,15 +120,23 @@ function TitleDetails({ title }) {
                   ))}
                 </p>
               )}
-              {rated.count > 0 && (
-                <p className="details-hero__rating">
-                  <StarDisplay value={rated.average} size={18} />
+              {rated.myRating && (
+                <p className="details-hero__rating">{RATINGS.find((r) => r.value === rated.myRating).mine}</p>
+              )}
+              <p className="details-hero__synopsis">{title.synopsis}</p>
+              {resumable && (
+                <p className="details-hero__progress">
+                  <span className="details-hero__progress-track" aria-hidden="true">
+                    <span
+                      className="details-hero__progress-fill"
+                      style={{ width: `${watchedPct}%`, display: 'block' }}
+                    />
+                  </span>
                   <span>
-                    {rated.average.toFixed(1)} · {rated.count} {rated.count === 1 ? 'rating' : 'ratings'}
+                    {minutesLeft} min left<span className="sr-only"> ({watchedPct}% watched)</span>
                   </span>
                 </p>
               )}
-              <p className="details-hero__synopsis">{title.synopsis}</p>
 
               <div className="details-hero__actions">
                 <Link
@@ -125,11 +146,26 @@ function TitleDetails({ title }) {
                 >
                   <PlayIcon size={26} />
                   <span>
-                    Play
+                    {resumable ? 'Resume' : 'Play'}
                     {playable.label && <span className="btn__sub"> {playable.label}</span>}
                   </span>
                 </Link>
+                {resumable && (
+                  <Link
+                    to={`/watch/${title.id}?t=0`}
+                    state={{ from: location.pathname }}
+                    className="btn btn--secondary btn--lg"
+                  >
+                    Start Over
+                  </Link>
+                )}
                 <MyListButton title={title} className="btn--lg" />
+                <ThumbsRating
+                  compact
+                  value={rated.myRating}
+                  label={`Rate ${title.title}`}
+                  onChange={(v) => reviewsApi.rate(title.id, v)}
+                />
                 <ShareButton title={title} />
               </div>
             </div>
@@ -138,6 +174,8 @@ function TitleDetails({ title }) {
       </section>
 
       <div className="details-body">
+        {title.type === 'series' && <EpisodeList title={title} />}
+
         <section className="details-facts" aria-labelledby="about-heading">
           <h2 id="about-heading" className="section-title">
             About {title.title}

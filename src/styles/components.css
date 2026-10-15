@@ -1890,3 +1890,513 @@
     width: 100%;
   }
 }
+
+/* ═════════════ Continue Watching ═════════════ */
+.card__progress {
+  position: absolute;
+  left: 0.6rem;
+  right: 0.6rem;
+  bottom: 0.6rem;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.35);
+  overflow: hidden;
+}
+
+.card__progress-fill {
+  height: 100%;
+  background: var(--accent);
+}
+
+.card__hide {
+  margin-top: 0.15rem;
+  min-height: 32px;
+  color: var(--muted);
+}
+
+.details-hero__progress {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 26rem;
+  margin-top: 0.25rem;
+  color: var(--text-2);
+  font-size: 0.9rem;
+}
+
+.details-hero__progress-track {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+}
+
+.details-hero__progress-fill {
+  height: 100%;
+  background: var(--accent);
+}
+
+/* Row page indicator (decorative; the arrows and scrolling are the controls). */
+.row__pages {
+  display: flex;
+  gap: 3px;
+  margin: 0 0 0 auto;
+  padding: 0;
+  list-style: none;
+  align-self: center;
+}
+
+.row__page {
+  width: 14px;
+  height: 2px;
+  background: #4d4d4d;
+}
+
+.row__page--current {
+  background: #aaa;
+}
+
+/* ═════════════ Hover card (expanded after a short delay) ═════════════ */
+@media (hover: hover) and (pointer: fine) {
+  .card__overlay {
+    transition: opacity 0.22s ease 0s;
+  }
+
+  /* Netflix waits a moment before expanding, so sweeping the mouse across a row stays calm. */
+  .card__frame:hover .card__overlay {
+    transition-delay: 0.35s;
+  }
+
+  .card__frame:hover {
+    transition-delay: 0.35s;
+  }
+}
+
+.card__overlay .thumbs--compact .thumbs__btn {
+  width: 40px;
+  height: 40px;
+  min-height: 40px;
+  border-width: 2px;
+}
+
+.card__overlay .thumbs {
+  gap: 0.3rem;
+}
+
+.card__actions {
+  flex-wrap: wrap;
+}
+
+.card__overlay-genres {
+  font-size: 0.75rem;
+  color: #d6d6d6;
+}
+
+/* ═════════════ Top 10 row ═════════════ */
+.row__item--ranked {
+  display: flex;
+  align-items: flex-end;
+}
+
+.row__rank {
+  flex: none;
+  margin-right: -0.6rem;
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 11vw, 10rem);
+  line-height: 0.72;
+  color: var(--bg);
+  -webkit-text-stroke: 3px #595959;
+  paint-order: stroke;
+  user-select: none;
+}
+
+.row__item--ranked .card {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Ranked items carry their number beside the poster, so they need wider columns. */
+.row__viewport--ranked .row__track {
+  grid-auto-columns: calc(var(--card-w) * 1.45);
+}
+
+/* Like Netflix's Top 10: no text under the posters (titles stay for screen readers). */
+.row__item--ranked .card__meta,
+.row__item--ranked .card__hide {
+  display: none;
+}
+
+.row__item--ranked .card__title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+/* ═════════════ Details modal ═════════════ */
+.modal-open,
+.modal-open body {
+  overflow: hidden;
+}
+
+.title-modal {
+  width: min(850px, calc(100% - 2rem));
+  max-height: calc(100dvh - 4rem);
+  margin: 2rem auto;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-lg);
+  background: #181818;
+  color: var(--text);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.75);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.title-modal::backdrop {
+  background: rgba(0, 0, 0, 0.72);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .title-modal[open] {
+    animation: modal-in 0.28s var(--ease-out);
+  }
+
+  @keyframes modal-in {
+    from {
+      opacity: 0;
+      transform: translateY(24px) scale(0.97);
+    }
+  }
+}
+
+.title-modal__panel {
+  position: relative;
+}
+
+.title-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 3;
+  background: #181818;
+}
+
+.title-modal__hero {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  max-height: 480px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.title-modal__hero > img,
+.title-modal__hero > .img-fallback {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.title-modal__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, #181818 0%, rgba(24, 24, 24, 0.55) 35%, transparent 70%);
+}
+
+.title-modal__hero-content {
+  position: absolute;
+  left: clamp(1rem, 4vw, 3rem);
+  right: clamp(1rem, 4vw, 3rem);
+  bottom: clamp(1rem, 3vw, 2.25rem);
+  display: grid;
+  gap: 1rem;
+}
+
+.title-modal__logo {
+  max-width: min(60%, 340px);
+}
+
+.title-modal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.title-modal__body {
+  display: grid;
+  gap: 2.25rem;
+  padding: 1rem clamp(1rem, 4vw, 3rem) 2.5rem;
+}
+
+.title-modal__columns {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 700px) {
+  .title-modal__columns {
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+  }
+}
+
+.title-modal__meta {
+  margin-bottom: 0.75rem;
+}
+
+.title-modal__synopsis {
+  color: var(--text-2);
+  line-height: 1.6;
+}
+
+.title-modal__tags,
+.title-modal__about {
+  display: grid;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+}
+
+.title-modal__tags div,
+.title-modal__about div {
+  line-height: 1.5;
+}
+
+.title-modal__tags dt,
+.title-modal__about dt {
+  display: inline;
+  margin-right: 0.3rem;
+  color: var(--muted);
+}
+
+.title-modal__tags dd,
+.title-modal__about dd {
+  display: inline;
+}
+
+.title-modal__more a {
+  color: var(--text-2);
+  font-weight: 600;
+}
+
+/* ═════════════ Episodes ═════════════ */
+.episodes__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.episodes__title {
+  margin-bottom: 0;
+}
+
+.episodes__season {
+  width: auto;
+  min-width: 11rem;
+  font-weight: 700;
+}
+
+.episodes__none {
+  color: var(--muted);
+}
+
+.episodes__list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.episode {
+  display: grid;
+  grid-template-columns: 2rem minmax(110px, 160px) 1fr;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 0.75rem;
+  border-bottom: 1px solid #404040;
+  border-radius: 4px;
+}
+
+.episode--current {
+  background: #333;
+}
+
+.episode__number {
+  color: #d2d2d2;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.episode__thumb {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.episode__thumb img,
+.episode__thumb .img-fallback {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.episode__play {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.episode__thumb:hover .episode__play,
+.episode__thumb:focus-visible .episode__play {
+  opacity: 1;
+}
+
+.episode__title {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-weight: 700;
+}
+
+.episode__runtime {
+  flex: none;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.episode__synopsis {
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 520px) {
+  .episode {
+    grid-template-columns: minmax(96px, 120px) 1fr;
+  }
+
+  .episode__number {
+    display: none;
+  }
+}
+
+/* ═════════════ Player: volume, speed, next episode, skip intro ═════════════ */
+.player__volume {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.player__volume-range {
+  width: clamp(60px, 9vw, 110px);
+  accent-color: var(--accent);
+}
+
+.player__speed-select {
+  min-height: 40px;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius);
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-weight: 600;
+}
+
+.player__btn--text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: auto;
+  padding-inline: 0.75rem;
+  font-weight: 700;
+}
+
+.player__skip-intro {
+  position: absolute;
+  right: clamp(1rem, 4vw, 3rem);
+  bottom: clamp(9rem, 22vh, 12rem);
+  z-index: 5;
+  min-height: 48px;
+  padding: 0.6rem 1.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: var(--radius);
+  background: rgba(20, 20, 20, 0.75);
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.player__skip-intro:hover {
+  background: #fff;
+  color: #000;
+}
+
+.player__next {
+  position: absolute;
+  right: clamp(1rem, 4vw, 3rem);
+  bottom: clamp(9rem, 22vh, 12rem);
+  z-index: 6;
+  display: grid;
+  gap: 0.75rem;
+  max-width: 22rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-lg);
+  background: rgba(20, 20, 20, 0.92);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+}
+
+.player__next-label {
+  font-weight: 700;
+}
+
+.player__next-title {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--text-2);
+  font-weight: 500;
+}
+
+.player__next-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.player:fullscreen {
+  width: 100%;
+  height: 100%;
+}
+
+.search-related {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 0.9rem;
+  margin-top: 1.5rem;
+}
+
+/* ═════════════ Browse pages ═════════════ */
+.browse-page__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 2rem;
+}
+
+.browse-page__select {
+  width: auto;
+  min-width: 12rem;
+  font-weight: 600;
+}

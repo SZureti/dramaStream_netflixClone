@@ -6,7 +6,7 @@ const SearchForm = forwardRef(function SearchForm({ value, onChange, onClear }, 
   return (
     <form className="search-form" role="search" onSubmit={(e) => e.preventDefault()}>
       <label htmlFor="search-input" className="search-form__label">
-        Search titles
+        Search titles, people and genres
       </label>
       <div className="search-form__field">
         <SearchIcon size={24} className="search-form__icon" />
@@ -15,7 +15,7 @@ const SearchForm = forwardRef(function SearchForm({ value, onChange, onClear }, 
           id="search-input"
           type="search"
           className="search-form__input"
-          placeholder="Films, series, documentaries…"
+          placeholder="Titles, people, genres"
           value={value}
           onChange={(e) => onChange(e.target.value)}
           onKeyDown={(e) => {

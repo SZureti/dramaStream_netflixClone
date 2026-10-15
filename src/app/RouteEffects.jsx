@@ -36,6 +36,10 @@ export default function RouteEffects({ mainRef }) {
     prevRef.current = location;
     const isFirst = prev === null;
 
+    // Opening or closing a details modal: the page underneath stays exactly where it was.
+    const modalChange = location.state?.backgroundLocation || (navType === 'POP' && prev?.state?.backgroundLocation);
+    if (modalChange && !isFirst) return;
+
     // Typing in Search rewrites ?q= on the same page — not a navigation.
     const queryOnly =
       navType === 'REPLACE' && prev && prev.pathname === location.pathname && prev.search !== location.search;

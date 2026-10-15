@@ -8,16 +8,15 @@ A responsive streaming-catalog prototype for the Code Platoon Netflix Clone I as
 
 ## Features
 
-- **Browse:** a featured hero banner plus three scrolling rows (Drama Films, Drama Series, Drama Documentaries) of 10 real titles each. Hover a poster for quick Play / My List / More Info actions.
-- **Search:** live, case-insensitive, partial-title search (it ignores accents and punctuation, so “wont you” finds *Won’t You Be My Neighbor?*). The query stays in the URL (`?q=`). Includes a blank-query prompt and a “No titles found” state with Clear Search.
-- **Title details:** poster, title logo, rating, runtime or seasons/episodes, genres, credits, cast, and “More like this”.
-- **My List:** add or remove titles from anywhere, with no duplicates and an empty state that links back to Browse.
-- **Rate:** give any title 1–5 stars. The details page shows the average and the number of ratings.
-- **Review:** post a written review with a star rating and an optional display name. Your reviews appear under the title and can be deleted.
-- **Share:** on phones, Share opens the system share sheet. On desktop it opens a menu with Copy link, X, Facebook, WhatsApp, and Email.
-- **Mock player:** clearly labeled “Mock player — no video is streaming”. Has play/pause, a seek bar, ±10-second skips, and keyboard shortcuts (Space/K, ←/→). It never auto-plays and stops at the title’s real length. Series play their real first episode (for example, Breaking Bad S1:E1 “Pilot”, 59 min).
-- **Not found:** a friendly page for unknown routes and unknown title IDs.
-- **Responsive and accessible:** a bottom tab bar on phones, visible keyboard focus, labeled controls, status announcements, and reduced-motion support.
+- **Home like Netflix:** a billboard that rotates each visit, then rows for Continue Watching, Top 10 on DramaStream Today (with big rank numbers), My List, Trending Now, New Releases, Because you watched…, genre rows, and Drama Films / Series / Documentaries. Rows scroll with arrows and a page indicator. Hovering a poster for a moment reveals Play, My List, Rate, More Info, maturity, length and genres.
+- **Title details as a modal:** opening a title shows its details over the page you were on, with Play/Resume, My List, Rate, cast, genres, mood tags, the episode list (series), More Like This and About. The URL changes so it can be shared, and Back or Escape closes it. Opening a `/titles/…` link directly shows the full page, with ratings, reviews and sharing.
+- **Accounts and profiles (optional):** browse freely without an account. Signing in (Supabase Auth) adds Netflix-style profiles, up to five per account, including kids profiles that only show titles at or below a maturity level. My List, Continue Watching, ratings and reviews belong to the profile.
+- **Search and browse:** live search by title, actor, director or genre (accent- and punctuation-insensitive), with "Explore titles related to" suggestions. TV Shows, Movies and Documentaries pages filter by genre.
+- **Continue Watching:** the mock player saves where you stopped. Details show Resume and Start Over, and cards show a progress bar and "Remove from row".
+- **Ratings like Netflix:** Not for me / I like this / Love this, plus written reviews (private to you).
+- **Mock player:** clearly labeled "Mock player — no video is streaming". It has play/pause, seek, ±10 s, playback speed, simulated volume and mute, full screen, Skip Intro, Next Episode with an autoplay countdown (a per-profile setting), and keyboard shortcuts: Space/K, ←/→, F, M, ↑/↓.
+- **Share:** the system share sheet on phones; on desktop, a menu with Copy link, X, Facebook, WhatsApp and Email.
+- **Responsive and accessible:** a bottom tab bar on phones, visible focus, labeled controls, announced status messages, and reduced-motion support. axe-core reports no WCAG 2.2 AA violations.
 
 ## Screenshots
 
@@ -55,8 +54,13 @@ Year, rating, runtime, seasons/episodes, and credits were checked against TMDB. 
 
 ```bash
 npm install
+cp .env.example .env.local   # then fill in your Supabase URL and publishable key
 npm run dev
 ```
+
+Without `.env.local` the site still runs: it uses the bundled catalog, and the account features are hidden.
+
+Run the unit tests with `npm test`.
 
 Open the local URL that Vite prints. To create and preview a production build:
 
@@ -65,15 +69,38 @@ npm run build
 npm run preview
 ```
 
+## Deploy
+
+The app is a static single-page app; Supabase is the backend. Both Vercel and Netlify work. Every route falls back to `index.html` (`vercel.json` for Vercel, `public/_redirects` for Netlify).
+
+1. Push the repo to GitHub.
+2. **Vercel:** New Project → import the repo (it detects Vite: build `npm run build`, output `dist`). **Netlify:** Add new site → import the repo, build command `npm run build`, publish directory `dist`.
+3. Add two environment variables with the same values as `.env.local`:
+   - `VITE_SUPABASE_URL`
+   - `VITE_SUPABASE_PUBLISHABLE_KEY` (the publishable key only, never the secret/service-role key)
+4. Deploy, then in Supabase → **Authentication → URL Configuration**:
+   - set **Site URL** to the deployed address;
+   - add `https://YOUR-SITE/**` to **Redirect URLs**, so sign-up confirmation and password-reset links come back to the site.
+5. Real visitors only get sign-up emails once you add your own SMTP under **Authentication → Emails** (Supabase's built-in sender only mails your team).
+
+After adding artwork, run `sh scripts/make-image-sizes.sh` (macOS) to create the smaller copies the site serves on small screens.
+
 ## Routes
 
 | Route | Screen |
 |---|---|
-| `/` | Home / Browse (`/#drama-films`, `/#drama-series`, `/#drama-documentaries` jump to a row) |
+| `/` | Home (`/#drama-films`, `/#drama-series`, `/#drama-documentaries` jump to a row) |
+| `/browse/series`, `/browse/films`, `/browse/documentaries` | TV Shows, Movies, Documentaries (`?genre=` filter) |
 | `/search?q=` | Search and results |
-| `/titles/:titleId` | Title details, ratings, reviews, and share |
+| `/titles/:titleId` | Title details: a modal when opened in the app, a full page for direct links |
 | `/my-list` | My List |
-| `/watch/:titleId` | Mock playback |
+| `/watch/:titleId` | Mock playback (resumes where you left off; `?s=&e=` picks an episode, `?t=0` starts over) |
+| `/welcome` | Signed-out landing page (first visit) |
+| `/signin`, `/signup` | Sign in / create an account |
+| `/forgot-password`, `/reset-password` | Password reset |
+| `/account` | Account (signed in only) |
+| `/profiles`, `/profiles/new`, `/profiles/:id/edit` | Who's watching? and profile settings (signed in only) |
+| `/help` | FAQ |
 | `*` | Not Found |
 
 ## Project structure
@@ -93,10 +120,11 @@ docs/screenshots/
 
 ## State and privacy
 
-- **My List** and **mock playback** use in-memory state, so they reset on a full page refresh.
+- **Catalog:** loaded from Supabase (tables `titles`, `genres`, `credits`, `seasons`, `episodes`, …). If Supabase can't be reached, the bundled `src/data/catalog.js` is used, so the site never goes blank.
+- **Accounts are optional.** Signed out, **My List** and **Continue Watching** are saved in this browser's `localStorage`. Signed in (Supabase Auth), they're saved to your account (tables `my_list` and `viewing_progress`, protected by Row Level Security so only you can see them). Anything saved before signing in is merged into the account.
 - **Ratings and reviews** are saved in this browser’s `localStorage` (key `dramastream:reviews:v1`) so they survive a refresh. They are never sent to a server, and other people can’t see them. Clear your browser’s site data to reset them.
 - **Share** only opens links you choose (or your device’s share sheet). Nothing is posted automatically.
-- There are no accounts and no backend. The app never collects email addresses, passwords, or payment details.
+- Accounts store only an email address (and Supabase's hashed password). The app never collects payment details.
 
 ## Artwork
 

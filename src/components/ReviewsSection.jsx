@@ -1,6 +1,6 @@
 import { useId, useState } from 'react';
-import { useReviews } from '../state/ReviewsContext.jsx';
-import { StarDisplay, StarInput } from './StarRating.jsx';
+import { RATINGS, ratingLabel, useReviews } from '../state/ReviewsContext.jsx';
+import ThumbsRating from './ThumbsRating.jsx';
 import { TrashIcon } from './Icons.jsx';
 
 const MIN_LENGTH = 10;
@@ -14,24 +14,29 @@ function formatDate(iso) {
   }
 }
 
-/** Ratings & reviews for one title: your rating, a review form, and the list. */
+/** Your rating (Netflix's three options), a review form, and your reviews. */
 export default function ReviewsSection({ title }) {
-  const { summary, rate, addReview, removeReview } = useReviews();
-  const { average, count, myRating, reviews } = summary(title.id);
+  const { summary, rate, addReview, removeReview, inAccount } = useReviews();
+  const { myRating, reviews, counts, count } = summary(title.id);
 
   const [name, setName] = useState('');
-  const [rating, setRating] = useState(myRating ?? 0);
+  const [rating, setRating] = useState(myRating);
   const [text, setText] = useState('');
   const [error, setError] = useState('');
+  const [busy, setBusy] = useState(false);
   const ids = { name: useId(), text: useId(), err: useId(), count: useId() };
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
-    if (!rating) return setError('Choose a star rating before posting.');
+    if (!rating) return setError('Choose a rating before posting.');
     if (text.trim().length < MIN_LENGTH) return setError(`Write at least ${MIN_LENGTH} characters.`);
-    addReview(title.id, { name, rating, text });
-    setText('');
-    setError('');
+    setBusy(true);
+    const ok = await addReview(title.id, { name, rating, text });
+    setBusy(false);
+    if (ok) {
+      setText('');
+      setError('');
+    }
   };
 
   return (
@@ -42,54 +47,46 @@ export default function ReviewsSection({ title }) {
 
       <div className="reviews__grid">
         <div className="reviews__summary">
-          {count ? (
-            <>
-              <p className="reviews__avg">
-                {average.toFixed(1)}
-                <span>/5</span>
-              </p>
-              <StarDisplay value={average} size={20} />
-              <p className="reviews__count">
-                {count} {count === 1 ? 'rating' : 'ratings'} on this device
-              </p>
-            </>
-          ) : (
-            <p className="reviews__empty-summary">No ratings yet. Be the first to rate {title.title}.</p>
+          <p className="reviews__your">{myRating ? RATINGS.find((r) => r.value === myRating).mine : 'Not rated yet'}</p>
+          <ThumbsRating
+            value={myRating}
+            label={`Your rating for ${title.title}`}
+            onChange={(v) => {
+              rate(title.id, v);
+              setRating(v);
+            }}
+          />
+          {count > 0 && (
+            <ul className="reviews__breakdown" aria-label="Your reviews by rating">
+              {RATINGS.map((r) => (
+                <li key={r.value}>
+                  {r.label}: {counts[r.value]}
+                </li>
+              ))}
+            </ul>
           )}
-
-          <div className="reviews__quick">
-            <StarInput
-              legend="Your rating"
-              value={myRating ?? 0}
-              onChange={(n) => {
-                rate(title.id, n);
-                setRating(n);
-              }}
-            />
-            {myRating && (
-              <button type="button" className="link-btn" onClick={() => rate(title.id, null)}>
-                Clear rating
-              </button>
-            )}
-          </div>
         </div>
 
         <form className="review-form" onSubmit={submit} noValidate>
           <h3 className="review-form__title">Write a review</h3>
-          <StarInput legend="Rating for this review" value={rating} onChange={setRating} size={26} />
+          <ThumbsRating value={rating} onChange={setRating} label="Rating for this review" />
 
-          <label htmlFor={ids.name} className="field-label">
-            Display name <span className="field-optional">(optional)</span>
-          </label>
-          <input
-            id={ids.name}
-            className="field"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            maxLength={40}
-            placeholder="Anonymous viewer"
-            autoComplete="off"
-          />
+          {!inAccount && (
+            <>
+              <label htmlFor={ids.name} className="field-label">
+                Display name <span className="field-optional">(optional)</span>
+              </label>
+              <input
+                id={ids.name}
+                className="field"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                maxLength={40}
+                placeholder="Anonymous viewer"
+                autoComplete="off"
+              />
+            </>
+          )}
 
           <label htmlFor={ids.text} className="field-label">
             Your review
@@ -106,14 +103,15 @@ export default function ReviewsSection({ title }) {
             aria-invalid={Boolean(error) || undefined}
           />
           <p id={ids.count} className="field-hint">
-            {text.length}/{MAX_LENGTH} · Reviews are saved in this browser only.
+            {text.length}/{MAX_LENGTH} ·{' '}
+            {inAccount ? 'Saved to this profile. Only you can see it.' : 'Saved in this browser only.'}
           </p>
           {error && (
             <p id={ids.err} className="field-error" role="alert">
               {error}
             </p>
           )}
-          <button type="submit" className="btn btn--primary">
+          <button type="submit" className="btn btn--primary" disabled={busy}>
             Post Review
           </button>
         </form>
@@ -130,7 +128,8 @@ export default function ReviewsSection({ title }) {
                 <div>
                   <p className="review__name">{r.name}</p>
                   <p className="review__meta">
-                    <StarDisplay value={r.rating} size={14} /> <time dateTime={r.createdAt}>{formatDate(r.createdAt)}</time>
+                    <span className={`review__rating review__rating--${r.rating}`}>{ratingLabel(r.rating)}</span> ·{' '}
+                    <time dateTime={r.createdAt}>{formatDate(r.createdAt)}</time>
                   </p>
                 </div>
                 <button

@@ -38,16 +38,32 @@ export const CATEGORIES = [
 const asset = (folder, id, ext = 'jpg') => `/assets/${folder}/${id}.${ext}`;
 
 function makeTitle(record) {
+  // Series list every stored episode; the bundled data only knows the first.
+  const episodes =
+    record.type === 'series'
+      ? (record.episodes ?? (record.firstEpisode ? [{ ...record.firstEpisode }] : []))
+      : undefined;
   return Object.freeze({
     ...record,
+    ...(episodes ? { episodes } : {}),
     category: TYPES[record.type].category,
     posterSrc: asset('posters', record.id),
+    // Smaller copies from scripts/make-image-sizes.sh, for srcset.
+    posterSmallSrc: asset('posters/400', record.id),
+    posterSrcSet: `${asset('posters/400', record.id)} 400w, ${asset('posters', record.id)} 780w`,
     heroSrc: asset('hero', record.id),
+    heroSmallSrc: asset('hero/960', record.id),
+    heroSrcSet: `${asset('hero/960', record.id)} 960w, ${asset('hero', record.id)} 1920w`,
     logoSrc: asset('logos', record.id, 'png'),
   });
 }
 
-export const catalog = Object.freeze(
+/**
+ * The bundled catalog. The site renders it immediately, then swaps in the
+ * Supabase copy once it loads (src/data/remoteCatalog.js). If Supabase can't
+ * be reached, this stays in place, so the site never goes blank.
+ */
+export const LOCAL_CATALOG = Object.freeze(
   [
     // ───────────── Drama Films ─────────────
     {
@@ -532,18 +548,92 @@ export const catalog = Object.freeze(
 /** The featured title is one of the catalog entries above — never an extra record. */
 export const FEATURED_TITLE_ID = 'breaking-bad';
 
-const byId = new Map(catalog.map((t) => [t.id, t]));
+// ───────────── The current catalog (local, or the Supabase copy) ─────────────
+
+let current = { titles: LOCAL_CATALOG, featuredId: FEATURED_TITLE_ID, source: 'local' };
+let byId = new Map(LOCAL_CATALOG.map((t) => [t.id, t]));
+const listeners = new Set();
+
+// ───────────── Maturity (profiles) ─────────────
+// Netflix's four levels; each rating belongs to the lowest level that shows it.
+const LEVELS = { 'little-kids': 0, 'older-kids': 1, teens: 2, all: 3 };
+const RATING_LEVEL = {
+  'TV-Y': 0,
+  G: 0,
+  'TV-G': 0,
+  'TV-Y7': 1,
+  PG: 1,
+  'TV-PG': 1,
+  'PG-13': 2,
+  'TV-14': 2,
+  R: 3,
+  'NC-17': 3,
+  'TV-MA': 3,
+  NR: 3,
+};
+let maxLevel = LEVELS.all;
+
+/** Limit what the catalog shows to a profile's maturity level ('all' shows everything). */
+export function setMaturityLimit(level) {
+  const next = LEVELS[level] ?? LEVELS.all;
+  if (next === maxLevel) return;
+  maxLevel = next;
+  current = { ...current }; // new snapshot so subscribers re-render
+  listeners.forEach((l) => l());
+}
+
+/** Can the current profile see this title? Unknown ratings count as adult. */
+export function isAllowed(title) {
+  return (RATING_LEVEL[title?.contentRating] ?? LEVELS.all) <= maxLevel;
+}
+
+/** The titles the current profile may see. */
+export function getCatalog() {
+  return maxLevel === LEVELS.all ? current.titles : current.titles.filter(isAllowed);
+}
+
+/** 'local' (bundled) or 'supabase'. Changes when the remote catalog arrives. */
+export function getCatalogSource() {
+  return current.source;
+}
+
+export function subscribeCatalog(listener) {
+  listeners.add(listener);
+  return () => listeners.delete(listener);
+}
+
+/** A value that changes whenever the catalog is replaced (for useSyncExternalStore). */
+export function getCatalogSnapshot() {
+  return current;
+}
+
+/**
+ * Swap in a catalog loaded from Supabase. Records use the same shape as the
+ * bundled ones. Returns the validation problems; if there are any, the current
+ * catalog is kept.
+ */
+export function replaceCatalog(records, { featuredId, source }) {
+  const titles = Object.freeze(records.map(makeTitle));
+  const problems = validateCatalog(titles, featuredId);
+  if (problems.length) return problems;
+  current = { titles, featuredId, source };
+  byId = new Map(titles.map((t) => [t.id, t]));
+  listeners.forEach((l) => l());
+  return [];
+}
 
 export function getTitleById(id) {
   return byId.get(id) ?? null;
 }
 
+/** The featured title, or the first title this profile may see if it's restricted. */
 export function getFeaturedTitle() {
-  return getTitleById(FEATURED_TITLE_ID);
+  const featured = getTitleById(current.featuredId);
+  return featured && isAllowed(featured) ? featured : (getCatalog()[0] ?? null);
 }
 
 export function getTitlesByType(type) {
-  return catalog.filter((t) => t.type === type);
+  return getCatalog().filter((t) => t.type === type);
 }
 
 /** Lowercase, strip accents and punctuation so "wont you" finds "Won’t You…". */
@@ -557,11 +647,41 @@ export function normalizeForSearch(text) {
     .trim();
 }
 
-/** Trimmed, case-insensitive, partial title match. Empty query → no results. */
+const peopleOf = (t) => [...(t.credits ?? []).flatMap((c) => c.names), ...(t.cast ?? [])];
+
+/**
+ * Trimmed, case-insensitive, partial match on title, cast, crew and genre.
+ * Title matches come first (starts-with before contains), then people, then
+ * genres. Empty query → no results.
+ */
 export function searchCatalog(query) {
   const q = normalizeForSearch(query);
   if (!q) return [];
-  return catalog.filter((t) => normalizeForSearch(t.title).includes(q));
+  const score = (t) => {
+    const name = normalizeForSearch(t.title);
+    if (name.startsWith(q)) return 4;
+    if (name.includes(q)) return 3;
+    if (peopleOf(t).some((p) => normalizeForSearch(p).includes(q))) return 2;
+    if (t.genres.some((g) => normalizeForSearch(g).includes(q))) return 1;
+    return 0;
+  };
+  return getCatalog()
+    .map((t) => [t, score(t)])
+    .filter(([, s]) => s > 0)
+    .sort((a, b) => b[1] - a[1])
+    .map(([t]) => t);
+}
+
+/** People and genres matching the query, for "Explore titles related to:". */
+export function searchRelated(query, limit = 6) {
+  const q = normalizeForSearch(query);
+  if (!q) return [];
+  const names = new Set();
+  for (const t of getCatalog()) {
+    for (const p of peopleOf(t)) if (normalizeForSearch(p).includes(q)) names.add(p);
+    for (const g of t.genres) if (normalizeForSearch(g).includes(q)) names.add(g);
+  }
+  return [...names].slice(0, limit);
 }
 
 // ───────────── Display helpers ─────────────
@@ -590,24 +710,43 @@ export function formatLength(title) {
   return title.type === 'series' ? formatSeasons(title) : formatRuntime(title.runtimeMinutes);
 }
 
-/** What the mock player plays: the film itself, or the series' first episode. */
-export function getPlayable(title) {
-  if (title.type === 'series' && title.firstEpisode) {
-    const ep = title.firstEpisode;
+/** A series' stored episode, or its first one when none (or an unknown one) is asked for. */
+export function getEpisode(title, season, episode) {
+  if (title.type !== 'series') return null;
+  const list = title.episodes ?? [];
+  return (
+    list.find((e) => e.season === Number(season) && e.episode === Number(episode)) ??
+    title.firstEpisode ??
+    list[0] ??
+    null
+  );
+}
+
+/** The episode after `ep` that we have stored (same season, else the next season's first). */
+export function getNextEpisode(title, ep) {
+  if (!ep || title.type !== 'series') return null;
+  const list = [...(title.episodes ?? [])].sort((a, b) => a.season - b.season || a.episode - b.episode);
+  return list.find((e) => e.season > ep.season || (e.season === ep.season && e.episode > ep.episode)) ?? null;
+}
+
+/** What the mock player plays: the film itself, or a series episode (the first by default). */
+export function getPlayable(title, ep = getEpisode(title)) {
+  if (title.type === 'series' && ep) {
     return {
       label: `S${ep.season}:E${ep.episode}`,
       subtitle: `“${ep.title}”`,
       durationSeconds: ep.runtimeMinutes * 60,
+      episode: ep,
     };
   }
-  return { label: null, subtitle: null, durationSeconds: (title.runtimeMinutes ?? 0) * 60 };
+  return { label: null, subtitle: null, durationSeconds: (title.runtimeMinutes ?? 0) * 60, episode: null };
 }
 
 // ───────────── Dev-time data validation ─────────────
 
 const REQUIRED = ['id', 'title', 'type', 'synopsis', 'releaseYear', 'contentRating'];
 
-export function validateCatalog(items = catalog) {
+export function validateCatalog(items = LOCAL_CATALOG, featuredId = FEATURED_TITLE_ID) {
   const problems = [];
   const ids = new Set();
   for (const t of items) {
@@ -617,14 +756,15 @@ export function validateCatalog(items = catalog) {
     if (ids.has(t.id)) problems.push(`duplicate id ${t.id}`);
     ids.add(t.id);
     if (!TYPES[t.type]) problems.push(`${t.id}: unknown type ${t.type}`);
-    if (t.type === 'series' && !(t.seasons && t.episodeCount)) problems.push(`${t.id}: series needs seasons/episodeCount`);
+    if (t.type === 'series' && !(t.seasons && t.episodeCount))
+      problems.push(`${t.id}: series needs seasons/episodeCount`);
     if (t.type !== 'series' && !t.runtimeMinutes) problems.push(`${t.id}: needs runtimeMinutes`);
   }
   for (const type of Object.keys(TYPES)) {
     const count = items.filter((t) => t.type === type).length;
     if (count < 4) problems.push(`expected at least 4 ${type} titles, found ${count}`);
   }
-  if (!items.some((t) => t.id === FEATURED_TITLE_ID)) problems.push('featured title is not in the catalog');
+  if (!items.some((t) => t.id === featuredId)) problems.push('featured title is not in the catalog');
   return problems;
 }
 

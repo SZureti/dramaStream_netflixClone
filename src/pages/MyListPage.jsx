@@ -9,7 +9,7 @@ import useDocumentTitle from '../hooks/useDocumentTitle.js';
 
 export default function MyListPage() {
   useDocumentTitle('My List');
-  const { savedIds } = useMyList();
+  const { savedIds, inAccount } = useMyList();
   const headingRef = useRef(null);
   // My List stores IDs; resolve them against the one canonical catalog.
   const saved = savedIds.map(getTitleById).filter(Boolean);
@@ -46,11 +46,17 @@ export default function MyListPage() {
           <p>
             Choose <strong>Add to My List</strong> on any film, series, or documentary to save it here.
           </p>
-          <p className="empty-state__hint">Saved titles last until you refresh the page.</p>
+          <p className="empty-state__hint">
+            {inAccount ? 'Your list is saved to your account.' : 'Saved in this browser. Sign in to keep it on every device.'}
+          </p>
         </EmptyState>
       ) : (
         <>
-          <p className="page__lede">Saved for this session. Titles clear when you refresh the page.</p>
+          <p className="page__lede">
+            {inAccount
+              ? 'Saved to your account, newest first.'
+              : 'Saved in this browser, newest first. Sign in to keep your list on every device.'}
+          </p>
           <ul className="card-grid">
             {saved.map((t) => (
               <li key={t.id}>

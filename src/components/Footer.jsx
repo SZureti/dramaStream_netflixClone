@@ -21,6 +21,9 @@ export default function Footer() {
             <li>
               <Link to="/my-list">My List</Link>
             </li>
+            <li>
+              <Link to="/help">Help</Link>
+            </li>
           </ul>
         </nav>
         <p className="app-footer__note">

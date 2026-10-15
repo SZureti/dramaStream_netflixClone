@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useMyList } from '../state/MyListContext.jsx';
-import { CATEGORIES } from '../data/catalog.js';
 import { HomeIcon, ListIcon, SearchIcon } from './Icons.jsx';
+import AccountMenu from './AccountMenu.jsx';
+import { useProfiles } from '../state/ProfileContext.jsx';
 
-const CATEGORY_LINKS = CATEGORIES.map((c) => ({
-  hash: `#${c.anchor}`,
-  label: c.title.replace('Drama ', ''),
-}));
+// Netflix-style browse pages (see pages/BrowsePage.jsx).
+const BROWSE_LINKS = [
+  { to: '/browse/series', label: 'TV Shows' },
+  { to: '/browse/films', label: 'Movies' },
+  { to: '/browse/documentaries', label: 'Documentaries' },
+];
 
 function useScrolled(threshold = 8) {
   const [scrolled, setScrolled] = useState(false);
@@ -51,12 +54,15 @@ export default function AppHeader() {
   const { savedIds } = useMyList();
   const { pathname, hash } = useLocation();
   const onHome = pathname === '/';
+  // Kids profiles get Netflix's simpler header: no category shortcuts, a Kids badge.
+  const kids = Boolean(useProfiles().current?.is_kids);
 
   return (
     <>
       <header className={`app-header${scrolled ? ' app-header--solid' : ''}`}>
         <div className="app-header__inner">
           <Wordmark />
+          {kids && <span className="kids-badge">Kids</span>}
 
           <nav className="primary-nav" aria-label="Primary">
             <ul>
@@ -65,17 +71,14 @@ export default function AppHeader() {
                   Home
                 </Link>
               </li>
-              {CATEGORY_LINKS.map((c) => (
-                <li key={c.hash} className="primary-nav__category">
-                  <Link
-                    to={{ pathname: '/', hash: c.hash }}
-                    className="nav-link"
-                    aria-current={onHome && hash === c.hash ? 'location' : undefined}
-                  >
-                    {c.label}
-                  </Link>
-                </li>
-              ))}
+              {!kids &&
+                BROWSE_LINKS.map((c) => (
+                  <li key={c.to} className="primary-nav__category">
+                    <NavLink to={c.to} className="nav-link">
+                      {c.label}
+                    </NavLink>
+                  </li>
+                ))}
               <li>
                 <NavLink to="/my-list" className="nav-link">
                   My List
@@ -89,6 +92,7 @@ export default function AppHeader() {
             <SearchIcon size={22} />
             <span className="header-search__label">Search</span>
           </NavLink>
+          <AccountMenu />
         </div>
       </header>
 

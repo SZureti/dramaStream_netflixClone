@@ -15,6 +15,8 @@ export default function FeaturedTitle({ title }) {
       <div className="billboard__art" aria-hidden="true">
         <SmartImage
           src={title.heroSrc}
+          srcSet={title.heroSrcSet}
+          sizes="100vw"
           alt=""
           fallbackText=""
           fetchPriority="high"
@@ -25,7 +27,9 @@ export default function FeaturedTitle({ title }) {
 
       <div className="billboard__content">
         <p className="billboard__eyebrow">
-          <span className="brand-mark" aria-hidden="true">D</span>
+          <span className="brand-mark" aria-hidden="true">
+            D
+          </span>
           Featured {TYPES[title.type].label}
         </p>
         <TitleLogo title={title} className="billboard__logo" />
@@ -39,7 +43,11 @@ export default function FeaturedTitle({ title }) {
             <PlayIcon size={24} />
             <span>Play</span>
           </Link>
-          <Link to={`/titles/${title.id}`} state={{ from }} className="btn btn--secondary">
+          <Link
+            to={`/titles/${title.id}`}
+            state={{ from, backgroundLocation: location }}
+            className="btn btn--secondary"
+          >
             <InfoIcon size={24} />
             <span>More Info</span>
           </Link>

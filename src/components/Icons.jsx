@@ -196,3 +196,55 @@ export const TrashIcon = (p) => (
     <path d="M4 7h16M9 7V4.5h6V7M6.5 7l1 13h9l1-13" />
   </Svg>
 );
+
+export const ThumbUpIcon = (p) => (
+  <Svg {...p}>
+    <path d="M7 10v11H4V10h3zM7 10l4-7c1.4 0 2.3 1.1 2 2.5L12.3 9H19a2 2 0 0 1 2 2.3l-1.2 7.6A2.5 2.5 0 0 1 17.3 21H7" />
+  </Svg>
+);
+
+export const ThumbDownIcon = (p) => (
+  <Svg {...p}>
+    <path d="M17 14V3h3v11h-3zM17 14l-4 7c-1.4 0-2.3-1.1-2-2.5l.7-3.5H5a2 2 0 0 1-2-2.3l1.2-7.6A2.5 2.5 0 0 1 6.7 3H17" />
+  </Svg>
+);
+
+export const DoubleThumbIcon = (p) => (
+  <Svg {...p}>
+    <path d="M5 11v10H2.5V11H5zM5 11l3.4-6c1.2 0 2 1 1.7 2.2L9.5 10H15a1.8 1.8 0 0 1 1.8 2l-1 6.6A2.2 2.2 0 0 1 13.6 21H5" />
+    <path d="M12.2 7.4 14 4c1.2 0 2 1 1.7 2.2L15.1 9h4.7a1.8 1.8 0 0 1 1.8 2l-1 6.6a2.2 2.2 0 0 1-1.6 1.8" />
+  </Svg>
+);
+
+export const VolumeIcon = (p) => (
+  <Svg {...p}>
+    <path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" />
+    <path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" />
+  </Svg>
+);
+
+export const MuteIcon = (p) => (
+  <Svg {...p}>
+    <path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" />
+    <path d="M16 9.5l5 5M21 9.5l-5 5" />
+  </Svg>
+);
+
+export const FullscreenIcon = (p) => (
+  <Svg {...p}>
+    <path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" />
+  </Svg>
+);
+
+export const ExitFullscreenIcon = (p) => (
+  <Svg {...p}>
+    <path d="M9 4v5H4M20 9h-5V4M15 20v-5h5M4 15h5v5" />
+  </Svg>
+);
+
+export const NextEpisodeIcon = (p) => (
+  <Svg {...p}>
+    <path d="M5 5l10 7-10 7z" />
+    <path d="M19 5v14" />
+  </Svg>
+);

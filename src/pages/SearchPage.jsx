@@ -4,10 +4,12 @@ import SearchForm from '../components/SearchForm.jsx';
 import TitleCard from '../components/TitleCard.jsx';
 import EmptyState from '../components/EmptyState.jsx';
 import { SearchIcon } from '../components/Icons.jsx';
-import { catalog, searchCatalog } from '../data/catalog.js';
+import { getCatalog, searchCatalog, searchRelated } from '../data/catalog.js';
 import useDocumentTitle from '../hooks/useDocumentTitle.js';
 
 const SUGGESTIONS = ['Breaking Bad', 'Moonlight', 'The Crown', 'Free Solo', 'Whiplash', 'Succession'];
+
+const normalizeLower = (s) => s.toLowerCase();
 
 export default function SearchPage() {
   const [params, setParams] = useSearchParams();
@@ -18,6 +20,7 @@ export default function SearchPage() {
   const [query, setQueryState] = useState(urlQuery);
   const trimmed = query.trim();
   const results = searchCatalog(query);
+  const related = searchRelated(query).filter((r) => normalizeLower(r) !== normalizeLower(query.trim()));
   const inputRef = useRef(null);
   const lastPushed = useRef(urlQuery);
 
@@ -60,7 +63,8 @@ export default function SearchPage() {
         <>
           <div className="search-prompt">
             <p className="search-prompt__text">
-              Search all {catalog.length} drama films, series, and documentaries by title. Partial titles work too.
+              Search all {getCatalog().length} drama films, series, and documentaries by title, cast, director or genre.
+              Partial names work too.
             </p>
             <div className="search-prompt__chips">
               <span className="search-prompt__label" id="suggestions-label">
@@ -91,7 +95,7 @@ export default function SearchPage() {
               Browse the full catalog
             </h2>
             <ul className="card-grid">
-              {catalog.map((t) => (
+              {getCatalog().map((t) => (
                 <li key={t.id}>
                   <TitleCard title={t} showCategory />
                 </li>
@@ -99,6 +103,30 @@ export default function SearchPage() {
             </ul>
           </section>
         </>
+      )}
+
+      {trimmed && related.length > 0 && (
+        <div className="search-related">
+          <span className="search-prompt__label" id="related-label">
+            Explore titles related to:
+          </span>
+          <ul className="chip-list" aria-labelledby="related-label">
+            {related.map((r) => (
+              <li key={r}>
+                <button
+                  type="button"
+                  className="chip"
+                  onClick={() => {
+                    setQuery(r);
+                    inputRef.current?.focus();
+                  }}
+                >
+                  {r}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
 
       {trimmed && results.length > 0 && (
@@ -130,7 +158,7 @@ export default function SearchPage() {
           <p>
             Nothing in the catalog matches <strong className="results__query">“{trimmed}”</strong>.
           </p>
-          <p>Check the spelling, or try a shorter part of the title.</p>
+          <p>Check the spelling, or try part of a title, an actor, a director or a genre.</p>
         </EmptyState>
       )}
     </div>

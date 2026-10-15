@@ -120,3 +120,73 @@ Workflow:
 
 
 
+---
+
+# Task tracking for the DramaStream build
+
+The work left to make DramaStream feel like the real Netflix site is tracked in **[`Plan/Tasks.md`](./Tasks.md)**: a checklist of 64 tasks in 14 feature areas, tagged by kind of work and by phase. It's a plain markdown file in the repo, **not part of the published site**, so visitors never see it.
+
+Separately, the Code Platoon *Databases and Supabase* homework (https://kabeier.github.io/Databases-and-Supabase/) has a task-manager database: projects, tasks and tags, as in the class demo app Ticked. Its files are laid out the way the class lays them out:
+
+```text
+dramaStream_netflixClone/
+  app_outline/            the task manager's spec, as for Ticked
+    user_journey.md       the journey and data rules
+    style_guide.md
+    pages/                tasks/, new_task/, projects/, project_detail/: one user_story.md each
+    user_stories.md       what the database must remember (8 stories)
+    task-manager-erd.png  the DrawSQL diagram
+  supabase/               the database work, as in the class's ticked/supabase/
+    .claude/              postgresql-table-design skill + supabase-agent
+    .mcp.json             the Supabase MCP (project scope); start Claude here for database work
+    schema.sql            the schema that was built
+    task-manager-erd.png, user_stories.md
+```
+
+The tables live in Supabase only. No task-manager screen is built into DramaStream, and nothing in `src/` talks to these tables.
+
+### Decisions
+
+These follow the curriculum and its Ticked demo.
+
+| Question | Decision | Why |
+| --- | --- | --- |
+| Where do the build tasks live? | **`Plan/Tasks.md`**, outside the site. | The tracker is for me, not for DramaStream's visitors. A checklist file needs no code, no hosting and no login. |
+| Should tasks get description or priority columns? | **No.** Keep the diagram's columns. Priority comes from the `phase-1/2/3` tags. | Same columns as the class schema; don't add design that no story needs. |
+| Must every task belong to a project? | **No.** `project_id` is optional, and **deleting a project keeps its tasks** (`ON DELETE SET NULL`). | Ticked's story: "Its tasks stay, but lose their project". In Supabase this still needs the SQL under **Pending** below. |
+| Are tags shared or per user? | **Shared.** Names are unique regardless of capitals ("Frontend" = "frontend"), enforced by a unique index on `lower(name)`. | Same as Ticked. The authentication lecture revisits ownership. |
+| `due_date` type? | **`date`**. | A calendar day, so overdue and sorting work. Done in migration `tasks_due_date_to_date`. |
+| Temporary open RLS policies? | **Remove them** (RLS on, no rules) until the API lecture adds dev rules. Still to run: see **Pending** below. | Nothing calls the API, so open policies only exposed the data. |
+| Users and login? | `users` stays a plain table, and `user_id` is optional (`ON DELETE SET NULL`). The authentication lecture rebuilds `users` around `auth.users`. | Matches the class schema and what the next lectures expect. |
+
+### Pending: migration `align_with_class_schema`
+
+`supabase/schema.sql` already shows the target.
+
+**Already applied** (migration `align_with_class_schema_part1`):
+
+- `users.name` and `users.email` are NOT NULL.
+- A unique index on `lower(tags.name)`.
+
+**Still to run.** The Supabase MCP declines statements that drop or delete, so run this in the Supabase **SQL Editor**:
+
+```sql
+-- Deleting a project keeps its tasks; they just lose their project.
+alter table public.tasks drop constraint tasks_project_id_fkey;
+alter table public.tasks add constraint tasks_project_id_fkey
+  foreign key (project_id) references public.projects (id) on delete set null;
+
+-- RLS stays on with no rules until the API lecture.
+drop policy dev_anon_all_users     on public.users;
+drop policy dev_anon_all_projects  on public.projects;
+drop policy dev_anon_all_tasks     on public.tasks;
+drop policy dev_anon_all_tags      on public.tags;
+drop policy dev_anon_all_task_tags on public.task_tags;
+
+-- Remove the test rows from the schema check.
+delete from public.task_tags;
+delete from public.tasks where title = 'TEST Task';
+delete from public.projects where name = 'TEST Project';
+delete from public.tags where name in ('test_tag_a', 'test_tag_b');
+delete from public.users where email = 'test_schema_check@example.com';
+```
