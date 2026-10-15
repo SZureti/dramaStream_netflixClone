@@ -1,0 +1,307 @@
+- generic [ref=f3e2]:
+  - generic [ref=f3e3]:
+    - link "Skip to content" [ref=f3e4] [cursor=pointer]:
+      - /url: "#main"
+    - banner [ref=f3e5]:
+      - generic [ref=f3e6]:
+        - link "DramaStream home" [ref=f3e7] [cursor=pointer]:
+          - /url: /
+          - text: DramaStream
+        - navigation "Primary" [ref=f3e8]:
+          - list [ref=f3e9]:
+            - listitem [ref=f3e10]:
+              - link "Home" [ref=f3e11] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=f3e12]:
+              - link "TV Shows" [ref=f3e13] [cursor=pointer]:
+                - /url: /browse/series
+            - listitem [ref=f3e14]:
+              - link "Movies" [ref=f3e15] [cursor=pointer]:
+                - /url: /browse/films
+            - listitem [ref=f3e16]:
+              - link "Documentaries" [ref=f3e17] [cursor=pointer]:
+                - /url: /browse/documentaries
+            - listitem [ref=f3e18]:
+              - link "My List 5 saved" [ref=f3e19] [cursor=pointer]:
+                - /url: /my-list
+                - text: My List
+                - generic [ref=f3e20]:
+                  - text: "5"
+                  - generic [ref=f3e21]: saved
+        - link "Search" [ref=f3e22] [cursor=pointer]:
+          - /url: /search
+        - link "Sign In" [ref=f3e27] [cursor=pointer]:
+          - /url: /signin?next=%2Ftitles%2Fbreaking-bad
+    - main [ref=f3e28]:
+      - generic [ref=f3e29]:
+        - region "Breaking Bad" [ref=f3e30]:
+          - generic [ref=f3e33]:
+            - button "Home" [ref=f3e34] [cursor=pointer]
+            - generic [ref=f3e38]:
+              - img "Poster for Breaking Bad" [ref=f3e40]
+              - generic [ref=f3e41]:
+                - paragraph [ref=f3e42]: Drama Series
+                - heading [level=1] [ref=f3e43]:
+                  - img "Breaking Bad" [ref=f3e44]
+                - generic [ref=f3e45]: Breaking Bad
+                - paragraph [ref=f3e46]:
+                  - generic [ref=f3e47]: "2008"
+                  - generic "Rated TV-MA" [ref=f3e48]:
+                    - generic [ref=f3e49]: Rated
+                    - text: TV-MA
+                  - generic [ref=f3e50]: 5 Seasons
+                  - generic [ref=f3e51]: 62 Episodes
+                  - generic [ref=f3e52]: Series
+                - paragraph [ref=f3e53]:
+                  - text: Drama
+                  - generic [ref=f3e54]: • Crime
+                - paragraph [ref=f3e55]: When a mild-mannered Albuquerque chemistry teacher receives a terminal cancer diagnosis, he teams up with a former student to cook methamphetamine and secure his family’s future. Every choice pulls Walter White deeper into a criminal empire — and further from the man he used to be.
+                - generic [ref=f3e56]:
+                  - link "Play S1:E1" [ref=f3e57] [cursor=pointer]:
+                    - /url: /watch/breaking-bad
+                    - generic [ref=f3e60]:
+                      - text: Play
+                      - generic [ref=f3e61]: S1:E1
+                  - button "Add to My List" [ref=f3e62] [cursor=pointer]
+                  - group "Rate Breaking Bad" [ref=f3e66]:
+                    - button "Not for me" [ref=f3e67] [cursor=pointer]
+                    - button "I like this" [ref=f3e71] [cursor=pointer]
+                    - button "Love this!" [ref=f3e75] [cursor=pointer]
+                  - button "Share" [ref=f3e81] [cursor=pointer]
+        - generic [ref=f3e86]:
+          - region [ref=f3e87]:
+            - generic [ref=f3e88]:
+              - heading "Episodes" [level=2] [ref=f3e89]
+              - generic [ref=f3e90]: Season
+              - combobox "Season" [ref=f3e91]:
+                - option "Season 1" [selected]
+                - option "Season 2 (details coming soon)"
+                - option "Season 3 (details coming soon)"
+                - option "Season 4 (details coming soon)"
+                - option "Season 5 (details coming soon)"
+            - list [ref=f3e92]:
+              - listitem [ref=f3e93]:
+                - generic [aria-hidden] [ref=f3e94]: "1"
+                - 'link "Play episode 1: Pilot" [ref=f3e95] [cursor=pointer]':
+                  - /url: /watch/breaking-bad?s=1&e=1
+                - paragraph [ref=f3e100]:
+                  - generic [ref=f3e101]: "Episode 1:"
+                  - text: Pilot
+                  - generic [ref=f3e102]: 59m
+          - region [ref=f3e103]:
+            - heading "About Breaking Bad" [level=2] [ref=f3e104]
+            - generic [ref=f3e105]:
+              - generic [ref=f3e106]:
+                - term [ref=f3e107]: Category
+                - definition [ref=f3e108]: Drama Series
+              - generic [ref=f3e109]:
+                - term [ref=f3e110]: Genres
+                - definition [ref=f3e111]: Drama, Crime
+              - generic [ref=f3e112]:
+                - term [ref=f3e113]: Released
+                - definition [ref=f3e114]: "2008"
+              - generic [ref=f3e115]:
+                - term [ref=f3e116]: Rating
+                - definition [ref=f3e117]: TV-MA
+              - generic [ref=f3e118]:
+                - term [ref=f3e119]: Seasons
+                - definition [ref=f3e120]: 5 Seasons · 62 Episodes
+              - generic [ref=f3e121]:
+                - term [ref=f3e122]: Created by
+                - definition [ref=f3e123]: Vince Gilligan
+              - generic [ref=f3e124]:
+                - term [ref=f3e125]: Cast
+                - definition [ref=f3e126]: Bryan Cranston, Aaron Paul, Anna Gunn, RJ Mitte, Dean Norris
+          - region [ref=f3e127]:
+            - heading "Ratings & Reviews" [level=2] [ref=f3e128]
+            - generic [ref=f3e129]:
+              - generic [ref=f3e130]:
+                - paragraph [ref=f3e131]: Not rated yet
+                - group "Your rating for Breaking Bad" [ref=f3e132]:
+                  - button "Not for me" [ref=f3e133] [cursor=pointer]
+                  - button "I like this" [ref=f3e137] [cursor=pointer]
+                  - button "Love this!" [ref=f3e141] [cursor=pointer]
+              - generic [ref=f3e146]:
+                - heading "Write a review" [level=3] [ref=f3e147]
+                - group "Rating for this review" [ref=f3e148]:
+                  - button "Not for me" [ref=f3e149] [cursor=pointer]
+                  - button "I like this" [ref=f3e153] [cursor=pointer]
+                  - button "Love this!" [ref=f3e157] [cursor=pointer]
+                - generic [ref=f3e162]: Display name (optional)
+                - textbox "Display name (optional)" [ref=f3e163]:
+                  - /placeholder: Anonymous viewer
+                - generic [ref=f3e164]: Your review
+                - textbox "Your review" [ref=f3e165]:
+                  - /placeholder: What did you think of Breaking Bad?
+                - paragraph [ref=f3e166]: 0/600 · Saved in this browser only.
+                - button "Post Review" [ref=f3e167] [cursor=pointer]
+            - paragraph [ref=f3e168]: No reviews yet for Breaking Bad.
+          - region [ref=f3e169]:
+            - heading "More Drama Series" [level=2] [ref=f3e170]
+            - list [ref=f3e171]:
+              - listitem [ref=f3e172]:
+                - article [ref=f3e173]:
+                  - generic [ref=f3e174]:
+                    - link "Succession" [ref=f3e175] [cursor=pointer]:
+                      - /url: /titles/succession
+                      - heading "Succession" [level=3] [ref=f3e177]
+                    - generic:
+                      - generic:
+                        - link "Play Succession" [ref=f3e178] [cursor=pointer]:
+                          - /url: /watch/succession
+                        - 'button "Add to My List: Succession" [ref=f3e181] [cursor=pointer]'
+                        - group "Rate Succession" [ref=f3e184]:
+                          - button "Not for me" [ref=f3e185] [cursor=pointer]
+                          - button "I like this" [ref=f3e189] [cursor=pointer]
+                          - button "Love this!" [ref=f3e193] [cursor=pointer]
+                        - 'link "More info: Succession" [ref=f3e198] [cursor=pointer]':
+                          - /url: /titles/succession
+                      - paragraph [aria-hidden]:
+                        - generic: TV-MA
+                        - generic: 4 Seasons
+                      - paragraph [aria-hidden]: Drama • Comedy
+                  - paragraph [ref=f3e201]: 2018 · 4 Seasons
+              - listitem [ref=f3e202]:
+                - article [ref=f3e203]:
+                  - generic [ref=f3e204]:
+                    - link "The Crown" [ref=f3e205] [cursor=pointer]:
+                      - /url: /titles/the-crown
+                      - heading "The Crown" [level=3] [ref=f3e207]
+                    - generic:
+                      - generic:
+                        - link "Play The Crown" [ref=f3e208] [cursor=pointer]:
+                          - /url: /watch/the-crown
+                        - 'button "Add to My List: The Crown" [ref=f3e211] [cursor=pointer]'
+                        - group "Rate The Crown" [ref=f3e214]:
+                          - button "Not for me" [ref=f3e215] [cursor=pointer]
+                          - button "I like this" [ref=f3e219] [cursor=pointer]
+                          - button "Love this!" [ref=f3e223] [cursor=pointer]
+                        - 'link "More info: The Crown" [ref=f3e228] [cursor=pointer]':
+                          - /url: /titles/the-crown
+                      - paragraph [aria-hidden]:
+                        - generic: TV-MA
+                        - generic: 6 Seasons
+                      - paragraph [aria-hidden]: Drama • History
+                  - paragraph [ref=f3e231]: 2016 · 6 Seasons
+              - listitem [ref=f3e232]:
+                - article [ref=f3e233]:
+                  - generic [ref=f3e234]:
+                    - link "Normal People" [ref=f3e235] [cursor=pointer]:
+                      - /url: /titles/normal-people
+                      - heading "Normal People" [level=3] [ref=f3e237]
+                    - generic:
+                      - generic:
+                        - link "Play Normal People" [ref=f3e238] [cursor=pointer]:
+                          - /url: /watch/normal-people
+                        - 'button "Add to My List: Normal People" [ref=f3e241] [cursor=pointer]'
+                        - group "Rate Normal People" [ref=f3e244]:
+                          - button "Not for me" [ref=f3e245] [cursor=pointer]
+                          - button "I like this" [ref=f3e249] [cursor=pointer]
+                          - button "Love this!" [ref=f3e253] [cursor=pointer]
+                        - 'link "More info: Normal People" [ref=f3e258] [cursor=pointer]':
+                          - /url: /titles/normal-people
+                      - paragraph [aria-hidden]:
+                        - generic: TV-MA
+                        - generic: Limited Series
+                      - paragraph [aria-hidden]: Drama • Romance
+                  - paragraph [ref=f3e261]: 2020 · Limited Series
+              - listitem [ref=f3e262]:
+                - article [ref=f3e263]:
+                  - generic [ref=f3e264]:
+                    - link "Better Call Saul" [ref=f3e265] [cursor=pointer]:
+                      - /url: /titles/better-call-saul
+                      - heading "Better Call Saul" [level=3] [ref=f3e267]
+                    - generic:
+                      - generic:
+                        - link "Play Better Call Saul" [ref=f3e268] [cursor=pointer]:
+                          - /url: /watch/better-call-saul
+                        - 'button "Add to My List: Better Call Saul" [ref=f3e271] [cursor=pointer]'
+                        - group "Rate Better Call Saul" [ref=f3e274]:
+                          - button "Not for me" [ref=f3e275] [cursor=pointer]
+                          - button "I like this" [ref=f3e279] [cursor=pointer]
+                          - button "Love this!" [ref=f3e283] [cursor=pointer]
+                        - 'link "More info: Better Call Saul" [ref=f3e288] [cursor=pointer]':
+                          - /url: /titles/better-call-saul
+                      - paragraph [aria-hidden]:
+                        - generic: TV-MA
+                        - generic: 6 Seasons
+                      - paragraph [aria-hidden]: Drama • Crime
+                  - paragraph [ref=f3e291]: 2015 · 6 Seasons
+              - listitem [ref=f3e292]:
+                - article [ref=f3e293]:
+                  - generic [ref=f3e294]:
+                    - link "Mad Men" [ref=f3e295] [cursor=pointer]:
+                      - /url: /titles/mad-men
+                      - heading "Mad Men" [level=3] [ref=f3e297]
+                    - generic:
+                      - generic:
+                        - link "Play Mad Men" [ref=f3e298] [cursor=pointer]:
+                          - /url: /watch/mad-men
+                        - 'button "Add to My List: Mad Men" [ref=f3e301] [cursor=pointer]'
+                        - group "Rate Mad Men" [ref=f3e304]:
+                          - button "Not for me" [ref=f3e305] [cursor=pointer]
+                          - button "I like this" [ref=f3e309] [cursor=pointer]
+                          - button "Love this!" [ref=f3e313] [cursor=pointer]
+                        - 'link "More info: Mad Men" [ref=f3e318] [cursor=pointer]':
+                          - /url: /titles/mad-men
+                      - paragraph [aria-hidden]:
+                        - generic: TV-14
+                        - generic: 7 Seasons
+                      - paragraph [aria-hidden]: Drama
+                  - paragraph [ref=f3e321]: 2007 · 7 Seasons
+              - listitem [ref=f3e322]:
+                - article [ref=f3e323]:
+                  - generic [ref=f3e324]:
+                    - link "Chernobyl" [ref=f3e325] [cursor=pointer]:
+                      - /url: /titles/chernobyl
+                      - heading "Chernobyl" [level=3] [ref=f3e327]
+                    - generic:
+                      - generic:
+                        - link "Play Chernobyl" [ref=f3e328] [cursor=pointer]:
+                          - /url: /watch/chernobyl
+                        - 'button "Add to My List: Chernobyl" [ref=f3e331] [cursor=pointer]'
+                        - group "Rate Chernobyl" [ref=f3e334]:
+                          - button "Not for me" [ref=f3e335] [cursor=pointer]
+                          - button "I like this" [ref=f3e339] [cursor=pointer]
+                          - button "Love this!" [ref=f3e343] [cursor=pointer]
+                        - 'link "More info: Chernobyl" [ref=f3e348] [cursor=pointer]':
+                          - /url: /titles/chernobyl
+                      - paragraph [aria-hidden]:
+                        - generic: TV-MA
+                        - generic: Limited Series
+                      - paragraph [aria-hidden]: Drama • History
+                  - paragraph [ref=f3e351]: 2019 · Limited Series
+    - contentinfo [ref=f3e352]:
+      - generic [ref=f3e353]:
+        - navigation "Footer" [ref=f3e354]:
+          - list [ref=f3e355]:
+            - listitem [ref=f3e356]:
+              - link "Home" [ref=f3e357] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=f3e358]:
+              - link "Drama Films" [ref=f3e359] [cursor=pointer]:
+                - /url: /#drama-films
+            - listitem [ref=f3e360]:
+              - link "Drama Series" [ref=f3e361] [cursor=pointer]:
+                - /url: /#drama-series
+            - listitem [ref=f3e362]:
+              - link "Drama Documentaries" [ref=f3e363] [cursor=pointer]:
+                - /url: /#drama-documentaries
+            - listitem [ref=f3e364]:
+              - link "Search" [ref=f3e365] [cursor=pointer]:
+                - /url: /search
+            - listitem [ref=f3e366]:
+              - link "My List" [ref=f3e367] [cursor=pointer]:
+                - /url: /my-list
+            - listitem [ref=f3e368]:
+              - link "Help" [ref=f3e369] [cursor=pointer]:
+                - /url: /help
+        - paragraph [ref=f3e370]: DramaStream is an educational, Netflix-inspired prototype built for the Code Platoon Netflix Clone assignment. It is not affiliated with Netflix, streams no films or episodes, and collects no personal information.
+        - paragraph [ref=f3e371]:
+          - text: Posters, backgrounds, and title logos are from
+          - link "TMDB (opens in a new tab)" [ref=f3e372] [cursor=pointer]:
+            - /url: https://www.themoviedb.org/
+            - text: TMDB
+            - generic [ref=f3e373]: (opens in a new tab)
+          - text: and belong to their respective studios and distributors. This product is not endorsed or certified by TMDB.
+  - status

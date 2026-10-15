@@ -1,0 +1,1219 @@
+{
+  "titles": [
+    {
+      "id": "12-angry-men",
+      "title": "12 Angry Men",
+      "type": "film",
+      "tmdbId": 389,
+      "tmdbType": "movie",
+      "releaseYear": 1957,
+      "contentRating": "NR",
+      "runtimeMinutes": 97,
+      "genres": [
+        "Drama",
+        "Crime"
+      ],
+      "credits": [
+        {
+          "role": "Director",
+          "names": [
+            "Sidney Lumet"
+          ]
+        },
+        {
+          "role": "Written by",
+          "names": [
+            "Reginald Rose"
+          ]
+        }
+      ],
+      "cast": [
+        "Henry Fonda",
+        "Lee J. Cobb",
+        "Martin Balsam",
+        "E.G. Marshall",
+        "Jack Klugman"
+      ],
+      "images": {
+        "poster": "/zhG3vKWyDRaZYoaww1UVAi29T9h.jpg",
+        "backdrop": "/qqHQsStV6exghCM7zbObuYBiYxw.jpg",
+        "logo": "/4MswIYfPj61xKIIkkAEjk6mjlHL.png"
+      },
+      "synopsis": "On a sweltering afternoon, twelve jurors retreat to a cramped room to decide a teenager's fate, and a quick guilty verdict seems certain. One quiet holdout asks the others to slow down. As tempers flare and assumptions crack, the deliberation becomes a tense study of doubt, prejudice and civic duty.",
+      "heroPosition": "50% 40%"
+    },
+    {
+      "id": "parasite",
+      "title": "Parasite",
+      "type": "film",
+      "tmdbId": 496243,
+      "tmdbType": "movie",
+      "releaseYear": 2019,
+      "contentRating": "R",
+      "runtimeMinutes": 133,
+      "genres": [
+        "Drama",
+        "Comedy",
+        "Crime"
+      ],
+      "credits": [
+        {
+          "role": "Director",
+          "names": [
+            "Bong Joon Ho"
+          ]
+        }
+      ],
+      "cast": [
+        "Song Kang-ho",
+        "Lee Sun-kyun",
+        "Cho Yeo-jeong",
+        "Choi Woo-shik",
+        "Park So-dam"
+      ],
+      "images": {
+        "poster": "/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
+        "backdrop": "/TU9NIjwzjoKPwQHoHshkFcQUCG.jpg",
+        "logo": "/eEGZWCv0OYbMLCaNsDl1cgrvnWR.png"
+      },
+      "synopsis": "A struggling family living in a cramped semi-basement apartment schemes its way, one member at a time, into jobs serving a wealthy household on the hill. The arrangement seems almost too good to last. Bong Joon Ho's genre-bending satire turns a story about class into something sharp, funny and unnerving.",
+      "heroPosition": "50% 35%"
+    },
+    {
+      "id": "the-pianist",
+      "title": "The Pianist",
+      "type": "film",
+      "tmdbId": 423,
+      "tmdbType": "movie",
+      "releaseYear": 2002,
+      "contentRating": "R",
+      "runtimeMinutes": 150,
+      "genres": [
+        "Drama",
+        "War",
+        "Biography"
+      ],
+      "credits": [
+        {
+          "role": "Director",
+          "names": [
+            "Roman Polanski"
+          ]
+        },
+        {
+          "role": "Based on the memoir by",
+          "names": [
+            "Władysław Szpilman"
+          ]
+        }
+      ],
+      "cast": [
+        "Adrien Brody",
+        "Thomas Kretschmann",
+        "Frank Finlay",
+        "Maureen Lipman",
+        "Emilia Fox"
+      ],
+      "images": {
+        "poster": "/2hFvxCCWrTmCYwfy7yum0GKRi3Y.jpg",
+        "backdrop": "/c0fB9xk7D1aVb3Bg2rk2SVJcGn.jpg",
+        "logo": "/xLresrupcXIq7AfeMc5V6XHCxd5.png"
+      },
+      "synopsis": "When Nazi forces occupy Warsaw, a celebrated Jewish pianist watches his world shrink from concert halls to ghetto walls. Separated from his family, he survives through luck, hiding and the quiet help of strangers. A harrowing true story about endurance, loss and the music that keeps a person human.",
+      "heroPosition": "50% 30%"
+    },
+    {
+      "id": "room",
+      "title": "Room",
+      "type": "film",
+      "tmdbId": 264644,
+      "tmdbType": "movie",
+      "releaseYear": 2015,
+      "contentRating": "R",
+      "runtimeMinutes": 118,
+      "genres": [
+        "Drama"
+      ],
+      "credits": [
+        {
+          "role": "Director",
+          "names": [
+            "Lenny Abrahamson"
+          ]
+        },
+        {
+          "role": "Based on the novel by",
+          "names": [
+            "Emma Donoghue"
+          ]
+        }
+      ],
+      "cast": [
+        "Brie Larson",
+        "Jacob Tremblay",
+        "Joan Allen",
+        "Sean Bridgers",
+        "William H. Macy"
+      ],
+      "images": {
+        "poster": "/2hHDMeYyZjbGWn0BeNH1cTMxuM7.jpg",
+        "backdrop": "/cGV6R2vzT4TYIabf3JgmrOISQ0y.jpg",
+        "logo": "/gbAGXt7DaAwPi2Per0EP3myrTEE.png"
+      },
+      "synopsis": "Five-year-old Jack believes the single small room he shares with his mother is the entire world. For her, it is a prison she has spent years planning to escape. Told largely through a child's eyes, this tender, gripping drama explores captivity, resilience and the overwhelming size of everything outside.",
+      "heroPosition": "50% 35%"
+    },
+    {
+      "id": "lady-bird",
+      "title": "Lady Bird",
+      "type": "film",
+      "tmdbId": 391713,
+      "tmdbType": "movie",
+      "releaseYear": 2017,
+      "contentRating": "R",
+      "runtimeMinutes": 94,
+      "genres": [
+        "Drama",
+        "Comedy"
+      ],
+      "credits": [
+        {
+          "role": "Director",
+          "names": [
+            "Greta Gerwig"
+          ]
+        }
+      ],
+      "cast": [
+        "Saoirse Ronan",
+        "Laurie Metcalf",
+        "Tracy Letts",
+        "Lucas Hedges",
+        "Timothée Chalamet"
+      ],
+      "images": {
+        "poster": "/gl66K7zRdtNYGrxyS2YDUP5ASZd.jpg",
+        "backdrop": "/jwBiY1kE5089i2WpfS1MHDYp3VO.jpg",
+        "logo": "/zzh4g0v1fgy2wTs0XAkKQsAEPmQ.png"
+      },
+      "synopsis": "In early-2000s Sacramento, a headstrong Catholic-school senior who insists on being called Lady Bird dreams of escaping to an East Coast college. Her sharp-tongued, loving mother has other ideas. Greta Gerwig's warm, funny coming-of-age story captures first loves, shifting friendships and the push-pull of family.",
+      "heroPosition": "50% 30%"
+    },
+    {
+      "id": "the-social-network",
+      "title": "The Social Network",
+      "type": "film",
+      "tmdbId": 37799,
+      "tmdbType": "movie",
+      "releaseYear": 2010,
+      "contentRating": "PG-13",
+      "runtimeMinutes": 121,
+      "genres": [
+        "Drama",
+        "Biography"
+      ],
+      "credits": [
+        {
+          "role": "Director",
+          "names": [
+            "David Fincher"
+          ]
+        },
+        {
+          "role": "Screenplay by",
+          "names": [
+            "Aaron Sorkin"
+          ]
+        }
+      ],
+      "cast": [
+        "Jesse Eisenberg",
+        "Andrew Garfield",
+        "Armie Hammer",
+        "Justin Timberlake",
+        "Rooney Mara"
+      ],
+      "images": {
+        "poster": "/n0ybibhJtQ5icDqTp8eRytcIHJx.jpg",
+        "backdrop": "/1PXwh3nJzgRkkYnqfWInJNypeL4.jpg",
+        "logo": "/c4chOkNTnwNMFhxkzi6tCJ2UzsM.png"
+      },
+      "synopsis": "A brilliant, socially awkward Harvard student builds a campus website that grows into a global phenomenon. Success brings lawsuits from former friends and rivals who say the idea was theirs. Through crackling dialogue and dueling depositions, the film examines ambition, loyalty and the price of building something enormous.",
+      "heroPosition": "50% 30%"
+    },
+    {
+      "id": "spotlight",
+      "title": "Spotlight",
+      "type": "film",
+      "tmdbId": 314365,
+      "tmdbType": "movie",
+      "releaseYear": 2015,
+      "contentRating": "R",
+      "runtimeMinutes": 129,
+      "genres": [
+        "Drama",
+        "History",
+        "Crime"
+      ],
+      "credits": [
+        {
+          "role": "Director",
+          "names": [
+            "Tom McCarthy"
+          ]
+        }
+      ],
+      "cast": [
+        "Mark Ruffalo",
+        "Michael Keaton",
+        "Rachel McAdams",
+        "Liev Schreiber",
+        "John Slattery"
+      ],
+      "images": {
+        "poster": "/8DPGG400FgaFWaqcv11n8mRd2NG.jpg",
+        "backdrop": "/8FbbcmwmpGd7brfiC7f7lWFNGdi.jpg",
+        "logo": "/nNj8973qG0AgMJtGvnBkAIEKmSo.png"
+      },
+      "synopsis": "A small team of Boston Globe investigative reporters begins digging into allegations against a single local priest. The more documents and survivors they find, the larger and more deliberate the pattern looks. A meticulous, quietly powerful portrait of journalism and the institutions that resist being held accountable.",
+      "heroPosition": "50% 30%"
+    },
+    {
+      "id": "roma",
+      "title": "Roma",
+      "type": "film",
+      "tmdbId": 426426,
+      "tmdbType": "movie",
+      "releaseYear": 2018,
+      "contentRating": "R",
+      "runtimeMinutes": 135,
+      "genres": [
+        "Drama"
+      ],
+      "credits": [
+        {
+          "role": "Director",
+          "names": [
+            "Alfonso Cuarón"
+          ]
+        }
+      ],
+      "cast": [
+        "Yalitza Aparicio",
+        "Marina de Tavira",
+        "Diego Cortina Autrey",
+        "Carlos Peralta",
+        "Marco Graf"
+      ],
+      "images": {
+        "poster": "/dtIIyQyALk57ko5bjac7hi01YQ.jpg",
+        "backdrop": "/zl9uqCl5iUSb50sTk2BPzw6bJnU.jpg",
+        "logo": "/8yNNzZwRvHrpznMmR5eUafoW5fb.png"
+      },
+      "synopsis": "In early-1970s Mexico City, Cleo works as a live-in housekeeper for a middle-class family whose household is quietly coming apart. As political unrest builds outside, her own life takes an unexpected turn. Shot in luminous black and white, Alfonso Cuarón's intimate memory piece finds grandeur in everyday devotion.",
+      "heroPosition": "50% 50%"
+    },
+    {
+      "id": "aftersun",
+      "title": "Aftersun",
+      "type": "film",
+      "tmdbId": 965150,
+      "tmdbType": "movie",
+      "releaseYear": 2022,
+      "contentRating": "R",
+      "runtimeMinutes": 101,
+      "genres": [
+        "Drama"
+      ],
+      "credits": [
+        {
+          "role": "Director",
+          "names": [
+            "Charlotte Wells"
+          ]
+        }
+      ],
+      "cast": [
+        "Paul Mescal",
+        "Frankie Corio",
+        "Celia Rowlson-Hall",
+        "Brooklyn Toulson",
+        "Sally Messham"
+      ],
+      "images": {
+        "poster": "/evKz85EKouVbIr51zy5fOtpNRPg.jpg",
+        "backdrop": "/4jdduww9j5RyzO4ITRcuBFhqNN1.jpg",
+        "logo": "/hZCqSZbRUSUyWIXglKtwuoM0AiV.png"
+      },
+      "synopsis": "An eleven-year-old girl spends a sunny holiday at a Turkish resort with her young, devoted father. Years later, she revisits their home-video footage and her own memories, searching for who he really was. A delicate, quietly devastating film about memory, parenthood and what we fail to see in the moment.",
+      "heroPosition": "50% 45%"
+    },
+    {
+      "id": "boyhood",
+      "title": "Boyhood",
+      "type": "film",
+      "tmdbId": 85350,
+      "tmdbType": "movie",
+      "releaseYear": 2014,
+      "contentRating": "R",
+      "runtimeMinutes": 165,
+      "genres": [
+        "Drama"
+      ],
+      "credits": [
+        {
+          "role": "Director",
+          "names": [
+            "Richard Linklater"
+          ]
+        }
+      ],
+      "cast": [
+        "Ellar Coltrane",
+        "Patricia Arquette",
+        "Ethan Hawke",
+        "Lorelei Linklater"
+      ],
+      "images": {
+        "poster": "/2BvtvDUyxiMJ4dmKfiQf4qdOHQN.jpg",
+        "backdrop": "/qRwkMMZhQRKM4uDaXpd2XbZZmkE.jpg",
+        "logo": "/vGaOQNjKGzTTc8FuX5e4jtE3a3H.png"
+      },
+      "synopsis": "Filmed with the same cast over twelve years, this drama follows Mason from early childhood in Texas to his first day of college. Moves, stepfathers, first jobs and first heartbreaks unfold in small, ordinary moments. Richard Linklater's experiment becomes a moving reflection on time and growing up.",
+      "heroPosition": "50% 35%"
+    },
+    {
+      "id": "the-wire",
+      "title": "The Wire",
+      "type": "series",
+      "tmdbId": 1438,
+      "tmdbType": "tv",
+      "releaseYear": 2002,
+      "contentRating": "TV-MA",
+      "seasons": 5,
+      "episodeCount": 60,
+      "limitedSeries": false,
+      "firstEpisode": {
+        "season": 1,
+        "episode": 1,
+        "title": "The Target",
+        "runtimeMinutes": 63
+      },
+      "genres": [
+        "Drama",
+        "Crime"
+      ],
+      "credits": [
+        {
+          "role": "Created by",
+          "names": [
+            "David Simon"
+          ]
+        }
+      ],
+      "cast": [
+        "Dominic West",
+        "Lance Reddick",
+        "Sonja Sohn",
+        "Wendell Pierce",
+        "Idris Elba"
+      ],
+      "images": {
+        "poster": "/4lbclFySvugI51fwsyxBTOm4DqK.jpg",
+        "backdrop": "/aQTtua5pG490fMfeKgtYg5B853e.jpg",
+        "logo": "/5ovMKL562PtlMgwXjVsM5T9F8Hz.png"
+      },
+      "synopsis": "In Baltimore, a mismatched police detail sets out to bring down a powerful drug organization using wiretaps and patience. Each season widens the lens to the docks, city hall, schools and newsroom. Often called the greatest TV drama ever made, it is a sprawling portrait of an American city and its institutions.",
+      "heroPosition": "50% 35%"
+    },
+    {
+      "id": "six-feet-under",
+      "title": "Six Feet Under",
+      "type": "series",
+      "tmdbId": 1274,
+      "tmdbType": "tv",
+      "releaseYear": 2001,
+      "contentRating": "TV-MA",
+      "seasons": 5,
+      "episodeCount": 63,
+      "limitedSeries": false,
+      "firstEpisode": {
+        "season": 1,
+        "episode": 1,
+        "title": "Pilot",
+        "runtimeMinutes": 63
+      },
+      "genres": [
+        "Drama",
+        "Comedy"
+      ],
+      "credits": [
+        {
+          "role": "Created by",
+          "names": [
+            "Alan Ball"
+          ]
+        }
+      ],
+      "cast": [
+        "Peter Krause",
+        "Michael C. Hall",
+        "Frances Conroy",
+        "Lauren Ambrose",
+        "Rachel Griffiths"
+      ],
+      "images": {
+        "poster": "/sCgzLaVlFy8KxtxRPvt1V5MNTDb.jpg",
+        "backdrop": "/5NOQNDMVXe8t5wIuY6r6b6iUXcc.jpg",
+        "logo": "/lTC5pym7p23h7PB2ZwWzCTA2JdV.png"
+      },
+      "synopsis": "After a sudden death in the family, two estranged brothers inherit their father's Los Angeles funeral home. Surrounded by grief every day, the Fishers struggle with their own relationships, secrets and fears. Darkly funny and deeply moving, this acclaimed drama treats mortality as the lens for understanding how to live.",
+      "heroPosition": "50% 30%"
+    },
+    {
+      "id": "friday-night-lights",
+      "title": "Friday Night Lights",
+      "type": "series",
+      "tmdbId": 4278,
+      "tmdbType": "tv",
+      "releaseYear": 2006,
+      "contentRating": "TV-14",
+      "seasons": 5,
+      "episodeCount": 76,
+      "limitedSeries": false,
+      "firstEpisode": {
+        "season": 1,
+        "episode": 1,
+        "title": "Pilot",
+        "runtimeMinutes": 46
+      },
+      "genres": [
+        "Drama",
+        "Sport"
+      ],
+      "credits": [
+        {
+          "role": "Developed by",
+          "names": [
+            "Peter Berg"
+          ]
+        },
+        {
+          "role": "Based on the book by",
+          "names": [
+            "H.G. Bissinger"
+          ]
+        }
+      ],
+      "cast": [
+        "Kyle Chandler",
+        "Connie Britton",
+        "Taylor Kitsch",
+        "Aimee Teegarden",
+        "Jesse Plemons"
+      ],
+      "images": {
+        "poster": "/Eu7MzZY1DldJ683z7vLkILHNRD.jpg",
+        "backdrop": "/dzHSMD1IY6RriYxkS3T2ysFdvdp.jpg",
+        "logo": "/ry5LK0Sv37QlDA1dKynf9I1ccnH.png"
+      },
+      "synopsis": "In the small town of Dillon, Texas, high school football is close to religion. A new head coach and his wife guide a team of teenagers carrying the hopes of an entire community. Shot with documentary-style intimacy, this beloved drama is really about family, class, faith and growing up.",
+      "heroPosition": "50% 30%"
+    },
+    {
+      "id": "the-leftovers",
+      "title": "The Leftovers",
+      "type": "series",
+      "tmdbId": 54344,
+      "tmdbType": "tv",
+      "releaseYear": 2014,
+      "contentRating": "TV-MA",
+      "seasons": 3,
+      "episodeCount": 28,
+      "limitedSeries": false,
+      "firstEpisode": {
+        "season": 1,
+        "episode": 1,
+        "title": "Pilot",
+        "runtimeMinutes": 72
+      },
+      "genres": [
+        "Drama",
+        "Mystery"
+      ],
+      "credits": [
+        {
+          "role": "Created by",
+          "names": [
+            "Damon Lindelof",
+            "Tom Perrotta"
+          ]
+        }
+      ],
+      "cast": [
+        "Justin Theroux",
+        "Carrie Coon",
+        "Amy Brenneman",
+        "Christopher Eccleston",
+        "Margaret Qualley"
+      ],
+      "images": {
+        "poster": "/NKJdryIFHr245Umq6gXsf7oULW.jpg",
+        "backdrop": "/rK9D7R4nzG3YGBktQY7VD5tGdtb.jpg",
+        "logo": "/8RyKv09VtTOgUBwuLX7irOkC9vi.png"
+      },
+      "synopsis": "Three years after two percent of the world's population inexplicably vanished, a small-town police chief tries to hold his fractured family and community together. Some cling to faith, others to strange new movements. This bold, emotionally raw series explores grief, belief and the search for meaning when answers never come.",
+      "heroPosition": "50% 30%"
+    },
+    {
+      "id": "band-of-brothers",
+      "title": "Band of Brothers",
+      "type": "series",
+      "tmdbId": 4613,
+      "tmdbType": "tv",
+      "releaseYear": 2001,
+      "contentRating": "TV-MA",
+      "seasons": 1,
+      "episodeCount": 10,
+      "limitedSeries": true,
+      "firstEpisode": {
+        "season": 1,
+        "episode": 1,
+        "title": "Currahee",
+        "runtimeMinutes": 74
+      },
+      "genres": [
+        "Drama",
+        "War",
+        "History"
+      ],
+      "credits": [
+        {
+          "role": "Executive Producers",
+          "names": [
+            "Steven Spielberg",
+            "Tom Hanks"
+          ]
+        },
+        {
+          "role": "Based on the book by",
+          "names": [
+            "Stephen E. Ambrose"
+          ]
+        }
+      ],
+      "cast": [
+        "Damian Lewis",
+        "Ron Livingston",
+        "Scott Grimes",
+        "Donnie Wahlberg",
+        "Matthew Settle"
+      ],
+      "images": {
+        "poster": "/eLdcio9HBKzsdIJGeD80oObDfkr.jpg",
+        "backdrop": "/2yDV0xLyqW88dn5qE7YCRnoYmfy.jpg",
+        "logo": "/cRYVIUJo0d5JJgD7g37gsq7TDwM.png"
+      },
+      "synopsis": "Drawn from veterans' recollections, this miniseries follows Easy Company of the 101st Airborne from paratrooper training through D-Day and the brutal final push into Germany. Each episode spotlights different soldiers as friendships are forged under fire. An epic, deeply respectful portrait of ordinary men in extraordinary circumstances.",
+      "heroPosition": "50% 35%"
+    },
+    {
+      "id": "the-americans",
+      "title": "The Americans",
+      "type": "series",
+      "tmdbId": 46533,
+      "tmdbType": "tv",
+      "releaseYear": 2013,
+      "contentRating": "TV-MA",
+      "seasons": 6,
+      "episodeCount": 75,
+      "limitedSeries": false,
+      "firstEpisode": {
+        "season": 1,
+        "episode": 1,
+        "title": "Pilot",
+        "runtimeMinutes": 70
+      },
+      "genres": [
+        "Drama",
+        "Crime",
+        "History"
+      ],
+      "credits": [
+        {
+          "role": "Created by",
+          "names": [
+            "Joe Weisberg"
+          ]
+        }
+      ],
+      "cast": [
+        "Keri Russell",
+        "Matthew Rhys",
+        "Noah Emmerich",
+        "Holly Taylor",
+        "Keidrich Sellati"
+      ],
+      "images": {
+        "poster": "/w1UBlxEXhbKe8sp0fxFZh7MqTce.jpg",
+        "backdrop": "/7RrcmIQ7e37M3vMkUNAKCEA6uEy.jpg",
+        "logo": "/x2sqYIeYaVMdI1mjl64MgI0vN1o.png"
+      },
+      "synopsis": "In early-1980s Washington, D.C., a seemingly ordinary suburban couple are actually deep-cover Soviet spies raising two kids who know nothing. When an FBI agent moves in across the street, the pressure intensifies. A gripping Cold War thriller that is ultimately a profound study of marriage, loyalty and identity.",
+      "heroPosition": "50% 30%"
+    },
+    {
+      "id": "halt-and-catch-fire",
+      "title": "Halt and Catch Fire",
+      "type": "series",
+      "tmdbId": 59659,
+      "tmdbType": "tv",
+      "releaseYear": 2014,
+      "contentRating": "TV-14",
+      "seasons": 4,
+      "episodeCount": 40,
+      "limitedSeries": false,
+      "firstEpisode": {
+        "season": 1,
+        "episode": 1,
+        "title": "I/O",
+        "runtimeMinutes": 48
+      },
+      "genres": [
+        "Drama",
+        "History"
+      ],
+      "credits": [
+        {
+          "role": "Created by",
+          "names": [
+            "Christopher Cantwell",
+            "Christopher C. Rogers"
+          ]
+        }
+      ],
+      "cast": [
+        "Lee Pace",
+        "Scoot McNairy",
+        "Mackenzie Davis",
+        "Kerry Bishé",
+        "Toby Huss"
+      ],
+      "images": {
+        "poster": "/AtKo2gANo2QBgZN9ebTAa8hXnvv.jpg",
+        "backdrop": "/o35U5p9J3eDsqrgfCpYUOO2lsuG.jpg",
+        "logo": "/317QTzQ8S2pryVrtbUxzoKAQOZW.png"
+      },
+      "synopsis": "In the early 1980s, a charismatic salesman, a disillusioned engineer and a brilliant young coder team up to challenge the giants of the personal computer industry. Across a decade of booms and busts, their partnerships shift and evolve. A thoughtful drama about creativity, ambition and the people behind technological revolutions.",
+      "heroPosition": "50% 30%"
+    },
+    {
+      "id": "downton-abbey",
+      "title": "Downton Abbey",
+      "type": "series",
+      "tmdbId": 33907,
+      "tmdbType": "tv",
+      "releaseYear": 2010,
+      "contentRating": "TV-14",
+      "seasons": 6,
+      "episodeCount": 47,
+      "limitedSeries": false,
+      "firstEpisode": {
+        "season": 1,
+        "episode": 1,
+        "title": "Episode 1",
+        "runtimeMinutes": 68
+      },
+      "genres": [
+        "Drama",
+        "History",
+        "Romance"
+      ],
+      "credits": [
+        {
+          "role": "Created by",
+          "names": [
+            "Julian Fellowes"
+          ]
+        }
+      ],
+      "cast": [
+        "Hugh Bonneville",
+        "Michelle Dockery",
+        "Maggie Smith",
+        "Laura Carmichael",
+        "Joanne Froggatt"
+      ],
+      "images": {
+        "poster": "/cf9vkwFmwvdzBlcpAYEVQfsKoTp.jpg",
+        "backdrop": "/1wgqpYNtQDn7TDkyQ2jsIAqxorW.jpg",
+        "logo": "/bWh12pquY50Xi6osIR0fndg3US3.png"
+      },
+      "synopsis": "Beginning in 1912, the aristocratic Crawley family and their household staff navigate love, inheritance and duty on a grand English estate. As war, social change and modernity arrive, life upstairs and downstairs is transformed. A sweeping, elegant period drama filled with sharp wit and enduring characters.",
+      "heroPosition": "50% 30%"
+    },
+    {
+      "id": "shogun",
+      "title": "Shōgun",
+      "type": "series",
+      "tmdbId": 126308,
+      "tmdbType": "tv",
+      "releaseYear": 2024,
+      "contentRating": "TV-MA",
+      "seasons": 1,
+      "episodeCount": 10,
+      "limitedSeries": false,
+      "firstEpisode": {
+        "season": 1,
+        "episode": 1,
+        "title": "Anjin",
+        "runtimeMinutes": 71
+      },
+      "genres": [
+        "Drama",
+        "History",
+        "War"
+      ],
+      "credits": [
+        {
+          "role": "Created by",
+          "names": [
+            "Rachel Kondo",
+            "Justin Marks"
+          ]
+        }
+      ],
+      "cast": [
+        "Hiroyuki Sanada",
+        "Cosmo Jarvis",
+        "Anna Sawai",
+        "Tadanobu Asano",
+        "Takehiro Hira"
+      ],
+      "images": {
+        "poster": "/7O4iVfOMQmdCSxhOg1WnzG1AgYT.jpg",
+        "backdrop": "/bwSmgmd90hCWwqOKQYTEraeOZhJ.jpg",
+        "logo": "/eqWtUYYsmW7cPkXzxAF8idOPEX8.png"
+      },
+      "synopsis": "In feudal Japan in 1600, a shipwrecked English navigator becomes a pawn in the power struggle of a shrewd warlord surrounded by enemies. A gifted translator with a painful past bridges their worlds. Adapted from James Clavell's novel, this lavish, record-setting epic is a gripping tale of politics, honor and survival.",
+      "heroPosition": "50% 30%"
+    },
+    {
+      "id": "the-night-of",
+      "title": "The Night Of",
+      "type": "series",
+      "tmdbId": 66276,
+      "tmdbType": "tv",
+      "releaseYear": 2016,
+      "contentRating": "TV-MA",
+      "seasons": 1,
+      "episodeCount": 8,
+      "limitedSeries": true,
+      "firstEpisode": {
+        "season": 1,
+        "episode": 1,
+        "title": "Part 1: The Beach",
+        "runtimeMinutes": 79
+      },
+      "genres": [
+        "Drama",
+        "Crime",
+        "Mystery"
+      ],
+      "credits": [
+        {
+          "role": "Created by",
+          "names": [
+            "Richard Price",
+            "Steven Zaillian"
+          ]
+        }
+      ],
+      "cast": [
+        "Riz Ahmed",
+        "John Turturro",
+        "Bill Camp",
+        "Payman Maadi",
+        "Jeannie Berlin"
+      ],
+      "images": {
+        "poster": "/q13XJHdnsmxQL9rXRcnNDrZGHjO.jpg",
+        "backdrop": "/pXxaORRHxvdfdpZ5kux619UsBL4.jpg",
+        "logo": "/ikYwrM1GC0uoA8lTCjCrvJCeT7H.png"
+      },
+      "synopsis": "A Pakistani-American college student borrows his father's taxi for a night out in Manhattan and wakes up as the prime suspect in a brutal killing. A scrappy, eczema-plagued lawyer takes his case. This meticulous limited series examines the criminal justice system and how it changes everyone it touches.",
+      "heroPosition": "50% 35%"
+    },
+    {
+      "id": "hoop-dreams",
+      "title": "Hoop Dreams",
+      "type": "documentary",
+      "tmdbId": 14275,
+      "tmdbType": "movie",
+      "releaseYear": 1994,
+      "contentRating": "PG-13",
+      "runtimeMinutes": 174,
+      "genres": [
+        "Documentary",
+        "Sport"
+      ],
+      "credits": [
+        {
+          "role": "Director",
+          "names": [
+            "Steve James"
+          ]
+        }
+      ],
+      "cast": [
+        "William Gates",
+        "Arthur Agee",
+        "Sheila Agee",
+        "Emma Gates"
+      ],
+      "castLabel": "Featuring",
+      "images": {
+        "poster": "/gLzHl2XBtVwycl8DxdOXRHPm8G3.jpg",
+        "backdrop": "/pYeiEm55NySzK9ksKlQGlFQNapz.jpg",
+        "logo": "/7hCJ4xMtDLxFOaiUXbrXmqLU4dm.png"
+      },
+      "synopsis": "Two teenagers from Chicago's inner city share one ambition: to play in the NBA. Following them across five years of high school, recruitment and family hardship, this landmark documentary reveals how race, money and opportunity shape the odds. An epic, deeply human portrait of hope under pressure.",
+      "heroPosition": "50% 35%"
+    },
+    {
+      "id": "amy",
+      "title": "Amy",
+      "type": "documentary",
+      "tmdbId": 331781,
+      "tmdbType": "movie",
+      "releaseYear": 2015,
+      "contentRating": "R",
+      "runtimeMinutes": 128,
+      "genres": [
+        "Documentary",
+        "Music",
+        "Biography"
+      ],
+      "credits": [
+        {
+          "role": "Director",
+          "names": [
+            "Asif Kapadia"
+          ]
+        }
+      ],
+      "cast": [
+        "Amy Winehouse",
+        "Mark Ronson",
+        "Tony Bennett",
+        "Yasiin Bey"
+      ],
+      "castLabel": "Featuring",
+      "images": {
+        "poster": "/qL0RepWSNUuZoeDXfyhqowVYhrn.jpg",
+        "backdrop": "/8YiAnbmo8ARHNVt25Cp5fVt4rNd.jpg",
+        "logo": "/hwSlJ88kLZavGPP9xuf2tmfyavA.png"
+      },
+      "synopsis": "Built almost entirely from archival footage, home videos and voice recordings, this documentary traces Amy Winehouse from a gifted North London teenager to a global star. It examines the pressures of fame, media scrutiny and addiction that surrounded her, while keeping her extraordinary voice and wit at the center.",
+      "heroPosition": "50% 30%"
+    },
+    {
+      "id": "three-identical-strangers",
+      "title": "Three Identical Strangers",
+      "type": "documentary",
+      "tmdbId": 489988,
+      "tmdbType": "movie",
+      "releaseYear": 2018,
+      "contentRating": "PG-13",
+      "runtimeMinutes": 97,
+      "genres": [
+        "Documentary",
+        "Mystery"
+      ],
+      "credits": [
+        {
+          "role": "Director",
+          "names": [
+            "Tim Wardle"
+          ]
+        }
+      ],
+      "cast": [
+        "Robert Shafran",
+        "David Kellman",
+        "Lawrence Wright"
+      ],
+      "castLabel": "Featuring",
+      "images": {
+        "poster": "/esPoJNMBsgWXahv8gILIl5K6sFk.jpg",
+        "backdrop": "/2shn4Kiq7qInZgKZhqM5BKie1zL.jpg",
+        "logo": "/7LKTT39RlufuWkGk50fs2zHpcQ5.png"
+      },
+      "synopsis": "In 1980, a college freshman discovers he has a twin, and the media frenzy that follows reveals a third brother. Their joyful reunion makes them celebrities. But questions about why they were separated lead to unsettling discoveries. A twisty documentary about identity, nature versus nurture and institutional secrecy.",
+      "heroPosition": "50% 30%"
+    },
+    {
+      "id": "blackfish",
+      "title": "Blackfish",
+      "type": "documentary",
+      "tmdbId": 158999,
+      "tmdbType": "movie",
+      "releaseYear": 2013,
+      "contentRating": "PG-13",
+      "runtimeMinutes": 83,
+      "genres": [
+        "Documentary",
+        "Nature"
+      ],
+      "credits": [
+        {
+          "role": "Director",
+          "names": [
+            "Gabriela Cowperthwaite"
+          ]
+        }
+      ],
+      "cast": [
+        "Samantha Berg",
+        "John Hargrove",
+        "John Jett",
+        "Dean Gomersall",
+        "Carol Ray"
+      ],
+      "castLabel": "Featuring",
+      "images": {
+        "poster": "/kCk4mDFE96Mn1AYfEcbxkIiw7ND.jpg",
+        "backdrop": "/tCW0uGWwfZzRkupNFdI0yUo4A0w.jpg",
+        "logo": "/93NAu0q5dZRDrtJ8jqHZJBygcCB.png"
+      },
+      "synopsis": "Centered on Tilikum, a captive orca involved in several deaths, this documentary examines what happens when intelligent, social animals are kept for entertainment. Former trainers, scientists and archival footage challenge the marine-park industry's public image. A sobering investigation into animal welfare and corporate accountability.",
+      "heroPosition": "50% 50%"
+    },
+    {
+      "id": "citizenfour",
+      "title": "Citizenfour",
+      "type": "documentary",
+      "tmdbId": 293310,
+      "tmdbType": "movie",
+      "releaseYear": 2014,
+      "contentRating": "R",
+      "runtimeMinutes": 113,
+      "genres": [
+        "Documentary",
+        "History"
+      ],
+      "credits": [
+        {
+          "role": "Director",
+          "names": [
+            "Laura Poitras"
+          ]
+        }
+      ],
+      "cast": [
+        "Edward Snowden",
+        "Glenn Greenwald",
+        "Laura Poitras",
+        "William Binney"
+      ],
+      "castLabel": "Featuring",
+      "images": {
+        "poster": "/nOVhX69EAxtSKEEnr5UcSd5UVci.jpg",
+        "backdrop": "/godZeVdLEH6YFOBPajdLkAvhy5l.jpg",
+        "logo": "/iFuiSJUccNhnBv6YNKaSDZ40IRN.png"
+      },
+      "synopsis": "A filmmaker receives encrypted messages from an anonymous source claiming evidence of vast government surveillance. She travels to a Hong Kong hotel room, where history unfolds in real time on camera. This tense, Oscar-winning documentary captures the moment Edward Snowden came forward and the questions about privacy that followed.",
+      "heroPosition": "50% 30%"
+    },
+    {
+      "id": "i-am-not-your-negro",
+      "title": "I Am Not Your Negro",
+      "type": "documentary",
+      "tmdbId": 411019,
+      "tmdbType": "movie",
+      "releaseYear": 2017,
+      "contentRating": "R",
+      "runtimeMinutes": 93,
+      "genres": [
+        "Documentary",
+        "History",
+        "Biography"
+      ],
+      "credits": [
+        {
+          "role": "Director",
+          "names": [
+            "Raoul Peck"
+          ]
+        }
+      ],
+      "cast": [
+        "James Baldwin",
+        "Samuel L. Jackson"
+      ],
+      "castLabel": "Featuring",
+      "images": {
+        "poster": "/zwd0Zti7BvY1mO0mTPzM0fRrtc6.jpg",
+        "backdrop": "/1uecj8izDDjvZ4syzJQCOKRBjaa.jpg",
+        "logo": "/3UY8sudQqNGreVSXyoZyKZ5L90T.png"
+      },
+      "synopsis": "Drawing on an unfinished manuscript by James Baldwin about three slain civil rights leaders, this documentary weaves his words with archival footage and present-day images. Narrated by Samuel L. Jackson, it offers a searing, eloquent meditation on race in America that feels as urgent today as when written.",
+      "heroPosition": "50% 30%"
+    },
+    {
+      "id": "minding-the-gap",
+      "title": "Minding the Gap",
+      "type": "documentary",
+      "tmdbId": 489985,
+      "tmdbType": "movie",
+      "releaseYear": 2018,
+      "contentRating": "NR",
+      "runtimeMinutes": 93,
+      "genres": [
+        "Documentary",
+        "Sport"
+      ],
+      "credits": [
+        {
+          "role": "Director",
+          "names": [
+            "Bing Liu"
+          ]
+        }
+      ],
+      "cast": [
+        "Keire Johnson",
+        "Zack Mulligan",
+        "Bing Liu",
+        "Nina Bowgren"
+      ],
+      "castLabel": "Featuring",
+      "images": {
+        "poster": "/uOu2YgrryHD1UlngykzTodAxGdC.jpg",
+        "backdrop": "/wXsDDQ4JEdvzL19DUsbsKzlPq9f.jpg",
+        "logo": "/zjjcUAPeGI30zHGt4Apq8v1e4Xi.png"
+      },
+      "synopsis": "Three friends bonded by skateboarding in Rockford, Illinois, face the pressures of young adulthood across more than a decade of footage. As one becomes a father and another starts a job, the director turns the camera on their shared histories of difficult homes. An intimate, generous portrait of masculinity and growing up.",
+      "heroPosition": "50% 40%"
+    },
+    {
+      "id": "honeyland",
+      "title": "Honeyland",
+      "type": "documentary",
+      "tmdbId": 566213,
+      "tmdbType": "movie",
+      "releaseYear": 2019,
+      "contentRating": "NR",
+      "runtimeMinutes": 89,
+      "genres": [
+        "Documentary",
+        "Nature"
+      ],
+      "credits": [
+        {
+          "role": "Directed by",
+          "names": [
+            "Tamara Kotevska",
+            "Ljubomir Stefanov"
+          ]
+        }
+      ],
+      "cast": [
+        "Hatidže Muratova",
+        "Nazife Muratova",
+        "Hussein Sam"
+      ],
+      "castLabel": "Featuring",
+      "images": {
+        "poster": "/3IxGhQEzLWOxkZlcNMAIiYlOT8D.jpg",
+        "backdrop": "/q3rUkRlFBzf0XfjeKrfonQiLfr1.jpg",
+        "logo": "/2s7iFfUKinKuT8Iag4Rm7TMICnN.png"
+      },
+      "synopsis": "In a remote North Macedonian village, a woman keeps wild bees using an ancient rule: take half, leave half. When a large, noisy family moves in next door with plans of their own, the delicate balance is threatened. A visually stunning documentary about nature, sustainability and quiet resilience.",
+      "heroPosition": "50% 40%"
+    },
+    {
+      "id": "grizzly-man",
+      "title": "Grizzly Man",
+      "type": "documentary",
+      "tmdbId": 501,
+      "tmdbType": "movie",
+      "releaseYear": 2005,
+      "contentRating": "R",
+      "runtimeMinutes": 103,
+      "genres": [
+        "Documentary",
+        "Nature",
+        "Biography"
+      ],
+      "credits": [
+        {
+          "role": "Director",
+          "names": [
+            "Werner Herzog"
+          ]
+        }
+      ],
+      "cast": [
+        "Timothy Treadwell",
+        "Werner Herzog",
+        "Willy Fulton",
+        "Sam Egli"
+      ],
+      "castLabel": "Featuring",
+      "images": {
+        "poster": "/zuZWpcuye25rpsiZ4XzsAvmLDHG.jpg",
+        "backdrop": "/fTEvG1sGTVKHgiz4NyZBqPetM3i.jpg",
+        "logo": "/cr9vDNhrY4sjLggOj5gIC1EnYUJ.png"
+      },
+      "synopsis": "For thirteen summers, self-styled bear protector Timothy Treadwell lived among wild grizzlies in the Alaskan wilderness, filming himself and the animals he adored. Werner Herzog assembles that footage with interviews to explore Treadwell's passion, his blind spots and the indifferent power of nature. Haunting, strange and unforgettable.",
+      "heroPosition": "50% 40%"
+    },
+    {
+      "id": "the-act-of-killing",
+      "title": "The Act of Killing",
+      "type": "documentary",
+      "tmdbId": 123678,
+      "tmdbType": "movie",
+      "releaseYear": 2012,
+      "contentRating": "NR",
+      "runtimeMinutes": 159,
+      "genres": [
+        "Documentary",
+        "History"
+      ],
+      "credits": [
+        {
+          "role": "Director",
+          "names": [
+            "Joshua Oppenheimer"
+          ]
+        }
+      ],
+      "cast": [
+        "Anwar Congo",
+        "Herman Koto",
+        "Syamsul Arifin"
+      ],
+      "castLabel": "Featuring",
+      "images": {
+        "poster": "/sp5B7Tz5ttsgOLnIlCP5uEhtesI.jpg",
+        "backdrop": "/1jLaJPdu7dMl0Nk3vLuafDx9PWS.jpg",
+        "logo": "/1PR6BWmqXvDJgcNeiIMZhIj8wUk.png"
+      },
+      "synopsis": "Decades after Indonesia's 1965 mass killings, men who took part are still celebrated in their communities. Invited to reenact their deeds in the style of their favorite movies, they stage elaborate scenes. What begins as boastful spectacle becomes a chilling, unprecedented look at memory, impunity and conscience.",
+      "heroPosition": "50% 40%"
+    }
+  ],
+  "notes": [
+    "No byte sizes recorded: TMDB image pages only show pixel dimensions, not file sizes.",
+    "TMDB's web UI no longer has a TV 'Content Ratings' page; TV ratings come from the US certification shown on each show's TMDB main page (en-US). Movie ratings come from the US entries on TMDB Release Dates.",
+    "Honeyland has no US certification on TMDB (set to NR). 12 Angry Men, Minding the Gap and The Act of Killing are listed NR on TMDB US.",
+    "Posters/backdrops are TMDB's default (og:image) English selections; logos are the top English logo from each title's logos page. The Social Network's top logo is an SVG, so the next English PNG was used.",
+    "Release years follow TMDB: The Act of Killing is 2012 (festival premiere; US release 2013); I Am Not Your Negro is 2017.",
+    "Downton Abbey episodeCount is TMDB's 47 (Christmas specials are counted separately on TMDB). Episode counts exclude season 0 specials.",
+    "Band of Brothers has no 'Created by' on TMDB; credits use Executive Producers (Spielberg, Hanks) and the Stephen E. Ambrose book. Friday Night Lights credits Peter Berg as developer (TMDB lists Peter Berg and Brian Grazer as creators).",
+    "Fleabag and The Bear were skipped as comedies; Shōgun (2024) and The Night Of (2016) were used instead. Shōgun is flagged limitedSeries=true because season 1 was conceived as a limited series, though FX later renewed it.",
+    "heroPosition values are estimates and were not checked against the actual images. Cast lists were curated from TMDB billing (e.g. Henry Fonda is added for 12 Angry Men; TMDB orders that cast by juror number)."
+  ]
+}

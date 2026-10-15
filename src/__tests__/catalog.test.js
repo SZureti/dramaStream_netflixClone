@@ -15,10 +15,10 @@ describe('bundled catalog', () => {
     expect(validateCatalog()).toEqual([]);
   });
 
-  it('has 10 titles of each type and a featured title from the catalog', () => {
-    expect(getTitlesByType('film')).toHaveLength(10);
-    expect(getTitlesByType('series')).toHaveLength(10);
-    expect(getTitlesByType('documentary')).toHaveLength(10);
+  it('has 20 titles of each type and a featured title from the catalog', () => {
+    expect(getTitlesByType('film')).toHaveLength(20);
+    expect(getTitlesByType('series')).toHaveLength(20);
+    expect(getTitlesByType('documentary')).toHaveLength(20);
     expect(getFeaturedTitle().id).toBe('breaking-bad');
   });
 });

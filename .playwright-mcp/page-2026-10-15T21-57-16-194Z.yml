@@ -1,0 +1,131 @@
+- generic [ref=f4e2]:
+  - generic [ref=f4e3]:
+    - link "Skip to content" [ref=f4e4] [cursor=pointer]:
+      - /url: "#main"
+    - banner [ref=f4e5]:
+      - generic [ref=f4e6]:
+        - link "DramaStream home" [ref=f4e7] [cursor=pointer]:
+          - /url: /
+          - text: DramaStream
+        - navigation "Primary" [ref=f4e8]:
+          - list [ref=f4e9]:
+            - listitem [ref=f4e10]:
+              - link "Home" [ref=f4e11] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=f4e12]:
+              - link "TV Shows" [ref=f4e13] [cursor=pointer]:
+                - /url: /browse/series
+            - listitem [ref=f4e14]:
+              - link "Movies" [ref=f4e15] [cursor=pointer]:
+                - /url: /browse/films
+            - listitem [ref=f4e16]:
+              - link "Documentaries" [ref=f4e17] [cursor=pointer]:
+                - /url: /browse/documentaries
+            - listitem [ref=f4e18]:
+              - link "My List 5 saved" [ref=f4e19] [cursor=pointer]:
+                - /url: /my-list
+                - text: My List
+                - generic [ref=f4e20]:
+                  - text: "5"
+                  - generic [ref=f4e21]: saved
+        - link "Search" [ref=f4e22] [cursor=pointer]:
+          - /url: /search
+        - link "Sign In" [ref=f4e27] [cursor=pointer]:
+          - /url: /signin?next=%2Fsearch
+    - main [ref=f4e28]:
+      - generic [ref=f4e29]:
+        - heading "Search" [level=1] [ref=f4e30]
+        - search [ref=f4e31]:
+          - generic [ref=f4e32]: Search titles, people and genres
+          - generic [ref=f4e33]:
+            - searchbox "Search titles, people and genres" [active] [ref=f4e34]: mescal
+            - button "Clear search" [ref=f4e35] [cursor=pointer]
+        - status [ref=f4e38]: 2 titles found
+        - generic [ref=f4e39]:
+          - generic [ref=f4e40]: "Explore titles related to:"
+          - list "Explore titles related to:" [ref=f4e41]:
+            - listitem [ref=f4e42]:
+              - button "Paul Mescal" [ref=f4e43] [cursor=pointer]
+        - region [ref=f4e44]:
+          - heading "2 results for “mescal”" [level=2] [ref=f4e45]:
+            - text: 2 results for
+            - generic [ref=f4e46]: “mescal”
+          - list [ref=f4e47]:
+            - listitem [ref=f4e48]:
+              - article [ref=f4e49]:
+                - generic [ref=f4e50]:
+                  - link "Normal People" [ref=f4e51] [cursor=pointer]:
+                    - /url: /titles/normal-people
+                    - heading "Normal People" [level=3] [ref=f4e53]
+                  - generic:
+                    - generic:
+                      - link "Play Normal People" [ref=f4e54] [cursor=pointer]:
+                        - /url: /watch/normal-people
+                      - 'button "Add to My List: Normal People" [ref=f4e57] [cursor=pointer]'
+                      - group "Rate Normal People" [ref=f4e60]:
+                        - button "Not for me" [ref=f4e61] [cursor=pointer]
+                        - button "I like this" [ref=f4e65] [cursor=pointer]
+                        - button "Love this!" [ref=f4e69] [cursor=pointer]
+                      - 'link "More info: Normal People" [ref=f4e74] [cursor=pointer]':
+                        - /url: /titles/normal-people
+                    - paragraph [aria-hidden]:
+                      - generic: TV-MA
+                      - generic: Limited Series
+                    - paragraph [aria-hidden]: Drama • Romance
+                - paragraph [ref=f4e77]: Drama Series · 2020
+            - listitem [ref=f4e78]:
+              - article [ref=f4e79]:
+                - generic [ref=f4e80]:
+                  - link "Aftersun" [ref=f4e81] [cursor=pointer]:
+                    - /url: /titles/aftersun
+                    - heading "Aftersun" [level=3] [ref=f4e83]
+                  - generic:
+                    - generic:
+                      - link "Play Aftersun" [ref=f4e84] [cursor=pointer]:
+                        - /url: /watch/aftersun
+                      - 'button "Add to My List: Aftersun" [ref=f4e87] [cursor=pointer]'
+                      - group "Rate Aftersun" [ref=f4e90]:
+                        - button "Not for me" [ref=f4e91] [cursor=pointer]
+                        - button "I like this" [ref=f4e95] [cursor=pointer]
+                        - button "Love this!" [ref=f4e99] [cursor=pointer]
+                      - 'link "More info: Aftersun" [ref=f4e104] [cursor=pointer]':
+                        - /url: /titles/aftersun
+                    - paragraph [aria-hidden]:
+                      - generic: R
+                      - generic: 1h 41m
+                    - paragraph [aria-hidden]: Drama
+                - paragraph [ref=f4e107]: Drama Films · 2022
+    - contentinfo [ref=f4e108]:
+      - generic [ref=f4e109]:
+        - navigation "Footer" [ref=f4e110]:
+          - list [ref=f4e111]:
+            - listitem [ref=f4e112]:
+              - link "Home" [ref=f4e113] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=f4e114]:
+              - link "Drama Films" [ref=f4e115] [cursor=pointer]:
+                - /url: /#drama-films
+            - listitem [ref=f4e116]:
+              - link "Drama Series" [ref=f4e117] [cursor=pointer]:
+                - /url: /#drama-series
+            - listitem [ref=f4e118]:
+              - link "Drama Documentaries" [ref=f4e119] [cursor=pointer]:
+                - /url: /#drama-documentaries
+            - listitem [ref=f4e120]:
+              - link "Search" [ref=f4e121] [cursor=pointer]:
+                - /url: /search
+            - listitem [ref=f4e122]:
+              - link "My List" [ref=f4e123] [cursor=pointer]:
+                - /url: /my-list
+            - listitem [ref=f4e124]:
+              - link "Help" [ref=f4e125] [cursor=pointer]:
+                - /url: /help
+        - paragraph [ref=f4e126]: DramaStream is an educational, Netflix-inspired prototype built for the Code Platoon Netflix Clone assignment. It is not affiliated with Netflix, streams no films or episodes, and collects no personal information.
+        - paragraph [ref=f4e127]:
+          - text: Posters, backgrounds, and title logos are from
+          - link "TMDB (opens in a new tab)" [ref=f4e128] [cursor=pointer]:
+            - /url: https://www.themoviedb.org/
+            - text: TMDB
+            - generic [ref=f4e129]: (opens in a new tab)
+          - text: and belong to their respective studios and distributors. This product is not endorsed or certified by TMDB.
+  - status

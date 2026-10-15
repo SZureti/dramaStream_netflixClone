@@ -25,7 +25,7 @@ Move the catalog out of `src/data/catalog.js` so every other feature can query i
 - [x] Add public read-only RLS policies for catalog tables. — `database` `auth` `phase-1`
 - [x] Replace `catalog.js` lookups with Supabase queries and add loading and error states. — `frontend` `backend` `phase-1`
 - [x] Keep search working against the database (partial and accent-insensitive). — `backend` `phase-1`
-- [ ] Add more titles so each row can scroll like Netflix (20+ per row). — `content` `phase-2`
+- [x] Add more titles so each row can scroll like Netflix (20+ per row). — `content` `phase-2` _(60 titles, 20 per row; artwork credited in `public/assets/CREDITS.md`.)_
 
 ## 2. Accounts and sign-in
 
@@ -148,4 +148,4 @@ Tests, accessibility, performance and deployment.
 - [x] Optimize images (responsive sizes, lazy loading) and keep `npm run build` passing. — `performance` `phase-2` _(`srcset` with smaller copies from `scripts/make-image-sizes.sh`; secondary pages lazy-loaded.)_
 - [x] Run the Supabase security and performance advisors after every migration and fix the warnings. — `database` `testing` `phase-1` _(Security: clean. Performance: only unused-index notes on new tables.)_
 - [ ] Deploy (for example Vercel or Netlify) with Supabase keys in environment variables. — `backend` `phase-2` _(Ready for you: `vercel.json`, `public/_redirects`, and the steps under **Deploy** in the README.)_
-- [ ] Update `README.md` and the screenshots. — `content` `phase-2`
+- [x] Update `README.md` and the screenshots. — `content` `phase-2`

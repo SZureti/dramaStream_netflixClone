@@ -22,18 +22,22 @@ A responsive streaming-catalog prototype for the Code Platoon Netflix Clone I as
 
 | | |
 |---|---|
-| ![Rows of drama films and series posters](docs/screenshots/rows.jpg) | ![The Godfather title details page](docs/screenshots/details.jpg) |
-| **Browse rows:** 10 titles per category | **Title details** |
-| ![Ratings and reviews section with a posted review](docs/screenshots/reviews.jpg) | ![Share menu open on a title](docs/screenshots/share.jpg) |
-| **Ratings & reviews** | **Share menu** |
-| ![Search results for “the”](docs/screenshots/search.jpg) | ![My List with three saved titles](docs/screenshots/my-list.jpg) |
-| **Search** | **My List** |
-| ![Mock player for Chernobyl](docs/screenshots/player.jpg) | <img src="docs/screenshots/mobile-home.jpg" alt="Home page on a phone" width="260"> |
-| **Mock player** | **Phone layout** |
+| ![Home: the Breaking Bad billboard over the rows](docs/screenshots/home.jpg) | ![Continue Watching with progress bars, and the Top 10 row](docs/screenshots/rows.jpg) |
+| **Home** | **Continue Watching and Top 10** |
+| ![Details modal for The Wire over the Home page](docs/screenshots/details.jpg) | ![Breaking Bad episode list with a season picker](docs/screenshots/episodes.jpg) |
+| **Details modal** | **Episodes** |
+| ![Ratings and reviews with a Love this! review](docs/screenshots/reviews.jpg) | ![Mock player for Chernobyl, resumed at 25:00 with Next Episode](docs/screenshots/player.jpg) |
+| **Ratings & reviews** | **Mock player** |
+| ![Search for an actor's name finding Aftersun and Normal People](docs/screenshots/search.jpg) | ![Movies page filtered to Crime](docs/screenshots/browse.jpg) |
+| **Search by person** | **Browse with a genre filter** |
+| ![Signed-out welcome page with an email field](docs/screenshots/welcome.jpg) | ![My List with five saved titles](docs/screenshots/my-list.jpg) |
+| **Welcome page** | **My List** |
+| ![Share menu open on a title](docs/screenshots/share.jpg) | <img src="docs/screenshots/mobile-home.jpg" alt="Home page on a phone" width="260"> |
+| **Share menu** | **Phone layout** |
 
 ## Catalog
 
-30 real titles, 10 per category. The data lives in `src/data/catalog.js`, and **Breaking Bad** is the featured title.
+60 real titles, 20 per category. They load from Supabase, with the same data bundled in `src/data/catalog.js` as a fallback. **Breaking Bad** is the featured title. All 10 original series list every episode (433 in total); the 10 newer series list their first episode.
 
 | Drama Films | Drama Series | Drama Documentaries |
 |---|---|---|
@@ -47,6 +51,16 @@ A responsive streaming-catalog prototype for the Code Platoon Netflix Clone I as
 | Marriage Story (2019, R) | The Sopranos (1999, TV-MA) | Icarus (2017, NR) |
 | Nomadland (2021, R) | Mare of Easttown (2021, TV-MA) | Senna (2010, PG-13) |
 | Oppenheimer (2023, R) | The Queen’s Gambit (2020, TV-MA) | American Factory (2019, NR) |
+| 12 Angry Men (1957, NR) | The Wire (2002, TV-MA) | Hoop Dreams (1994, PG-13) |
+| Parasite (2019, R) | Six Feet Under (2001, TV-MA) | Amy (2015, R) |
+| The Pianist (2002, R) | Friday Night Lights (2006, TV-14) | Three Identical Strangers (2018, PG-13) |
+| Room (2015, R) | The Leftovers (2014, TV-MA) | Blackfish (2013, PG-13) |
+| Lady Bird (2017, R) | Band of Brothers (2001, TV-MA) | Citizenfour (2014, R) |
+| The Social Network (2010, PG-13) | The Americans (2013, TV-MA) | I Am Not Your Negro (2017, R) |
+| Spotlight (2015, R) | Halt and Catch Fire (2014, TV-14) | Minding the Gap (2018, NR) |
+| Roma (2018, R) | Downton Abbey (2010, TV-14) | Honeyland (2019, NR) |
+| Aftersun (2022, R) | Shōgun (2024, TV-MA) | Grizzly Man (2005, R) |
+| Boyhood (2014, R) | The Night Of (2016, TV-MA) | The Act of Killing (2012, NR) |
 
 Year, rating, runtime, seasons/episodes, and credits were checked against TMDB. The synopses were written for this project.
 

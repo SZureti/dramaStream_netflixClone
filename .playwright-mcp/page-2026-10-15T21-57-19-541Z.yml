@@ -1,0 +1,70 @@
+- generic [ref=f5e2]:
+  - generic [ref=f5e3]:
+    - link "Skip to content" [ref=f5e4] [cursor=pointer]:
+      - /url: "#main"
+    - banner [ref=f5e5]:
+      - generic [ref=f5e6]:
+        - link "DramaStream home" [ref=f5e7] [cursor=pointer]:
+          - /url: /
+          - text: DramaStream
+        - navigation "Primary" [ref=f5e8]:
+          - list [ref=f5e9]:
+            - listitem [ref=f5e10]:
+              - link "Home" [ref=f5e11] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=f5e12]:
+              - link "TV Shows" [ref=f5e13] [cursor=pointer]:
+                - /url: /browse/series
+            - listitem [ref=f5e14]:
+              - link "Movies" [ref=f5e15] [cursor=pointer]:
+                - /url: /browse/films
+            - listitem [ref=f5e16]:
+              - link "Documentaries" [ref=f5e17] [cursor=pointer]:
+                - /url: /browse/documentaries
+            - listitem [ref=f5e18]:
+              - link "My List 5 saved" [ref=f5e19] [cursor=pointer]:
+                - /url: /my-list
+                - text: My List
+                - generic [ref=f5e20]:
+                  - text: "5"
+                  - generic [ref=f5e21]: saved
+        - link "Search" [ref=f5e22] [cursor=pointer]:
+          - /url: /search
+        - link "Sign In" [ref=f5e27] [cursor=pointer]:
+          - /url: /signin?next=%2Fbrowse%2Ffilms
+    - main [ref=f5e28]:
+      - status [ref=f5e29]: Loading…
+    - contentinfo [ref=f5e30]:
+      - generic [ref=f5e31]:
+        - navigation "Footer" [ref=f5e32]:
+          - list [ref=f5e33]:
+            - listitem [ref=f5e34]:
+              - link "Home" [ref=f5e35] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=f5e36]:
+              - link "Drama Films" [ref=f5e37] [cursor=pointer]:
+                - /url: /#drama-films
+            - listitem [ref=f5e38]:
+              - link "Drama Series" [ref=f5e39] [cursor=pointer]:
+                - /url: /#drama-series
+            - listitem [ref=f5e40]:
+              - link "Drama Documentaries" [ref=f5e41] [cursor=pointer]:
+                - /url: /#drama-documentaries
+            - listitem [ref=f5e42]:
+              - link "Search" [ref=f5e43] [cursor=pointer]:
+                - /url: /search
+            - listitem [ref=f5e44]:
+              - link "My List" [ref=f5e45] [cursor=pointer]:
+                - /url: /my-list
+            - listitem [ref=f5e46]:
+              - link "Help" [ref=f5e47] [cursor=pointer]:
+                - /url: /help
+        - paragraph [ref=f5e48]: DramaStream is an educational, Netflix-inspired prototype built for the Code Platoon Netflix Clone assignment. It is not affiliated with Netflix, streams no films or episodes, and collects no personal information.
+        - paragraph [ref=f5e49]:
+          - text: Posters, backgrounds, and title logos are from
+          - link "TMDB (opens in a new tab)" [ref=f5e50] [cursor=pointer]:
+            - /url: https://www.themoviedb.org/
+            - text: TMDB
+            - generic [ref=f5e51]: (opens in a new tab)
+          - text: and belong to their respective studios and distributors. This product is not endorsed or certified by TMDB.
+  - status

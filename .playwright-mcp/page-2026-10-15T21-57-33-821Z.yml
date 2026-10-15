@@ -1,0 +1,190 @@
+- generic [ref=f7e2]:
+  - generic [ref=f7e3]:
+    - link "Skip to content" [ref=f7e4] [cursor=pointer]:
+      - /url: "#main"
+    - banner [ref=f7e5]:
+      - generic [ref=f7e6]:
+        - link "DramaStream home" [ref=f7e7] [cursor=pointer]:
+          - /url: /
+          - text: DramaStream
+        - navigation "Primary" [ref=f7e8]:
+          - list [ref=f7e9]:
+            - listitem [ref=f7e10]:
+              - link "Home" [ref=f7e11] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=f7e12]:
+              - link "TV Shows" [ref=f7e13] [cursor=pointer]:
+                - /url: /browse/series
+            - listitem [ref=f7e14]:
+              - link "Movies" [ref=f7e15] [cursor=pointer]:
+                - /url: /browse/films
+            - listitem [ref=f7e16]:
+              - link "Documentaries" [ref=f7e17] [cursor=pointer]:
+                - /url: /browse/documentaries
+            - listitem [ref=f7e18]:
+              - link "My List 5 saved" [ref=f7e19] [cursor=pointer]:
+                - /url: /my-list
+                - text: My List
+                - generic [ref=f7e20]:
+                  - text: "5"
+                  - generic [ref=f7e21]: saved
+        - link "Search" [ref=f7e22] [cursor=pointer]:
+          - /url: /search
+        - link "Sign In" [ref=f7e27] [cursor=pointer]:
+          - /url: /signin?next=%2Fmy-list
+    - main [ref=f7e28]:
+      - generic [ref=f7e29]:
+        - generic [ref=f7e30]:
+          - heading "My List" [active] [level=1] [ref=f7e31]
+          - paragraph [ref=f7e32]: 5 titles
+        - paragraph [ref=f7e33]: Saved in this browser, newest first. Sign in to keep your list on every device.
+        - list [ref=f7e34]:
+          - listitem [ref=f7e35]:
+            - article [ref=f7e36]:
+              - generic [ref=f7e37]:
+                - link "The Wire" [ref=f7e38] [cursor=pointer]:
+                  - /url: /titles/the-wire
+                  - heading "The Wire" [level=2] [ref=f7e40]
+                - generic:
+                  - generic:
+                    - link "Play The Wire" [ref=f7e41] [cursor=pointer]:
+                      - /url: /watch/the-wire
+                    - 'button "Remove from My List: The Wire" [ref=f7e44] [cursor=pointer]'
+                    - group "Rate The Wire" [ref=f7e47]:
+                      - button "Not for me" [ref=f7e48] [cursor=pointer]
+                      - button "I like this" [ref=f7e52] [cursor=pointer]
+                      - button "Love this!" [ref=f7e56] [cursor=pointer]
+                    - 'link "More info: The Wire" [ref=f7e61] [cursor=pointer]':
+                      - /url: /titles/the-wire
+                  - paragraph [aria-hidden]:
+                    - generic: TV-MA
+                    - generic: 5 Seasons
+                  - paragraph [aria-hidden]: Drama • Crime
+              - paragraph [ref=f7e64]: Drama Series · 2002
+              - button "Remove from My List" [ref=f7e65] [cursor=pointer]
+          - listitem [ref=f7e69]:
+            - article [ref=f7e70]:
+              - generic [ref=f7e71]:
+                - link "Parasite" [ref=f7e72] [cursor=pointer]:
+                  - /url: /titles/parasite
+                  - heading "Parasite" [level=2] [ref=f7e74]
+                - generic:
+                  - generic:
+                    - link "Play Parasite" [ref=f7e75] [cursor=pointer]:
+                      - /url: /watch/parasite
+                    - 'button "Remove from My List: Parasite" [ref=f7e78] [cursor=pointer]'
+                    - group "Rate Parasite" [ref=f7e81]:
+                      - button "Not for me" [ref=f7e82] [cursor=pointer]
+                      - button "I like this" [ref=f7e86] [cursor=pointer]
+                      - button "Love this!" [ref=f7e90] [cursor=pointer]
+                    - 'link "More info: Parasite" [ref=f7e95] [cursor=pointer]':
+                      - /url: /titles/parasite
+                  - paragraph [aria-hidden]:
+                    - generic: R
+                    - generic: 2h 13m
+                  - paragraph [aria-hidden]: Drama • Comedy • Crime
+              - paragraph [ref=f7e98]: Drama Films · 2019
+              - button "Remove from My List" [ref=f7e99] [cursor=pointer]
+          - listitem [ref=f7e103]:
+            - article [ref=f7e104]:
+              - generic [ref=f7e105]:
+                - link "Amy" [ref=f7e106] [cursor=pointer]:
+                  - /url: /titles/amy
+                  - heading "Amy" [level=2] [ref=f7e108]
+                - generic:
+                  - generic:
+                    - link "Play Amy" [ref=f7e109] [cursor=pointer]:
+                      - /url: /watch/amy
+                    - 'button "Remove from My List: Amy" [ref=f7e112] [cursor=pointer]'
+                    - group "Rate Amy" [ref=f7e115]:
+                      - button "Not for me" [ref=f7e116] [cursor=pointer]
+                      - button "I like this" [ref=f7e120] [cursor=pointer]
+                      - button "Love this!" [ref=f7e124] [cursor=pointer]
+                    - 'link "More info: Amy" [ref=f7e129] [cursor=pointer]':
+                      - /url: /titles/amy
+                  - paragraph [aria-hidden]:
+                    - generic: R
+                    - generic: 2h 8m
+                  - paragraph [aria-hidden]: Documentary • Music • Biography
+              - paragraph [ref=f7e132]: Drama Documentaries · 2015
+              - button "Remove from My List" [ref=f7e133] [cursor=pointer]
+          - listitem [ref=f7e137]:
+            - article [ref=f7e138]:
+              - generic [ref=f7e139]:
+                - link "The Americans" [ref=f7e140] [cursor=pointer]:
+                  - /url: /titles/the-americans
+                  - heading "The Americans" [level=2] [ref=f7e142]
+                - generic:
+                  - generic:
+                    - link "Play The Americans" [ref=f7e143] [cursor=pointer]:
+                      - /url: /watch/the-americans
+                    - 'button "Remove from My List: The Americans" [ref=f7e146] [cursor=pointer]'
+                    - group "Rate The Americans" [ref=f7e149]:
+                      - button "Not for me" [ref=f7e150] [cursor=pointer]
+                      - button "I like this" [ref=f7e154] [cursor=pointer]
+                      - button "Love this!" [ref=f7e158] [cursor=pointer]
+                    - 'link "More info: The Americans" [ref=f7e163] [cursor=pointer]':
+                      - /url: /titles/the-americans
+                  - paragraph [aria-hidden]:
+                    - generic: TV-MA
+                    - generic: 6 Seasons
+                  - paragraph [aria-hidden]: Drama • Crime • History
+              - paragraph [ref=f7e166]: Drama Series · 2013
+              - button "Remove from My List" [ref=f7e167] [cursor=pointer]
+          - listitem [ref=f7e171]:
+            - article [ref=f7e172]:
+              - generic [ref=f7e173]:
+                - link "Spotlight" [ref=f7e174] [cursor=pointer]:
+                  - /url: /titles/spotlight
+                  - heading "Spotlight" [level=2] [ref=f7e176]
+                - generic:
+                  - generic:
+                    - link "Play Spotlight" [ref=f7e177] [cursor=pointer]:
+                      - /url: /watch/spotlight
+                    - 'button "Remove from My List: Spotlight" [ref=f7e180] [cursor=pointer]'
+                    - group "Rate Spotlight" [ref=f7e183]:
+                      - button "Not for me" [ref=f7e184] [cursor=pointer]
+                      - button "I like this" [ref=f7e188] [cursor=pointer]
+                      - button "Love this!" [ref=f7e192] [cursor=pointer]
+                    - 'link "More info: Spotlight" [ref=f7e197] [cursor=pointer]':
+                      - /url: /titles/spotlight
+                  - paragraph [aria-hidden]:
+                    - generic: R
+                    - generic: 2h 9m
+                  - paragraph [aria-hidden]: Drama • History • Crime
+              - paragraph [ref=f7e200]: Drama Films · 2015
+              - button "Remove from My List" [ref=f7e201] [cursor=pointer]
+    - contentinfo [ref=f7e205]:
+      - generic [ref=f7e206]:
+        - navigation "Footer" [ref=f7e207]:
+          - list [ref=f7e208]:
+            - listitem [ref=f7e209]:
+              - link "Home" [ref=f7e210] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=f7e211]:
+              - link "Drama Films" [ref=f7e212] [cursor=pointer]:
+                - /url: /#drama-films
+            - listitem [ref=f7e213]:
+              - link "Drama Series" [ref=f7e214] [cursor=pointer]:
+                - /url: /#drama-series
+            - listitem [ref=f7e215]:
+              - link "Drama Documentaries" [ref=f7e216] [cursor=pointer]:
+                - /url: /#drama-documentaries
+            - listitem [ref=f7e217]:
+              - link "Search" [ref=f7e218] [cursor=pointer]:
+                - /url: /search
+            - listitem [ref=f7e219]:
+              - link "My List" [ref=f7e220] [cursor=pointer]:
+                - /url: /my-list
+            - listitem [ref=f7e221]:
+              - link "Help" [ref=f7e222] [cursor=pointer]:
+                - /url: /help
+        - paragraph [ref=f7e223]: DramaStream is an educational, Netflix-inspired prototype built for the Code Platoon Netflix Clone assignment. It is not affiliated with Netflix, streams no films or episodes, and collects no personal information.
+        - paragraph [ref=f7e224]:
+          - text: Posters, backgrounds, and title logos are from
+          - link "TMDB (opens in a new tab)" [ref=f7e225] [cursor=pointer]:
+            - /url: https://www.themoviedb.org/
+            - text: TMDB
+            - generic [ref=f7e226]: (opens in a new tab)
+          - text: and belong to their respective studios and distributors. This product is not endorsed or certified by TMDB.
+  - status

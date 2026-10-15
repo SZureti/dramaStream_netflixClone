@@ -1,0 +1,40 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#main"
+    - main [ref=e5]:
+      - status [ref=e6]: Loading…
+    - contentinfo [ref=e7]:
+      - generic [ref=e8]:
+        - navigation "Footer" [ref=e9]:
+          - list [ref=e10]:
+            - listitem [ref=e11]:
+              - link "Home" [ref=e12] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e13]:
+              - link "Drama Films" [ref=e14] [cursor=pointer]:
+                - /url: /#drama-films
+            - listitem [ref=e15]:
+              - link "Drama Series" [ref=e16] [cursor=pointer]:
+                - /url: /#drama-series
+            - listitem [ref=e17]:
+              - link "Drama Documentaries" [ref=e18] [cursor=pointer]:
+                - /url: /#drama-documentaries
+            - listitem [ref=e19]:
+              - link "Search" [ref=e20] [cursor=pointer]:
+                - /url: /search
+            - listitem [ref=e21]:
+              - link "My List" [ref=e22] [cursor=pointer]:
+                - /url: /my-list
+            - listitem [ref=e23]:
+              - link "Help" [ref=e24] [cursor=pointer]:
+                - /url: /help
+        - paragraph [ref=e25]: DramaStream is an educational, Netflix-inspired prototype built for the Code Platoon Netflix Clone assignment. It is not affiliated with Netflix, streams no films or episodes, and collects no personal information.
+        - paragraph [ref=e26]:
+          - text: Posters, backgrounds, and title logos are from
+          - link "TMDB (opens in a new tab)" [ref=e27] [cursor=pointer]:
+            - /url: https://www.themoviedb.org/
+            - text: TMDB
+            - generic [ref=e28]: (opens in a new tab)
+          - text: and belong to their respective studios and distributors. This product is not endorsed or certified by TMDB.
+  - status

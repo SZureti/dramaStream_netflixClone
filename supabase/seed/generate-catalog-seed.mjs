@@ -1,5 +1,6 @@
 // Turns src/data/catalog.js into supabase/seed/catalog.sql.
 // Run from the project root:  node supabase/seed/generate-catalog-seed.mjs
+// Options: --only id1,id2  (just those titles)  --out path  (default catalog.sql)
 // The SQL is idempotent (safe to run twice) and looks ids up by name, so it
 // never depends on generated ids.
 import { writeFileSync } from 'node:fs';
@@ -7,7 +8,23 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, join } from 'node:path';
 
 const here = dirname(fileURLToPath(import.meta.url));
-const { LOCAL_CATALOG: catalog, FEATURED_TITLE_ID } = await import(pathToFileURL(join(here, '../../src/data/catalog.js')));
+const { LOCAL_CATALOG: fullCatalog, FEATURED_TITLE_ID } = await import(
+  pathToFileURL(join(here, '../../src/data/catalog.js'))
+);
+const arg = (name) => {
+  const i = process.argv.indexOf(name);
+  return i > -1 ? process.argv[i + 1] : null;
+};
+const only = arg('--only')?.split(',');
+const outFile = arg('--out') ?? join(here, 'catalog.sql');
+// Row order within a type comes from the full catalog, even when seeding a few titles.
+const sortOrder = new Map();
+const seenOfType = {};
+for (const t of fullCatalog) {
+  seenOfType[t.type] = (seenOfType[t.type] ?? -1) + 1;
+  sortOrder.set(t.id, seenOfType[t.type]);
+}
+const catalog = only ? fullCatalog.filter((t) => only.includes(t.id)) : fullCatalog;
 
 const q = (v) => (v === null || v === undefined ? 'null' : `'${String(v).replace(/'/g, "''")}'`);
 const n = (v) => (v === null || v === undefined ? 'null' : Number(v));
@@ -18,13 +35,11 @@ const lines = [
   '',
 ];
 
-const typeOrder = {};
 const titleRows = catalog.map((t) => {
-  typeOrder[t.type] = (typeOrder[t.type] ?? -1) + 1;
   return `  (${[
     q(t.id), q(t.title), q(t.type), q(t.synopsis), n(t.releaseYear), q(t.contentRating),
     n(t.runtimeMinutes), n(t.seasons), n(t.episodeCount), t.limitedSeries ? 'true' : 'false',
-    q(t.castLabel), q(t.heroPosition), t.id === FEATURED_TITLE_ID ? 'true' : 'false', typeOrder[t.type],
+    q(t.castLabel), q(t.heroPosition), t.id === FEATURED_TITLE_ID ? 'true' : 'false', sortOrder.get(t.id),
   ].join(', ')})`;
 });
 lines.push(
@@ -84,5 +99,5 @@ lines.push(
 );
 
 lines.push('', 'commit;', '');
-writeFileSync(join(here, 'catalog.sql'), lines.join('\n'));
+writeFileSync(outFile, lines.join('\n'));
 console.log(`Wrote catalog.sql: ${catalog.length} titles, ${genres.length} genres, ${people.length} people.`);

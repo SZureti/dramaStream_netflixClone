@@ -2400,3 +2400,13 @@
   min-width: 12rem;
   font-weight: 600;
 }
+
+/* The actions row can wrap onto two lines; only its buttons may take clicks,
+   never the empty space between them, or it would block the poster link. */
+.card__frame .card__overlay > .card__actions {
+  pointer-events: none;
+}
+
+.card__frame .card__overlay > .card__actions > * {
+  pointer-events: auto;
+}

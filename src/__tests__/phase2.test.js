@@ -40,7 +40,9 @@ describe('search by people and genre', () => {
   it('finds titles by actor, director or genre, titles first', () => {
     expect(searchCatalog('cranston').map((t) => t.id)).toEqual(['breaking-bad']);
     expect(searchCatalog('gilligan').map((t) => t.id).sort()).toEqual(['better-call-saul', 'breaking-bad']);
-    expect(searchCatalog('mystery').map((t) => t.id)).toEqual(['mare-of-easttown']);
+    expect(searchCatalog('mystery').map((t) => t.id).sort()).toEqual(
+      ['mare-of-easttown', 'the-leftovers', 'the-night-of', 'three-identical-strangers'].sort(),
+    );
   });
 
   it('suggests related people and genres', () => {
