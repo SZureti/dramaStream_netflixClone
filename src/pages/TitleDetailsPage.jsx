@@ -7,6 +7,7 @@ import ShareButton from '../components/ShareButton.jsx';
 import ReviewsSection from '../components/ReviewsSection.jsx';
 import ThumbsRating from '../components/ThumbsRating.jsx';
 import EpisodeList from '../components/EpisodeList.jsx';
+import RemindButton from '../components/RemindButton.jsx';
 import { RATINGS, useReviews } from '../state/ReviewsContext.jsx';
 import { isResumable, useProgress } from '../state/ProgressContext.jsx';
 import { ArrowLeftIcon, PlayIcon } from '../components/Icons.jsx';
@@ -17,6 +18,7 @@ import {
   getPlayable,
   getTitleById,
   getTitlesByType,
+  isAvailable,
 } from '../data/catalog.js';
 import useDocumentTitle from '../hooks/useDocumentTitle.js';
 import NotFoundPage from './NotFoundPage.jsx';
@@ -139,17 +141,21 @@ function TitleDetails({ title }) {
               )}
 
               <div className="details-hero__actions">
-                <Link
-                  to={`/watch/${title.id}`}
-                  state={{ from: location.pathname }}
-                  className="btn btn--primary btn--lg"
-                >
-                  <PlayIcon size={26} />
-                  <span>
-                    {resumable ? 'Resume' : 'Play'}
-                    {playable.label && <span className="btn__sub"> {playable.label}</span>}
-                  </span>
-                </Link>
+                {isAvailable(title) ? (
+                  <Link
+                    to={`/watch/${title.id}`}
+                    state={{ from: location.pathname }}
+                    className="btn btn--primary btn--lg"
+                  >
+                    <PlayIcon size={26} />
+                    <span>
+                      {resumable ? 'Resume' : 'Play'}
+                      {playable.label && <span className="btn__sub"> {playable.label}</span>}
+                    </span>
+                  </Link>
+                ) : (
+                  <RemindButton title={title} className="btn--lg" />
+                )}
                 {resumable && (
                   <Link
                     to={`/watch/${title.id}?t=0`}
@@ -174,7 +180,7 @@ function TitleDetails({ title }) {
       </section>
 
       <div className="details-body">
-        {title.type === 'series' && <EpisodeList title={title} />}
+        {title.type === 'series' && isAvailable(title) && <EpisodeList title={title} />}
 
         <section className="details-facts" aria-labelledby="about-heading">
           <h2 id="about-heading" className="section-title">

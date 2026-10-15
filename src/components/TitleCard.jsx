@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
-import { formatLength } from '../data/catalog.js';
+import { formatLength, getTitleById } from '../data/catalog.js';
+import { matchPercent } from '../data/match.js';
 import SmartImage from './SmartImage.jsx';
 import MyListButton from './MyListButton.jsx';
 import { InfoIcon, PlayIcon } from './Icons.jsx';
@@ -22,8 +23,9 @@ export default function TitleCard({
   onRemoveFromRow = null,
   rank, // position in a Top 10 row
 }) {
-  const { summary, rate } = useReviews();
+  const { summary, rate, ratings } = useReviews();
   const myRating = summary(title.id).myRating;
+  const match = matchPercent(title, ratings, getTitleById);
   const location = useLocation();
   const from = location.pathname + location.search;
   // Details open as a modal over the page underneath (kept when hopping between modals).
@@ -91,6 +93,7 @@ export default function TitleCard({
             </Link>
           </div>
           <p className="card__overlay-meta" aria-hidden="true">
+            {match && <span className="match">{match}% Match</span>}
             <span className="rating-badge rating-badge--sm">{title.contentRating}</span>
             {length && <span>{length}</span>}
           </p>

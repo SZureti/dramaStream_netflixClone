@@ -13,6 +13,7 @@ import { ReviewsProvider } from './state/ReviewsContext.jsx';
 import { AuthProvider } from './state/AuthContext.jsx';
 import { ProgressProvider } from './state/ProgressContext.jsx';
 import { ProfileProvider } from './state/ProfileContext.jsx';
+import { RemindersProvider } from './state/RemindersContext.jsx';
 import { loadRemoteCatalog } from './data/remoteCatalog.js';
 
 // Render with the bundled catalog now; swap in the Supabase copy when it arrives.
@@ -27,7 +28,9 @@ createRoot(document.getElementById('root')).render(
             <MyListProvider>
               <ProgressProvider>
                 <ReviewsProvider>
-                  <App />
+                  <RemindersProvider>
+                    <App />
+                  </RemindersProvider>
                 </ReviewsProvider>
               </ProgressProvider>
             </MyListProvider>

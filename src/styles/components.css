@@ -2410,3 +2410,40 @@
 .card__frame .card__overlay > .card__actions > * {
   pointer-events: auto;
 }
+
+.my-list__sort {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-left: auto;
+}
+
+.my-list__sort .field-label {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.my-list__sort .field {
+  width: auto;
+  min-height: 40px;
+}
+
+/* Netflix-style "% Match" */
+.match {
+  color: #46d369;
+  font-weight: 700;
+}
+
+.title-modal__match {
+  margin-bottom: 0.35rem;
+}
+
+/* Netflix-style "% Match" */
+.match {
+  color: #46d369;
+  font-weight: 700;
+}
+
+.title-modal__match {
+  margin-bottom: 0.35rem;
+}

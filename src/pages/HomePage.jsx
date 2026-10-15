@@ -10,12 +10,15 @@ import useDocumentTitle from '../hooks/useDocumentTitle.js';
 import { useMyList } from '../state/MyListContext.jsx';
 import { useProgress } from '../state/ProgressContext.jsx';
 import { useProfiles } from '../state/ProfileContext.jsx';
+import { useReviews } from '../state/ReviewsContext.jsx';
+import { favouriteTitle } from '../data/match.js';
 
 export default function HomePage() {
   useDocumentTitle('Home');
   const { current } = useProfiles();
   const { savedIds } = useMyList();
   const { continueWatching, hideFromRow } = useProgress();
+  const { ratings } = useReviews();
   const [activity, setActivity] = useState(() => new Map());
 
   useEffect(() => {
@@ -40,6 +43,8 @@ export default function HomePage() {
     activity,
     categories: CATEGORIES,
     continueHeading: current ? `Continue Watching for ${current.name}` : 'Continue Watching',
+    liked: favouriteTitle(ratings, getTitleById),
+    rated: new Set(ratings.keys()),
   });
 
   if (!billboard) {

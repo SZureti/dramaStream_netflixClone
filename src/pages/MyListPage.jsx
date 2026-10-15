@@ -1,9 +1,18 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import TitleCard from '../components/TitleCard.jsx';
 import EmptyState from '../components/EmptyState.jsx';
 import { ListIcon } from '../components/Icons.jsx';
-import { getTitleById } from '../data/catalog.js';
+import { getTitleById, isAllowed } from '../data/catalog.js';
+import { readJSON, writeJSON } from '../lib/storage.js';
+
+const SORT_KEY = 'dramastream:mylist-sort:v1';
+const SORTS = {
+  added: { label: 'Date added', sort: (list) => list },
+  az: { label: 'A–Z', sort: (list) => [...list].sort((a, b) => a.title.localeCompare(b.title)) },
+  za: { label: 'Z–A', sort: (list) => [...list].sort((a, b) => b.title.localeCompare(a.title)) },
+  year: { label: 'Release year', sort: (list) => [...list].sort((a, b) => b.releaseYear - a.releaseYear) },
+};
 import { useMyList } from '../state/MyListContext.jsx';
 import useDocumentTitle from '../hooks/useDocumentTitle.js';
 
@@ -12,7 +21,14 @@ export default function MyListPage() {
   const { savedIds, inAccount } = useMyList();
   const headingRef = useRef(null);
   // My List stores IDs; resolve them against the one canonical catalog.
-  const saved = savedIds.map(getTitleById).filter(Boolean);
+  const [sortBy, setSortBy] = useState(() => (SORTS[readJSON(SORT_KEY, 'added')] ? readJSON(SORT_KEY, 'added') : 'added'));
+  const sortId = useId();
+  // savedIds is newest first, so "Date added" keeps that order.
+  const saved = SORTS[sortBy].sort(savedIds.map(getTitleById).filter((t) => t && isAllowed(t)));
+  const chooseSort = (value) => {
+    setSortBy(value);
+    writeJSON(SORT_KEY, value);
+  };
 
   // Removing a card removes the button that had focus; don't strand keyboard
   // users at the top of the document — return them to the page heading.
@@ -30,6 +46,20 @@ export default function MyListPage() {
           <p className="page__count">
             {saved.length} {saved.length === 1 ? 'title' : 'titles'}
           </p>
+        )}
+        {saved.length > 1 && (
+          <div className="my-list__sort">
+            <label htmlFor={sortId} className="field-label">
+              Sort by
+            </label>
+            <select id={sortId} className="field" value={sortBy} onChange={(e) => chooseSort(e.target.value)}>
+              {Object.entries(SORTS).map(([value, { label }]) => (
+                <option key={value} value={value}>
+                  {label}
+                </option>
+              ))}
+            </select>
+          </div>
         )}
       </div>
 

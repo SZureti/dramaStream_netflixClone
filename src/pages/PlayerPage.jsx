@@ -1,7 +1,7 @@
 import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import MockPlayer from '../components/MockPlayer.jsx';
 import EmptyState from '../components/EmptyState.jsx';
-import { getEpisode, getNextEpisode, getPlayable, getTitleById, isAllowed } from '../data/catalog.js';
+import { getEpisode, getNextEpisode, getPlayable, getTitleById, isAllowed, isAvailable } from '../data/catalog.js';
 import { isResumable, useProgress } from '../state/ProgressContext.jsx';
 import { useProfiles } from '../state/ProfileContext.jsx';
 import useDocumentTitle from '../hooks/useDocumentTitle.js';
@@ -24,6 +24,19 @@ export default function PlayerPage() {
         <EmptyState heading="Not available on this profile">
           <p>
             {title.title} is rated {title.contentRating}, above this profile’s maturity setting.
+          </p>
+        </EmptyState>
+      </div>
+    );
+  }
+
+  if (!isAvailable(title)) {
+    return (
+      <div className="page">
+        <EmptyState heading="Coming soon">
+          <p>
+            {title.title} arrives on DramaStream on{' '}
+            {new Date(`${title.availableFrom}T12:00:00`).toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}.
           </p>
         </EmptyState>
       </div>

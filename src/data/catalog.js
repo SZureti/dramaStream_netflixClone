@@ -1018,6 +1018,107 @@ export const LOCAL_CATALOG = Object.freeze(
       castLabel: 'Featuring',
       heroPosition: '50% 40%',
     },
+
+    // ───────────── Coming Soon (hidden from rows until availableFrom) ─────────────
+    {
+      id: 'anatomy-of-a-fall',
+      title: 'Anatomy of a Fall',
+      type: 'film',
+      synopsis:
+        'A man is found dead in the snow outside an isolated chalet in the French Alps, and his wife, a successful novelist, ends up on trial. As the courtroom dissects their marriage, their partially sighted son must decide what he truly remembers and what he can live with believing.',
+      releaseYear: 2023,
+      contentRating: 'R',
+      availableFrom: '2026-11-01',
+      runtimeMinutes: 151,
+      genres: ['Drama', 'Crime', 'Mystery'],
+      credits: [{ role: 'Director', names: ['Justine Triet'] }],
+      cast: ['Sandra Hüller', 'Swann Arlaud', 'Milo Machado-Graner', 'Antoine Reinartz', 'Samuel Theis'],
+      heroPosition: '50% 35%',
+    },
+    {
+      id: 'the-zone-of-interest',
+      title: 'The Zone of Interest',
+      type: 'film',
+      synopsis:
+        'An Auschwitz commandant and his wife raise their children in a tidy house with a flourishing garden, separated from the camp by a single wall. The horror is rarely shown but constantly heard, making this chilling portrait a study of how ordinary comfort can coexist with atrocity.',
+      releaseYear: 2023,
+      contentRating: 'PG-13',
+      availableFrom: '2026-11-29',
+      runtimeMinutes: 105,
+      genres: ['Drama', 'History', 'War'],
+      credits: [{ role: 'Director', names: ['Jonathan Glazer'] }],
+      cast: ['Christian Friedel', 'Sandra Hüller', 'Johann Karthaus', 'Luis Noah Witte'],
+      heroPosition: '50% 40%',
+    },
+    {
+      id: 'slow-horses',
+      title: 'Slow Horses',
+      type: 'series',
+      synopsis:
+        'British intelligence sends its embarrassments to Slough House, a shabby office run by the brilliant, slovenly Jackson Lamb. Written off and stuck with busywork, these disgraced spies keep stumbling into real conspiracies, and each case tests whether a team of misfits can outwit the agency that discarded them.',
+      releaseYear: 2022,
+      contentRating: 'TV-MA',
+      availableFrom: '2026-11-08',
+      seasons: 6,
+      episodeCount: 36,
+      firstEpisode: { season: 1, episode: 1, title: "Failure's Contagious", runtimeMinutes: 57 },
+      genres: ['Drama', 'Crime', 'Mystery'],
+      credits: [
+        { role: 'Developed by', names: ['Will Smith'] },
+        { role: 'Based on the novels by', names: ['Mick Herron'] },
+      ],
+      cast: ['Gary Oldman', 'Jack Lowden', 'Kristin Scott Thomas', 'Saskia Reeves', 'Christopher Chung'],
+      heroPosition: '50% 30%',
+    },
+    {
+      id: 'the-pitt',
+      title: 'The Pitt',
+      type: 'series',
+      synopsis:
+        'Each episode covers one hour of a grueling fifteen-hour shift in a Pittsburgh trauma center. Veteran attending Dr. Robby guides nervous new residents through overcrowding, budget pressure, and life-or-death calls, while quietly carrying his own grief in a system that leaves almost no room to breathe.',
+      releaseYear: 2025,
+      contentRating: 'TV-MA',
+      availableFrom: '2026-11-22',
+      seasons: 2,
+      episodeCount: 30,
+      firstEpisode: { season: 1, episode: 1, title: '7:00 A.M.', runtimeMinutes: 53 },
+      genres: ['Drama'],
+      credits: [{ role: 'Created by', names: ['R. Scott Gemmill'] }],
+      cast: ['Noah Wyle', 'Patrick Ball', 'Katherine LaNasa', 'Supriya Ganesh', 'Fiona Dourif'],
+      heroPosition: '50% 30%',
+    },
+    {
+      id: 'fire-of-love',
+      title: 'Fire of Love',
+      type: 'documentary',
+      synopsis:
+        'Built from the spectacular archive footage of French volcanologists Katia and Maurice Krafft, this documentary follows a married couple who chased eruptions around the world for two decades. It is both a love story and a portrait of scientific obsession, shadowed by the danger that eventually claimed them.',
+      releaseYear: 2022,
+      contentRating: 'PG',
+      availableFrom: '2026-11-15',
+      runtimeMinutes: 94,
+      genres: ['Documentary'],
+      credits: [{ role: 'Director', names: ['Sara Dosa'] }],
+      cast: ['Miranda July', 'Katia Krafft', 'Maurice Krafft'],
+      castLabel: 'Featuring',
+      heroPosition: '50% 50%',
+    },
+    {
+      id: 'summer-of-soul',
+      title: 'Summer of Soul',
+      type: 'documentary',
+      synopsis:
+        'In 1969, a free summer festival in Harlem drew hundreds of thousands and featured legendary Black musicians, yet its footage sat unseen in a basement for fifty years. Questlove restores those performances and pairs them with memories from attendees, revealing a joyful, political celebration that history nearly forgot.',
+      releaseYear: 2021,
+      contentRating: 'PG-13',
+      availableFrom: '2026-12-06',
+      runtimeMinutes: 117,
+      genres: ['Documentary', 'Music', 'History'],
+      credits: [{ role: 'Director', names: ['Questlove'] }],
+      cast: ['Stevie Wonder', 'Nina Simone', 'B.B. King', 'Lin-Manuel Miranda', 'Chris Rock'],
+      castLabel: 'Featuring',
+      heroPosition: '50% 30%',
+    },
   ].map(makeTitle),
 );
 
@@ -1063,9 +1164,24 @@ export function isAllowed(title) {
   return (RATING_LEVEL[title?.contentRating] ?? LEVELS.all) <= maxLevel;
 }
 
-/** The titles the current profile may see. */
+// ───────────── Coming Soon ─────────────
+const todayIso = () => new Date().toISOString().slice(0, 10);
+
+/** False while a title is still Coming Soon (available_from in the future). */
+export function isAvailable(title) {
+  return !title?.availableFrom || title.availableFrom <= todayIso();
+}
+
+/** The titles the current profile may see and play now. */
 export function getCatalog() {
-  return maxLevel === LEVELS.all ? current.titles : current.titles.filter(isAllowed);
+  return current.titles.filter((t) => isAvailable(t) && (maxLevel === LEVELS.all || isAllowed(t)));
+}
+
+/** Coming Soon titles this profile may see, soonest first. */
+export function getComingSoon() {
+  return current.titles
+    .filter((t) => !isAvailable(t) && isAllowed(t))
+    .sort((a, b) => a.availableFrom.localeCompare(b.availableFrom));
 }
 
 /** 'local' (bundled) or 'supabase'. Changes when the remote catalog arrives. */

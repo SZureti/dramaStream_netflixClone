@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Wordmark } from '../components/AppHeader.jsx';
 import ProfileAvatar from '../components/ProfileAvatar.jsx';
 import { PlusIcon } from '../components/Icons.jsx';
+import PinDialog from '../components/PinDialog.jsx';
 import { MAX_PROFILES, useProfiles } from '../state/ProfileContext.jsx';
 import useDocumentTitle from '../hooks/useDocumentTitle.js';
 
@@ -12,6 +13,8 @@ export default function ProfilesPage() {
   const { loaded, profiles, selectProfile } = useProfiles();
   const navigate = useNavigate();
   const [managing, setManaging] = useState(false);
+  const [locked, setLocked] = useState(null); // profile waiting for its PIN
+  const [then, setThen] = useState(null); // where to go after unlocking
 
   if (!loaded) {
     return (
@@ -21,13 +24,23 @@ export default function ProfilesPage() {
     );
   }
 
-  const choose = (profile) => {
+  const open = (profile) => {
     if (managing) {
-      navigate(`/profiles/${profile.id}/edit`);
+      navigate(`/profiles/${profile.id}/edit`, { state: { unlocked: true } });
       return;
     }
     selectProfile(profile.id);
     navigate('/', { replace: true });
+  };
+
+  // A locked profile asks for its PIN first, for watching and for editing.
+  const choose = (profile) => {
+    if (profile.pin_hash) {
+      setThen(() => () => open(profile));
+      setLocked(profile);
+    } else {
+      open(profile);
+    }
   };
 
   return (
@@ -56,6 +69,12 @@ export default function ProfilesPage() {
                 <span className="profile-tile__name">
                   {managing && <span className="sr-only">Edit </span>}
                   {p.name}
+                  {p.pin_hash && (
+                    <span className="profile-tile__lock">
+                      <span aria-hidden="true"> 🔒</span>
+                      <span className="sr-only"> (locked)</span>
+                    </span>
+                  )}
                 </span>
               </button>
             </li>
@@ -79,6 +98,14 @@ export default function ProfilesPage() {
           {managing ? 'Done' : 'Manage Profiles'}
         </button>
       </div>
+      <PinDialog
+        profile={locked}
+        onCancel={() => setLocked(null)}
+        onUnlock={() => {
+          setLocked(null);
+          then?.();
+        }}
+      />
     </div>
   );
 }

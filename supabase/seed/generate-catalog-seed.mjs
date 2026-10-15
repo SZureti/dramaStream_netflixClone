@@ -39,13 +39,13 @@ const titleRows = catalog.map((t) => {
   return `  (${[
     q(t.id), q(t.title), q(t.type), q(t.synopsis), n(t.releaseYear), q(t.contentRating),
     n(t.runtimeMinutes), n(t.seasons), n(t.episodeCount), t.limitedSeries ? 'true' : 'false',
-    q(t.castLabel), q(t.heroPosition), t.id === FEATURED_TITLE_ID ? 'true' : 'false', sortOrder.get(t.id),
+    q(t.castLabel), q(t.heroPosition), t.id === FEATURED_TITLE_ID ? 'true' : 'false', sortOrder.get(t.id), q(t.availableFrom),
   ].join(', ')})`;
 });
 lines.push(
-  'insert into public.titles (id, title, type, synopsis, release_year, content_rating, runtime_minutes, seasons, episode_count, limited_series, cast_label, hero_position, is_featured, sort_order) values',
+  'insert into public.titles (id, title, type, synopsis, release_year, content_rating, runtime_minutes, seasons, episode_count, limited_series, cast_label, hero_position, is_featured, sort_order, available_from) values',
   titleRows.join(',\n'),
-  'on conflict (id) do update set title = excluded.title, type = excluded.type, synopsis = excluded.synopsis, release_year = excluded.release_year, content_rating = excluded.content_rating, runtime_minutes = excluded.runtime_minutes, seasons = excluded.seasons, episode_count = excluded.episode_count, limited_series = excluded.limited_series, cast_label = excluded.cast_label, hero_position = excluded.hero_position, is_featured = excluded.is_featured, sort_order = excluded.sort_order;',
+  'on conflict (id) do update set title = excluded.title, type = excluded.type, synopsis = excluded.synopsis, release_year = excluded.release_year, content_rating = excluded.content_rating, runtime_minutes = excluded.runtime_minutes, seasons = excluded.seasons, episode_count = excluded.episode_count, limited_series = excluded.limited_series, cast_label = excluded.cast_label, hero_position = excluded.hero_position, is_featured = excluded.is_featured, sort_order = excluded.sort_order, available_from = excluded.available_from;',
   '',
 );
 

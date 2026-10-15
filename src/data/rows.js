@@ -50,6 +50,8 @@ export function buildHomeRows({
   activity,
   categories,
   continueHeading,
+  liked = null, // a title the viewer loved or liked
+  rated = new Set(), // ids the viewer already rated (left out of "Because you liked")
 }) {
   const picks = editorsOrder(catalog, featuredId);
   const score = (key) => (t) => activity.get(t.id)?.[key] ?? 0;
@@ -87,6 +89,13 @@ export function buildHomeRows({
     const similar = similarTitles(lastWatched, catalog);
     if (similar.length >= 3)
       rows.push({ id: 'because-you-watched', heading: `Because you watched ${lastWatched.title}`, titles: similar });
+  }
+
+  if (liked && liked.id !== lastWatched?.id) {
+    const similar = similarTitles(liked, catalog).filter((t) => !rated.has(t.id));
+    if (similar.length >= 3) {
+      rows.push({ id: 'because-you-liked', heading: `Because you liked ${liked.title}`, titles: similar });
+    }
   }
 
   const genres = [...new Set(catalog.flatMap((t) => t.genres))].filter((g) => !BROAD_GENRES.has(g)).sort();

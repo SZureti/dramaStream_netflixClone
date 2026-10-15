@@ -220,9 +220,15 @@ export function ReviewsProvider({ children }) {
     [entry],
   );
 
+  // Every rating this viewer has given, in the order they were stored (for % Match).
+  const ratings = useMemo(
+    () => new Map(Object.entries(byTitle).filter(([, e]) => e.myRating).map(([id, e]) => [id, e.myRating])),
+    [byTitle],
+  );
+
   const value = useMemo(
-    () => ({ summary, rate, addReview, removeReview, inAccount: Boolean(profileId) }),
-    [summary, rate, addReview, removeReview, profileId],
+    () => ({ summary, rate, addReview, removeReview, ratings, inAccount: Boolean(profileId) }),
+    [summary, rate, addReview, removeReview, ratings, profileId],
   );
   return <ReviewsContext.Provider value={value}>{children}</ReviewsContext.Provider>;
 }

@@ -9,6 +9,19 @@ const ProfileContext = createContext(null);
 
 export const MAX_PROFILES = 5;
 export const AVATARS = ['red', 'blue', 'green', 'yellow', 'purple', 'teal'];
+export const LANGUAGES = [
+  { value: 'en', label: 'English' },
+  { value: 'es', label: 'Español' },
+  { value: 'fr', label: 'Français' },
+  { value: 'de', label: 'Deutsch' },
+  { value: 'pt', label: 'Português' },
+];
+export const SUBTITLE_SIZES = ['small', 'medium', 'large'];
+export const SUBTITLE_STYLES = [
+  { value: 'white', label: 'White text with shadow' },
+  { value: 'yellow', label: 'Yellow text with shadow' },
+  { value: 'boxed', label: 'White text on a black box' },
+];
 export const MATURITY_LEVELS = [
   { value: 'little-kids', label: 'Little Kids', ratings: 'TV-Y, G, TV-G' },
   { value: 'older-kids', label: 'Older Kids', ratings: 'TV-Y7, PG, TV-PG' },

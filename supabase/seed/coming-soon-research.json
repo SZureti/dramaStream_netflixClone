@@ -1,0 +1,262 @@
+{
+  "titles": [
+    {
+      "id": "anatomy-of-a-fall",
+      "title": "Anatomy of a Fall",
+      "type": "film",
+      "tmdbId": 915935,
+      "tmdbType": "movie",
+      "releaseYear": 2023,
+      "contentRating": "R",
+      "runtimeMinutes": 151,
+      "genres": [
+        "Drama",
+        "Crime",
+        "Mystery"
+      ],
+      "credits": [
+        {
+          "role": "Director",
+          "names": [
+            "Justine Triet"
+          ]
+        }
+      ],
+      "cast": [
+        "Sandra Hüller",
+        "Swann Arlaud",
+        "Milo Machado-Graner",
+        "Antoine Reinartz",
+        "Samuel Theis"
+      ],
+      "images": {
+        "poster": "/1ho0d4LNZw3Y0voeKmSvPSgJOJ2.jpg",
+        "backdrop": "/lDVl2jf6VB8ODl1olZ6FLvOV1gX.jpg",
+        "logo": "/fDgEeNkyUPBGzovS98t899SIdhN.png"
+      },
+      "synopsis": "A man is found dead in the snow outside an isolated chalet in the French Alps, and his wife, a successful novelist, ends up on trial. As the courtroom dissects their marriage, their partially sighted son must decide what he truly remembers and what he can live with believing.",
+      "heroPosition": "50% 35%",
+      "availableFrom": "2026-11-01"
+    },
+    {
+      "id": "the-zone-of-interest",
+      "title": "The Zone of Interest",
+      "type": "film",
+      "tmdbId": 467244,
+      "tmdbType": "movie",
+      "releaseYear": 2023,
+      "contentRating": "PG-13",
+      "runtimeMinutes": 105,
+      "genres": [
+        "Drama",
+        "History",
+        "War"
+      ],
+      "credits": [
+        {
+          "role": "Director",
+          "names": [
+            "Jonathan Glazer"
+          ]
+        }
+      ],
+      "cast": [
+        "Christian Friedel",
+        "Sandra Hüller",
+        "Johann Karthaus",
+        "Luis Noah Witte"
+      ],
+      "images": {
+        "poster": "/hUu9zyZmDd8VZegKi1iK1Vk0RYS.jpg",
+        "backdrop": "/pnTSOKcYnvdpQNQElAtJM1rWOxH.jpg",
+        "logo": "/q9aMZQKEsU1VabNGyYfFoECP3lP.png"
+      },
+      "synopsis": "An Auschwitz commandant and his wife raise their children in a tidy house with a flourishing garden, separated from the camp by a single wall. The horror is rarely shown but constantly heard, making this chilling portrait a study of how ordinary comfort can coexist with atrocity.",
+      "heroPosition": "50% 40%",
+      "availableFrom": "2026-11-29"
+    },
+    {
+      "id": "slow-horses",
+      "title": "Slow Horses",
+      "type": "series",
+      "tmdbId": 95480,
+      "tmdbType": "tv",
+      "releaseYear": 2022,
+      "contentRating": "TV-MA",
+      "seasons": 6,
+      "episodeCount": 36,
+      "limitedSeries": false,
+      "firstEpisode": {
+        "season": 1,
+        "episode": 1,
+        "title": "Failure's Contagious",
+        "runtimeMinutes": 57
+      },
+      "genres": [
+        "Drama",
+        "Crime",
+        "Mystery"
+      ],
+      "credits": [
+        {
+          "role": "Developed by",
+          "names": [
+            "Will Smith"
+          ]
+        },
+        {
+          "role": "Based on the novels by",
+          "names": [
+            "Mick Herron"
+          ]
+        }
+      ],
+      "cast": [
+        "Gary Oldman",
+        "Jack Lowden",
+        "Kristin Scott Thomas",
+        "Saskia Reeves",
+        "Christopher Chung"
+      ],
+      "images": {
+        "poster": "/AdYr4DjOgXvDUMwu6vEhZy1Rnxk.jpg",
+        "backdrop": "/gPQppUnLx9vqPDLz3WwZ2HJsNbt.jpg",
+        "logo": "/2zTYCYPEOck6BsFfjj7SDMBoCRJ.png"
+      },
+      "synopsis": "British intelligence sends its embarrassments to Slough House, a shabby office run by the brilliant, slovenly Jackson Lamb. Written off and stuck with busywork, these disgraced spies keep stumbling into real conspiracies, and each case tests whether a team of misfits can outwit the agency that discarded them.",
+      "heroPosition": "50% 30%",
+      "availableFrom": "2026-11-08"
+    },
+    {
+      "id": "the-pitt",
+      "title": "The Pitt",
+      "type": "series",
+      "tmdbId": 250307,
+      "tmdbType": "tv",
+      "releaseYear": 2025,
+      "contentRating": "TV-MA",
+      "seasons": 2,
+      "episodeCount": 30,
+      "limitedSeries": false,
+      "firstEpisode": {
+        "season": 1,
+        "episode": 1,
+        "title": "7:00 A.M.",
+        "runtimeMinutes": 53
+      },
+      "genres": [
+        "Drama"
+      ],
+      "credits": [
+        {
+          "role": "Created by",
+          "names": [
+            "R. Scott Gemmill"
+          ]
+        }
+      ],
+      "cast": [
+        "Noah Wyle",
+        "Patrick Ball",
+        "Katherine LaNasa",
+        "Supriya Ganesh",
+        "Fiona Dourif"
+      ],
+      "images": {
+        "poster": "/kvFSpESyBZMjaeOJDx7RS3P1jey.jpg",
+        "backdrop": "/z3BkMbCy5ajZPMyKEUwsPHuz2cV.jpg",
+        "logo": "/zqsePGDhPnk5KpSjlZFpmZyy8h6.png"
+      },
+      "synopsis": "Each episode covers one hour of a grueling fifteen-hour shift in a Pittsburgh trauma center. Veteran attending Dr. Robby guides nervous new residents through overcrowding, budget pressure, and life-or-death calls, while quietly carrying his own grief in a system that leaves almost no room to breathe.",
+      "heroPosition": "50% 30%",
+      "availableFrom": "2026-11-22"
+    },
+    {
+      "id": "fire-of-love",
+      "title": "Fire of Love",
+      "type": "documentary",
+      "tmdbId": 913823,
+      "tmdbType": "movie",
+      "releaseYear": 2022,
+      "contentRating": "PG",
+      "runtimeMinutes": 94,
+      "genres": [
+        "Documentary"
+      ],
+      "credits": [
+        {
+          "role": "Director",
+          "names": [
+            "Sara Dosa"
+          ]
+        }
+      ],
+      "cast": [
+        "Miranda July",
+        "Katia Krafft",
+        "Maurice Krafft"
+      ],
+      "castLabel": "Featuring",
+      "images": {
+        "poster": "/9smEX8UP84yb2GisLwyAyQKvCWS.jpg",
+        "backdrop": "/3oRwn7WIMt4Vtw65mnydDQHthwQ.jpg",
+        "logo": "/w2TO9Gqpe88H2RlfAqS7VbHauwB.png"
+      },
+      "synopsis": "Built from the spectacular archive footage of French volcanologists Katia and Maurice Krafft, this documentary follows a married couple who chased eruptions around the world for two decades. It is both a love story and a portrait of scientific obsession, shadowed by the danger that eventually claimed them.",
+      "heroPosition": "50% 50%",
+      "availableFrom": "2026-11-15"
+    },
+    {
+      "id": "summer-of-soul",
+      "title": "Summer of Soul",
+      "type": "documentary",
+      "tmdbId": 776527,
+      "tmdbType": "movie",
+      "releaseYear": 2021,
+      "contentRating": "PG-13",
+      "runtimeMinutes": 117,
+      "genres": [
+        "Documentary",
+        "Music",
+        "History"
+      ],
+      "credits": [
+        {
+          "role": "Director",
+          "names": [
+            "Questlove"
+          ]
+        }
+      ],
+      "cast": [
+        "Stevie Wonder",
+        "Nina Simone",
+        "B.B. King",
+        "Lin-Manuel Miranda",
+        "Chris Rock"
+      ],
+      "castLabel": "Featuring",
+      "images": {
+        "poster": "/8kNwhqUGvpzWJd60O1Qvb8G6psK.jpg",
+        "backdrop": "/1LYWnmr5K3Hs3XEZ323bY0dBZsK.jpg",
+        "logo": "/x1wiieYUnIcbtGSEN64odAog7AY.png"
+      },
+      "synopsis": "In 1969, a free summer festival in Harlem drew hundreds of thousands and featured legendary Black musicians, yet its footage sat unseen in a basement for fifty years. Questlove restores those performances and pairs them with memories from attendees, revealing a joyful, political celebration that history nearly forgot.",
+      "heroPosition": "50% 30%",
+      "availableFrom": "2026-12-06"
+    }
+  ],
+  "notes": [
+    "All facts pulled from TMDB web pages on 2026-10-15 (main page, /releases, /images/logos?image_language=en, /images/backdrops, /season/1, /seasons).",
+    "US ratings: films verified on TMDB Release Dates, US theatrical row (Anatomy of a Fall R, Zone of Interest PG-13, Fire of Love PG, Summer of Soul PG-13). TV ratings are the US certification shown on the show page (both TV-MA).",
+    "Anatomy of a Fall: TMDB genres are Thriller, Mystery, Crime (no Drama, and Thriller is not on the allowed list). Mapped to Drama, Crime, Mystery to fit the site's rule that dramas start with Drama.",
+    "Fire of Love: TMDB lists only Documentary. Nature or Romance could be added if the site wants more filter tags. Cast uses narrator Miranda July and the Kraffts (archive footage). TMDB's top two billed are the French voice actors Alka Balbir and Guillaume Tremblay.",
+    "Summer of Soul: cast reordered from TMDB billing to lead with the festival performers (Stevie Wonder, Nina Simone, B.B. King). Lin-Manuel Miranda and Chris Rock appear as interviewees. Director is credited on TMDB as 'Questlove' (Ahmir Thompson). Full title kept; a UI may want to shorten it to 'Summer of Soul'.",
+    "Slow Horses: TMDB has no 'Created by' credit for this show. 'Will Smith' (the developer and showrunner, adapting Mick Herron's novels) comes from outside knowledge, and TMDB lists him only as Executive Producer. Swap or drop the credit if strict TMDB sourcing is needed.",
+    "Slow Horses counts: TMDB lists 6 seasons and 36 episodes. The season 6 finale airs 2026-10-21, so 35 had aired as of 2026-10-15. Status is Returning Series.",
+    "The Pitt counts: 2 aired seasons of 15 episodes each (30 total). TMDB also has a Season 3 placeholder with 0 episodes, which is not counted. Status is Returning Series.",
+    "Logos: every one is an English (en-US) PNG from TMDB, all light-colored for dark backgrounds. Fire of Love's top-rated logo (e1OMhqZfPr08Sm7IGqkF4SSWTQH.png) is dark, so the light one was used instead. For Slow Horses, the wide wordmark (2zTYCYPEOck6BsFfjj7SDMBoCRJ.png) was picked over the higher-ranked stacked logo (peE0Gab2MWjXPlAYhakxjHciNPr.png).",
+    "Backdrops are each title's TMDB primary backdrop and are textless (xx). heroPosition values are estimates; nobody checked them against the images.",
+    "Synopses are original 40-60 word summaries."
+  ]
+}

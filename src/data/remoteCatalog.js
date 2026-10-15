@@ -7,6 +7,7 @@ const TIMEOUT_MS = 8000;
 const SELECT = `
   id, title, type, synopsis, release_year, content_rating, runtime_minutes,
   seasons, episode_count, limited_series, cast_label, hero_position, is_featured, sort_order,
+  available_from, created_at,
   title_genres ( position, genres ( name ) ),
   credits ( role, role_position, position, people ( name ) ),
   season_rows:seasons ( season_number, episodes ( episode_number, name, runtime_minutes, synopsis, still_path ) )
@@ -38,7 +39,9 @@ export function toRecord(row) {
     credits,
     cast,
     heroPosition: row.hero_position ?? undefined,
+    addedAt: row.created_at,
   };
+  if (row.available_from) record.availableFrom = row.available_from;
   if (row.runtime_minutes) record.runtimeMinutes = row.runtime_minutes;
   if (row.cast_label) record.castLabel = row.cast_label;
   if (row.type === 'series') {

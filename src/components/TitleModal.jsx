@@ -6,8 +6,10 @@ import MyListButton from './MyListButton.jsx';
 import ThumbsRating from './ThumbsRating.jsx';
 import TitleCard from './TitleCard.jsx';
 import EpisodeList from './EpisodeList.jsx';
+import RemindButton from './RemindButton.jsx';
 import { CloseIcon, PlayIcon } from './Icons.jsx';
-import { getCatalog, getPlayable } from '../data/catalog.js';
+import { getCatalog, getPlayable, getTitleById, isAvailable } from '../data/catalog.js';
+import { matchPercent } from '../data/match.js';
 import { moodsFor } from '../data/moods.js';
 import { similarTitles } from '../data/rows.js';
 import { useReviews } from '../state/ReviewsContext.jsx';
@@ -22,7 +24,8 @@ export default function TitleModal({ title }) {
   const dialogRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
-  const { summary, rate } = useReviews();
+  const { summary, rate, ratings } = useReviews();
+  const match = matchPercent(title, ratings, getTitleById);
   const myRating = summary(title.id).myRating;
   const saved = useProgress().getProgress(title.id);
   const resumable = isResumable(saved);
@@ -86,13 +89,17 @@ export default function TitleModal({ title }) {
               {title.title}
             </h2>
             <div className="title-modal__actions">
-              <Link to={`/watch/${title.id}`} state={watchState} className="btn btn--primary">
-                <PlayIcon size={24} />
-                <span>
-                  {resumable ? 'Resume' : 'Play'}
-                  {playable.label && <span className="btn__sub"> {playable.label}</span>}
-                </span>
-              </Link>
+              {isAvailable(title) ? (
+                <Link to={`/watch/${title.id}`} state={watchState} className="btn btn--primary">
+                  <PlayIcon size={24} />
+                  <span>
+                    {resumable ? 'Resume' : 'Play'}
+                    {playable.label && <span className="btn__sub"> {playable.label}</span>}
+                  </span>
+                </Link>
+              ) : (
+                <RemindButton title={title} />
+              )}
               <MyListButton title={title} variant="icon" className="icon-btn--lg" />
               <ThumbsRating
                 compact
@@ -107,6 +114,7 @@ export default function TitleModal({ title }) {
         <div className="title-modal__body">
           <div className="title-modal__columns">
             <div>
+              {match && <p className="match title-modal__match">{match}% Match</p>}
               <MetaLine title={title} showType showEpisodes className="title-modal__meta" />
               <p className="title-modal__synopsis">{title.synopsis}</p>
             </div>
@@ -131,7 +139,7 @@ export default function TitleModal({ title }) {
             </dl>
           </div>
 
-          {title.type === 'series' && <EpisodeList title={title} headingLevel={3} />}
+          {title.type === 'series' && isAvailable(title) && <EpisodeList title={title} headingLevel={3} />}
 
           {similar.length > 0 && (
             <section className="title-modal__section" aria-labelledby="more-like-this">

@@ -805,3 +805,65 @@
 .review__rating--love { color: #ff7a85; }
 .review__rating--like { color: #9fd3a0; }
 .review__rating--not-for-me { color: var(--muted); }
+
+.profile-form__row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 0.75rem;
+}
+
+.profile-form__pin,
+.pin-dialog__input {
+  max-width: 9rem;
+  font-size: 1.4rem;
+  letter-spacing: 0.5em;
+  text-align: center;
+}
+
+.pin-dialog__input {
+  margin: 1rem 0 0.5rem;
+}
+
+.profile-tile__lock {
+  font-size: 0.8em;
+}
+
+/* Subtitles: the preview on the profile form and the mock captions in the player */
+.subtitle-preview,
+.player__captions {
+  display: inline-block;
+  margin-top: 0.6rem;
+  padding: 0.2em 0.5em;
+  color: #fff;
+  text-shadow:
+    0 0 3px #000,
+    0 2px 4px #000;
+  font-weight: 600;
+  border-radius: 3px;
+}
+
+.subtitle-preview {
+  background: #555 url('/assets/hero/960/the-crown.jpg') center / cover;
+}
+
+.subtitle-preview--small,
+.player__captions--small {
+  font-size: 0.9rem;
+}
+.subtitle-preview--medium,
+.player__captions--medium {
+  font-size: 1.2rem;
+}
+.subtitle-preview--large,
+.player__captions--large {
+  font-size: 1.6rem;
+}
+.subtitle-preview--yellow,
+.player__captions--yellow {
+  color: #ffe14d;
+}
+.subtitle-preview--boxed,
+.player__captions--boxed {
+  background: rgba(0, 0, 0, 0.85);
+  text-shadow: none;
+}

@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useMyList } from '../state/MyListContext.jsx';
 import { HomeIcon, ListIcon, SearchIcon } from './Icons.jsx';
 import AccountMenu from './AccountMenu.jsx';
+import NotificationsBell from './NotificationsBell.jsx';
 import { useProfiles } from '../state/ProfileContext.jsx';
 
 // Netflix-style browse pages (see pages/BrowsePage.jsx).
@@ -10,6 +11,7 @@ const BROWSE_LINKS = [
   { to: '/browse/series', label: 'TV Shows' },
   { to: '/browse/films', label: 'Movies' },
   { to: '/browse/documentaries', label: 'Documentaries' },
+  { to: '/new', label: 'New & Popular' },
 ];
 
 function useScrolled(threshold = 8) {
@@ -92,6 +94,7 @@ export default function AppHeader() {
             <SearchIcon size={22} />
             <span className="header-search__label">Search</span>
           </NavLink>
+          <NotificationsBell />
           <AccountMenu />
         </div>
       </header>
