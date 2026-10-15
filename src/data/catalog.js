@@ -1,7 +1,7 @@
 /**
  * DramaStream catalog — the single source of truth for every screen.
  *
- * 12 real titles: 4 drama films, 4 drama series, 4 drama documentaries.
+ * 30 real titles: 10 drama films, 10 drama series, 10 drama documentaries.
  * Facts (year, rating, runtime, seasons/episodes, credits) were checked against
  * TMDB (themoviedb.org); ratings for the two Netflix documentaries come from
  * Netflix's US title pages. Synopses are written for this project.
@@ -241,10 +241,295 @@ export const catalog = Object.freeze(
       castLabel: 'Featuring',
       heroPosition: '72% 30%',
     },
+
+    // ───────────── More Drama Films ─────────────
+    {
+      id: 'the-godfather',
+      title: 'The Godfather',
+      type: 'film',
+      synopsis:
+        'When aging patriarch Vito Corleone is targeted by a rival family, his youngest son Michael — the one who swore to stay out of the family business — is drawn into a war that will decide who he becomes.',
+      releaseYear: 1972,
+      contentRating: 'R',
+      runtimeMinutes: 175,
+      genres: ['Drama', 'Crime'],
+      credits: [
+        { role: 'Director', names: ['Francis Ford Coppola'] },
+        { role: 'Based on the novel by', names: ['Mario Puzo'] },
+      ],
+      cast: ['Marlon Brando', 'Al Pacino', 'James Caan', 'Robert Duvall'],
+      heroPosition: '50% 30%',
+    },
+    {
+      id: 'schindlers-list',
+      title: 'Schindler’s List',
+      type: 'film',
+      synopsis:
+        'In occupied Poland, opportunistic businessman Oskar Schindler staffs his factory with Jewish workers for cheap labor — until the horror unfolding around him turns profit into a desperate effort to save as many lives as he can.',
+      releaseYear: 1993,
+      contentRating: 'R',
+      runtimeMinutes: 195,
+      genres: ['Drama', 'History', 'War'],
+      credits: [
+        { role: 'Director', names: ['Steven Spielberg'] },
+        { role: 'Based on the novel by', names: ['Thomas Keneally'] },
+      ],
+      cast: ['Liam Neeson', 'Ben Kingsley', 'Ralph Fiennes'],
+      heroPosition: '50% 30%',
+    },
+    {
+      id: 'manchester-by-the-sea',
+      title: 'Manchester by the Sea',
+      type: 'film',
+      synopsis:
+        'A withdrawn Boston handyman returns to his coastal hometown after his brother’s death and learns he has been named guardian of his teenage nephew — forcing him to face the past he left behind.',
+      releaseYear: 2016,
+      contentRating: 'R',
+      runtimeMinutes: 138,
+      genres: ['Drama'],
+      credits: [{ role: 'Director', names: ['Kenneth Lonergan'] }],
+      cast: ['Casey Affleck', 'Lucas Hedges', 'Michelle Williams', 'Kyle Chandler'],
+      heroPosition: '50% 35%',
+    },
+    {
+      id: 'marriage-story',
+      title: 'Marriage Story',
+      type: 'film',
+      synopsis:
+        'A theater director and an actor try to part ways gently, but a bicoastal divorce pulls in lawyers, pride, and their young son — testing how much love can survive the ending of a marriage.',
+      releaseYear: 2019,
+      contentRating: 'R',
+      runtimeMinutes: 137,
+      genres: ['Drama'],
+      credits: [{ role: 'Director', names: ['Noah Baumbach'] }],
+      cast: ['Adam Driver', 'Scarlett Johansson', 'Laura Dern', 'Alan Alda'],
+      heroPosition: '50% 35%',
+    },
+    {
+      id: 'nomadland',
+      title: 'Nomadland',
+      type: 'film',
+      synopsis:
+        'After the economic collapse of her company town, a widow packs her life into a van and drives west, finding work, solitude, and an unexpected community among modern-day nomads.',
+      releaseYear: 2021,
+      contentRating: 'R',
+      runtimeMinutes: 108,
+      genres: ['Drama'],
+      credits: [{ role: 'Director', names: ['Chloé Zhao'] }],
+      cast: ['Frances McDormand', 'David Strathairn'],
+      heroPosition: '50% 40%',
+    },
+    {
+      id: 'oppenheimer',
+      title: 'Oppenheimer',
+      type: 'film',
+      synopsis:
+        'The story of physicist J. Robert Oppenheimer, who led the secret wartime race to build the atomic bomb — and then lived with what his success had unleashed on the world.',
+      releaseYear: 2023,
+      contentRating: 'R',
+      runtimeMinutes: 181,
+      genres: ['Drama', 'History'],
+      credits: [{ role: 'Director', names: ['Christopher Nolan'] }],
+      cast: ['Cillian Murphy', 'Emily Blunt', 'Matt Damon', 'Robert Downey Jr.'],
+      heroPosition: '50% 30%',
+    },
+
+    // ───────────── More Drama Series ─────────────
+    {
+      id: 'better-call-saul',
+      title: 'Better Call Saul',
+      type: 'series',
+      synopsis:
+        'Years before Breaking Bad, struggling lawyer Jimmy McGill hustles for clients in Albuquerque, and every shortcut he takes edges him closer to becoming the criminal attorney Saul Goodman.',
+      releaseYear: 2015,
+      contentRating: 'TV-MA',
+      seasons: 6,
+      episodeCount: 63,
+      firstEpisode: { season: 1, episode: 1, title: 'Uno', runtimeMinutes: 54 },
+      genres: ['Drama', 'Crime'],
+      credits: [{ role: 'Created by', names: ['Vince Gilligan', 'Peter Gould'] }],
+      cast: ['Bob Odenkirk', 'Rhea Seehorn', 'Jonathan Banks', 'Patrick Fabian'],
+      heroPosition: '50% 30%',
+    },
+    {
+      id: 'mad-men',
+      title: 'Mad Men',
+      type: 'series',
+      synopsis:
+        'On Madison Avenue in the 1960s, brilliant ad man Don Draper sells dreams to America while guarding a carefully constructed identity — as the decade transforms everyone around him.',
+      releaseYear: 2007,
+      contentRating: 'TV-14',
+      seasons: 7,
+      episodeCount: 92,
+      firstEpisode: { season: 1, episode: 1, title: 'Smoke Gets in Your Eyes', runtimeMinutes: 49 },
+      genres: ['Drama'],
+      credits: [{ role: 'Created by', names: ['Matthew Weiner'] }],
+      cast: ['Jon Hamm', 'Elisabeth Moss', 'January Jones', 'Vincent Kartheiser'],
+      heroPosition: '50% 30%',
+    },
+    {
+      id: 'chernobyl',
+      title: 'Chernobyl',
+      type: 'series',
+      limitedSeries: true,
+      synopsis:
+        'In April 1986, a reactor explodes at the Chernobyl nuclear plant. Scientists, officials, and ordinary workers race to contain the disaster while the Soviet state works just as hard to contain the truth.',
+      releaseYear: 2019,
+      contentRating: 'TV-MA',
+      seasons: 1,
+      episodeCount: 5,
+      firstEpisode: { season: 1, episode: 1, title: '1:23:45', runtimeMinutes: 61 },
+      genres: ['Drama', 'History'],
+      credits: [{ role: 'Created by', names: ['Craig Mazin'] }],
+      cast: ['Jared Harris', 'Stellan Skarsgård', 'Emily Watson', 'Paul Ritter'],
+      heroPosition: '50% 35%',
+    },
+    {
+      id: 'the-sopranos',
+      title: 'The Sopranos',
+      type: 'series',
+      synopsis:
+        'New Jersey mob boss Tony Soprano starts seeing a psychiatrist after a series of panic attacks, and therapy becomes one more place where his two families — and his two selves — collide.',
+      releaseYear: 1999,
+      contentRating: 'TV-MA',
+      seasons: 6,
+      episodeCount: 86,
+      firstEpisode: { season: 1, episode: 1, title: 'The Sopranos', runtimeMinutes: 60 },
+      genres: ['Drama', 'Crime'],
+      credits: [{ role: 'Created by', names: ['David Chase'] }],
+      cast: ['James Gandolfini', 'Edie Falco', 'Jamie-Lynn Sigler', 'Robert Iler'],
+      heroPosition: '50% 30%',
+    },
+    {
+      id: 'mare-of-easttown',
+      title: 'Mare of Easttown',
+      type: 'series',
+      limitedSeries: true,
+      synopsis:
+        'A small-town Pennsylvania detective, once a local basketball hero, investigates a young mother’s murder while her own life and family quietly fall apart around her.',
+      releaseYear: 2021,
+      contentRating: 'TV-MA',
+      seasons: 1,
+      episodeCount: 7,
+      firstEpisode: { season: 1, episode: 1, title: 'Miss Lady Hawk Herself', runtimeMinutes: 58 },
+      genres: ['Drama', 'Crime', 'Mystery'],
+      credits: [{ role: 'Created by', names: ['Brad Ingelsby'] }],
+      cast: ['Kate Winslet', 'Jean Smart', 'Julianne Nicholson', 'Angourie Rice'],
+      heroPosition: '50% 35%',
+    },
+    {
+      id: 'the-queens-gambit',
+      title: 'The Queen’s Gambit',
+      type: 'series',
+      limitedSeries: true,
+      synopsis:
+        'Orphaned at nine, Beth Harmon learns chess from a janitor in a basement — and grows into a prodigy fighting her way to the top of a male-dominated game while battling her own dependencies.',
+      releaseYear: 2020,
+      contentRating: 'TV-MA',
+      seasons: 1,
+      episodeCount: 7,
+      firstEpisode: { season: 1, episode: 1, title: 'Openings', runtimeMinutes: 59 },
+      genres: ['Drama'],
+      credits: [{ role: 'Created by', names: ['Scott Frank', 'Allan Scott'] }],
+      cast: ['Anya Taylor-Joy', 'Marielle Heller', 'Thomas Brodie-Sangster', 'Harry Melling'],
+      heroPosition: '50% 30%',
+    },
+
+    // ───────────── More Drama Documentaries ─────────────
+    {
+      id: 'man-on-wire',
+      title: 'Man on Wire',
+      type: 'documentary',
+      synopsis:
+        'In 1974, French high-wire artist Philippe Petit and a small band of friends sneak into the unfinished World Trade Center to string a cable between the Twin Towers — and attempt the impossible walk.',
+      releaseYear: 2008,
+      contentRating: 'PG-13',
+      runtimeMinutes: 94,
+      genres: ['Documentary'],
+      credits: [{ role: 'Director', names: ['James Marsh'] }],
+      cast: ['Philippe Petit', 'Jean-Louis Blondeau', 'Annie Allix'],
+      castLabel: 'Featuring',
+      heroPosition: '50% 40%',
+    },
+    {
+      id: 'searching-for-sugar-man',
+      title: 'Searching for Sugar Man',
+      type: 'documentary',
+      synopsis:
+        'A Detroit singer-songwriter vanished after two overlooked albums — unaware that he had become a legend in apartheid-era South Africa. Two fans set out to learn what really happened to him.',
+      releaseYear: 2012,
+      contentRating: 'PG-13',
+      runtimeMinutes: 85,
+      genres: ['Documentary', 'Music'],
+      credits: [{ role: 'Director', names: ['Malik Bendjelloul'] }],
+      cast: ['Sixto Rodriguez', 'Stephen Segerman'],
+      castLabel: 'Featuring',
+      heroPosition: '50% 40%',
+    },
+    {
+      id: 'jiro-dreams-of-sushi',
+      title: 'Jiro Dreams of Sushi',
+      type: 'documentary',
+      synopsis:
+        'Inside a ten-seat Tokyo restaurant, an 85-year-old sushi master pursues perfection one piece at a time, while his eldest son waits for the day he will inherit his father’s legacy.',
+      releaseYear: 2011,
+      contentRating: 'PG',
+      runtimeMinutes: 82,
+      genres: ['Documentary'],
+      credits: [{ role: 'Director', names: ['David Gelb'] }],
+      cast: ['Jiro Ono', 'Yoshikazu Ono'],
+      castLabel: 'Featuring',
+      heroPosition: '50% 40%',
+    },
+    {
+      id: 'icarus',
+      title: 'Icarus',
+      type: 'documentary',
+      synopsis:
+        'A filmmaker sets out to test how easy it is to beat cycling’s doping controls, and his Russian adviser ends up at the center of an international scandal that reaches the highest levels of sport and state.',
+      releaseYear: 2017,
+      contentRating: 'NR',
+      runtimeMinutes: 121,
+      genres: ['Documentary'],
+      credits: [{ role: 'Director', names: ['Bryan Fogel'] }],
+      cast: ['Bryan Fogel', 'Grigory Rodchenkov'],
+      castLabel: 'Featuring',
+      heroPosition: '50% 40%',
+    },
+    {
+      id: 'senna',
+      title: 'Senna',
+      type: 'documentary',
+      synopsis:
+        'Told entirely through archival footage, the life of Brazilian Formula One champion Ayrton Senna — his fierce rivalry with Alain Prost, his faith, and his fight against the politics of the sport.',
+      releaseYear: 2010,
+      contentRating: 'PG-13',
+      runtimeMinutes: 106,
+      genres: ['Documentary'],
+      credits: [{ role: 'Director', names: ['Asif Kapadia'] }],
+      cast: ['Ayrton Senna', 'Alain Prost'],
+      castLabel: 'Featuring',
+      heroPosition: '50% 40%',
+    },
+    {
+      id: 'american-factory',
+      title: 'American Factory',
+      type: 'documentary',
+      synopsis:
+        'When a Chinese billionaire reopens a shuttered General Motors plant in Ohio, hopeful local workers and transplanted Chinese staff collide over culture, pay, and what a good job is supposed to look like.',
+      releaseYear: 2019,
+      contentRating: 'NR',
+      runtimeMinutes: 110,
+      genres: ['Documentary'],
+      credits: [{ role: 'Directed by', names: ['Julia Reichert', 'Steven Bognar'] }],
+      cast: ['Junming “Jimmy” Wang', 'Sherrod Brown'],
+      castLabel: 'Featuring',
+      heroPosition: '50% 40%',
+    },
   ].map(makeTitle),
 );
 
-/** The featured title is one of the 12 entries above — never a 13th record. */
+/** The featured title is one of the catalog entries above — never an extra record. */
 export const FEATURED_TITLE_ID = 'breaking-bad';
 
 const byId = new Map(catalog.map((t) => [t.id, t]));
@@ -337,7 +622,7 @@ export function validateCatalog(items = catalog) {
   }
   for (const type of Object.keys(TYPES)) {
     const count = items.filter((t) => t.type === type).length;
-    if (count !== 4) problems.push(`expected 4 ${type} titles, found ${count}`);
+    if (count < 4) problems.push(`expected at least 4 ${type} titles, found ${count}`);
   }
   if (!items.some((t) => t.id === FEATURED_TITLE_ID)) problems.push('featured title is not in the catalog');
   return problems;

@@ -1,3 +1,5 @@
+import { useId } from 'react';
+
 /* Inline SVG icons. All are decorative (aria-hidden); controls carry their own labels. */
 
 function Svg({ children, size = 24, ...rest }) {
@@ -146,5 +148,51 @@ export const DocIcon = (p) => (
   <Svg {...p}>
     <circle cx="12" cy="12" r="9" />
     <path d="M9.5 8.5v7l6-3.5z" fill="currentColor" stroke="none" />
+  </Svg>
+);
+
+const STAR_PATH = 'M12 2.8l2.84 5.76 6.36.92-4.6 4.49 1.09 6.33L12 17.31l-5.69 2.99 1.09-6.33-4.6-4.49 6.36-.92z';
+
+export const StarIcon = ({ filled = false, half = false, ...p }) => {
+  const id = `half${useId().replace(/:/g, '')}`;
+  return (
+    <Svg {...p} strokeWidth="1.6">
+      {half && (
+        <defs>
+          <linearGradient id={id}>
+            <stop offset="50%" stopColor="currentColor" />
+            <stop offset="50%" stopColor="transparent" />
+          </linearGradient>
+        </defs>
+      )}
+      <path d={STAR_PATH} fill={half ? `url(#${id})` : filled ? 'currentColor' : 'none'} />
+    </Svg>
+  );
+};
+
+export const ShareIcon = (p) => (
+  <Svg {...p}>
+    <path d="M12 15V3.5M7.5 8L12 3.5 16.5 8" />
+    <path d="M5 12.5V19a1.5 1.5 0 0 0 1.5 1.5h11A1.5 1.5 0 0 0 19 19v-6.5" />
+  </Svg>
+);
+
+export const LinkIcon = (p) => (
+  <Svg {...p}>
+    <path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1" />
+    <path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1" />
+  </Svg>
+);
+
+export const MailIcon = (p) => (
+  <Svg {...p}>
+    <rect x="3" y="5" width="18" height="14" rx="2" />
+    <path d="M3.5 6.5L12 13l8.5-6.5" />
+  </Svg>
+);
+
+export const TrashIcon = (p) => (
+  <Svg {...p}>
+    <path d="M4 7h16M9 7V4.5h6V7M6.5 7l1 13h9l1-13" />
   </Svg>
 );

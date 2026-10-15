@@ -8,13 +8,16 @@ import './styles/components.css';
 import App from './app/App.jsx';
 import { StatusProvider } from './state/StatusContext.jsx';
 import { MyListProvider } from './state/MyListContext.jsx';
+import { ReviewsProvider } from './state/ReviewsContext.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <StatusProvider>
         <MyListProvider>
-          <App />
+          <ReviewsProvider>
+            <App />
+          </ReviewsProvider>
         </MyListProvider>
       </StatusProvider>
     </BrowserRouter>

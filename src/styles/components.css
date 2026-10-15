@@ -477,8 +477,8 @@
   z-index: 4;
   display: grid;
   place-items: center;
-  width: 40px;
-  height: calc(var(--card-w) * 1.5);
+  bottom: 3.4rem; /* stop above the title/meta lines, centered on the posters */
+  width: 44px;
   padding: 0;
   border: 0;
   color: #fff;
@@ -507,14 +507,15 @@
 
 @media (min-width: 600px) {
   .row__viewport {
-    --card-w: 28vw;
+    --card-w: 26vw;
   }
 }
 
 @media (min-width: 1024px) {
   /* All four posters fit side by side. */
+  /* Five and a half posters: the peek of the sixth invites scrolling. */
   .row__viewport {
-    --card-w: calc((100% - 3 * var(--gap)) / 4);
+    --card-w: calc((100% - 5 * var(--gap)) / 5.5);
   }
 }
 
@@ -1570,5 +1571,322 @@
 
   .row__blurb {
     display: none;
+  }
+}
+
+/* ═════════════ Share menu ═════════════ */
+.share {
+  position: relative;
+}
+
+.share__menu {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 8px); /* opens upward: the hero clips anything below it */
+  z-index: 20;
+  min-width: 230px;
+  padding: 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: #1c1c1c;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+}
+
+.share__heading {
+  padding: 0.35rem 0.6rem 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.share__item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  min-height: 42px;
+  padding: 0.5rem 0.6rem;
+  border: 0;
+  border-radius: var(--radius);
+  background: none;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: left;
+  text-decoration: none;
+}
+
+.share__item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ═════════════ Stars ═════════════ */
+.star-display {
+  display: inline-flex;
+  gap: 2px;
+  color: #f5c518;
+  vertical-align: middle;
+}
+
+.star-input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.star-input__legend {
+  padding: 0;
+  margin-bottom: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-2);
+}
+
+.star-input__stars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.star-input__star {
+  display: grid;
+  place-items: center;
+  padding: 3px;
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  transition:
+    color 0.12s ease,
+    transform 0.12s ease;
+}
+
+.star-input__star.is-on {
+  color: #f5c518;
+}
+
+.star-input__star:hover {
+  transform: scale(1.12);
+}
+
+.star-input__star:has(:focus-visible) {
+  outline: 3px solid var(--focus);
+  outline-offset: 1px;
+}
+
+.star-input__value {
+  margin-left: 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.details-hero__rating {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.6rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+/* ═════════════ Reviews ═════════════ */
+.reviews__grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01));
+}
+
+.reviews__avg {
+  font-size: 3.2rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.reviews__avg span {
+  font-size: 1.1rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.reviews__count,
+.reviews__empty-summary,
+.reviews__none {
+  margin-top: 0.4rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.reviews__quick {
+  margin-top: 1.4rem;
+  display: grid;
+  gap: 0.4rem;
+  justify-items: start;
+}
+
+.link-btn {
+  padding: 0.25rem 0;
+  border: 0;
+  background: none;
+  color: var(--text-2);
+  font-size: 0.85rem;
+  text-decoration: underline;
+}
+
+.review-form {
+  display: grid;
+  gap: 0.55rem;
+  align-content: start;
+}
+
+.review-form__title {
+  font-size: 1.1rem;
+  font-weight: 750;
+  margin-bottom: 0.25rem;
+}
+
+.review-form .btn {
+  justify-self: start;
+  margin-top: 0.4rem;
+}
+
+.field-label {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-2);
+}
+
+.field-optional {
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.field {
+  width: 100%;
+  min-height: 46px;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius);
+  background: rgba(0, 0, 0, 0.45);
+  font-size: 1rem;
+}
+
+.field:focus {
+  outline: none;
+  border-color: #fff;
+  box-shadow: 0 0 0 2px #fff;
+}
+
+.field--area {
+  resize: vertical;
+  min-height: 110px;
+  line-height: 1.5;
+}
+
+.field[aria-invalid='true'] {
+  border-color: var(--accent-text);
+}
+
+.field-hint {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.field-error {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--accent-text);
+}
+
+.review-list {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 1.25rem;
+}
+
+.review {
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.review__head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.review__avatar {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: var(--accent);
+  font-weight: 800;
+}
+
+.review__name {
+  font-weight: 700;
+}
+
+.review__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.review__delete {
+  margin-left: auto;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--muted);
+}
+
+.review__delete:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.review__text {
+  margin-top: 0.7rem;
+  color: var(--text-2);
+  line-height: 1.6;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 760px) {
+  .reviews__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .share__menu {
+    left: auto;
+    right: 0;
+  }
+}
+
+@media (max-width: 699px) {
+  .details-hero__actions .share {
+    flex: 1 1 100%;
+  }
+
+  .details-hero__actions .share .btn {
+    width: 100%;
   }
 }

@@ -60,7 +60,7 @@ export default function SearchPage() {
         <>
           <div className="search-prompt">
             <p className="search-prompt__text">
-              Search all 12 drama films, series, and documentaries by title. Partial titles work too.
+              Search all {catalog.length} drama films, series, and documentaries by title. Partial titles work too.
             </p>
             <div className="search-prompt__chips">
               <span className="search-prompt__label" id="suggestions-label">

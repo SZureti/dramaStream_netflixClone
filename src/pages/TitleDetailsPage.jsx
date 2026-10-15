@@ -3,6 +3,10 @@ import SmartImage, { TitleLogo } from '../components/SmartImage.jsx';
 import MetaLine from '../components/MetaLine.jsx';
 import MyListButton from '../components/MyListButton.jsx';
 import TitleCard from '../components/TitleCard.jsx';
+import ShareButton from '../components/ShareButton.jsx';
+import ReviewsSection from '../components/ReviewsSection.jsx';
+import { StarDisplay } from '../components/StarRating.jsx';
+import { useReviews } from '../state/ReviewsContext.jsx';
 import { ArrowLeftIcon, PlayIcon } from '../components/Icons.jsx';
 import {
   formatEpisodes,
@@ -38,7 +42,8 @@ function TitleDetails({ title }) {
   const from = location.state?.from;
   const hasHistory = location.key !== 'default';
   const playable = getPlayable(title);
-  const related = getTitlesByType(title.type).filter((t) => t.id !== title.id);
+  const rated = useReviews().summary(title.id);
+  const related = getTitlesByType(title.type).filter((t) => t.id !== title.id).slice(0, 6);
 
   const goBack = () => (hasHistory && from ? navigate(-1) : navigate('/'));
 
@@ -102,6 +107,14 @@ function TitleDetails({ title }) {
                   ))}
                 </p>
               )}
+              {rated.count > 0 && (
+                <p className="details-hero__rating">
+                  <StarDisplay value={rated.average} size={18} />
+                  <span>
+                    {rated.average.toFixed(1)} · {rated.count} {rated.count === 1 ? 'rating' : 'ratings'}
+                  </span>
+                </p>
+              )}
               <p className="details-hero__synopsis">{title.synopsis}</p>
 
               <div className="details-hero__actions">
@@ -117,6 +130,7 @@ function TitleDetails({ title }) {
                   </span>
                 </Link>
                 <MyListButton title={title} className="btn--lg" />
+                <ShareButton title={title} />
               </div>
             </div>
           </div>
@@ -137,6 +151,8 @@ function TitleDetails({ title }) {
             ))}
           </dl>
         </section>
+
+        <ReviewsSection title={title} />
 
         <section className="details-related" aria-labelledby="related-heading">
           <h2 id="related-heading" className="section-title">
