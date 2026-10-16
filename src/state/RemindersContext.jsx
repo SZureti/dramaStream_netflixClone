@@ -38,12 +38,10 @@ export function RemindersProvider({ children }) {
       const account = data.map((r) => r.title_id);
       const guest = readGuest().filter((id) => !account.includes(id) && getTitleById(id));
       if (guest.length) {
-        const { error: mergeError } = await supabase
-          .from('reminders')
-          .upsert(
-            guest.map((title_id) => ({ profile_id: profileId, title_id })),
-            { onConflict: 'profile_id,title_id', ignoreDuplicates: true },
-          );
+        const { error: mergeError } = await supabase.from('reminders').upsert(
+          guest.map((title_id) => ({ profile_id: profileId, title_id })),
+          { onConflict: 'profile_id,title_id', ignoreDuplicates: true },
+        );
         if (!mergeError) removeKey(GUEST_KEY);
       } else {
         removeKey(GUEST_KEY);
@@ -77,7 +75,10 @@ export function RemindersProvider({ children }) {
     [ids, announce],
   );
 
-  const value = useMemo(() => ({ reminderIds: ids, isReminded: (id) => ids.includes(id), toggleReminder: toggle }), [ids, toggle]);
+  const value = useMemo(
+    () => ({ reminderIds: ids, isReminded: (id) => ids.includes(id), toggleReminder: toggle }),
+    [ids, toggle],
+  );
   return <RemindersContext.Provider value={value}>{children}</RemindersContext.Provider>;
 }
 

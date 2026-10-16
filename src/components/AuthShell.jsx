@@ -6,14 +6,14 @@ import { chooseGuest } from '../lib/guest.js';
  * Layout for the signed-out screens (sign in, sign up, password reset): the
  * wordmark over a dimmed still, with the form in a centered panel.
  */
-export default function AuthShell({ title, children, footer }) {
+export default function AuthShell({ title, children, footer, wide = false }) {
   return (
     <div className="auth">
       <div className="auth__backdrop" aria-hidden="true" />
       <header className="auth__header">
         <Wordmark />
       </header>
-      <div className="auth__panel">
+      <div className={`auth__panel${wide ? ' auth__panel--wide' : ''}`}>
         <h1 className="auth__title">{title}</h1>
         {children}
         {footer && <div className="auth__footer">{footer}</div>}

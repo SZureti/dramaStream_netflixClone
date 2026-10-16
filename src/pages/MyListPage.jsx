@@ -21,7 +21,9 @@ export default function MyListPage() {
   const { savedIds, inAccount } = useMyList();
   const headingRef = useRef(null);
   // My List stores IDs; resolve them against the one canonical catalog.
-  const [sortBy, setSortBy] = useState(() => (SORTS[readJSON(SORT_KEY, 'added')] ? readJSON(SORT_KEY, 'added') : 'added'));
+  const [sortBy, setSortBy] = useState(() =>
+    SORTS[readJSON(SORT_KEY, 'added')] ? readJSON(SORT_KEY, 'added') : 'added',
+  );
   const sortId = useId();
   // savedIds is newest first, so "Date added" keeps that order.
   const saved = SORTS[sortBy].sort(savedIds.map(getTitleById).filter((t) => t && isAllowed(t)));
@@ -77,7 +79,9 @@ export default function MyListPage() {
             Choose <strong>Add to My List</strong> on any film, series, or documentary to save it here.
           </p>
           <p className="empty-state__hint">
-            {inAccount ? 'Your list is saved to your account.' : 'Saved in this browser. Sign in to keep it on every device.'}
+            {inAccount
+              ? 'Your list is saved to your account.'
+              : 'Saved in this browser. Sign in to keep it on every device.'}
           </p>
         </EmptyState>
       ) : (

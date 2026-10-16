@@ -1,17 +1,25 @@
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useProfiles } from '../state/ProfileContext.jsx';
 import { TYPES } from '../data/catalog.js';
 import SmartImage, { TitleLogo } from './SmartImage.jsx';
 import MetaLine from './MetaLine.jsx';
 import MyListButton from './MyListButton.jsx';
-import { InfoIcon, PlayIcon } from './Icons.jsx';
+import { InfoIcon, MuteIcon, PlayIcon, VolumeIcon } from './Icons.jsx';
 
-/** Home billboard. Static artwork only — no autoplaying media. */
+/**
+ * Home billboard. Like Netflix's autoplaying preview, the still slowly pans
+ * and zooms (no video or sound exists); profiles can turn previews off, and
+ * reduced-motion settings always stop it.
+ */
 export default function FeaturedTitle({ title }) {
   const location = useLocation();
   const from = location.pathname + location.search;
+  const preview = useProfiles().current?.autoplay_previews ?? true;
+  const [muted, setMuted] = useState(true);
 
   return (
-    <section className="billboard" aria-labelledby="featured-title">
+    <section className={`billboard${preview ? ' billboard--preview' : ''}`} aria-labelledby="featured-title">
       <div className="billboard__art" aria-hidden="true">
         <SmartImage
           src={title.heroSrc}
@@ -55,8 +63,22 @@ export default function FeaturedTitle({ title }) {
         </div>
       </div>
 
-      <div className="billboard__rating" aria-hidden="true">
-        {title.contentRating}
+      <div className="billboard__side">
+        {preview && (
+          <button
+            type="button"
+            className="icon-btn billboard__mute"
+            aria-pressed={!muted}
+            aria-label={muted ? 'Turn preview sound on (simulated)' : 'Mute preview (simulated)'}
+            onClick={() => setMuted((m) => !m)}
+          >
+            {muted ? <MuteIcon size={20} /> : <VolumeIcon size={20} />}
+          </button>
+        )}
+        <div className="billboard__rating">
+          <span className="sr-only">Rated </span>
+          {title.contentRating}
+        </div>
       </div>
     </section>
   );

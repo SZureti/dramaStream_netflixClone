@@ -46,7 +46,7 @@ describe('replaceCatalog (Supabase copy)', () => {
     const broken = plain.map((t) => (t.id === 'whiplash' ? { ...t, synopsis: '' } : t));
     const problems = replaceCatalog(broken, { featuredId: 'breaking-bad', source: 'supabase' });
     expect(problems).toContain('whiplash: missing synopsis');
-    expect(getCatalog()).toBe(LOCAL_CATALOG);
+    expect(getCatalog().map((t) => t.id)).toEqual(LOCAL_CATALOG.filter((t) => !t.availableFrom).map((t) => t.id));
   });
 
   it('swaps in valid data and follows its featured title', () => {

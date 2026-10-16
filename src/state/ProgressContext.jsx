@@ -154,7 +154,12 @@ export function ProgressProvider({ children }) {
       .filter(([id, p]) => !p.hidden && isResumable(p) && getTitleById(id))
       .sort(([, a], [, b]) => (a.updatedAt < b.updatedAt ? 1 : -1))
       .map(([id, p]) => ({ title: getTitleById(id), progress: p }));
+    // Everything played, newest first (Viewing activity), including hidden and finished titles.
+    const history = Object.entries(byTitle)
+      .map(([titleId, p]) => ({ titleId, ...p }))
+      .sort((a, b) => (a.updatedAt < b.updatedAt ? 1 : -1));
     return {
+      history,
       getProgress: (titleId) => byTitle[titleId] ?? null,
       saveProgress,
       hideFromRow,

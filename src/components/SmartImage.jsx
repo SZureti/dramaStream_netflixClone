@@ -10,12 +10,9 @@ export default function SmartImage({ src, alt, fallbackText, className = '', ...
   const [loadedSrc, setLoadedSrc] = useState(null);
 
   // Cached images can finish before React attaches onLoad — check on mount too.
-  const ref = useCallback(
-    (img) => {
-      if (img?.complete && img.naturalWidth > 0) setLoadedSrc(img.getAttribute('src'));
-    },
-    [],
-  );
+  const ref = useCallback((img) => {
+    if (img?.complete && img.naturalWidth > 0) setLoadedSrc(img.getAttribute('src'));
+  }, []);
 
   if (!src || failedSrc === src) {
     return (

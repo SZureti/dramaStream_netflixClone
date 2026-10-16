@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { getPlayable } from '../data/catalog.js';
 import SmartImage from './SmartImage.jsx';
+import AudioSubtitlesMenu, { SUBTITLE_TRACKS } from './AudioSubtitlesMenu.jsx';
 import {
   ArrowLeftIcon,
   Back10Icon,
@@ -58,6 +59,9 @@ export default function MockPlayer({
   onNext,
   autoplayNext = true,
   autoStart = false, // true when the previous episode rolled into this one
+  language = 'en', // profile's preferred audio/subtitle language
+  subtitleSize = 'medium',
+  subtitleStyle = 'white',
 }) {
   const playable = getPlayable(title, episode ?? undefined);
   const duration = playable.durationSeconds;
@@ -71,6 +75,9 @@ export default function MockPlayer({
   const [muted, setMuted] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
   const [countdown, setCountdown] = useState(null); // seconds left before the next episode
+  const [audio, setAudio] = useState('original');
+  // Subtitles start in the profile's language when it isn't English.
+  const [subtitles, setSubtitles] = useState(language && language !== 'en' ? language : 'off');
   const idleTimer = useRef(null);
   const speedRef = useRef(speed);
   speedRef.current = speed;
@@ -261,6 +268,14 @@ export default function MockPlayer({
         Mock player — no video is streaming
       </p>
 
+      {subtitles !== 'off' && (
+        <p className="player__subtitle-line" aria-hidden="true">
+          <span className={`player__captions player__captions--${subtitleSize} player__captions--${subtitleStyle}`}>
+            [{SUBTITLE_TRACKS.find((t) => t.value === subtitles)?.label} subtitles would appear here]
+          </span>
+        </p>
+      )}
+
       {inIntro && (
         <button type="button" className="player__skip-intro" onClick={() => seekTo(INTRO.end)}>
           Skip Intro
@@ -394,6 +409,8 @@ export default function MockPlayer({
                 ))}
               </select>
             </label>
+
+            <AudioSubtitlesMenu audio={audio} subtitles={subtitles} onAudio={setAudio} onSubtitles={setSubtitles} />
 
             {nextEpisode && (
               <button type="button" className="player__btn player__btn--text" onClick={() => onNext?.()}>

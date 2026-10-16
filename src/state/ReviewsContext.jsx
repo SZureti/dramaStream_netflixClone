@@ -222,7 +222,12 @@ export function ReviewsProvider({ children }) {
 
   // Every rating this viewer has given, in the order they were stored (for % Match).
   const ratings = useMemo(
-    () => new Map(Object.entries(byTitle).filter(([, e]) => e.myRating).map(([id, e]) => [id, e.myRating])),
+    () =>
+      new Map(
+        Object.entries(byTitle)
+          .filter(([, e]) => e.myRating)
+          .map(([id, e]) => [id, e.myRating]),
+      ),
     [byTitle],
   );
 

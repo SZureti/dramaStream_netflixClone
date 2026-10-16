@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, Navigate, useNavigate, useSearchParams } from 'react-router-dom';
 import AuthShell from '../components/AuthShell.jsx';
 import AuthField from '../components/AuthField.jsx';
+import PlanPicker from '../components/PlanPicker.jsx';
 import { useAuth } from '../state/AuthContext.jsx';
 import { useStatus } from '../state/StatusContext.jsx';
 import { MIN_PASSWORD, emailError, passwordError } from '../lib/validate.js';
@@ -19,6 +20,9 @@ export default function SignUpPage() {
   const [formError, setFormError] = useState(null);
   const [busy, setBusy] = useState(false);
   const [sentTo, setSentTo] = useState(null);
+  // Netflix asks for a plan first; ours are free and only label the account.
+  const [step, setStep] = useState('plan');
+  const [plan, setPlan] = useState('standard');
 
   if (user && !busy) return <Navigate to="/" replace />;
 
@@ -27,8 +31,8 @@ export default function SignUpPage() {
       <AuthShell title="Check your email">
         <div className="auth-form" role="status">
           <p>
-            We sent a confirmation link to <strong>{sentTo}</strong>. Open it to finish creating your account,
-            then sign in.
+            We sent a confirmation link to <strong>{sentTo}</strong>. Open it to finish creating your account, then sign
+            in.
           </p>
           <Link to={`/signin?email=${encodeURIComponent(sentTo)}`} className="btn auth-form__submit">
             Go to Sign In
@@ -45,7 +49,7 @@ export default function SignUpPage() {
     setFormError(null);
     if (found.email || found.password) return;
     setBusy(true);
-    const { error, needsConfirmation } = await signUp({ email: email.trim(), password });
+    const { error, needsConfirmation } = await signUp({ email: email.trim(), password, plan });
     setBusy(false);
     if (error) {
       setFormError(error);
@@ -59,9 +63,20 @@ export default function SignUpPage() {
     navigate('/', { replace: true });
   }
 
+  if (step === 'plan') {
+    return (
+      <AuthShell title="Step 1 of 2: Choose your plan" wide>
+        <PlanPicker value={plan} onChange={setPlan} />
+        <button type="button" className="btn auth-form__submit" onClick={() => setStep('account')}>
+          Next
+        </button>
+      </AuthShell>
+    );
+  }
+
   return (
     <AuthShell
-      title="Sign Up"
+      title="Step 2 of 2: Sign Up"
       footer={
         <p>
           Already have an account? <Link to="/signin">Sign in</Link>.

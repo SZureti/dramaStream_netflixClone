@@ -27,17 +27,15 @@ export default function Footer() {
           </ul>
         </nav>
         <p className="app-footer__note">
-          DramaStream is an educational, Netflix-inspired prototype built for the Code Platoon Netflix Clone
-          assignment. It is not affiliated with Netflix, streams no films or episodes, and collects no personal
-          information.
+          DramaStream is an educational, Netflix-inspired prototype built for the Code Platoon Netflix Clone assignment.
+          It is not affiliated with Netflix, streams no films or episodes, and collects no personal information.
         </p>
         <p className="app-footer__note">
           Posters, backgrounds, and title logos are from{' '}
           <a href="https://www.themoviedb.org/" target="_blank" rel="noreferrer">
             TMDB<span className="sr-only"> (opens in a new tab)</span>
           </a>{' '}
-          and belong to their respective studios and distributors. This product is not endorsed or certified by
-          TMDB.
+          and belong to their respective studios and distributors. This product is not endorsed or certified by TMDB.
         </p>
       </div>
     </footer>

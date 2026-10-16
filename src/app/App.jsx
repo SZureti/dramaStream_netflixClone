@@ -18,6 +18,7 @@ const AccountPage = lazy(() => import('../pages/AccountPage.jsx'));
 const HelpPage = lazy(() => import('../pages/HelpPage.jsx'));
 const BrowsePage = lazy(() => import('../pages/BrowsePage.jsx'));
 const NewPopularPage = lazy(() => import('../pages/NewPopularPage.jsx'));
+const ActivityPage = lazy(() => import('../pages/ActivityPage.jsx'));
 import RequireAuth from '../components/RequireAuth.jsx';
 const ProfilesPage = lazy(() => import('../pages/ProfilesPage.jsx'));
 const ProfileEditPage = lazy(() => import('../pages/ProfileEditPage.jsx'));
@@ -104,7 +105,15 @@ export default function App() {
               <Route path="/reset-password" element={<ResetPasswordPage />} />
               <Route path="/help" element={<HelpPage />} />
               <Route path="/browse/:kind" element={<BrowsePage />} />
-            <Route path="/new" element={<NewPopularPage />} />
+              <Route path="/new" element={<NewPopularPage />} />
+              <Route
+                path="/account/activity"
+                element={
+                  <RequireAuth>
+                    <ActivityPage />
+                  </RequireAuth>
+                }
+              />
               <Route
                 path="/account"
                 element={

@@ -106,7 +106,13 @@ export default function ShareButton({ title, className = '' }) {
           </li>
           {targets.map((t) => (
             <li key={t.label}>
-              <a className="share__item" href={t.href} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>
+              <a
+                className="share__item"
+                href={t.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+              >
                 <ShareIcon size={18} />
                 {t.label}
                 <span className="sr-only"> (opens in a new tab)</span>

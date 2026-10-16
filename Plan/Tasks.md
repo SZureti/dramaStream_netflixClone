@@ -35,7 +35,7 @@ Netflix requires an account before browsing.
 - [x] Add Supabase Auth sign-up, sign-in, sign-out, and password reset screens. — `auth` `frontend` `phase-1` _(Built and validated; a real sign-up needs Supabase's email settings, see the note at the top.)_
 - [x] Protect browse, details, My List, and player routes so that signed-out visitors are sent to sign-in. — `auth` `frontend` `phase-1` _(Changed by decision: sign-in is optional, so browsing stays public; first-time visitors see the welcome page and `/account` requires sign-in.)_
 - [x] Show the account menu in the header (profile icon, Account, Help, Sign out). — `frontend` `phase-1`
-- [ ] Add a mock plan-choice step (Basic / Standard / Premium), with no payment collected. — `frontend` `ux` `phase-3`
+- [x] Add a mock plan-choice step (Basic / Standard / Premium), with no payment collected. — `frontend` `ux` `phase-3` _(Step 1 of Sign Up; changeable on Account. Free, no payment details.)_
 
 ## 3. Profiles ("Who's watching?")
 
@@ -46,7 +46,7 @@ Up to five profiles per account, each with its own list, progress and maturity l
 - [x] Build add, edit, and delete profile screens, plus **Manage Profiles** mode. — `frontend` `phase-2`
 - [x] Add profile switching from the header menu. — `frontend` `phase-2`
 - [x] Kids profile: show only titles at or below the chosen maturity rating, with a simpler header. — `frontend` `backend` `phase-2`
-- [ ] Optional profile lock with a 4-digit PIN. — `auth` `frontend` `phase-3`
+- [x] Optional profile lock with a 4-digit PIN. — `auth` `frontend` `phase-3` _(Stored only as a salted SHA-256 hash; asked for before watching or editing the profile.)_
 
 ## 4. My List saved per profile
 
@@ -55,7 +55,7 @@ My List survives a refresh and belongs to the profile that saved it.
 - [x] Add a `my_list` table (profile, title, added_at) with a unique (profile, title) pair. — `database` `phase-1` _(Per user for now; becomes per profile with Profiles.)_
 - [x] Replace the in-memory `MyListContext` with Supabase reads and writes; the list should survive a refresh. — `frontend` `backend` `phase-1` _(Signed out, it's saved in the browser; signed in, in Supabase.)_
 - [x] Add a My List row on Home, newest first. — `frontend` `phase-1`
-- [ ] Add sort options on the My List page (Date added / A–Z). — `frontend` `phase-3`
+- [x] Add sort options on the My List page (Date added / A–Z). — `frontend` `phase-3` _(Plus Z–A and Release year.)_
 
 ## 5. Continue Watching and viewing progress
 
@@ -66,7 +66,7 @@ Pick up where you left off, like Netflix's Continue Watching row.
 - [x] Add a **Continue Watching for {profile}** row with a progress bar on each card. — `frontend` `phase-1`
 - [x] **Resume** vs **Play** on title details, depending on saved progress. — `frontend` `player` `phase-1` _(Plus Start Over.)_
 - [x] Add **Remove from row** on a Continue Watching card. — `frontend` `phase-2`
-- [ ] Add a viewing activity page (titles watched, with dates) under Account. — `frontend` `backend` `phase-3`
+- [x] Add a viewing activity page (titles watched, with dates) under Account. — `frontend` `backend` `phase-3`
 
 ## 6. Home page rows like Netflix
 
@@ -83,7 +83,7 @@ More kinds of rows, ranked Top 10s, and hover cards.
 The big featured title at the top of Home.
 
 - [x] Featured title rotates or is picked per visit from a "featured" flag in the database. — `frontend` `backend` `phase-2` _(The featured title on a first visit, then a different title each visit.)_
-- [ ] Muted autoplay trailer or animated still behind the billboard, with a mute toggle and a maturity rating badge. — `frontend` `player` `phase-3`
+- [x] Muted autoplay trailer or animated still behind the billboard, with a mute toggle and a maturity rating badge. — `frontend` `player` `phase-3` _(Animated still — slow pan and zoom — with a simulated mute toggle; follows the profile's “Autoplay previews” setting and reduced-motion.)_
 - [x] **Play** and **More Info** buttons; More Info opens the details modal. — `frontend` `phase-1`
 
 ## 8. Title details as a modal
@@ -100,7 +100,7 @@ On Netflix, details open as a modal over the browse page.
 Series show every season and episode.
 
 - [x] Store seasons and episodes for every series in the database. — `database` `content` `phase-2` _(433 episodes from TMDB: `supabase/seed/episodes.json` → `episodes.sql`.)_
-- [ ] Episode list on series details with a season dropdown, episode thumbnails, runtimes, and synopses. — `frontend` `phase-2` _(Season dropdown, titles and runtimes done. Each episode uses the series still as its thumbnail; per-episode stills and synopses are still to do — synopses must be written in our own words.)_
+- [x] Episode list on series details with a season dropdown, episode thumbnails, runtimes, and synopses. — `frontend` `phase-2` _(850 episodes across 20 series, each with its TMDB still and a synopsis written for this project.)_
 - [x] Play a chosen episode in the player. — `player` `phase-2`
 
 ## 10. Player like Netflix
@@ -108,7 +108,7 @@ Series show every season and episode.
 The mock player gets Netflix's controls and episode flow.
 
 - [x] Back arrow, title and episode label, volume, fullscreen, and a speed menu. — `player` `frontend` `phase-2` _(Volume is simulated: the mock player has no sound.)_
-- [ ] Audio and subtitle menu (mock options from title data). — `player` `phase-3`
+- [x] Audio and subtitle menu (mock options from title data). — `player` `phase-3` _(Mock tracks; subtitles use the profile's language, size and style.)_
 - [x] **Skip Intro** button during a set time window. — `player` `phase-3`
 - [x] **Next Episode** button and an end-of-episode countdown that autoplays the next one, with a setting to turn autoplay off. — `player` `phase-2`
 - [x] Controls hide after 3 seconds without mouse movement and reappear on movement. — `player` `ux` `phase-2` _(Already in the player.)_
@@ -121,7 +121,7 @@ Find titles by more than their name, and browse by type and genre.
 - [x] Search by title, cast, director, and genre, with live results in a grid. — `frontend` `backend` `phase-2`
 - [x] Show "Explore titles related to…" suggestions above the results. — `frontend` `phase-3`
 - [x] Add Browse pages: TV Shows, Movies, Documentaries, with a genre dropdown filter. — `frontend` `phase-2`
-- [ ] Add a **New & Popular** page with Coming Soon and a **Remind Me** button. — `frontend` `backend` `phase-3`
+- [x] Add a **New & Popular** page with Coming Soon and a **Remind Me** button. — `frontend` `backend` `phase-3` _(Six Coming Soon titles with DramaStream's own arrival dates.)_
 
 ## 12. Ratings like Netflix
 
@@ -129,22 +129,22 @@ Ratings and reviews saved per profile and used for recommendations.
 
 - [x] Decide whether to keep 1–5 stars or switch to Netflix's three options: Not for me, I like this, Love this. — `ux` `phase-2` _(Decided: Netflix's three options; old star ratings convert automatically.)_
 - [x] Save ratings and reviews in Supabase per profile instead of `localStorage`. — `database` `backend` `phase-2`
-- [ ] Use ratings to fill the "Because you liked…" row and a match percentage. — `backend` `phase-3`
+- [x] Use ratings to fill the "Because you liked…" row and a match percentage. — `backend` `phase-3`
 
 ## 13. Account and settings
 
 Account details and per-profile preferences.
 
-- [ ] Account page: email, a mock plan, a profiles list, and sign out of all devices. — `frontend` `auth` `phase-3`
-- [ ] Per-profile settings: language, autoplay next episode, autoplay previews, subtitle appearance, and maturity rating. — `frontend` `database` `phase-3`
-- [ ] Notifications bell for new arrivals and reminders. — `frontend` `backend` `phase-3`
+- [x] Account page: email, a mock plan, a profiles list, and sign out of all devices. — `frontend` `auth` `phase-3`
+- [x] Per-profile settings: language, autoplay next episode, autoplay previews, subtitle appearance, and maturity rating. — `frontend` `database` `phase-3`
+- [x] Notifications bell for new arrivals and reminders. — `frontend` `backend` `phase-3`
 
 ## 14. Quality, accessibility, and launch
 
 Tests, accessibility, performance and deployment.
 
 - [x] Check against WCAG 2.2 AA: keyboard paths, focus, contrast, and screen-reader labels on every new screen. — `accessibility` `testing` `phase-1` _(axe-core: no violations on any page.)_
-- [ ] Add tests for each story's workflow (unit tests for data helpers, plus end-to-end tests for the main journeys). _(Unit tests done: `npm test`, 24 passing. End-to-end tests still to do.)_ — `testing` `phase-1`
+- [x] Add tests for each story's workflow (unit tests for data helpers, plus end-to-end tests for the main journeys). — `testing` `phase-1` _(`npm test`: 34 unit tests. `npm run test:e2e`: 15 Playwright journeys, desktop and phone.)_
 - [x] Optimize images (responsive sizes, lazy loading) and keep `npm run build` passing. — `performance` `phase-2` _(`srcset` with smaller copies from `scripts/make-image-sizes.sh`; secondary pages lazy-loaded.)_
 - [x] Run the Supabase security and performance advisors after every migration and fix the warnings. — `database` `testing` `phase-1` _(Security: clean. Performance: only unused-index notes on new tables.)_
 - [ ] Deploy (for example Vercel or Netlify) with Supabase keys in environment variables. — `backend` `phase-2` _(Ready for you: `vercel.json`, `public/_redirects`, and the steps under **Deploy** in the README.)_

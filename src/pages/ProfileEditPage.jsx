@@ -93,11 +93,7 @@ export default function ProfileEditPage() {
   if (loaded && editing && existing?.pin_hash && !unlocked) {
     return (
       <div className="profiles">
-        <PinDialog
-          profile={existing}
-          onUnlock={() => setUnlocked(true)}
-          onCancel={() => navigate('/profiles')}
-        />
+        <PinDialog profile={existing} onUnlock={() => setUnlocked(true)} onCancel={() => navigate('/profiles')} />
       </div>
     );
   }

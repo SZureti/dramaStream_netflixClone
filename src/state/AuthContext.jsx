@@ -62,15 +62,19 @@ export function AuthProvider({ children }) {
       session,
       user: session?.user ?? null,
       recovering,
-      signUp: async ({ email, password }) => {
+      signUp: async ({ email, password, plan = 'standard' }) => {
         const result = await run(() =>
-          supabase.auth.signUp({ email, password, options: { emailRedirectTo: `${origin}/` } }),
+          supabase.auth.signUp({ email, password, options: { emailRedirectTo: `${origin}/`, data: { plan } } }),
         );
         // With email confirmation on, Supabase returns no session until the link is opened.
         return { ...result, needsConfirmation: !result.error && !result.data?.session };
       },
       signIn: ({ email, password }) => run(() => supabase.auth.signInWithPassword({ email, password })),
       signOut: () => run(() => supabase.auth.signOut()),
+      // Ends every session for this account, on every device.
+      signOutEverywhere: () => run(() => supabase.auth.signOut({ scope: 'global' })),
+      // The mock plan lives in the user's metadata.
+      changePlan: (plan) => run(() => supabase.auth.updateUser({ data: { plan } })),
       sendPasswordReset: (email) =>
         run(() => supabase.auth.resetPasswordForEmail(email, { redirectTo: `${origin}/reset-password` })),
       updatePassword: async (password) => {

@@ -368,10 +368,16 @@
   margin-top: 1.5rem;
 }
 
-.billboard__rating {
+.billboard__side {
   position: absolute;
   right: 0;
   bottom: clamp(130px, 17vw, 250px);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.billboard__rating {
   padding: 0.45rem 3.75rem 0.45rem 0.85rem;
   border-left: 3px solid #dcdcdc;
   background: rgba(51, 51, 51, 0.6);
@@ -1561,7 +1567,7 @@
     padding-inline: 1rem;
   }
 
-  .billboard__rating {
+  .billboard__side {
     display: none;
   }
 
@@ -2446,4 +2452,102 @@
 
 .title-modal__match {
   margin-bottom: 0.35rem;
+}
+
+/* Billboard preview: a slow Ken Burns pan/zoom on the still (Netflix plays a trailer). */
+@media (prefers-reduced-motion: no-preference) {
+  .billboard--preview .billboard__art img {
+    animation: billboard-preview 24s ease-in-out 1.5s infinite alternate;
+    transform-origin: 60% 40%;
+  }
+
+  @keyframes billboard-preview {
+    from {
+      transform: scale(1) translate3d(0, 0, 0);
+    }
+    to {
+      transform: scale(1.12) translate3d(-2%, 1%, 0);
+    }
+  }
+}
+
+/* ═════════════ Player: audio & subtitles ═════════════ */
+.av-menu {
+  position: relative;
+}
+
+.av-menu__panel {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 8;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.5rem;
+  min-width: min(28rem, 90vw);
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-lg);
+  background: rgba(20, 20, 20, 0.96);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+}
+
+.av-menu__panel[hidden] {
+  display: none;
+}
+
+.av-menu__group {
+  display: grid;
+  gap: 0.15rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.av-menu__group legend {
+  margin-bottom: 0.4rem;
+  font-weight: 800;
+}
+
+.av-menu__option {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 36px;
+  color: var(--text-2);
+  cursor: pointer;
+}
+
+.av-menu__option input {
+  accent-color: #fff;
+}
+
+.av-menu__option input:checked + span {
+  color: #fff;
+  font-weight: 700;
+}
+
+.av-menu__note {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.player__subtitle-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: clamp(9.5rem, 24vh, 13rem);
+  z-index: 4;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* Captions sit under the controls, so an open Audio & Subtitles menu covers them. */
+.player__subtitle-line {
+  z-index: 1;
+}
+
+.av-menu__group {
+  align-content: start;
 }

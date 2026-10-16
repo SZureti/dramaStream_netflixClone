@@ -1,43 +1,107 @@
-# DramaStream — Netflix-Inspired SPA
+# DramaStream — Netflix-Inspired Streaming Site
 
-A responsive streaming-catalog prototype for the Code Platoon Netflix Clone I assignment, personalized around **drama films, drama series, and drama documentaries**. Built with React, Vite, and React Router.
+A Netflix-style streaming catalog for **drama films, drama series and drama documentaries**, built for the Code Platoon Netflix Clone assignment and extended in three phases into a full-stack app: React + Vite + React Router on the front end, and **Supabase** (Postgres, Row Level Security, Auth) behind it.
 
-> This is an educational, Netflix-inspired project. It is not affiliated with Netflix and does not stream full movies or episodes.
+> This is an educational, Netflix-inspired project. It is not affiliated with Netflix, and it streams no films or episodes: the player is a clearly labelled mock-up.
 
-![DramaStream home page with the Breaking Bad featured banner](docs/screenshots/home.jpg)
+![DramaStream home page with the Breaking Bad billboard](docs/screenshots/home.jpg)
+
+## Contents
+
+- [Phases](#phases)
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Catalog](#catalog)
+- [Start the app](#start-the-app)
+- [Tests](#tests)
+- [Database (Supabase)](#database-supabase)
+- [Deploy](#deploy)
+- [Routes](#routes)
+- [Project structure](#project-structure)
+- [Data and privacy](#data-and-privacy)
+- [Artwork and sources](#artwork-and-sources)
+- [Planning docs](#planning-docs)
+
+## Phases
+
+The work was planned in [`Plan/Tasks.md`](Plan/Tasks.md) as 64 tasks in 14 feature areas, tagged `phase-1` (do first), `phase-2` (next) and `phase-3` (nice to have). **63 of 64 are done**; deploying is the one left for you (the config is ready, see [Deploy](#deploy)).
+
+### Version 1: the front-end prototype (before the phases)
+
+The original class assignment: a React SPA with 30 drama titles in three rows, search, title details, My List, ratings and reviews in the browser, sharing, and a mock player. See [`design.md`](design.md) and [`Plan/Plan.md`](Plan/Plan.md).
+
+### Phase 1: a real backend and accounts
+
+- **Catalog in Supabase:** titles, genres, people and credits, seasons and episodes, with public read-only Row Level Security. The site renders the bundled catalog immediately and swaps in the database copy, so it never goes blank if Supabase is unreachable.
+- **Optional accounts** with Supabase Auth: sign up, sign in, sign out, password reset. There's a Netflix-style welcome page for first-time visitors, and an account menu in the header.
+- **My List and Continue Watching** saved per account (in the browser for guests), with Resume and Start Over, progress bars, and **Remove from row**.
+- Row arrows with a page indicator, and a header that turns solid on scroll.
+- Accessibility audit (axe-core, WCAG 2.2 AA: no violations), unit tests, and Supabase security and performance advisors.
+
+### Phase 2: Netflix parity
+
+- **Profiles** ("Who's watching?"), up to 5 per account, including kids profiles limited by maturity level. My List, progress, ratings and reviews belong to the profile.
+- **Home like Netflix:** Top 10 with big rank numbers, Trending Now and Top 10 from anonymous play/add counts, New Releases, Because you watched…, genre rows, a rotating billboard, and hover cards that expand after a short delay.
+- **Title details as a modal** over the page you were on (shareable URL, Back/Escape closes, focus trapped), with a full page for direct links.
+- **Seasons and episodes** for every series: 850 episodes, each with its still and a synopsis.
+- **Player:** episode picker, playback speed, simulated volume and mute, full screen, Next Episode with an autoplay countdown, and F/M/↑/↓ shortcuts.
+- **Search** by title, cast, director or genre; **Browse** pages for TV Shows, Movies and Documentaries with a genre filter.
+- **Ratings** switched to Netflix's three options (Not for me / I like this / Love this!), saved per profile.
+- **60 titles** (20 per row), responsive images (`srcset`), lazy-loaded pages, and deploy config.
+
+### Phase 3: the extras
+
+- **Mock plan step** (Basic / Standard / Premium, all free, no payment details) at sign-up and on Account.
+- **Profile Lock:** an optional 4-digit PIN per profile.
+- **Account page:** email, plan, profiles, viewing activity, and sign out of all devices.
+- **Per-profile settings:** maturity level, preferred language, subtitle size and style, autoplay next episode, and autoplay previews.
+- **New & Popular:** Coming Soon with **Remind Me**, New on DramaStream, and Top 10.
+- **Notifications bell** for new arrivals and reminders that came true.
+- **% Match** and a **Because you liked…** row, worked out from your own ratings.
+- **Billboard preview:** an animated still with a (simulated) mute toggle.
+- **Audio & Subtitles menu** in the player (mock tracks styled by the profile's subtitle settings).
+- **My List sorting** (Date added, A–Z, Z–A, Release year).
+- **End-to-end tests** with Playwright for the main journeys on desktop and phone.
 
 ## Features
 
-- **Home like Netflix:** a billboard that rotates each visit, then rows for Continue Watching, Top 10 on DramaStream Today (with big rank numbers), My List, Trending Now, New Releases, Because you watched…, genre rows, and Drama Films / Series / Documentaries. Rows scroll with arrows and a page indicator. Hovering a poster for a moment reveals Play, My List, Rate, More Info, maturity, length and genres.
-- **Title details as a modal:** opening a title shows its details over the page you were on, with Play/Resume, My List, Rate, cast, genres, mood tags, the episode list (series), More Like This and About. The URL changes so it can be shared, and Back or Escape closes it. Opening a `/titles/…` link directly shows the full page, with ratings, reviews and sharing.
-- **Accounts and profiles (optional):** browse freely without an account. Signing in (Supabase Auth) adds Netflix-style profiles, up to five per account, including kids profiles that only show titles at or below a maturity level. My List, Continue Watching, ratings and reviews belong to the profile.
-- **Search and browse:** live search by title, actor, director or genre (accent- and punctuation-insensitive), with "Explore titles related to" suggestions. TV Shows, Movies and Documentaries pages filter by genre.
-- **Continue Watching:** the mock player saves where you stopped. Details show Resume and Start Over, and cards show a progress bar and "Remove from row".
-- **Ratings like Netflix:** Not for me / I like this / Love this, plus written reviews (private to you).
-- **Mock player:** clearly labeled "Mock player — no video is streaming". It has play/pause, seek, ±10 s, playback speed, simulated volume and mute, full screen, Skip Intro, Next Episode with an autoplay countdown (a per-profile setting), and keyboard shortcuts: Space/K, ←/→, F, M, ↑/↓.
-- **Share:** the system share sheet on phones; on desktop, a menu with Copy link, X, Facebook, WhatsApp and Email.
-- **Responsive and accessible:** a bottom tab bar on phones, visible focus, labeled controls, announced status messages, and reduced-motion support. axe-core reports no WCAG 2.2 AA violations.
+| Area | What you can do |
+|---|---|
+| Browse | Billboard, Continue Watching, Top 10, My List, Trending Now, New Releases, Because you watched / liked, genre rows, and the three category rows. Hover a poster for Play, My List, Rate, More Info, % Match, maturity, length and genres. |
+| Details | Opens as a modal over the page; series show every season and episode with stills and synopses; More Like This; About; Remind Me for Coming Soon titles. |
+| Search & browse | Live search by title, actor, director or genre, accent- and punctuation-insensitive, with "Explore titles related to". TV Shows, Movies and Documentaries pages with a genre filter. |
+| New & Popular | Coming Soon with arrival dates and Remind Me, New on DramaStream, Top 10. The bell shows new arrivals and reminders. |
+| Player | Mock playback (no video) with play/pause, seek, ±10 s, speed, simulated volume and mute, full screen, Skip Intro, Next Episode countdown, Audio & Subtitles, and Space/K, ←/→, F, M, ↑/↓. Saves where you stopped. |
+| Accounts (optional) | Plan step, sign up/in/out, password reset, Who's watching?, up to 5 profiles (kids, maturity, PIN lock, language, subtitles, autoplay), Account and Viewing activity. |
+| Lists & ratings | My List (sortable), Continue Watching, Not for me / I like this / Love this!, written reviews. Saved in the browser for guests, or per profile when signed in. |
+| Quality | Responsive (phone tab bar), keyboard accessible, screen-reader announcements, reduced-motion support; no WCAG 2.2 AA violations in axe-core. |
 
 ## Screenshots
 
 | | |
 |---|---|
-| ![Home: the Breaking Bad billboard over the rows](docs/screenshots/home.jpg) | ![Continue Watching with progress bars, and the Top 10 row](docs/screenshots/rows.jpg) |
+| ![Home with the Breaking Bad billboard](docs/screenshots/home.jpg) | ![Continue Watching with progress bars, and the Top 10 row](docs/screenshots/rows.jpg) |
 | **Home** | **Continue Watching and Top 10** |
-| ![Details modal for The Wire over the Home page](docs/screenshots/details.jpg) | ![Breaking Bad episode list with a season picker](docs/screenshots/episodes.jpg) |
-| **Details modal** | **Episodes** |
-| ![Ratings and reviews with a Love this! review](docs/screenshots/reviews.jpg) | ![Mock player for Chernobyl, resumed at 25:00 with Next Episode](docs/screenshots/player.jpg) |
-| **Ratings & reviews** | **Mock player** |
+| ![Hover card with 98% Match in the Because you liked row](docs/screenshots/hover-card.jpg) | ![Details modal for The Wire over the Home page](docs/screenshots/details.jpg) |
+| **Hover card and % Match** | **Details modal** |
+| ![Episode list with stills and synopses](docs/screenshots/episodes.jpg) | ![Mock player with the Audio & Subtitles menu open](docs/screenshots/player.jpg) |
+| **Episodes** | **Player: Audio & Subtitles** |
+| ![New & Popular with Coming Soon and Remind Me](docs/screenshots/new-popular.jpg) | ![Notifications bell listing new arrivals](docs/screenshots/notifications.jpg) |
+| **New & Popular** | **Notifications** |
 | ![Search for an actor's name finding Aftersun and Normal People](docs/screenshots/search.jpg) | ![Movies page filtered to Crime](docs/screenshots/browse.jpg) |
 | **Search by person** | **Browse with a genre filter** |
-| ![Signed-out welcome page with an email field](docs/screenshots/welcome.jpg) | ![My List with five saved titles](docs/screenshots/my-list.jpg) |
-| **Welcome page** | **My List** |
+| ![Signed-out welcome page](docs/screenshots/welcome.jpg) | ![Plan step: Basic, Standard, Premium](docs/screenshots/plans.jpg) |
+| **Welcome page** | **Plan step** |
+| ![My List with five saved titles and a sort menu](docs/screenshots/my-list.jpg) | ![Ratings and reviews with a Love this! review](docs/screenshots/reviews.jpg) |
+| **My List** | **Ratings & reviews** |
 | ![Share menu open on a title](docs/screenshots/share.jpg) | <img src="docs/screenshots/mobile-home.jpg" alt="Home page on a phone" width="260"> |
 | **Share menu** | **Phone layout** |
 
+Screens that need a signed-in account (Who's watching?, profile settings, Account, Viewing activity) aren't pictured: the screenshots are taken signed out.
+
 ## Catalog
 
-60 real titles, 20 per category. They load from Supabase, with the same data bundled in `src/data/catalog.js` as a fallback. **Breaking Bad** is the featured title. All 10 original series list every episode (433 in total); the 10 newer series list their first episode.
+**60 titles**, 20 per row, plus **6 Coming Soon** titles. They load from Supabase, with the same data bundled in `src/data/catalog.js` as a fallback. **Breaking Bad** is the featured title. Every series lists all of its episodes in Supabase (850 in total, with stills and synopses); the bundled fallback only knows each series' first episode.
 
 | Drama Films | Drama Series | Drama Documentaries |
 |---|---|---|
@@ -62,7 +126,20 @@ A responsive streaming-catalog prototype for the Code Platoon Netflix Clone I as
 | Aftersun (2022, R) | Shōgun (2024, TV-MA) | Grizzly Man (2005, R) |
 | Boyhood (2014, R) | The Night Of (2016, TV-MA) | The Act of Killing (2012, NR) |
 
-Year, rating, runtime, seasons/episodes, and credits were checked against TMDB. The synopses were written for this project.
+### Coming Soon
+
+Real, already-released titles, arriving on DramaStream on dates we set for this demo. Each one leaves Coming Soon and appears in the rows automatically on its date.
+
+| Title | Type | Year, rating | Arrives |
+|---|---|---|---|
+| Anatomy of a Fall | Film | 2023, R | 2026-11-01 |
+| Slow Horses | Series | 2022, TV-MA | 2026-11-08 |
+| Fire of Love | Documentary | 2022, PG | 2026-11-15 |
+| The Pitt | Series | 2025, TV-MA | 2026-11-22 |
+| The Zone of Interest | Film | 2023, PG-13 | 2026-11-29 |
+| Summer of Soul | Documentary | 2021, PG-13 | 2026-12-06 |
+
+Year, rating, runtime, seasons/episodes, credits and episode titles come from TMDB. Every synopsis — titles and episodes — was written for this project.
 
 ## Start the app
 
@@ -72,16 +149,36 @@ cp .env.example .env.local   # then fill in your Supabase URL and publishable ke
 npm run dev
 ```
 
-Without `.env.local` the site still runs: it uses the bundled catalog, and the account features are hidden.
-
-Run the unit tests with `npm test`.
-
-Open the local URL that Vite prints. To create and preview a production build:
+Without `.env.local` the site still runs: it uses the bundled catalog, and account features are hidden.
 
 ```bash
-npm run build
-npm run preview
+npm run build      # production build in dist/
+npm run preview    # serve the build
 ```
+
+## Tests
+
+```bash
+npm test           # 34 unit tests (Vitest): catalog, search, rows, % Match, notifications, plans, PIN, validation
+npm run test:e2e   # 15 end-to-end journeys (Playwright, desktop + phone)
+```
+
+The end-to-end tests start the dev server (or reuse one on port 5173). The first time, install the browser with `npx playwright install chromium`. They cover the welcome page, Home rows, the details modal, search, Browse, My List with sorting, ratings with % Match, Resume and Continue Watching, the Next Episode countdown, Coming Soon with Remind Me, the bell, and the phone layout.
+
+## Database (Supabase)
+
+Everything about the database lives in [`supabase/`](supabase/):
+
+| File | What it holds |
+|---|---|
+| `catalog.sql` | Titles, genres, people, credits, seasons, episodes; public read-only RLS |
+| `profiles.sql` | Profiles (≤ 5 per account), per-profile My List, viewing progress, ratings, reviews; owner-only RLS |
+| `activity.sql` | Anonymous daily play/add counts for Top 10 and Trending (filled by triggers) |
+| `phase3.sql` | PIN and subtitle settings, Coming Soon dates, reminders |
+| `schema.sql` | The class's task-manager homework tables (not used by the site) |
+| `seed/` | Generators and data: `catalog.sql`, `episodes.json`/`episodes.sql`, and the TMDB research files |
+
+Signed-out visitors can only read the catalog. Everything personal is protected by Row Level Security so an account sees only its own profiles and their data. Supabase's security advisor reports no warnings.
 
 ## Deploy
 
@@ -105,15 +202,16 @@ After adding artwork, run `sh scripts/make-image-sizes.sh` (macOS) to create the
 |---|---|
 | `/` | Home (`/#drama-films`, `/#drama-series`, `/#drama-documentaries` jump to a row) |
 | `/browse/series`, `/browse/films`, `/browse/documentaries` | TV Shows, Movies, Documentaries (`?genre=` filter) |
-| `/search?q=` | Search and results |
+| `/new` | New & Popular: Coming Soon, New on DramaStream, Top 10 |
+| `/search?q=` | Search |
 | `/titles/:titleId` | Title details: a modal when opened in the app, a full page for direct links |
 | `/my-list` | My List |
-| `/watch/:titleId` | Mock playback (resumes where you left off; `?s=&e=` picks an episode, `?t=0` starts over) |
-| `/welcome` | Signed-out landing page (first visit) |
-| `/signin`, `/signup` | Sign in / create an account |
+| `/watch/:titleId` | Mock player (resumes; `?s=&e=` picks an episode, `?t=0` starts over) |
+| `/welcome` | Signed-out welcome page (first visit) |
+| `/signin`, `/signup` | Sign in; plan step + sign up |
 | `/forgot-password`, `/reset-password` | Password reset |
-| `/account` | Account (signed in only) |
-| `/profiles`, `/profiles/new`, `/profiles/:id/edit` | Who's watching? and profile settings (signed in only) |
+| `/profiles`, `/profiles/new`, `/profiles/:id/edit` | Who's watching? and profile settings (signed in) |
+| `/account`, `/account/activity` | Account and Viewing activity (signed in) |
 | `/help` | FAQ |
 | `*` | Not Found |
 
@@ -121,39 +219,42 @@ After adding artwork, run `sh scripts/make-image-sizes.sh` (macOS) to create the
 
 ```text
 src/
-  app/          App.jsx (routes + layout), RouteEffects.jsx (scroll & focus on navigation)
-  components/   AppHeader, FeaturedTitle, TitleRow, TitleCard, MyListButton, ShareButton,
-                StarRating, ReviewsSection, MockPlayer, SearchForm, SmartImage, EmptyState, Icons…
-  data/         catalog.js — the single catalog plus search/format helpers and data validation
-  pages/        Home, Search, TitleDetails, MyList, Player, NotFound
-  state/        MyListContext, ReviewsContext, StatusContext (toast + screen-reader announcements)
-  styles/       global.css (tokens, base, buttons), components.css
-public/assets/  posters/, hero/, logos/, CREDITS.md
+  app/          App.jsx (routes, modal route, profile gate), RouteEffects.jsx (scroll & focus)
+  components/   AppHeader, AccountMenu, NotificationsBell, FeaturedTitle, TitleRow, TitleCard,
+                TitleModal, EpisodeList, MockPlayer, AudioSubtitlesMenu, ThumbsRating, ReviewsSection,
+                PlanPicker, PinDialog, ProfileAvatar, RemindButton, AuthShell, SearchForm, …
+  data/         catalog.js (bundled catalog, maturity + Coming Soon filters, search), remoteCatalog.js,
+                rows.js (Home rows), match.js (% Match), notifications.js, activity.js, billboard.js,
+                moods.js, plans.js
+  lib/          supabase.js (client), storage.js, validate.js, pin.js, guest.js
+  pages/        Home, Browse, NewPopular, Search, TitleDetails, MyList, Player, Landing, SignIn, SignUp,
+                ForgotPassword, ResetPassword, Profiles, ProfileEdit, Account, Activity, Help, NotFound
+  state/        Auth, Profile, MyList, Progress, Reviews, Reminders, Status (toasts) contexts
+  styles/       global.css, components.css, account.css
+  __tests__/    Vitest unit tests
+e2e/            Playwright end-to-end tests
+supabase/       schema files, seeds and research data (see Database)
+public/assets/  posters/ (+400/), hero/ (+960/), logos/, stills/, CREDITS.md
+scripts/        make-image-sizes.sh
 docs/screenshots/
 ```
 
-## State and privacy
+## Data and privacy
 
-- **Catalog:** loaded from Supabase (tables `titles`, `genres`, `credits`, `seasons`, `episodes`, …). If Supabase can't be reached, the bundled `src/data/catalog.js` is used, so the site never goes blank.
-- **Accounts are optional.** Signed out, **My List** and **Continue Watching** are saved in this browser's `localStorage`. Signed in (Supabase Auth), they're saved to your account (tables `my_list` and `viewing_progress`, protected by Row Level Security so only you can see them). Anything saved before signing in is merged into the account.
-- **Ratings and reviews** are saved in this browser’s `localStorage` (key `dramastream:reviews:v1`) so they survive a refresh. They are never sent to a server, and other people can’t see them. Clear your browser’s site data to reset them.
-- **Share** only opens links you choose (or your device’s share sheet). Nothing is posted automatically.
-- Accounts store only an email address (and Supabase's hashed password). The app never collects payment details.
+- **Catalog:** public, read-only, from Supabase (or the bundled copy).
+- **Signed out:** My List, Continue Watching, ratings, reviews and reminders are saved only in this browser's `localStorage`.
+- **Signed in:** they belong to the chosen profile in Supabase and are visible only to that account (Row Level Security). Anything saved before signing in moves into the first profile you pick.
+- **Accounts** store an email address (plus Supabase's hashed password) and the mock plan name. No payment details, ever. Profile PINs are stored only as salted hashes.
+- **Top 10 / Trending** use anonymous per-title counts with no user or profile ids.
+- **Share** only opens links you choose; nothing is posted automatically.
 
-## Artwork
+## Artwork and sources
 
-Each title has three local images under `public/assets/`: a poster (`posters/`), a wide background still (`hero/`, resized to 1920px), and its title logo (`logos/`). They were downloaded once from TMDB’s image CDN for this educational project. Sources are listed in [`public/assets/CREDITS.md`](./public/assets/CREDITS.md). Every image falls back to a neutral placeholder showing the title text if it fails to load. The running app does not call any external image or media API.
+Posters, backgrounds, logos and episode stills were downloaded once from TMDB's image CDN for this educational project and are listed in [`public/assets/CREDITS.md`](public/assets/CREDITS.md). Every image falls back to a neutral placeholder if it fails to load. Smaller copies (`posters/400/`, `hero/960/`) come from `scripts/make-image-sizes.sh`.
 
 ## Planning docs
 
-See [`design.md`](./design.md) for the original product plan, user stories, acceptance criteria, and accessibility guidance, and [`Plan/Plan.md`](./Plan/Plan.md) for the planning questions. The build has since grown beyond that first scope: 30 real titles instead of 12 fictional ones, plus ratings, reviews, and sharing.
-
-## Quality checklist
-
-- Every title has a unique ID and appears in the correct category. The featured title is one of the 30, not an extra entry.
-- Search handles partial and case-insensitive matches and shows a useful no-results state.
-- My List prevents duplicates and has an empty state.
-- Ratings require 1–5 stars, and reviews require at least 10 characters. Validation errors are announced.
-- Mock playback controls change the visible simulated state and never imply real streaming.
-- Navigation and controls work with the keyboard and at phone (390px), tablet (768px), and desktop (1440px) widths.
-- `npm run build` completes successfully.
+- [`Plan/Tasks.md`](Plan/Tasks.md): the 64-task checklist, by feature area and phase.
+- [`Plan/Plan.md`](Plan/Plan.md): planning questions, user stories and decisions.
+- [`design.md`](design.md): the original product plan and acceptance criteria.
+- [`app_outline/`](app_outline/) and [`supabase/`](supabase/): the Databases & Supabase class homework (task-manager spec and database).

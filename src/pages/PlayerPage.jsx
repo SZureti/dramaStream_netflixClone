@@ -36,7 +36,8 @@ export default function PlayerPage() {
         <EmptyState heading="Coming soon">
           <p>
             {title.title} arrives on DramaStream on{' '}
-            {new Date(`${title.availableFrom}T12:00:00`).toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}.
+            {new Date(`${title.availableFrom}T12:00:00`).toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}
+            .
           </p>
         </EmptyState>
       </div>
@@ -97,6 +98,9 @@ export default function PlayerPage() {
       onNext={playNext}
       autoplayNext={profile?.autoplay_next ?? true}
       autoStart={Boolean(location.state?.autoStart)}
+      language={profile?.language ?? 'en'}
+      subtitleSize={profile?.subtitle_size ?? 'medium'}
+      subtitleStyle={profile?.subtitle_style ?? 'white'}
     />
   );
 }
