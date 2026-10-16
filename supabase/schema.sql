@@ -10,7 +10,11 @@
 --   - NOT NULL where a story needs the value; UNIQUE on users.email and tags.name.
 --   - Foreign keys say what happens on delete, and every FK column has an index
 --     (PostgreSQL doesn't index foreign keys for you).
---   - Row Level Security is on for every table, with no rules yet.
+--   - user_id is required on projects and tasks (every row belongs to a user).
+--     The user FK has no on-delete rule, so a user who still owns rows can't
+--     be deleted by accident.
+--   - Row Level Security is on for every table. Until the auth lecture, each
+--     table has one TEMPORARY open rule for anon (see the end of this file).
 --
 -- Order matters: a table must exist before another table can point a foreign key at it.
 
@@ -33,7 +37,7 @@ create table public.projects (
   id           uuid          primary key default gen_random_uuid(),
   name         varchar(255)  not null,
   description  text,
-  user_id      uuid          references public.users (id) on delete set null,
+  user_id      uuid          not null references public.users (id),
   created_at   timestamptz   not null default now()
 );
 
@@ -65,7 +69,7 @@ create table public.tasks (
   is_complete  boolean       not null default false,
   due_date     date,
   project_id   uuid          references public.projects (id) on delete set null,
-  user_id      uuid          references public.users (id) on delete set null,
+  user_id      uuid          not null references public.users (id),
   created_at   timestamptz   not null default now()
 );
 
@@ -91,19 +95,31 @@ alter table public.task_tags enable row level security;
 
 
 -- =========================================================================
--- LATER, NOT APPLIED
+-- TEMPORARY: dev: open access until auth  (APPLIED, API lecture)
 -- =========================================================================
+-- Lets Postman and the app read and write with the publishable key while
+-- there's no sign-in yet. Anyone with the key can change these five tables,
+-- so the rows must stay test data. DramaStream's own tables are NOT opened.
+
+grant select, insert, update, delete
+  on public.users, public.projects, public.tasks, public.tags, public.task_tags
+  to anon;
+
+create policy "dev: open access until auth" on public.users
+  for all to anon using (true) with check (true);
+create policy "dev: open access until auth" on public.projects
+  for all to anon using (true) with check (true);
+create policy "dev: open access until auth" on public.tasks
+  for all to anon using (true) with check (true);
+create policy "dev: open access until auth" on public.tags
+  for all to anon using (true) with check (true);
+create policy "dev: open access until auth" on public.task_tags
+  for all to anon using (true) with check (true);
+
+-- Authentication lecture: users becomes a mirror of auth.users, the five
+-- rules above are dropped, and each table gets rules on user_id, for example:
 --
--- API lecture: when the app starts calling the database with the publishable
--- key, RLS with no rules returns [] for reads and refuses writes. The
--- supabase-agent proposes temporary dev rules then, for example:
---
---   create policy dev_anon_all_tasks on public.tasks
---     for all to anon, authenticated using (true) with check (true);
---
--- Authentication lecture: users becomes a mirror of auth.users, the dev rules
--- are dropped, and each table gets rules on user_id, for example:
---
+--   drop policy "dev: open access until auth" on public.tasks;
 --   create policy tasks_own on public.tasks
 --     for all to authenticated
 --     using ((select auth.uid()) = user_id)
