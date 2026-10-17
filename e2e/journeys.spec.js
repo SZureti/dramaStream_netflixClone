@@ -146,3 +146,45 @@ test.describe('New & Popular', () => {
     await expect(page.locator('.bell__item').first()).toBeVisible();
   });
 });
+
+test.describe('trailers', () => {
+  test.beforeEach(async ({ page }) => {
+    await asGuest(page);
+    // Don't depend on YouTube: answer the embed with a stand-in page.
+    await page.route('https://www.youtube-nocookie.com/**', (route) =>
+      route.fulfill({ contentType: 'text/html', body: '<!doctype html><title>Trailer stub</title><p>Trailer stub</p>' }),
+    );
+  });
+
+  test('a title modal plays its trailer in a dialog; Escape and Close stop it', async ({ page }) => {
+    await page.goto('/');
+    await page.locator('#drama-films a.card__link[href="/titles/parasite"]').first().click();
+    const modal = page.locator('dialog.title-modal');
+    const button = modal.getByRole('button', { name: 'Trailer' });
+    await button.click();
+
+    const player = page.getByRole('dialog', { name: /Parasite Official Trailer/ });
+    await expect(player).toBeVisible();
+    const frame = player.locator('iframe');
+    await expect(frame).toHaveAttribute('src', /^https:\/\/www\.youtube-nocookie\.com\/embed\/[\w-]{11}\?/);
+    await expect(frame).toHaveAttribute('title', /Parasite official trailer/);
+    await expect(page.frameLocator('.trailer-dialog iframe').getByText('Trailer stub')).toBeVisible();
+
+    // Escape closes only the trailer; the title modal stays and focus returns.
+    await page.keyboard.press('Escape');
+    await expect(player).toHaveCount(0);
+    await expect(modal).toBeVisible();
+    await expect(button).toBeFocused();
+
+    await button.click();
+    await page.getByRole('button', { name: 'Close trailer' }).click();
+    await expect(page.locator('.trailer-dialog iframe')).toHaveCount(0);
+    await expect(button).toBeFocused();
+  });
+
+  test('titles without an official trailer show no Trailer button', async ({ page }) => {
+    await page.goto('/titles/breaking-bad');
+    await expect(page.getByRole('heading', { name: 'About Breaking Bad' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Trailer' })).toHaveCount(0);
+  });
+});

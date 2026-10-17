@@ -8,6 +8,7 @@ import ReviewsSection from '../components/ReviewsSection.jsx';
 import ThumbsRating from '../components/ThumbsRating.jsx';
 import EpisodeList from '../components/EpisodeList.jsx';
 import RemindButton from '../components/RemindButton.jsx';
+import TrailerButton from '../components/TrailerButton.jsx';
 import { RATINGS, useReviews } from '../state/ReviewsContext.jsx';
 import { isResumable, useProgress } from '../state/ProgressContext.jsx';
 import { ArrowLeftIcon, PlayIcon } from '../components/Icons.jsx';
@@ -165,6 +166,7 @@ function TitleDetails({ title }) {
                     Start Over
                   </Link>
                 )}
+                <TrailerButton title={title} className="btn--lg" />
                 <MyListButton title={title} className="btn--lg" />
                 <ThumbsRating
                   compact

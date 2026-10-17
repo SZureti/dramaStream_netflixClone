@@ -1,6 +1,6 @@
 # DramaStream tasks
 
-The work left to make DramaStream feel like the real Netflix site: 64 tasks in 14 feature areas. This file is the tracker. It's kept in the repo for me only and isn't part of the published site.
+The work left to make DramaStream feel like the real Netflix site: 65 tasks in 14 feature areas. This file is the tracker. It's kept in the repo for me only and isn't part of the published site.
 
 **How to use it**
 
@@ -94,6 +94,7 @@ On Netflix, details open as a modal over the browse page.
 - [x] Keep `/titles/:id` working as a full page for direct links. — `frontend` `phase-2`
 - [x] Modal sections: hero with Play / My List / Rate, synopsis, cast, genres, "This show is…" mood tags, Episodes, More Like This, About. — `frontend` `phase-2` _(Mood tags are derived from genres.)_
 - [x] Trap focus inside the modal and close on Escape. — `accessibility` `phase-2`
+- [x] **Trailer** button that plays the title's official trailer (YouTube embed, no video stored) in an accessible dialog, on desktop and phone, Coming Soon titles included. — `frontend` `database` `content` `accessibility` `phase-3` _(Keys from TMDB's official videos in `supabase/seed/trailers-research.json`; column added by `supabase/trailers.sql`. 57 of 66 titles have one.)_
 
 ## 9. Seasons and episodes
 
@@ -144,7 +145,7 @@ Account details and per-profile preferences.
 Tests, accessibility, performance and deployment.
 
 - [x] Check against WCAG 2.2 AA: keyboard paths, focus, contrast, and screen-reader labels on every new screen. — `accessibility` `testing` `phase-1` _(axe-core: no violations on any page.)_
-- [x] Add tests for each story's workflow (unit tests for data helpers, plus end-to-end tests for the main journeys). — `testing` `phase-1` _(`npm test`: 34 unit tests. `npm run test:e2e`: 15 Playwright journeys, desktop and phone.)_
+- [x] Add tests for each story's workflow (unit tests for data helpers, plus end-to-end tests for the main journeys). — `testing` `phase-1` _(`npm test`: 41 unit tests. `npm run test:e2e`: 18 Playwright journeys, desktop and phone.)_
 - [x] Optimize images (responsive sizes, lazy loading) and keep `npm run build` passing. — `performance` `phase-2` _(`srcset` with smaller copies from `scripts/make-image-sizes.sh`; secondary pages lazy-loaded.)_
 - [x] Run the Supabase security and performance advisors after every migration and fix the warnings. — `database` `testing` `phase-1` _(Security: clean. Performance: only unused-index notes on new tables.)_
 - [ ] Deploy (for example Vercel or Netlify) with Supabase keys in environment variables. — `backend` `phase-2` _(Ready for you: `vercel.json`, `public/_redirects`, and the steps under **Deploy** in the README.)_

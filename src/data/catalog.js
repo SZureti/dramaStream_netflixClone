@@ -6,6 +6,8 @@
  * TMDB (themoviedb.org); ratings for the two Netflix documentaries come from
  * Netflix's US title pages. Synopses are written for this project.
  * Artwork lives in /public/assets and is credited in /public/assets/CREDITS.md.
+ * `trailer` is the YouTube key of the title's official trailer, picked from TMDB
+ * (see supabase/seed/trailers-research.json); titles without one have none.
  */
 
 export const TYPES = {
@@ -70,6 +72,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'shawshank-redemption',
       title: 'The Shawshank Redemption',
       type: 'film',
+      trailer: 'PLl99DlL6b4',
       synopsis:
         'Sentenced to life for a crime he insists he did not commit, soft-spoken banker Andy Dufresne arrives at Shawshank State Penitentiary in 1947. Over two decades behind its walls, an unlikely friendship with fellow inmate Red becomes a lesson in patience, dignity, and stubborn hope.',
       releaseYear: 1994,
@@ -87,6 +90,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'whiplash',
       title: 'Whiplash',
       type: 'film',
+      trailer: 'Q7kZy3T6vRM',
       synopsis:
         'Andrew, a first-year jazz drummer at an elite music conservatory, earns a seat in the studio band run by the brilliant and merciless Terence Fletcher. As rehearsal turns into obsession, Andrew has to decide how much of himself greatness is worth.',
       releaseYear: 2014,
@@ -101,6 +105,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'moonlight',
       title: 'Moonlight',
       type: 'film',
+      trailer: '9NJj12tJzqc',
       synopsis:
         'Told in three chapters, Moonlight follows Chiron from a bullied childhood in Miami through a turbulent adolescence and into a guarded adulthood, as he searches for a sense of self and the courage to let someone truly see him.',
       releaseYear: 2016,
@@ -115,6 +120,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'past-lives',
       title: 'Past Lives',
       type: 'film',
+      trailer: 'kA244xewjcI',
       synopsis:
         'Nora and Hae Sung were inseparable as children in Seoul until her family emigrated. Twenty-four years later he visits her in New York, and over one quiet week the two old friends confront love, destiny, and the lives they did not get to live.',
       releaseYear: 2023,
@@ -147,6 +153,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'succession',
       title: 'Succession',
       type: 'series',
+      trailer: 'ZO-XX1UpsqY',
       synopsis:
         'Media titan Logan Roy controls one of the world’s largest entertainment conglomerates, and each of his four children wants a piece of it. As his health falters and his grip tightens, loyalty, ambition, and family become impossible to tell apart.',
       releaseYear: 2018,
@@ -163,6 +170,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'the-crown',
       title: 'The Crown',
       type: 'series',
+      trailer: 'JWtnJjn6ng0',
       synopsis:
         'Crowned at twenty-five, Elizabeth II must weigh private life against the duties of the monarchy as Britain changes around her. Spanning decades of political upheaval and family strain, the series imagines the conversations behind palace doors.',
       releaseYear: 2016,
@@ -179,6 +187,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'normal-people',
       title: 'Normal People',
       type: 'series',
+      trailer: 'x1JQuWxt3cE',
       limitedSeries: true,
       synopsis:
         'In a small town in the west of Ireland, popular Connell and outsider Marianne begin a secret relationship in their final year of school. Through university in Dublin and beyond, they keep finding their way back to each other — even when they can’t say what they mean.',
@@ -201,6 +210,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'free-solo',
       title: 'Free Solo',
       type: 'documentary',
+      trailer: 'urRVZ4SW7WU',
       synopsis:
         'Rock climber Alex Honnold prepares to scale the 3,000-foot granite face of El Capitan in Yosemite National Park — alone, with no rope and no protection. An intimate portrait of obsession, risk, and the people who love him while he chases an impossible goal.',
       releaseYear: 2018,
@@ -231,6 +241,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'my-octopus-teacher',
       title: 'My Octopus Teacher',
       type: 'documentary',
+      trailer: '3s0LTDhqe5A',
       synopsis:
         'Burned out and searching for meaning, filmmaker Craig Foster starts free-diving in a cold South African kelp forest, where he meets a curious young octopus. Over a year of daily visits, an extraordinary bond forms that changes how he sees the natural world — and himself.',
       releaseYear: 2020,
@@ -246,6 +257,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'wont-you-be-my-neighbor',
       title: 'Won’t You Be My Neighbor?',
       type: 'documentary',
+      trailer: 'EAwR54HrVW8',
       synopsis:
         'For more than three decades, Fred Rogers used a modest children’s television show to talk honestly about feelings, fear, and kindness. Through archival footage and interviews, this documentary explores the gentle radical behind Mister Rogers’ Neighborhood.',
       releaseYear: 2018,
@@ -263,6 +275,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'the-godfather',
       title: 'The Godfather',
       type: 'film',
+      trailer: 'Ew9ngL1GZvs',
       synopsis:
         'When aging patriarch Vito Corleone is targeted by a rival family, his youngest son Michael — the one who swore to stay out of the family business — is drawn into a war that will decide who he becomes.',
       releaseYear: 1972,
@@ -280,6 +293,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'schindlers-list',
       title: 'Schindler’s List',
       type: 'film',
+      trailer: 'v0RB-3sWbBA',
       synopsis:
         'In occupied Poland, opportunistic businessman Oskar Schindler staffs his factory with Jewish workers for cheap labor — until the horror unfolding around him turns profit into a desperate effort to save as many lives as he can.',
       releaseYear: 1993,
@@ -297,6 +311,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'manchester-by-the-sea',
       title: 'Manchester by the Sea',
       type: 'film',
+      trailer: 'obdKk_sYQNI',
       synopsis:
         'A withdrawn Boston handyman returns to his coastal hometown after his brother’s death and learns he has been named guardian of his teenage nephew — forcing him to face the past he left behind.',
       releaseYear: 2016,
@@ -311,6 +326,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'marriage-story',
       title: 'Marriage Story',
       type: 'film',
+      trailer: 'BHi-a1n8t7M',
       synopsis:
         'A theater director and an actor try to part ways gently, but a bicoastal divorce pulls in lawyers, pride, and their young son — testing how much love can survive the ending of a marriage.',
       releaseYear: 2019,
@@ -325,6 +341,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'nomadland',
       title: 'Nomadland',
       type: 'film',
+      trailer: 'BZ4o4jwSaHk',
       synopsis:
         'After the economic collapse of her company town, a widow packs her life into a van and drives west, finding work, solitude, and an unexpected community among modern-day nomads.',
       releaseYear: 2021,
@@ -339,6 +356,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'oppenheimer',
       title: 'Oppenheimer',
       type: 'film',
+      trailer: 'bK6ldnjE3Y0',
       synopsis:
         'The story of physicist J. Robert Oppenheimer, who led the secret wartime race to build the atomic bomb — and then lived with what his success had unleashed on the world.',
       releaseYear: 2023,
@@ -355,6 +373,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'better-call-saul',
       title: 'Better Call Saul',
       type: 'series',
+      trailer: 'l1xIGfVFb-U',
       synopsis:
         'Years before Breaking Bad, struggling lawyer Jimmy McGill hustles for clients in Albuquerque, and every shortcut he takes edges him closer to becoming the criminal attorney Saul Goodman.',
       releaseYear: 2015,
@@ -387,6 +406,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'chernobyl',
       title: 'Chernobyl',
       type: 'series',
+      trailer: 's9APLXM9Ei8',
       limitedSeries: true,
       synopsis:
         'In April 1986, a reactor explodes at the Chernobyl nuclear plant. Scientists, officials, and ordinary workers race to contain the disaster while the Soviet state works just as hard to contain the truth.',
@@ -420,6 +440,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'mare-of-easttown',
       title: 'Mare of Easttown',
       type: 'series',
+      trailer: 'a-RkBkz45gs',
       limitedSeries: true,
       synopsis:
         'A small-town Pennsylvania detective, once a local basketball hero, investigates a young mother’s murder while her own life and family quietly fall apart around her.',
@@ -437,6 +458,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'the-queens-gambit',
       title: 'The Queen’s Gambit',
       type: 'series',
+      trailer: 'FU854_5itOk',
       limitedSeries: true,
       synopsis:
         'Orphaned at nine, Beth Harmon learns chess from a janitor in a basement — and grows into a prodigy fighting her way to the top of a male-dominated game while battling her own dependencies.',
@@ -456,6 +478,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'man-on-wire',
       title: 'Man on Wire',
       type: 'documentary',
+      trailer: 'YW1b3G2MN3Q',
       synopsis:
         'In 1974, French high-wire artist Philippe Petit and a small band of friends sneak into the unfinished World Trade Center to string a cable between the Twin Towers — and attempt the impossible walk.',
       releaseYear: 2008,
@@ -471,6 +494,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'searching-for-sugar-man',
       title: 'Searching for Sugar Man',
       type: 'documentary',
+      trailer: 'tDw7OqVBT-w',
       synopsis:
         'A Detroit singer-songwriter vanished after two overlooked albums — unaware that he had become a legend in apartheid-era South Africa. Two fans set out to learn what really happened to him.',
       releaseYear: 2012,
@@ -486,6 +510,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'jiro-dreams-of-sushi',
       title: 'Jiro Dreams of Sushi',
       type: 'documentary',
+      trailer: '0VB_DrsHDQ0',
       synopsis:
         'Inside a ten-seat Tokyo restaurant, an 85-year-old sushi master pursues perfection one piece at a time, while his eldest son waits for the day he will inherit his father’s legacy.',
       releaseYear: 2011,
@@ -501,6 +526,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'icarus',
       title: 'Icarus',
       type: 'documentary',
+      trailer: 'qXoRdSTrR-4',
       synopsis:
         'A filmmaker sets out to test how easy it is to beat cycling’s doping controls, and his Russian adviser ends up at the center of an international scandal that reaches the highest levels of sport and state.',
       releaseYear: 2017,
@@ -531,6 +557,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'american-factory',
       title: 'American Factory',
       type: 'documentary',
+      trailer: 'm36QeKOJ2Fc',
       synopsis:
         'When a Chinese billionaire reopens a shuttered General Motors plant in Ohio, hopeful local workers and transplanted Chinese staff collide over culture, pay, and what a good job is supposed to look like.',
       releaseYear: 2019,
@@ -548,6 +575,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: '12-angry-men',
       title: '12 Angry Men',
       type: 'film',
+      trailer: 'TEN-2uTi2c0',
       synopsis:
         "On a sweltering afternoon, twelve jurors retreat to a cramped room to decide a teenager's fate, and a quick guilty verdict seems certain. One quiet holdout asks the others to slow down. As tempers flare and assumptions crack, the deliberation becomes a tense study of doubt, prejudice and civic duty.",
       releaseYear: 1957,
@@ -565,6 +593,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'parasite',
       title: 'Parasite',
       type: 'film',
+      trailer: 'isOGD_7hNIY',
       synopsis:
         "A struggling family living in a cramped semi-basement apartment schemes its way, one member at a time, into jobs serving a wealthy household on the hill. The arrangement seems almost too good to last. Bong Joon Ho's genre-bending satire turns a story about class into something sharp, funny and unnerving.",
       releaseYear: 2019,
@@ -579,6 +608,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'the-pianist',
       title: 'The Pianist',
       type: 'film',
+      trailer: 'og9hFxxdSOg',
       synopsis:
         'When Nazi forces occupy Warsaw, a celebrated Jewish pianist watches his world shrink from concert halls to ghetto walls. Separated from his family, he survives through luck, hiding and the quiet help of strangers. A harrowing true story about endurance, loss and the music that keeps a person human.',
       releaseYear: 2002,
@@ -596,6 +626,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'room',
       title: 'Room',
       type: 'film',
+      trailer: 'yfBdUPAjiVQ',
       synopsis:
         "Five-year-old Jack believes the single small room he shares with his mother is the entire world. For her, it is a prison she has spent years planning to escape. Told largely through a child's eyes, this tender, gripping drama explores captivity, resilience and the overwhelming size of everything outside.",
       releaseYear: 2015,
@@ -613,6 +644,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'lady-bird',
       title: 'Lady Bird',
       type: 'film',
+      trailer: 'cNi_HC839Wo',
       synopsis:
         "In early-2000s Sacramento, a headstrong Catholic-school senior who insists on being called Lady Bird dreams of escaping to an East Coast college. Her sharp-tongued, loving mother has other ideas. Greta Gerwig's warm, funny coming-of-age story captures first loves, shifting friendships and the push-pull of family.",
       releaseYear: 2017,
@@ -627,6 +659,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'the-social-network',
       title: 'The Social Network',
       type: 'film',
+      trailer: 'lB95KLmpLR4',
       synopsis:
         'A brilliant, socially awkward Harvard student builds a campus website that grows into a global phenomenon. Success brings lawsuits from former friends and rivals who say the idea was theirs. Through crackling dialogue and dueling depositions, the film examines ambition, loyalty and the price of building something enormous.',
       releaseYear: 2010,
@@ -644,6 +677,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'spotlight',
       title: 'Spotlight',
       type: 'film',
+      trailer: 'yXymzwz0V2g',
       synopsis:
         'A small team of Boston Globe investigative reporters begins digging into allegations against a single local priest. The more documents and survivors they find, the larger and more deliberate the pattern looks. A meticulous, quietly powerful portrait of journalism and the institutions that resist being held accountable.',
       releaseYear: 2015,
@@ -658,6 +692,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'roma',
       title: 'Roma',
       type: 'film',
+      trailer: '6BS27ngZtxg',
       synopsis:
         "In early-1970s Mexico City, Cleo works as a live-in housekeeper for a middle-class family whose household is quietly coming apart. As political unrest builds outside, her own life takes an unexpected turn. Shot in luminous black and white, Alfonso Cuarón's intimate memory piece finds grandeur in everyday devotion.",
       releaseYear: 2018,
@@ -672,6 +707,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'aftersun',
       title: 'Aftersun',
       type: 'film',
+      trailer: '4A34B1DIGl8',
       synopsis:
         'An eleven-year-old girl spends a sunny holiday at a Turkish resort with her young, devoted father. Years later, she revisits their home-video footage and her own memories, searching for who he really was. A delicate, quietly devastating film about memory, parenthood and what we fail to see in the moment.',
       releaseYear: 2022,
@@ -686,6 +722,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'boyhood',
       title: 'Boyhood',
       type: 'film',
+      trailer: 'Y0oX0xiwOv8',
       synopsis:
         "Filmed with the same cast over twelve years, this drama follows Mason from early childhood in Texas to his first day of college. Moves, stepfathers, first jobs and first heartbreaks unfold in small, ordinary moments. Richard Linklater's experiment becomes a moving reflection on time and growing up.",
       releaseYear: 2014,
@@ -702,6 +739,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'the-wire',
       title: 'The Wire',
       type: 'series',
+      trailer: 'uDcQbk78CSw',
       synopsis:
         'In Baltimore, a mismatched police detail sets out to bring down a powerful drug organization using wiretaps and patience. Each season widens the lens to the docks, city hall, schools and newsroom. Often called the greatest TV drama ever made, it is a sprawling portrait of an American city and its institutions.',
       releaseYear: 2002,
@@ -718,6 +756,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'six-feet-under',
       title: 'Six Feet Under',
       type: 'series',
+      trailer: 'E3gYi-KvKug',
       synopsis:
         "After a sudden death in the family, two estranged brothers inherit their father's Los Angeles funeral home. Surrounded by grief every day, the Fishers struggle with their own relationships, secrets and fears. Darkly funny and deeply moving, this acclaimed drama treats mortality as the lens for understanding how to live.",
       releaseYear: 2001,
@@ -753,6 +792,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'the-leftovers',
       title: 'The Leftovers',
       type: 'series',
+      trailer: 'rKtgMEKMoiU',
       synopsis:
         "Three years after two percent of the world's population inexplicably vanished, a small-town police chief tries to hold his fractured family and community together. Some cling to faith, others to strange new movements. This bold, emotionally raw series explores grief, belief and the search for meaning when answers never come.",
       releaseYear: 2014,
@@ -769,6 +809,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'band-of-brothers',
       title: 'Band of Brothers',
       type: 'series',
+      trailer: 'aH06LWZs-Ys',
       synopsis:
         "Drawn from veterans' recollections, this miniseries follows Easy Company of the 101st Airborne from paratrooper training through D-Day and the brutal final push into Germany. Each episode spotlights different soldiers as friendships are forged under fire. An epic, deeply respectful portrait of ordinary men in extraordinary circumstances.",
       releaseYear: 2001,
@@ -789,6 +830,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'the-americans',
       title: 'The Americans',
       type: 'series',
+      trailer: 'wt7NPuabEgQ',
       synopsis:
         'In early-1980s Washington, D.C., a seemingly ordinary suburban couple are actually deep-cover Soviet spies raising two kids who know nothing. When an FBI agent moves in across the street, the pressure intensifies. A gripping Cold War thriller that is ultimately a profound study of marriage, loyalty and identity.',
       releaseYear: 2013,
@@ -805,6 +847,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'halt-and-catch-fire',
       title: 'Halt and Catch Fire',
       type: 'series',
+      trailer: 'pWrioRji60A',
       synopsis:
         'In the early 1980s, a charismatic salesman, a disillusioned engineer and a brilliant young coder team up to challenge the giants of the personal computer industry. Across a decade of booms and busts, their partnerships shift and evolve. A thoughtful drama about creativity, ambition and the people behind technological revolutions.',
       releaseYear: 2014,
@@ -837,6 +880,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'shogun',
       title: 'Shōgun',
       type: 'series',
+      trailer: 'yAN5uspO_hk',
       synopsis:
         "In feudal Japan in 1600, a shipwrecked English navigator becomes a pawn in the power struggle of a shrewd warlord surrounded by enemies. A gifted translator with a painful past bridges their worlds. Adapted from James Clavell's novel, this lavish, record-setting epic is a gripping tale of politics, honor and survival.",
       releaseYear: 2024,
@@ -853,6 +897,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'the-night-of',
       title: 'The Night Of',
       type: 'series',
+      trailer: '556N5vojtp0',
       synopsis:
         "A Pakistani-American college student borrows his father's taxi for a night out in Manhattan and wakes up as the prime suspect in a brutal killing. A scrappy, eczema-plagued lawyer takes his case. This meticulous limited series examines the criminal justice system and how it changes everyone it touches.",
       releaseYear: 2016,
@@ -887,6 +932,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'amy',
       title: 'Amy',
       type: 'documentary',
+      trailer: '_2yCIwmNuLE',
       synopsis:
         'Built almost entirely from archival footage, home videos and voice recordings, this documentary traces Amy Winehouse from a gifted North London teenager to a global star. It examines the pressures of fame, media scrutiny and addiction that surrounded her, while keeping her extraordinary voice and wit at the center.',
       releaseYear: 2015,
@@ -902,6 +948,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'three-identical-strangers',
       title: 'Three Identical Strangers',
       type: 'documentary',
+      trailer: 'uM5TQ4f7ycw',
       synopsis:
         'In 1980, a college freshman discovers he has a twin, and the media frenzy that follows reveals a third brother. Their joyful reunion makes them celebrities. But questions about why they were separated lead to unsettling discoveries. A twisty documentary about identity, nature versus nurture and institutional secrecy.',
       releaseYear: 2018,
@@ -917,6 +964,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'blackfish',
       title: 'Blackfish',
       type: 'documentary',
+      trailer: 'w2vG_Ifu4zg',
       synopsis:
         "Centered on Tilikum, a captive orca involved in several deaths, this documentary examines what happens when intelligent, social animals are kept for entertainment. Former trainers, scientists and archival footage challenge the marine-park industry's public image. A sobering investigation into animal welfare and corporate accountability.",
       releaseYear: 2013,
@@ -932,6 +980,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'citizenfour',
       title: 'Citizenfour',
       type: 'documentary',
+      trailer: 'PX2uyP9QGjs',
       synopsis:
         'A filmmaker receives encrypted messages from an anonymous source claiming evidence of vast government surveillance. She travels to a Hong Kong hotel room, where history unfolds in real time on camera. This tense, Oscar-winning documentary captures the moment Edward Snowden came forward and the questions about privacy that followed.',
       releaseYear: 2014,
@@ -947,6 +996,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'i-am-not-your-negro',
       title: 'I Am Not Your Negro',
       type: 'documentary',
+      trailer: 'rNUYdgIyaPM',
       synopsis:
         'Drawing on an unfinished manuscript by James Baldwin about three slain civil rights leaders, this documentary weaves his words with archival footage and present-day images. Narrated by Samuel L. Jackson, it offers a searing, eloquent meditation on race in America that feels as urgent today as when written.',
       releaseYear: 2017,
@@ -962,6 +1012,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'minding-the-gap',
       title: 'Minding the Gap',
       type: 'documentary',
+      trailer: 'n5Vm_Awe3bw',
       synopsis:
         'Three friends bonded by skateboarding in Rockford, Illinois, face the pressures of young adulthood across more than a decade of footage. As one becomes a father and another starts a job, the director turns the camera on their shared histories of difficult homes. An intimate, generous portrait of masculinity and growing up.',
       releaseYear: 2018,
@@ -977,6 +1028,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'honeyland',
       title: 'Honeyland',
       type: 'documentary',
+      trailer: 'B27ORUHlp6E',
       synopsis:
         'In a remote North Macedonian village, a woman keeps wild bees using an ancient rule: take half, leave half. When a large, noisy family moves in next door with plans of their own, the delicate balance is threatened. A visually stunning documentary about nature, sustainability and quiet resilience.',
       releaseYear: 2019,
@@ -1007,6 +1059,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'the-act-of-killing',
       title: 'The Act of Killing',
       type: 'documentary',
+      trailer: 'cTozJLf-Px0',
       synopsis:
         "Decades after Indonesia's 1965 mass killings, men who took part are still celebrated in their communities. Invited to reenact their deeds in the style of their favorite movies, they stage elaborate scenes. What begins as boastful spectacle becomes a chilling, unprecedented look at memory, impunity and conscience.",
       releaseYear: 2012,
@@ -1024,6 +1077,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'anatomy-of-a-fall',
       title: 'Anatomy of a Fall',
       type: 'film',
+      trailer: '_MdTMA0PetA',
       synopsis:
         'A man is found dead in the snow outside an isolated chalet in the French Alps, and his wife, a successful novelist, ends up on trial. As the courtroom dissects their marriage, their partially sighted son must decide what he truly remembers and what he can live with believing.',
       releaseYear: 2023,
@@ -1039,6 +1093,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'the-zone-of-interest',
       title: 'The Zone of Interest',
       type: 'film',
+      trailer: 'GFNtVaAuVYY',
       synopsis:
         'An Auschwitz commandant and his wife raise their children in a tidy house with a flourishing garden, separated from the camp by a single wall. The horror is rarely shown but constantly heard, making this chilling portrait a study of how ordinary comfort can coexist with atrocity.',
       releaseYear: 2023,
@@ -1054,6 +1109,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'slow-horses',
       title: 'Slow Horses',
       type: 'series',
+      trailer: 'O9ZJChzPn0U',
       synopsis:
         'British intelligence sends its embarrassments to Slough House, a shabby office run by the brilliant, slovenly Jackson Lamb. Written off and stuck with busywork, these disgraced spies keep stumbling into real conspiracies, and each case tests whether a team of misfits can outwit the agency that discarded them.',
       releaseYear: 2022,
@@ -1074,6 +1130,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'the-pitt',
       title: 'The Pitt',
       type: 'series',
+      trailer: 'ufR_08V38sQ',
       synopsis:
         'Each episode covers one hour of a grueling fifteen-hour shift in a Pittsburgh trauma center. Veteran attending Dr. Robby guides nervous new residents through overcrowding, budget pressure, and life-or-death calls, while quietly carrying his own grief in a system that leaves almost no room to breathe.',
       releaseYear: 2025,
@@ -1091,6 +1148,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'fire-of-love',
       title: 'Fire of Love',
       type: 'documentary',
+      trailer: '-_7XADmKVL0',
       synopsis:
         'Built from the spectacular archive footage of French volcanologists Katia and Maurice Krafft, this documentary follows a married couple who chased eruptions around the world for two decades. It is both a love story and a portrait of scientific obsession, shadowed by the danger that eventually claimed them.',
       releaseYear: 2022,
@@ -1107,6 +1165,7 @@ export const LOCAL_CATALOG = Object.freeze(
       id: 'summer-of-soul',
       title: 'Summer of Soul',
       type: 'documentary',
+      trailer: 'slFiJpAxZyQ',
       synopsis:
         'In 1969, a free summer festival in Harlem drew hundreds of thousands and featured legendary Black musicians, yet its footage sat unseen in a basement for fifty years. Questlove restores those performances and pairs them with memories from attendees, revealing a joyful, political celebration that history nearly forgot.',
       releaseYear: 2021,

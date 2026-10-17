@@ -7,6 +7,7 @@ import ThumbsRating from './ThumbsRating.jsx';
 import TitleCard from './TitleCard.jsx';
 import EpisodeList from './EpisodeList.jsx';
 import RemindButton from './RemindButton.jsx';
+import TrailerButton from './TrailerButton.jsx';
 import { CloseIcon, PlayIcon } from './Icons.jsx';
 import { getCatalog, getPlayable, getTitleById, isAvailable } from '../data/catalog.js';
 import { matchPercent } from '../data/match.js';
@@ -100,6 +101,7 @@ export default function TitleModal({ title }) {
               ) : (
                 <RemindButton title={title} />
               )}
+              <TrailerButton title={title} />
               <MyListButton title={title} variant="icon" className="icon-btn--lg" />
               <ThumbsRating
                 compact

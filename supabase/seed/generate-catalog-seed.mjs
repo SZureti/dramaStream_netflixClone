@@ -2,7 +2,8 @@
 // Run from the project root:  node supabase/seed/generate-catalog-seed.mjs
 // Options: --only id1,id2  (just those titles)  --out path  (default catalog.sql)
 // The SQL is idempotent (safe to run twice) and looks ids up by name, so it
-// never depends on generated ids.
+// never depends on generated ids. Needs supabase/trailers.sql run first
+// (it adds titles.trailer_youtube_key).
 import { writeFileSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, join } from 'node:path';
@@ -39,13 +40,13 @@ const titleRows = catalog.map((t) => {
   return `  (${[
     q(t.id), q(t.title), q(t.type), q(t.synopsis), n(t.releaseYear), q(t.contentRating),
     n(t.runtimeMinutes), n(t.seasons), n(t.episodeCount), t.limitedSeries ? 'true' : 'false',
-    q(t.castLabel), q(t.heroPosition), t.id === FEATURED_TITLE_ID ? 'true' : 'false', sortOrder.get(t.id), q(t.availableFrom),
+    q(t.castLabel), q(t.heroPosition), t.id === FEATURED_TITLE_ID ? 'true' : 'false', sortOrder.get(t.id), q(t.availableFrom), q(t.trailer),
   ].join(', ')})`;
 });
 lines.push(
-  'insert into public.titles (id, title, type, synopsis, release_year, content_rating, runtime_minutes, seasons, episode_count, limited_series, cast_label, hero_position, is_featured, sort_order, available_from) values',
+  'insert into public.titles (id, title, type, synopsis, release_year, content_rating, runtime_minutes, seasons, episode_count, limited_series, cast_label, hero_position, is_featured, sort_order, available_from, trailer_youtube_key) values',
   titleRows.join(',\n'),
-  'on conflict (id) do update set title = excluded.title, type = excluded.type, synopsis = excluded.synopsis, release_year = excluded.release_year, content_rating = excluded.content_rating, runtime_minutes = excluded.runtime_minutes, seasons = excluded.seasons, episode_count = excluded.episode_count, limited_series = excluded.limited_series, cast_label = excluded.cast_label, hero_position = excluded.hero_position, is_featured = excluded.is_featured, sort_order = excluded.sort_order, available_from = excluded.available_from;',
+  'on conflict (id) do update set title = excluded.title, type = excluded.type, synopsis = excluded.synopsis, release_year = excluded.release_year, content_rating = excluded.content_rating, runtime_minutes = excluded.runtime_minutes, seasons = excluded.seasons, episode_count = excluded.episode_count, limited_series = excluded.limited_series, cast_label = excluded.cast_label, hero_position = excluded.hero_position, is_featured = excluded.is_featured, sort_order = excluded.sort_order, available_from = excluded.available_from, trailer_youtube_key = excluded.trailer_youtube_key;',
   '',
 );
 

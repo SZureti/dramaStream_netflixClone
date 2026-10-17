@@ -5,6 +5,7 @@ import { TYPES } from '../data/catalog.js';
 import SmartImage, { TitleLogo } from './SmartImage.jsx';
 import MetaLine from './MetaLine.jsx';
 import MyListButton from './MyListButton.jsx';
+import TrailerButton from './TrailerButton.jsx';
 import { InfoIcon, MuteIcon, PlayIcon, VolumeIcon } from './Icons.jsx';
 
 /**
@@ -59,6 +60,7 @@ export default function FeaturedTitle({ title }) {
             <InfoIcon size={24} />
             <span>More Info</span>
           </Link>
+          <TrailerButton title={title} />
           <MyListButton title={title} variant="icon" className="icon-btn--lg" />
         </div>
       </div>

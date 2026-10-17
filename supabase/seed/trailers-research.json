@@ -1,0 +1,640 @@
+{
+  "about": "Official YouTube trailers for each title, from TMDB video pages (themoviedb.org/<type>/<id>/videos). Only videos TMDB marks as official (verified channel) are used; each key was checked as embeddable via YouTube oEmbed. Checked 2026-10-16. Series fall back to season 1, then to an official teaser.",
+  "noOfficialTrailer": [
+    "breaking-bad",
+    "13th",
+    "mad-men",
+    "the-sopranos",
+    "senna",
+    "friday-night-lights",
+    "downton-abbey",
+    "hoop-dreams",
+    "grizzly-man"
+  ],
+  "titles": [
+    {
+      "id": "shawshank-redemption",
+      "title": "The Shawshank Redemption",
+      "tmdb": "https://www.themoviedb.org/movie/278",
+      "youtubeKey": "PLl99DlL6b4",
+      "name": "Official Trailer",
+      "type": "Trailer",
+      "channel": "Warner Bros. Entertainment",
+      "source": "movie/278"
+    },
+    {
+      "id": "whiplash",
+      "title": "Whiplash",
+      "tmdb": "https://www.themoviedb.org/movie/244786",
+      "youtubeKey": "Q7kZy3T6vRM",
+      "name": "10th Anniversary Rerelease Official Trailer",
+      "type": "Trailer",
+      "channel": "Sony Pictures Classics",
+      "source": "movie/244786"
+    },
+    {
+      "id": "moonlight",
+      "title": "Moonlight",
+      "tmdb": "https://www.themoviedb.org/movie/376867",
+      "youtubeKey": "9NJj12tJzqc",
+      "name": "Official Trailer",
+      "type": "Trailer",
+      "channel": "A24",
+      "source": "movie/376867"
+    },
+    {
+      "id": "past-lives",
+      "title": "Past Lives",
+      "tmdb": "https://www.themoviedb.org/movie/666277",
+      "youtubeKey": "kA244xewjcI",
+      "name": "Official Trailer",
+      "type": "Trailer",
+      "channel": "A24",
+      "source": "movie/666277"
+    },
+    {
+      "id": "breaking-bad",
+      "title": "Breaking Bad",
+      "tmdb": "https://www.themoviedb.org/tv/1396",
+      "youtubeKey": null
+    },
+    {
+      "id": "succession",
+      "title": "Succession",
+      "tmdb": "https://www.themoviedb.org/tv/76331",
+      "youtubeKey": "ZO-XX1UpsqY",
+      "name": "Official Series Trailer",
+      "type": "Trailer",
+      "channel": "Warner Bros. Entertainment",
+      "source": "tv/76331"
+    },
+    {
+      "id": "the-crown",
+      "title": "The Crown",
+      "tmdb": "https://www.themoviedb.org/tv/65494",
+      "youtubeKey": "JWtnJjn6ng0",
+      "name": "Official Trailer",
+      "type": "Trailer",
+      "channel": "Netflix",
+      "source": "tv/65494"
+    },
+    {
+      "id": "normal-people",
+      "title": "Normal People",
+      "tmdb": "https://www.themoviedb.org/tv/89905",
+      "youtubeKey": "x1JQuWxt3cE",
+      "name": "Official Hulu Trailer",
+      "type": "Trailer",
+      "channel": "Hulu",
+      "source": "tv/89905"
+    },
+    {
+      "id": "free-solo",
+      "title": "Free Solo",
+      "tmdb": "https://www.themoviedb.org/movie/515042",
+      "youtubeKey": "urRVZ4SW7WU",
+      "name": "Free Solo - Trailer | National Geographic",
+      "type": "Trailer",
+      "channel": "National Geographic",
+      "source": "movie/515042"
+    },
+    {
+      "id": "13th",
+      "title": "13th",
+      "tmdb": "https://www.themoviedb.org/movie/407806",
+      "youtubeKey": null
+    },
+    {
+      "id": "my-octopus-teacher",
+      "title": "My Octopus Teacher",
+      "tmdb": "https://www.themoviedb.org/movie/682110",
+      "youtubeKey": "3s0LTDhqe5A",
+      "name": "My Octopus Teacher | Official Trailer | Netflix",
+      "type": "Trailer",
+      "channel": "Netflix",
+      "source": "movie/682110"
+    },
+    {
+      "id": "wont-you-be-my-neighbor",
+      "title": "Won’t You Be My Neighbor?",
+      "tmdb": "https://www.themoviedb.org/movie/490003",
+      "youtubeKey": "EAwR54HrVW8",
+      "name": "Official Trailer 2",
+      "type": "Trailer",
+      "channel": "Focus Features",
+      "source": "movie/490003"
+    },
+    {
+      "id": "the-godfather",
+      "title": "The Godfather",
+      "tmdb": "https://www.themoviedb.org/movie/238",
+      "youtubeKey": "Ew9ngL1GZvs",
+      "name": "50th Anniversary Trailer",
+      "type": "Trailer",
+      "channel": "Paramount Movies",
+      "source": "movie/238"
+    },
+    {
+      "id": "schindlers-list",
+      "title": "Schindler’s List",
+      "tmdb": "https://www.themoviedb.org/movie/424",
+      "youtubeKey": "v0RB-3sWbBA",
+      "name": "Official Theatrical Trailer",
+      "type": "Trailer",
+      "channel": "Amblin Entertainment",
+      "source": "movie/424"
+    },
+    {
+      "id": "manchester-by-the-sea",
+      "title": "Manchester by the Sea",
+      "tmdb": "https://www.themoviedb.org/movie/334541",
+      "youtubeKey": "obdKk_sYQNI",
+      "name": "Official Trailer",
+      "type": "Trailer",
+      "channel": "Prime Movies",
+      "source": "movie/334541"
+    },
+    {
+      "id": "marriage-story",
+      "title": "Marriage Story",
+      "tmdb": "https://www.themoviedb.org/movie/492188",
+      "youtubeKey": "BHi-a1n8t7M",
+      "name": "Official Trailer",
+      "type": "Trailer",
+      "channel": "Netflix",
+      "source": "movie/492188"
+    },
+    {
+      "id": "nomadland",
+      "title": "Nomadland",
+      "tmdb": "https://www.themoviedb.org/movie/581734",
+      "youtubeKey": "BZ4o4jwSaHk",
+      "name": "Official Trailer 2",
+      "type": "Trailer",
+      "channel": "SearchlightPictures",
+      "source": "movie/581734"
+    },
+    {
+      "id": "oppenheimer",
+      "title": "Oppenheimer",
+      "tmdb": "https://www.themoviedb.org/movie/872585",
+      "youtubeKey": "bK6ldnjE3Y0",
+      "name": "Official Trailer",
+      "type": "Trailer",
+      "channel": "Universal Pictures",
+      "source": "movie/872585"
+    },
+    {
+      "id": "better-call-saul",
+      "title": "Better Call Saul",
+      "tmdb": "https://www.themoviedb.org/tv/60059",
+      "youtubeKey": "l1xIGfVFb-U",
+      "name": "Extended Trailer",
+      "type": "Trailer",
+      "channel": "amc+",
+      "source": "tv/60059"
+    },
+    {
+      "id": "mad-men",
+      "title": "Mad Men",
+      "tmdb": "https://www.themoviedb.org/tv/1104",
+      "youtubeKey": null
+    },
+    {
+      "id": "chernobyl",
+      "title": "Chernobyl",
+      "tmdb": "https://www.themoviedb.org/tv/87108",
+      "youtubeKey": "s9APLXM9Ei8",
+      "name": "Official Trailer",
+      "type": "Trailer",
+      "channel": "HBO",
+      "source": "tv/87108"
+    },
+    {
+      "id": "the-sopranos",
+      "title": "The Sopranos",
+      "tmdb": "https://www.themoviedb.org/tv/1398",
+      "youtubeKey": null
+    },
+    {
+      "id": "mare-of-easttown",
+      "title": "Mare of Easttown",
+      "tmdb": "https://www.themoviedb.org/tv/115004",
+      "youtubeKey": "a-RkBkz45gs",
+      "name": "Official Trailer",
+      "type": "Trailer",
+      "channel": "HBO Max Asia",
+      "source": "tv/115004"
+    },
+    {
+      "id": "the-queens-gambit",
+      "title": "The Queen’s Gambit",
+      "tmdb": "https://www.themoviedb.org/tv/87739",
+      "youtubeKey": "FU854_5itOk",
+      "name": "Date Announcement",
+      "type": "Teaser",
+      "channel": "Netflix",
+      "source": "tv/87739"
+    },
+    {
+      "id": "man-on-wire",
+      "title": "Man on Wire",
+      "tmdb": "https://www.themoviedb.org/movie/14048",
+      "youtubeKey": "YW1b3G2MN3Q",
+      "name": "Man On Wire - Official UK Trailer (2008)",
+      "type": "Trailer",
+      "channel": "Icon Film Distribution",
+      "source": "movie/14048"
+    },
+    {
+      "id": "searching-for-sugar-man",
+      "title": "Searching for Sugar Man",
+      "tmdb": "https://www.themoviedb.org/movie/84334",
+      "youtubeKey": "tDw7OqVBT-w",
+      "name": "Searching For Sugar Man | Official Trailer HD (2012)",
+      "type": "Trailer",
+      "channel": "Sony Pictures Classics",
+      "source": "movie/84334"
+    },
+    {
+      "id": "jiro-dreams-of-sushi",
+      "title": "Jiro Dreams of Sushi",
+      "tmdb": "https://www.themoviedb.org/movie/80767",
+      "youtubeKey": "0VB_DrsHDQ0",
+      "name": "Trailer [Subtitled]",
+      "type": "Trailer",
+      "channel": "Magnolia Pictures & Magnet Releasing",
+      "source": "movie/80767"
+    },
+    {
+      "id": "icarus",
+      "title": "Icarus",
+      "tmdb": "https://www.themoviedb.org/movie/432976",
+      "youtubeKey": "qXoRdSTrR-4",
+      "name": "Official Trailer",
+      "type": "Trailer",
+      "channel": "Netflix",
+      "source": "movie/432976"
+    },
+    {
+      "id": "senna",
+      "title": "Senna",
+      "tmdb": "https://www.themoviedb.org/movie/58496",
+      "youtubeKey": null
+    },
+    {
+      "id": "american-factory",
+      "title": "American Factory",
+      "tmdb": "https://www.themoviedb.org/movie/565716",
+      "youtubeKey": "m36QeKOJ2Fc",
+      "name": "American Factory | Official Trailer | Netflix",
+      "type": "Trailer",
+      "channel": "Netflix",
+      "source": "movie/565716"
+    },
+    {
+      "id": "12-angry-men",
+      "title": "12 Angry Men",
+      "tmdb": "https://www.themoviedb.org/movie/389",
+      "youtubeKey": "TEN-2uTi2c0",
+      "name": "Official Trailer",
+      "type": "Trailer",
+      "channel": "Amazon MGM Studios",
+      "source": "movie/389"
+    },
+    {
+      "id": "parasite",
+      "title": "Parasite",
+      "tmdb": "https://www.themoviedb.org/movie/496243",
+      "youtubeKey": "isOGD_7hNIY",
+      "name": "Official US Trailer [Subtitled]",
+      "type": "Trailer",
+      "channel": "NEON",
+      "source": "movie/496243"
+    },
+    {
+      "id": "the-pianist",
+      "title": "The Pianist",
+      "tmdb": "https://www.themoviedb.org/movie/423",
+      "youtubeKey": "og9hFxxdSOg",
+      "name": "4K Restoration Trailer",
+      "type": "Trailer",
+      "channel": "Rialto Pictures",
+      "source": "movie/423"
+    },
+    {
+      "id": "room",
+      "title": "Room",
+      "tmdb": "https://www.themoviedb.org/movie/264644",
+      "youtubeKey": "yfBdUPAjiVQ",
+      "name": "Official UK Trailer",
+      "type": "Trailer",
+      "channel": "StudiocanalUK",
+      "source": "movie/264644"
+    },
+    {
+      "id": "lady-bird",
+      "title": "Lady Bird",
+      "tmdb": "https://www.themoviedb.org/movie/391713",
+      "youtubeKey": "cNi_HC839Wo",
+      "name": "Official Trailer",
+      "type": "Trailer",
+      "channel": "A24",
+      "source": "movie/391713"
+    },
+    {
+      "id": "the-social-network",
+      "title": "The Social Network",
+      "tmdb": "https://www.themoviedb.org/movie/37799",
+      "youtubeKey": "lB95KLmpLR4",
+      "name": "Official Trailer",
+      "type": "Trailer",
+      "channel": "Sony Pictures Entertainment",
+      "source": "movie/37799"
+    },
+    {
+      "id": "spotlight",
+      "title": "Spotlight",
+      "tmdb": "https://www.themoviedb.org/movie/314365",
+      "youtubeKey": "yXymzwz0V2g",
+      "name": "Spotlight | Official Trailer [HD] | Global Road Entertainment",
+      "type": "Trailer",
+      "channel": "Open Road Films",
+      "source": "movie/314365"
+    },
+    {
+      "id": "roma",
+      "title": "Roma",
+      "tmdb": "https://www.themoviedb.org/movie/426426",
+      "youtubeKey": "6BS27ngZtxg",
+      "name": "Official Trailer",
+      "type": "Trailer",
+      "channel": "Netflix",
+      "source": "movie/426426"
+    },
+    {
+      "id": "aftersun",
+      "title": "Aftersun",
+      "tmdb": "https://www.themoviedb.org/movie/965150",
+      "youtubeKey": "4A34B1DIGl8",
+      "name": "Official Trailer #2",
+      "type": "Trailer",
+      "channel": "MUBI",
+      "source": "movie/965150"
+    },
+    {
+      "id": "boyhood",
+      "title": "Boyhood",
+      "tmdb": "https://www.themoviedb.org/movie/85350",
+      "youtubeKey": "Y0oX0xiwOv8",
+      "name": "Official US Trailer",
+      "type": "Trailer",
+      "channel": "Independent Film Company",
+      "source": "movie/85350"
+    },
+    {
+      "id": "the-wire",
+      "title": "The Wire",
+      "tmdb": "https://www.themoviedb.org/tv/1438",
+      "youtubeKey": "uDcQbk78CSw",
+      "name": "Official Trailer",
+      "type": "Trailer",
+      "channel": "HBO",
+      "source": "tv/1438"
+    },
+    {
+      "id": "six-feet-under",
+      "title": "Six Feet Under",
+      "tmdb": "https://www.themoviedb.org/tv/1274",
+      "youtubeKey": "E3gYi-KvKug",
+      "name": "Six Feet Under Trailer (HBO)",
+      "type": "Trailer",
+      "channel": "HBO",
+      "source": "tv/1274"
+    },
+    {
+      "id": "friday-night-lights",
+      "title": "Friday Night Lights",
+      "tmdb": "https://www.themoviedb.org/tv/4278",
+      "youtubeKey": null
+    },
+    {
+      "id": "the-leftovers",
+      "title": "The Leftovers",
+      "tmdb": "https://www.themoviedb.org/tv/54344",
+      "youtubeKey": "rKtgMEKMoiU",
+      "name": "The Leftovers Season 1: Trailer #2 (HBO)",
+      "type": "Trailer",
+      "channel": "HBO",
+      "source": "tv/54344"
+    },
+    {
+      "id": "band-of-brothers",
+      "title": "Band of Brothers",
+      "tmdb": "https://www.themoviedb.org/tv/4613",
+      "youtubeKey": "aH06LWZs-Ys",
+      "name": "Official HBO UK Trailer",
+      "type": "Trailer",
+      "channel": "HBO UK",
+      "source": "tv/4613"
+    },
+    {
+      "id": "the-americans",
+      "title": "The Americans",
+      "tmdb": "https://www.themoviedb.org/tv/46533",
+      "youtubeKey": "wt7NPuabEgQ",
+      "name": "Official Legacy Trailer",
+      "type": "Trailer",
+      "channel": "FX Networks",
+      "source": "tv/46533"
+    },
+    {
+      "id": "halt-and-catch-fire",
+      "title": "Halt and Catch Fire",
+      "tmdb": "https://www.themoviedb.org/tv/59659",
+      "youtubeKey": "pWrioRji60A",
+      "name": "Season 1 Trailer",
+      "type": "Trailer",
+      "channel": "eOne UK",
+      "source": "tv/59659"
+    },
+    {
+      "id": "downton-abbey",
+      "title": "Downton Abbey",
+      "tmdb": "https://www.themoviedb.org/tv/33907",
+      "youtubeKey": null
+    },
+    {
+      "id": "shogun",
+      "title": "Shōgun",
+      "tmdb": "https://www.themoviedb.org/tv/126308",
+      "youtubeKey": "yAN5uspO_hk",
+      "name": "Official Trailer",
+      "type": "Trailer",
+      "channel": "FX Networks",
+      "source": "tv/126308"
+    },
+    {
+      "id": "the-night-of",
+      "title": "The Night Of",
+      "tmdb": "https://www.themoviedb.org/tv/66276",
+      "youtubeKey": "556N5vojtp0",
+      "name": "Official Trailer",
+      "type": "Trailer",
+      "channel": "HBO",
+      "source": "tv/66276"
+    },
+    {
+      "id": "hoop-dreams",
+      "title": "Hoop Dreams",
+      "tmdb": "https://www.themoviedb.org/movie/14275",
+      "youtubeKey": null
+    },
+    {
+      "id": "amy",
+      "title": "Amy",
+      "tmdb": "https://www.themoviedb.org/movie/331781",
+      "youtubeKey": "_2yCIwmNuLE",
+      "name": "Official Trailer",
+      "type": "Trailer",
+      "channel": "A24",
+      "source": "movie/331781"
+    },
+    {
+      "id": "three-identical-strangers",
+      "title": "Three Identical Strangers",
+      "tmdb": "https://www.themoviedb.org/movie/489988",
+      "youtubeKey": "uM5TQ4f7ycw",
+      "name": "Official Trailer",
+      "type": "Trailer",
+      "channel": "NEON",
+      "source": "movie/489988"
+    },
+    {
+      "id": "blackfish",
+      "title": "Blackfish",
+      "tmdb": "https://www.themoviedb.org/movie/158999",
+      "youtubeKey": "w2vG_Ifu4zg",
+      "name": "Blackfish - Official Trailer",
+      "type": "Trailer",
+      "channel": "Dogwoof",
+      "source": "movie/158999"
+    },
+    {
+      "id": "citizenfour",
+      "title": "Citizenfour",
+      "tmdb": "https://www.themoviedb.org/movie/293310",
+      "youtubeKey": "PX2uyP9QGjs",
+      "name": "CITIZENFOUR (HBO Documentary Films)",
+      "type": "Trailer",
+      "channel": "HBODocs",
+      "source": "movie/293310"
+    },
+    {
+      "id": "i-am-not-your-negro",
+      "title": "I Am Not Your Negro",
+      "tmdb": "https://www.themoviedb.org/movie/411019",
+      "youtubeKey": "rNUYdgIyaPM",
+      "name": "Official Trailer",
+      "type": "Trailer",
+      "channel": "Magnolia Pictures & Magnet Releasing",
+      "source": "movie/411019"
+    },
+    {
+      "id": "minding-the-gap",
+      "title": "Minding the Gap",
+      "tmdb": "https://www.themoviedb.org/movie/489985",
+      "youtubeKey": "n5Vm_Awe3bw",
+      "name": "Full Trailer",
+      "type": "Trailer",
+      "channel": "Hulu",
+      "source": "movie/489985"
+    },
+    {
+      "id": "honeyland",
+      "title": "Honeyland",
+      "tmdb": "https://www.themoviedb.org/movie/566213",
+      "youtubeKey": "B27ORUHlp6E",
+      "name": "Honeyland [Official Trailer] – In Theaters July 26, 2019",
+      "type": "Trailer",
+      "channel": "NEON",
+      "source": "movie/566213"
+    },
+    {
+      "id": "grizzly-man",
+      "title": "Grizzly Man",
+      "tmdb": "https://www.themoviedb.org/movie/501",
+      "youtubeKey": null
+    },
+    {
+      "id": "the-act-of-killing",
+      "title": "The Act of Killing",
+      "tmdb": "https://www.themoviedb.org/movie/123678",
+      "youtubeKey": "cTozJLf-Px0",
+      "name": "Official US Trailer",
+      "type": "Trailer",
+      "channel": "Drafthouse Films",
+      "source": "movie/123678"
+    },
+    {
+      "id": "anatomy-of-a-fall",
+      "title": "Anatomy of a Fall",
+      "tmdb": "https://www.themoviedb.org/movie/915935",
+      "youtubeKey": "_MdTMA0PetA",
+      "name": "Official UK Trailer",
+      "type": "Trailer",
+      "channel": "Picturehouse",
+      "source": "movie/915935"
+    },
+    {
+      "id": "the-zone-of-interest",
+      "title": "The Zone of Interest",
+      "tmdb": "https://www.themoviedb.org/movie/467244",
+      "youtubeKey": "GFNtVaAuVYY",
+      "name": "Official Trailer 2 [Subtitled]",
+      "type": "Trailer",
+      "channel": "A24",
+      "source": "movie/467244"
+    },
+    {
+      "id": "slow-horses",
+      "title": "Slow Horses",
+      "tmdb": "https://www.themoviedb.org/tv/95480",
+      "youtubeKey": "O9ZJChzPn0U",
+      "name": "Official Trailer",
+      "type": "Trailer",
+      "channel": "Apple TV",
+      "source": "tv/95480"
+    },
+    {
+      "id": "the-pitt",
+      "title": "The Pitt",
+      "tmdb": "https://www.themoviedb.org/tv/250307",
+      "youtubeKey": "ufR_08V38sQ",
+      "name": "Official Trailer",
+      "type": "Trailer",
+      "channel": "HBO Max",
+      "source": "tv/250307"
+    },
+    {
+      "id": "fire-of-love",
+      "title": "Fire of Love",
+      "tmdb": "https://www.themoviedb.org/movie/913823",
+      "youtubeKey": "-_7XADmKVL0",
+      "name": "Official UK Trailer",
+      "type": "Trailer",
+      "channel": "Dogwoof",
+      "source": "movie/913823"
+    },
+    {
+      "id": "summer-of-soul",
+      "title": "Summer of Soul",
+      "tmdb": "https://www.themoviedb.org/movie/776527",
+      "youtubeKey": "slFiJpAxZyQ",
+      "name": "SUMMER OF SOUL | Official Trailer | In Theaters and on Hulu July 2",
+      "type": "Trailer",
+      "channel": "SearchlightPictures",
+      "source": "movie/776527"
+    }
+  ]
+}

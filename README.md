@@ -24,7 +24,7 @@ A Netflix-style streaming catalog for **drama films, drama series and drama docu
 
 ## Phases
 
-The work was planned in [`Plan/Tasks.md`](Plan/Tasks.md) as 64 tasks in 14 feature areas, tagged `phase-1` (do first), `phase-2` (next) and `phase-3` (nice to have). **63 of 64 are done**; deploying is the one left for you (the config is ready, see [Deploy](#deploy)).
+The work was planned in [`Plan/Tasks.md`](Plan/Tasks.md) as 65 tasks in 14 feature areas, tagged `phase-1` (do first), `phase-2` (next) and `phase-3` (nice to have). **64 of 65 are done**; deploying is the one left for you (the config is ready, see [Deploy](#deploy)).
 
 ### Version 1: the front-end prototype (before the phases)
 
@@ -69,6 +69,7 @@ The original class assignment: a React SPA with 30 drama titles in three rows, s
 |---|---|
 | Browse | Billboard, Continue Watching, Top 10, My List, Trending Now, New Releases, Because you watched / liked, genre rows, and the three category rows. Hover a poster for Play, My List, Rate, More Info, % Match, maturity, length and genres. |
 | Details | Opens as a modal over the page; series show every season and episode with stills and synopses; More Like This; About; Remind Me for Coming Soon titles. |
+| Trailers | A **Trailer** button on the details modal, the details page and the billboard plays the title's official YouTube trailer (privacy-enhanced `youtube-nocookie.com` embed) in an accessible dialog. Escape, Close or a click outside stops it and returns focus. 57 of 66 titles have one, Coming Soon included; the button is hidden for the 9 with no official trailer on TMDB. |
 | Search & browse | Live search by title, actor, director or genre, accent- and punctuation-insensitive, with "Explore titles related to". TV Shows, Movies and Documentaries pages with a genre filter. |
 | New & Popular | Coming Soon with arrival dates and Remind Me, New on DramaStream, Top 10. The bell shows new arrivals and reminders. |
 | Player | Mock playback (no video) with play/pause, seek, ±10 s, speed, simulated volume and mute, full screen, Skip Intro, Next Episode countdown, Audio & Subtitles, and Space/K, ←/→, F, M, ↑/↓. Saves where you stopped. |
@@ -96,6 +97,8 @@ The original class assignment: a React SPA with 30 drama titles in three rows, s
 | **My List** | **Ratings & reviews** |
 | ![Share menu open on a title](docs/screenshots/share.jpg) | <img src="docs/screenshots/mobile-home.jpg" alt="Home page on a phone" width="260"> |
 | **Share menu** | **Phone layout** |
+| ![Oppenheimer's official trailer playing in the trailer dialog](docs/screenshots/trailer.jpg) | |
+| **Trailer player** | |
 
 Screens that need a signed-in account (Who's watching?, profile settings, Account, Viewing activity) aren't pictured: the screenshots are taken signed out.
 
@@ -159,11 +162,11 @@ npm run preview    # serve the build
 ## Tests
 
 ```bash
-npm test           # 34 unit tests (Vitest): catalog, search, rows, % Match, notifications, plans, PIN, validation
-npm run test:e2e   # 15 end-to-end journeys (Playwright, desktop + phone)
+npm test           # 41 unit tests (Vitest): catalog, search, rows, % Match, notifications, plans, PIN, validation, trailers
+npm run test:e2e   # 18 end-to-end journeys (Playwright, desktop + phone)
 ```
 
-The end-to-end tests start the dev server (or reuse one on port 5173). The first time, install the browser with `npx playwright install chromium`. They cover the welcome page, Home rows, the details modal, search, Browse, My List with sorting, ratings with % Match, Resume and Continue Watching, the Next Episode countdown, Coming Soon with Remind Me, the bell, and the phone layout.
+The end-to-end tests start the dev server (or reuse one on port 5173). The first time, install the browser with `npx playwright install chromium`. They cover the welcome page, Home rows, the details modal, search, Browse, My List with sorting, ratings with % Match, Resume and Continue Watching, the Next Episode countdown, Coming Soon with Remind Me, the bell, the trailer player (with YouTube stubbed out, so the tests don't need it), and the phone layout.
 
 ## Database (Supabase)
 
@@ -175,8 +178,9 @@ Everything about the database lives in [`supabase/`](supabase/):
 | `profiles.sql` | Profiles (≤ 5 per account), per-profile My List, viewing progress, ratings, reviews; owner-only RLS |
 | `activity.sql` | Anonymous daily play/add counts for Top 10 and Trending (filled by triggers) |
 | `phase3.sql` | PIN and subtitle settings, Coming Soon dates, reminders |
+| `trailers.sql` | `titles.trailer_youtube_key` (official YouTube trailer per title) and its values; adds no policies, so titles stay read-only |
 | `schema.sql` | The class's task-manager homework tables (not used by the site) |
-| `seed/` | Generators and data: `catalog.sql`, `episodes.json`/`episodes.sql`, and the TMDB research files |
+| `seed/` | Generators and data: `catalog.sql`, `episodes.json`/`episodes.sql`, and the TMDB research files (`trailers-research.json` lists each trailer's TMDB source and the titles without one) |
 
 Signed-out visitors can only read the catalog. Everything personal is protected by Row Level Security so an account sees only its own profiles and their data. Supabase's security advisor reports no warnings.
 
@@ -254,7 +258,7 @@ Posters, backgrounds, logos and episode stills were downloaded once from TMDB's 
 
 ## Planning docs
 
-- [`Plan/Tasks.md`](Plan/Tasks.md): the 64-task checklist, by feature area and phase.
+- [`Plan/Tasks.md`](Plan/Tasks.md): the 65-task checklist, by feature area and phase.
 - [`Plan/Plan.md`](Plan/Plan.md): planning questions, user stories and decisions.
 - [`design.md`](design.md): the original product plan and acceptance criteria.
 - [`app_outline/`](app_outline/) and [`supabase/`](supabase/): the Databases & Supabase class homework (task-manager spec and database).
