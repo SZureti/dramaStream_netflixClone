@@ -4,7 +4,7 @@ This is the database for a task manager (projects, tasks, tags), designed for th
 
 These stories come from `app_outline/` (the journey and each page's `user_story.md`), pulled into one list with one line per thing the app has to *remember*. Story 1 isn't on any page. It's there so the database knows who owns what.
 
-There's no login screen yet; that comes in a future lecture. The database is ready for it.
+Accounts come from Supabase Auth (authentication lecture): each user sees only their own projects, tasks and tags. There's no task-manager screen yet.
 
 1. As a user, I want an account with my name and email so that the app knows which projects and tasks are mine.
 2. As a user, I want to create projects with a name and a description so that I can group the work for each Netflix feature, like Profiles or Continue Watching.

@@ -1,0 +1,4 @@
+id,title,is_complete,due_date,project_id,user_id,created_at
+4c43b3af-c1e9-4e28-80a7-100cd7fbccce,"TEST Task",f,2026-10-31,2fbcf51e-f891-4b8f-8608-62c8f803c273,17c17fb2-c98c-4ece-a68f-542fea565406,"2026-10-15 20:36:55.713232+00"
+42f3a2b9-82d0-4836-ae98-6330a728e909,"Finish the API lecture",f,,,570728bc-656e-4ec5-9951-1d99785ef96d,"2026-10-16 16:06:33.543857+00"
+2ec65c92-f2b4-4074-9b6f-9fc4254dd1cb,"Practice PATCH and DELETE",f,,,570728bc-656e-4ec5-9951-1d99785ef96d,"2026-10-16 19:39:30.023728+00"

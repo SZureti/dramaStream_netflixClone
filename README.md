@@ -24,7 +24,7 @@ A Netflix-style streaming catalog for **drama films, drama series and drama docu
 
 ## Phases
 
-The work was planned in [`Plan/Tasks.md`](Plan/Tasks.md) as 65 tasks in 14 feature areas, tagged `phase-1` (do first), `phase-2` (next) and `phase-3` (nice to have). **64 of 65 are done**; deploying is the one left for you (the config is ready, see [Deploy](#deploy)).
+The work was planned in [`Plan/Tasks.md`](Plan/Tasks.md) as 65 tasks in 14 feature areas, tagged `phase-1` (do first), `phase-2` (next) and `phase-3` (nice to have). **64 of 65 are done.** The one left is deploying; the config is ready (see [Deploy](#deploy)).
 
 ### Version 1: the front-end prototype (before the phases)
 
@@ -131,7 +131,7 @@ Screens that need a signed-in account (Who's watching?, profile settings, Accoun
 
 ### Coming Soon
 
-Real, already-released titles, arriving on DramaStream on dates we set for this demo. Each one leaves Coming Soon and appears in the rows automatically on its date.
+Real, already-released titles, arriving on DramaStream on the site's own demo schedule. Each one leaves Coming Soon and appears in the rows automatically on its date.
 
 | Title | Type | Year, rating | Arrives |
 |---|---|---|---|
@@ -179,7 +179,8 @@ Everything about the database lives in [`supabase/`](supabase/):
 | `activity.sql` | Anonymous daily play/add counts for Top 10 and Trending (filled by triggers) |
 | `phase3.sql` | PIN and subtitle settings, Coming Soon dates, reminders |
 | `trailers.sql` | `titles.trailer_youtube_key` (official YouTube trailer per title) and its values; adds no policies, so titles stay read-only |
-| `schema.sql` | The class's task-manager homework tables (not used by the site) |
+| `schema.sql` | The class's task-manager homework tables (not used by the site), with Supabase Auth: a `users` row per account (trigger), and own-rows-only RLS |
+| `backups/` | CSV exports of the task-manager tables taken before the auth rebuild |
 | `seed/` | Generators and data: `catalog.sql`, `episodes.json`/`episodes.sql`, and the TMDB research files (`trailers-research.json` lists each trailer's TMDB source and the titles without one) |
 
 Signed-out visitors can only read the catalog. Everything personal is protected by Row Level Security so an account sees only its own profiles and their data. Supabase's security advisor reports no warnings.

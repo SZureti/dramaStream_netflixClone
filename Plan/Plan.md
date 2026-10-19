@@ -18,7 +18,7 @@
 | **What actions can they perform?**          | Browse categories, search or filter titles, open a title’s details, add or remove a title from My List, and open its playback screen. If playback is included, they can use the controls that actually work in the prototype, such as play, pause, and seek.                                    |
 | **What screens are required?**              | Home/Browse, Search or Results, Title Details, Playback, and My List. Genres can be sections or filters on Browse instead of separate screens. Profile and Settings can be added if the assignment requires them.                                                                               |
 | **What data must be collected or stored?**  | The prototype can use sample catalog data supplied with the app. It may need to track saved title IDs and, if playback is included, viewing progress. It does not need a real email address or password unless sign-in is explicitly part of the requirements.                                  |
-| **What permissions or access rules exist?** | For a front-end prototype without accounts, no sign-in or special permissions are needed. Decide whether My List and viewing progress last only while the app is open or are saved in that browser. If you later add accounts, each user’s profile and saved titles should belong to that user. |
+| **What permissions or access rules exist?** | For a front-end prototype without accounts, no sign-in or special permissions are needed. My List and viewing progress either last only while the app is open or are saved in that browser. Once accounts are added, each user’s profile and saved titles belong to that user. |
 
 ### Choose the content and smallest set of features for my version.
 
@@ -124,7 +124,7 @@ Workflow:
 
 # Task tracking for the DramaStream build
 
-The work left to make DramaStream feel like the real Netflix site is tracked in **[`Plan/Tasks.md`](./Tasks.md)**: a checklist of 64 tasks in 14 feature areas, tagged by kind of work and by phase. It's a plain markdown file in the repo, **not part of the published site**, so visitors never see it.
+The work left to make DramaStream feel like the real Netflix site is tracked in **[`Plan/Tasks.md`](./Tasks.md)**: a checklist of 65 tasks in 14 feature areas, tagged by kind of work and by phase. It's a plain markdown file in the repo, **not part of the published site**, so visitors never see it.
 
 Separately, the Code Platoon *Databases and Supabase* homework (https://kabeier.github.io/Databases-and-Supabase/) has a task-manager database: projects, tasks and tags, as in the class demo app Ticked. Its files are laid out the way the class lays them out:
 
@@ -138,8 +138,9 @@ dramaStream_netflixClone/
     task-manager-erd.png  the DrawSQL diagram
   supabase/               the database work, as in the class's ticked/supabase/
     .claude/              postgresql-table-design skill + supabase-agent
-    .mcp.json             the Supabase MCP (project scope); start Claude here for database work
+    .mcp.json             the Supabase MCP (project scope); Claude is started here for database work
     schema.sql            the schema that was built
+    backups/              CSV exports taken before the authentication rebuild
     task-manager-erd.png, user_stories.md
 ```
 
@@ -152,41 +153,21 @@ These follow the curriculum and its Ticked demo.
 | Question | Decision | Why |
 | --- | --- | --- |
 | Where do the build tasks live? | **`Plan/Tasks.md`**, outside the site. | The tracker is for me, not for DramaStream's visitors. A checklist file needs no code, no hosting and no login. |
-| Should tasks get description or priority columns? | **No.** Keep the diagram's columns. Priority comes from the `phase-1/2/3` tags. | Same columns as the class schema; don't add design that no story needs. |
-| Must every task belong to a project? | **No.** `project_id` is optional, and **deleting a project keeps its tasks** (`ON DELETE SET NULL`). | Ticked's story: "Its tasks stay, but lose their project". In Supabase this still needs the SQL under **Pending** below. |
-| Are tags shared or per user? | **Shared.** Names are unique regardless of capitals ("Frontend" = "frontend"), enforced by a unique index on `lower(name)`. | Same as Ticked. The authentication lecture revisits ownership. |
-| `due_date` type? | **`date`**. | A calendar day, so overdue and sorting work. Done in migration `tasks_due_date_to_date`. |
-| Temporary open RLS policies? | **Remove them** (RLS on, no rules) until the API lecture adds dev rules. Still to run: see **Pending** below. | Nothing calls the API, so open policies only exposed the data. |
-| Users and login? | `users` stays a plain table, and `user_id` is optional (`ON DELETE SET NULL`). The authentication lecture rebuilds `users` around `auth.users`. | Matches the class schema and what the next lectures expect. |
+| Should tasks get description or priority columns? | **No.** Keep the diagram's columns. Priority comes from the `phase-1/2/3` tags. | Same columns as the class schema; no design that no story needs. |
+| Must every task belong to a project? | **No.** `project_id` is optional, and **deleting a project keeps its tasks** (`ON DELETE SET NULL`). | Ticked's story: "Its tasks stay, but lose their project". |
+| Are tags shared or per user? | **Per user** since the authentication lecture. Names are unique per user regardless of capitals ("Frontend" = "frontend"). | With private data, two people should each be able to have their own "urgent" tag. |
+| `due_date` type? | **`date`**. | A calendar day, so overdue and sorting work. |
+| Users and login? | **Supabase Auth.** `users.id` is the `auth.users` id; a trigger (`on_auth_user_created`) adds a `users` row for each new account. Every other table has `user_id` (`not null`, `default auth.uid()`, `on delete cascade`). | The app never sends a user id, and deleting an account removes all of its data. |
+| Who can see what? | **Own rows only.** Every policy is `to authenticated` with `auth.uid() = user_id`; signed-out visitors (anon) get nothing. The API lecture's temporary "dev: open access" rules are gone. | A user can only view the tasks they own. |
 
-### Pending: migration `align_with_class_schema`
+### Authentication rebuild (2026-10-19)
 
-`supabase/schema.sql` already shows the target.
+Done in the Supabase SQL Editor, in this order:
 
-**Already applied** (migration `align_with_class_schema_part1`):
+1. Backed up the five tables to CSV in `supabase/backups/` (test data only; not re-imported).
+2. Dropped `task_tags`, `tasks`, `tags`, `projects`, `users`.
+3. Recreated `users` on top of `auth.users`, with the sign-up trigger, and backfilled a `users` row for each existing account (the DramaStream accounts in the same project).
+4. Recreated `projects`, `tags`, `tasks`, `task_tags` with `user_id` on every table and same-owner foreign keys (a task can only use its owner's project; `task_tags` only links a user's own task and tag).
+5. Added the RLS policies and grants.
 
-- `users.name` and `users.email` are NOT NULL.
-- A unique index on `lower(tags.name)`.
-
-**Still to run.** The Supabase MCP declines statements that drop or delete, so run this in the Supabase **SQL Editor**:
-
-```sql
--- Deleting a project keeps its tasks; they just lose their project.
-alter table public.tasks drop constraint tasks_project_id_fkey;
-alter table public.tasks add constraint tasks_project_id_fkey
-  foreign key (project_id) references public.projects (id) on delete set null;
-
--- RLS stays on with no rules until the API lecture.
-drop policy dev_anon_all_users     on public.users;
-drop policy dev_anon_all_projects  on public.projects;
-drop policy dev_anon_all_tasks     on public.tasks;
-drop policy dev_anon_all_tags      on public.tags;
-drop policy dev_anon_all_task_tags on public.task_tags;
-
--- Remove the test rows from the schema check.
-delete from public.task_tags;
-delete from public.tasks where title = 'TEST Task';
-delete from public.projects where name = 'TEST Project';
-delete from public.tags where name in ('test_tag_a', 'test_tag_b');
-delete from public.users where email = 'test_schema_check@example.com';
-```
+Checked with a two-account test (accounts created and deleted inside one SQL run): B saw none of A's tasks, couldn't edit them, and couldn't insert a task as A; signed-out requests are refused on all five tables. `supabase/schema.sql` holds the final SQL.

@@ -6,7 +6,7 @@
 
 **Problem:** The Netflix-parity backlog is around 75 tasks across 14 feature areas. In a notes file it's impossible to see what's done, what's next and what's late.
 
-**User:** One type, the DramaStream builder. There are no accounts yet, so everyone who opens the app sees the same lists.
+**User:** One type, the DramaStream builder. Each person signs in and sees only their own projects, tasks and tags.
 
 ## The journey
 
@@ -30,10 +30,10 @@
 ## Data rules
 
 - **All reading and changing of data happens in ONE file (a data layer such as `db.js`).** It holds four arrays shaped like the Supabase tables: `projects`, `tasks`, `tags`, `task_tags`. Every function is `async`, so swapping in real Supabase calls later only touches that file.
-- **The tables exist in Supabase** (see `supabase/schema.sql`). Connecting an app to them comes in the API lecture.
+- **The tables exist in Supabase** (see `supabase/schema.sql`). A front end has to sign the user in first: Row Level Security only returns the signed-in user's rows.
 - **Same shape as the database:**
   - Every row has an `id` (UUID); projects and tasks have `created_at`.
   - `due_date` is `YYYY-MM-DD` or null; `project_id` is null when there's no project.
   - Deleting a project keeps its tasks (`project_id` becomes null), and deleting a task removes its `task_tags` rows.
-  - Tag names are unique regardless of capitals.
+  - Each user's tag names are unique regardless of capitals.
 - **Seed data** would be the checklist in `Plan/Tasks.md`: 14 projects with their tasks and tags.

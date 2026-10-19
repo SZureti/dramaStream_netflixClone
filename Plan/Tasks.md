@@ -1,6 +1,6 @@
 # DramaStream tasks
 
-The work left to make DramaStream feel like the real Netflix site: 65 tasks in 14 feature areas. This file is the tracker. It's kept in the repo for me only and isn't part of the published site.
+The work left to make DramaStream feel like the real Netflix site: 65 tasks in 14 feature areas. This file is my tracker. It lives in the repo as my own notes and isn't part of the published site.
 
 **How to use it**
 
@@ -14,7 +14,7 @@ The work left to make DramaStream feel like the real Netflix site: 65 tasks in 1
 
 **Decisions so far:** sign-in is optional (anyone can browse); the catalog loads from Supabase and falls back to the bundled `catalog.js`; everything lives in the same Supabase project as the homework tables.
 
-**Before real sign-ups work:** in the Supabase dashboard, under **Authentication → URL Configuration**, set the Site URL to where DramaStream is deployed, and add `http://localhost:5173/**` to Redirect URLs. Supabase's built-in email sender only delivers to your own team's addresses and only a few per hour. For real visitors, add your own SMTP (**Authentication → Emails → SMTP Settings**), or turn off **Confirm email** while testing.
+**Before real sign-ups work:** in the Supabase dashboard, under **Authentication → URL Configuration**, set the Site URL to where DramaStream is deployed, and add `http://localhost:5173/**` to Redirect URLs. Supabase's built-in email sender only delivers to the project team's own addresses, and only a few per hour. Real visitors need a custom SMTP server (**Authentication → Emails → SMTP Settings**); while testing, **Confirm email** can be turned off instead.
 
 ## 1. Catalog in Supabase
 
@@ -59,7 +59,7 @@ My List survives a refresh and belongs to the profile that saved it.
 
 ## 5. Continue Watching and viewing progress
 
-Pick up where you left off, like Netflix's Continue Watching row.
+Viewers pick up where they left off, like Netflix's Continue Watching row.
 
 - [x] Add a `viewing_progress` table (profile, title, episode, position_seconds, updated_at). — `database` `phase-1` _(Per user for now.)_
 - [x] Save the mock player position every few seconds and when leaving the player. — `player` `backend` `phase-1`
@@ -148,5 +148,5 @@ Tests, accessibility, performance and deployment.
 - [x] Add tests for each story's workflow (unit tests for data helpers, plus end-to-end tests for the main journeys). — `testing` `phase-1` _(`npm test`: 41 unit tests. `npm run test:e2e`: 18 Playwright journeys, desktop and phone.)_
 - [x] Optimize images (responsive sizes, lazy loading) and keep `npm run build` passing. — `performance` `phase-2` _(`srcset` with smaller copies from `scripts/make-image-sizes.sh`; secondary pages lazy-loaded.)_
 - [x] Run the Supabase security and performance advisors after every migration and fix the warnings. — `database` `testing` `phase-1` _(Security: clean. Performance: only unused-index notes on new tables.)_
-- [ ] Deploy (for example Vercel or Netlify) with Supabase keys in environment variables. — `backend` `phase-2` _(Ready for you: `vercel.json`, `public/_redirects`, and the steps under **Deploy** in the README.)_
+- [ ] Deploy (for example Vercel or Netlify) with Supabase keys in environment variables. — `backend` `phase-2` _(Config is ready: `vercel.json`, `public/_redirects`, and the steps under **Deploy** in the README.)_
 - [x] Update `README.md` and the screenshots. — `content` `phase-2`

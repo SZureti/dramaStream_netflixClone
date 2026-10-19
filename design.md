@@ -1,8 +1,8 @@
 # DramaStream — Product and Design Plan
 
 > **Project:** Netflix-inspired front-end SPA for the Code Platoon Netflix Clone I assignment  
-> **Status:** Planning specification  
-> **Working name:** DramaStream (replace with a name you prefer)  
+> **Status:** The original plan for version 1, the front-end prototype. Later phases replaced parts of it (60 real titles instead of 12 fictional ones, optional accounts, Supabase); they're tracked in [`Plan/Tasks.md`](Plan/Tasks.md).  
+> **Name:** DramaStream  
 > **Primary goal:** Study and recreate the structure of a streaming-media interface while presenting a personalized, small drama catalog.
 
 ## 1. Product summary
@@ -46,7 +46,7 @@ This is a **front-end learning prototype**, not a streaming service. It does not
 - Multiple profiles, parental controls, watch history, ratings, comments, downloads, or social features.
 - Guarantee of TV-device compatibility. The layout should adapt to common screen widths, but TV remote navigation is not a requirement.
 
-If the assignment repository or instructor gives a specific technical or feature requirement, follow that requirement over an assumption in this document.
+Where the assignment or instructor sets a specific technical or feature requirement, that requirement wins over anything in this document.
 
 ## 4. Viewer journeys
 
@@ -251,9 +251,7 @@ Create an original cinematic interface using familiar streaming patterns without
 - Announce meaningful status changes (such as title added or removed) with an accessible status region when needed.
 - Ensure modals are not required for core flows; if added, support focus management and Escape.
 
-## 12. Suggested front-end structure
-
-Adapt this to the assignment repository rather than replacing its setup blindly.
+## 12. Planned front-end structure
 
 ```text
 src/
@@ -288,14 +286,14 @@ public/
     hero/
 ```
 
-**Proposed stack:** React + Vite + React Router DOM with `BrowserRouter`, unless the assignment repo specifies another stack. No API or backend is needed for this scoped version.
+**Stack:** React + Vite + React Router DOM with `BrowserRouter`. No API or backend in this version.
 
 ## 13. Build phases and pass conditions
 
 ### Phase 0 — Inspect and confirm
 
-- Inspect repository files, scripts, existing dependencies, and assignment requirements.
-- Confirm the catalog, routes, data behavior, and screens before coding.
+- Check the starter repo's files, scripts and dependencies against the assignment requirements.
+- Settle the catalog, routes, data behavior, and screens before coding.
 - **Pass:** no unresolved choice remains about whether real streaming, authentication, or external data is expected.
 
 ### Phase 1 — App shell and routes
@@ -321,10 +319,10 @@ public/
 ### Phase 5 — Responsive and quality pass
 
 - Verify layout at phone/tablet/desktop widths, keyboard interaction, image fallbacks, and error/empty states.
-- Compare implementation screens to the approved wireframes and make corrections.
+- Compare the built screens with the Procreate sketches and fix any differences.
 - **Pass:** no clipped navigation or unusable controls; all acceptance criteria below pass.
 
-At the end of each phase, review the result and agree on the next phase’s pass condition before continuing.
+Each phase has to meet its pass condition before the next one starts.
 
 ## 14. Final acceptance checklist
 
