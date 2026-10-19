@@ -125,7 +125,8 @@ create table public.tasks (
   foreign key (project_id, user_id) references public.projects (id, user_id) on delete set null (project_id)
 );
 create index tasks_user_id_idx    on public.tasks (user_id);
-create index tasks_project_id_idx on public.tasks (project_id);
+-- Covers the (project_id, user_id) foreign key, like task_tags' indexes.
+create index tasks_project_fk_idx on public.tasks (project_id, user_id);
 alter table public.tasks enable row level security;
 
 
