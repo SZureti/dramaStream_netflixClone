@@ -1,6 +1,6 @@
 # DramaStream tasks
 
-The work left to make DramaStream feel like the real Netflix site: 65 tasks in 14 feature areas. This file is my tracker. It lives in the repo as my own notes and isn't part of the published site.
+The work left to make DramaStream feel like the real Netflix site: 75 tasks in 15 feature areas. This file is my tracker. It lives in the repo as my own notes and isn't part of the published site.
 
 **How to use it**
 
@@ -150,3 +150,18 @@ Tests, accessibility, performance and deployment.
 - [x] Run the Supabase security and performance advisors after every migration and fix the warnings. — `database` `testing` `phase-1` _(Security: clean. Performance: only unused-index notes on new tables.)_
 - [ ] Deploy (for example Vercel or Netlify) with Supabase keys in environment variables. — `backend` `phase-2` _(Config is ready: `vercel.json`, `public/_redirects`, and the steps under **Deploy** in the README.)_
 - [x] Update `README.md` and the screenshots. — `content` `phase-2`
+
+## 15. Edge Functions and live TMDB data
+
+The serverless-functions and 3rd-party-API assignments: Supabase Edge Functions that call TMDB without exposing its key.
+
+- [x] Create and deploy a `hello-world` Edge Function that returns `{"message":"Hello World"}`. — `backend` `phase-2`
+- [x] Create and deploy a `multiply-numbers` function (6 and 6 give `{"result":36}`), with 400 errors for missing or non-numeric input. — `backend` `phase-2` _(Accepts query parameters or a JSON body.)_
+- [x] Keep the TMDB key in Supabase secrets (`TMDB_API_KEY`), never in the source or a `VITE_` variable; add `.env` to `.gitignore`. — `backend` `auth` `phase-1`
+- [x] Add a `tmdb-search` function (CORS, 400 on a missing query, 502 when TMDB fails, trimmed results). — `backend` `phase-2`
+- [x] Show a **More from TMDB** section on Search, debounced, hiding titles already in the catalog and tolerating TMDB failures. — `frontend` `ux` `phase-2`
+- [x] Add a `tmdb-details` function (overview, genres, runtime or seasons, director or creator, top 12 cast; 404 for unknown ids). — `backend` `phase-2`
+- [x] Add a TMDB details page at `/tmdb/:type/:id` with cast and the TMDB credit line, linked from the search cards. — `frontend` `ux` `phase-2`
+- [x] Hide TMDB content from Kids profiles (it has no maturity rating, and unrated titles count as adult). — `frontend` `auth` `phase-2`
+- [x] Test it: unit tests for the trimming, auth and Kids rule, and Playwright journeys with the functions mocked. — `testing` `phase-2` _(52 unit tests, 24 end-to-end.)_
+- [ ] Revoke the temporary Supabase CLI access token (`dramastream-cli`) once the project is finished. — `auth` `phase-1` _(It also expires 7 days after it was made. I decided to keep it until next week.)_

@@ -6,7 +6,7 @@ import EmptyState from '../components/EmptyState.jsx';
 import TmdbCard from '../components/TmdbCard.jsx';
 import { SearchIcon } from '../components/Icons.jsx';
 import { getCatalog, searchCatalog, searchRelated } from '../data/catalog.js';
-import { searchTmdb, tmdbAvailable, withoutCatalogTitles } from '../data/tmdb.js';
+import { searchTmdb, tmdbAllowedForProfile, tmdbAvailable, withoutCatalogTitles } from '../data/tmdb.js';
 import useDocumentTitle from '../hooks/useDocumentTitle.js';
 
 const SUGGESTIONS = ['Breaking Bad', 'Moonlight', 'The Crown', 'Free Solo', 'Whiplash', 'Succession'];
@@ -41,8 +41,9 @@ export default function SearchPage() {
 
   // Live TMDB results below our own catalog matches. Failures only hide this
   // extra section; the catalog search above keeps working on its own.
+  const tmdbOn = tmdbAvailable && tmdbAllowedForProfile();
   useEffect(() => {
-    if (!tmdbAvailable || trimmed.length < TMDB_MIN_CHARS) return undefined;
+    if (!tmdbOn || trimmed.length < TMDB_MIN_CHARS) return undefined;
     let cancelled = false;
     const timer = setTimeout(() => {
       setTmdb({ query: trimmed, status: 'loading', hits: [] });
@@ -54,9 +55,9 @@ export default function SearchPage() {
       cancelled = true;
       clearTimeout(timer);
     };
-  }, [trimmed]);
+  }, [trimmed, tmdbOn]);
 
-  const tmdbCurrent = tmdb.query === trimmed ? tmdb : { status: 'idle', hits: [] };
+  const tmdbCurrent = tmdbOn && tmdb.query === trimmed ? tmdb : { status: 'idle', hits: [] };
   const tmdbHits = withoutCatalogTitles(tmdbCurrent.hits, results);
 
   useDocumentTitle(trimmed ? `Search: ${trimmed}` : 'Search');
@@ -184,7 +185,7 @@ export default function SearchPage() {
             More from TMDB
           </h2>
           <p className="search-tmdb__note">
-            These titles aren&apos;t in the DramaStream catalog yet, so they can&apos;t be played or added to My List.
+            These titles aren&apos;t in the DramaStream catalog yet, so they can&apos;t be played or added to My List. Open one to read more.
           </p>
           <ul className="card-grid">
             {tmdbHits.map((h) => (

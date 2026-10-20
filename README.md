@@ -1,6 +1,6 @@
 # DramaStream — Netflix-Inspired Streaming Site
 
-A Netflix-style streaming catalog for **drama films, drama series and drama documentaries**, built for the Code Platoon Netflix Clone assignment and extended in three phases into a full-stack app: React + Vite + React Router on the front end, and **Supabase** (Postgres, Row Level Security, Auth) behind it.
+A Netflix-style streaming catalog for **drama films, drama series and drama documentaries**, built for the Code Platoon Netflix Clone assignment and extended in four phases into a full-stack app: React + Vite + React Router on the front end, and **Supabase** (Postgres, Row Level Security, Auth, Edge Functions) behind it, with live search and details from the **TMDB API**.
 
 > This is an educational, Netflix-inspired project. It is not affiliated with Netflix, and it streams no films or episodes: the player is a clearly labelled mock-up.
 
@@ -15,6 +15,7 @@ A Netflix-style streaming catalog for **drama films, drama series and drama docu
 - [Start the app](#start-the-app)
 - [Tests](#tests)
 - [Database (Supabase)](#database-supabase)
+- [Edge Functions and TMDB](#edge-functions-and-tmdb)
 - [Deploy](#deploy)
 - [Routes](#routes)
 - [Project structure](#project-structure)
@@ -24,7 +25,7 @@ A Netflix-style streaming catalog for **drama films, drama series and drama docu
 
 ## Phases
 
-The work was planned in [`Plan/Tasks.md`](Plan/Tasks.md) as 65 tasks in 14 feature areas, tagged `phase-1` (do first), `phase-2` (next) and `phase-3` (nice to have). **64 of 65 are done.** The one left is deploying; the config is ready (see [Deploy](#deploy)).
+The work was planned in [`Plan/Tasks.md`](Plan/Tasks.md) as 75 tasks in 15 feature areas, tagged `phase-1` (do first), `phase-2` (next) and `phase-3` (nice to have). **73 of 75 are done.** Left: deploying (the config is ready, see [Deploy](#deploy)) and revoking a temporary CLI access token.
 
 ### Version 1: the front-end prototype (before the phases)
 
@@ -63,6 +64,16 @@ The original class assignment: a React SPA with 30 drama titles in three rows, s
 - **My List sorting** (Date added, A–Z, Z–A, Release year).
 - **End-to-end tests** with Playwright for the main journeys on desktop and phone.
 
+### Phase 4: Edge Functions and live TMDB data
+
+The Code Platoon serverless-functions and 3rd-party-API assignments, built into this app (details in [Edge Functions and TMDB](#edge-functions-and-tmdb)):
+
+- **Supabase Edge Functions** (Deno): `hello-world` and `multiply-numbers` as the first exercises, then `tmdb-search` and `tmdb-details`.
+- **Live TMDB search:** Search shows a **More from TMDB** section under the catalog matches, for titles we don't carry.
+- **TMDB details page** (`/tmdb/:type/:id`): overview, genres, seasons or runtime, creator or director, and cast.
+- The TMDB key lives only in a **Supabase secret**; the browser talks to our functions, never to TMDB directly.
+- **Kids profiles never see TMDB content** (it has no DramaStream maturity rating, and unrated titles count as adult).
+
 ## Features
 
 | Area | What you can do |
@@ -71,6 +82,7 @@ The original class assignment: a React SPA with 30 drama titles in three rows, s
 | Details | Opens as a modal over the page; series show every season and episode with stills and synopses; More Like This; About; Remind Me for Coming Soon titles. |
 | Trailers | A **Trailer** button on the details modal, the details page and the billboard plays the title's official YouTube trailer (privacy-enhanced `youtube-nocookie.com` embed) in an accessible dialog. Escape, Close or a click outside stops it and returns focus. 57 of 66 titles have one, Coming Soon included; the button is hidden for the 9 with no official trailer on TMDB. |
 | Search & browse | Live search by title, actor, director or genre, accent- and punctuation-insensitive, with "Explore titles related to". TV Shows, Movies and Documentaries pages with a genre filter. |
+| TMDB (live) | Search adds a **More from TMDB** section (titles we don't have, duplicates hidden), and each card opens a details page with overview, facts and cast. Hidden on Kids profiles. |
 | New & Popular | Coming Soon with arrival dates and Remind Me, New on DramaStream, Top 10. The bell shows new arrivals and reminders. |
 | Player | Mock playback (no video) with play/pause, seek, ±10 s, speed, simulated volume and mute, full screen, Skip Intro, Next Episode countdown, Audio & Subtitles, and Space/K, ←/→, F, M, ↑/↓. Saves where you stopped. |
 | Accounts (optional) | Plan step, sign up/in/out, password reset, Who's watching?, up to 5 profiles (kids, maturity, PIN lock, language, subtitles, autoplay), Account and Viewing activity. |
@@ -162,11 +174,11 @@ npm run preview    # serve the build
 ## Tests
 
 ```bash
-npm test           # 41 unit tests (Vitest): catalog, search, rows, % Match, notifications, plans, PIN, validation, trailers
-npm run test:e2e   # 18 end-to-end journeys (Playwright, desktop + phone)
+npm test           # 52 unit tests (Vitest): catalog, search, rows, % Match, notifications, plans, PIN, validation, trailers, TMDB trimming
+npm run test:e2e   # 24 end-to-end journeys (Playwright, desktop + phone)
 ```
 
-The end-to-end tests start the dev server (or reuse one on port 5173). The first time, install the browser with `npx playwright install chromium`. They cover the welcome page, Home rows, the details modal, search, Browse, My List with sorting, ratings with % Match, Resume and Continue Watching, the Next Episode countdown, Coming Soon with Remind Me, the bell, the trailer player (with YouTube stubbed out, so the tests don't need it), and the phone layout.
+The end-to-end tests start the dev server (or reuse one on port 5173). The first time, install the browser with `npx playwright install chromium`. They cover the welcome page, Home rows, the details modal, search, Browse, My List with sorting, ratings with % Match, Resume and Continue Watching, the Next Episode countdown, Coming Soon with Remind Me, the bell, the trailer player (with YouTube stubbed out, so the tests don't need it), the TMDB search section and details page (with the Edge Functions mocked, so no network or TMDB key is needed), and the phone layout.
 
 ## Database (Supabase)
 
@@ -185,6 +197,35 @@ Everything about the database lives in [`supabase/`](supabase/):
 
 Signed-out visitors can only read the catalog. Everything personal is protected by Row Level Security so an account sees only its own profiles and their data. Supabase's security advisor reports no warnings.
 
+## Edge Functions and TMDB
+
+Four [Supabase Edge Functions](https://supabase.com/docs/guides/functions) live in [`supabase/functions/`](supabase/functions/). Each answers the browser's CORS preflight and returns JSON, with 400 for bad input and 502 when TMDB fails.
+
+| Function | Call | Returns |
+|---|---|---|
+| `hello-world` | `GET` | `{"message":"Hello World"}` |
+| `multiply-numbers` | `GET ?a=6&b=6` or `POST {"a":6,"b":6}` | `{"result":36}`; 400 if either is missing or not a number |
+| `tmdb-search` | `POST {"q":"parasite"}` or `GET ?q=` | `{"results":[{id, type, title, year, overview, poster, rating}]}` (up to 12 films and series) |
+| `tmdb-details` | `POST {"type":"tv","id":76331}` or `GET ?type=&id=` | `{"details":{title, overview, genres, runtime, seasons, directors, cast, …}}`; 404 if TMDB has no such title |
+
+`supabase/functions/_shared/` holds the CORS headers and the TMDB auth helper. The functions are public demos, so `supabase/config.toml` sets `verify_jwt = false` for them (the new `sb_publishable_` keys are not JWTs).
+
+**Keeping the TMDB key secret.** The key is a Supabase secret named `TMDB_API_KEY`, read in the functions with `Deno.env.get`. It is never in the source, never in a `VITE_` variable, and never sent to the browser. Either TMDB credential works: the short v3 API key or the long v4 read access token.
+
+| Where | How |
+|---|---|
+| Deployed | Supabase dashboard → Edge Functions → Secrets, or `supabase secrets set TMDB_API_KEY=…` |
+| Local functions | `supabase/functions/.env` (git-ignored; `.env` is in `.gitignore`) |
+
+**Deploy the functions** (needs the [Supabase CLI](https://supabase.com/docs/guides/cli) and `supabase login`, or a `SUPABASE_ACCESS_TOKEN`):
+
+```bash
+supabase functions deploy tmdb-search  --project-ref YOUR_PROJECT_REF
+supabase functions deploy tmdb-details --project-ref YOUR_PROJECT_REF
+```
+
+**In the app.** `src/data/tmdb.js` calls the functions with `supabase.functions.invoke`. On Search, a pause in typing (400 ms, two or more letters) triggers the TMDB lookup, titles already in the catalog are hidden from it, and if TMDB fails the catalog results still show. TMDB titles aren't in the catalog, so they can't be played or added to My List.
+
 ## Deploy
 
 The app is a static single-page app; Supabase is the backend. Both Vercel and Netlify work. Every route falls back to `index.html` (`vercel.json` for Vercel, `public/_redirects` for Netlify).
@@ -194,6 +235,8 @@ The app is a static single-page app; Supabase is the backend. Both Vercel and Ne
 3. Add two environment variables with the same values as `.env.local`:
    - `VITE_SUPABASE_URL`
    - `VITE_SUPABASE_PUBLISHABLE_KEY` (the publishable key only, never the secret/service-role key)
+
+   The TMDB key is **not** one of them: it stays in Supabase secrets (see [Edge Functions and TMDB](#edge-functions-and-tmdb)).
 4. Deploy, then in Supabase → **Authentication → URL Configuration**:
    - set **Site URL** to the deployed address;
    - add `https://YOUR-SITE/**` to **Redirect URLs**, so sign-up confirmation and password-reset links come back to the site.
@@ -210,6 +253,7 @@ After adding artwork, run `sh scripts/make-image-sizes.sh` (macOS) to create the
 | `/new` | New & Popular: Coming Soon, New on DramaStream, Top 10 |
 | `/search?q=` | Search |
 | `/titles/:titleId` | Title details: a modal when opened in the app, a full page for direct links |
+| `/tmdb/:type/:tmdbId` | TMDB details for a title we don't carry (`type` is `movie` or `tv`; not shown to Kids profiles) |
 | `/my-list` | My List |
 | `/watch/:titleId` | Mock player (resumes; `?s=&e=` picks an episode, `?t=0` starts over) |
 | `/welcome` | Signed-out welcome page (first visit) |
@@ -227,18 +271,19 @@ src/
   app/          App.jsx (routes, modal route, profile gate), RouteEffects.jsx (scroll & focus)
   components/   AppHeader, AccountMenu, NotificationsBell, FeaturedTitle, TitleRow, TitleCard,
                 TitleModal, EpisodeList, MockPlayer, AudioSubtitlesMenu, ThumbsRating, ReviewsSection,
-                PlanPicker, PinDialog, ProfileAvatar, RemindButton, AuthShell, SearchForm, …
+                PlanPicker, PinDialog, ProfileAvatar, RemindButton, AuthShell, SearchForm, TmdbCard, …
   data/         catalog.js (bundled catalog, maturity + Coming Soon filters, search), remoteCatalog.js,
                 rows.js (Home rows), match.js (% Match), notifications.js, activity.js, billboard.js,
-                moods.js, plans.js
+                moods.js, plans.js, tmdb.js (TMDB search and details through the Edge Functions)
   lib/          supabase.js (client), storage.js, validate.js, pin.js, guest.js
-  pages/        Home, Browse, NewPopular, Search, TitleDetails, MyList, Player, Landing, SignIn, SignUp,
+  pages/        Home, Browse, NewPopular, Search, TitleDetails, TmdbDetails, MyList, Player, Landing, SignIn, SignUp,
                 ForgotPassword, ResetPassword, Profiles, ProfileEdit, Account, Activity, Help, NotFound
   state/        Auth, Profile, MyList, Progress, Reviews, Reminders, Status (toasts) contexts
   styles/       global.css, components.css, account.css
   __tests__/    Vitest unit tests
 e2e/            Playwright end-to-end tests
 supabase/       schema files, seeds and research data (see Database)
+supabase/functions/  Edge Functions: hello-world, multiply-numbers, tmdb-search, tmdb-details, _shared/
 public/assets/  posters/ (+400/), hero/ (+960/), logos/, stills/, CREDITS.md
 scripts/        make-image-sizes.sh
 docs/screenshots/
@@ -251,15 +296,16 @@ docs/screenshots/
 - **Signed in:** they belong to the chosen profile in Supabase and are visible only to that account (Row Level Security). Anything saved before signing in moves into the first profile you pick.
 - **Accounts** store an email address (plus Supabase's hashed password) and the mock plan name. No payment details, ever. Profile PINs are stored only as salted hashes.
 - **Top 10 / Trending** use anonymous per-title counts with no user or profile ids.
+- **TMDB search:** the text you type is sent to TMDB through our Edge Function (never with your account details), and the TMDB key never reaches the browser. Kids profiles don't get TMDB content.
 - **Share** only opens links you choose; nothing is posted automatically.
 
 ## Artwork and sources
 
-Posters, backgrounds, logos and episode stills were downloaded once from TMDB's image CDN for this educational project and are listed in [`public/assets/CREDITS.md`](public/assets/CREDITS.md). Every image falls back to a neutral placeholder if it fails to load. Smaller copies (`posters/400/`, `hero/960/`) come from `scripts/make-image-sizes.sh`.
+Posters, backgrounds, logos and episode stills were downloaded once from TMDB's image CDN for this educational project and are listed in [`public/assets/CREDITS.md`](public/assets/CREDITS.md). Titles found through live TMDB search load their posters and cast photos straight from TMDB's image CDN. This product uses the TMDB API but is not endorsed or certified by TMDB. Every image falls back to a neutral placeholder if it fails to load. Smaller copies (`posters/400/`, `hero/960/`) come from `scripts/make-image-sizes.sh`.
 
 ## Planning docs
 
-- [`Plan/Tasks.md`](Plan/Tasks.md): the 65-task checklist, by feature area and phase.
+- [`Plan/Tasks.md`](Plan/Tasks.md): the 75-task checklist, by feature area and phase.
 - [`Plan/Plan.md`](Plan/Plan.md): planning questions, user stories and decisions.
 - [`design.md`](design.md): the original product plan and acceptance criteria.
 - [`app_outline/`](app_outline/) and [`supabase/`](supabase/): the Databases & Supabase class homework (task-manager spec and database).

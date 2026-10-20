@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { tmdbAuth, trimResults } from '../../supabase/functions/tmdb-search/trim.ts';
-import { withoutCatalogTitles } from '../data/tmdb.js';
+import { trimDetails } from '../../supabase/functions/tmdb-details/trim.ts';
+import { setMaturityLimit } from '../data/catalog.js';
+import { formatMinutes, tmdbAllowedForProfile, withoutCatalogTitles } from '../data/tmdb.js';
 
 const movie = {
   id: 1,
@@ -62,5 +64,97 @@ describe('withoutCatalogTitles', () => {
     const hits = [{ title: 'Parasite' }, { title: 'AMÉLIE' }, { title: 'New Show' }];
     const catalog = [{ title: 'parasite' }, { title: 'Amelie' }];
     expect(withoutCatalogTitles(hits, catalog)).toEqual([{ title: 'New Show' }]);
+  });
+});
+
+describe('tmdb-details trimDetails', () => {
+  const film = {
+    id: 496243,
+    title: 'Parasite',
+    tagline: 'Act like you own the place.',
+    release_date: '2019-05-30',
+    overview: 'A family schemes.',
+    genres: [{ name: 'Comedy' }, { name: 'Thriller' }],
+    runtime: 133,
+    status: 'Released',
+    vote_average: 8.5123,
+    vote_count: 20000,
+    poster_path: '/p.jpg',
+    backdrop_path: '/b.jpg',
+    credits: {
+      crew: [
+        { job: 'Director', name: 'Bong Joon Ho' },
+        { job: 'Producer', name: 'Someone Else' },
+      ],
+      cast: Array.from({ length: 20 }, (_, i) => ({ name: `Actor ${i}`, character: `Role ${i}`, profile_path: i ? null : '/a.jpg' })),
+    },
+  };
+
+  it('shapes a film: directors only, cast capped at 12, image URLs built', () => {
+    const d = trimDetails('movie', film);
+    expect(d).toMatchObject({
+      id: 496243,
+      type: 'movie',
+      title: 'Parasite',
+      year: 2019,
+      genres: ['Comedy', 'Thriller'],
+      runtime: 133,
+      seasons: null,
+      rating: 8.5,
+      poster: 'https://image.tmdb.org/t/p/w500/p.jpg',
+      backdrop: 'https://image.tmdb.org/t/p/w780/b.jpg',
+      directors: ['Bong Joon Ho'],
+    });
+    expect(d.cast).toHaveLength(12);
+    expect(d.cast[0]).toEqual({ name: 'Actor 0', character: 'Role 0', photo: 'https://image.tmdb.org/t/p/w185/a.jpg' });
+    expect(d.cast[1].photo).toBeNull();
+  });
+
+  it('shapes a series: creators, seasons, episode runtime', () => {
+    const d = trimDetails('tv', {
+      id: 76331,
+      name: 'Succession',
+      first_air_date: '2018-06-03',
+      created_by: [{ name: 'Jesse Armstrong' }],
+      episode_run_time: [60],
+      number_of_seasons: 4,
+      number_of_episodes: 39,
+      vote_count: 0,
+    });
+    expect(d).toMatchObject({
+      title: 'Succession',
+      year: 2018,
+      directors: ['Jesse Armstrong'],
+      runtime: 60,
+      seasons: 4,
+      episodes: 39,
+      rating: null,
+      cast: [],
+    });
+  });
+
+  it('tolerates a nearly empty payload', () => {
+    expect(trimDetails('movie', {})).toMatchObject({ title: '', year: null, genres: [], cast: [], directors: [], runtime: null });
+  });
+});
+
+describe('formatMinutes', () => {
+  it('formats runtimes', () => {
+    expect(formatMinutes(133)).toBe('2h 13m');
+    expect(formatMinutes(120)).toBe('2h');
+    expect(formatMinutes(45)).toBe('45 min');
+    expect(formatMinutes(null)).toBe('');
+  });
+});
+
+describe('tmdbAllowedForProfile', () => {
+  it('is on for unrestricted profiles and off for Kids profiles', () => {
+    setMaturityLimit('all');
+    expect(tmdbAllowedForProfile()).toBe(true);
+    setMaturityLimit('little-kids');
+    expect(tmdbAllowedForProfile()).toBe(false);
+    setMaturityLimit('older-kids');
+    expect(tmdbAllowedForProfile()).toBe(false);
+    setMaturityLimit('all');
   });
 });

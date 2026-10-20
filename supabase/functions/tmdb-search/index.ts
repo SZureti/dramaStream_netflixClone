@@ -1,5 +1,6 @@
 import { corsHeaders, json } from "../_shared/cors.ts";
-import { tmdbAuth, trimResults } from "./trim.ts";
+import { tmdbAuth } from "../_shared/tmdb.ts";
+import { trimResults } from "./trim.ts";
 
 // GET ?q=breaking+bad  or  POST {"q": "breaking bad"}  ->  { "results": [...] }
 // The TMDB credential lives in the TMDB_API_KEY secret and never reaches the browser.

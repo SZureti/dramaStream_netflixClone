@@ -1,7 +1,14 @@
 import { supabase } from '../lib/supabase.js';
+import { isAllowed } from './catalog.js';
 
 /** True when the site is connected to Supabase, so tmdb-search can be called. */
 export const tmdbAvailable = Boolean(supabase);
+
+/**
+ * TMDB titles carry no DramaStream maturity rating, and the site treats unrated
+ * titles as adult, so restricted (Kids) profiles don't get TMDB content at all.
+ */
+export const tmdbAllowedForProfile = () => isAllowed({});
 
 /**
  * Live TMDB search through the `tmdb-search` Edge Function. The TMDB key lives
@@ -13,6 +20,27 @@ export async function searchTmdb(query) {
   const { data, error } = await supabase.functions.invoke('tmdb-search', { body: { q: query } });
   if (error) throw error;
   return Array.isArray(data?.results) ? data.results : [];
+}
+
+/**
+ * Full details (overview, genres, cast) for one TMDB title, via the
+ * `tmdb-details` Edge Function. `type` is 'movie' or 'tv'. Resolves to the
+ * details object; rejects when TMDB doesn't know the id or the call fails.
+ */
+export async function getTmdbDetails(type, id) {
+  if (!supabase) throw new Error('Not connected to Supabase');
+  const { data, error } = await supabase.functions.invoke('tmdb-details', { body: { type, id } });
+  if (error) throw error;
+  if (!data?.details) throw new Error('No details returned');
+  return data.details;
+}
+
+/** "2h 13m" / "58 min" from minutes, or '' when unknown. */
+export function formatMinutes(min) {
+  if (!min) return '';
+  const h = Math.floor(min / 60);
+  const m = min % 60;
+  return h ? `${h}h${m ? ` ${m}m` : ''}` : `${m} min`;
 }
 
 const norm = (s) =>

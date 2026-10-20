@@ -19,6 +19,7 @@ const HelpPage = lazy(() => import('../pages/HelpPage.jsx'));
 const BrowsePage = lazy(() => import('../pages/BrowsePage.jsx'));
 const NewPopularPage = lazy(() => import('../pages/NewPopularPage.jsx'));
 const ActivityPage = lazy(() => import('../pages/ActivityPage.jsx'));
+const TmdbDetailsPage = lazy(() => import('../pages/TmdbDetailsPage.jsx'));
 import RequireAuth from '../components/RequireAuth.jsx';
 const ProfilesPage = lazy(() => import('../pages/ProfilesPage.jsx'));
 const ProfileEditPage = lazy(() => import('../pages/ProfileEditPage.jsx'));
@@ -96,6 +97,7 @@ export default function App() {
               <Route path="/" element={<HomeGate />} />
               <Route path="/search" element={<SearchPage />} />
               <Route path="/titles/:titleId" element={<TitleDetailsPage />} />
+              <Route path="/tmdb/:type/:tmdbId" element={<TmdbDetailsPage />} />
               <Route path="/my-list" element={<MyListPage />} />
               <Route path="/watch/:titleId" element={<PlayerPage />} />
               <Route path="/welcome" element={<LandingPage />} />
