@@ -20,10 +20,12 @@ import {
   getPlayable,
   getTitleById,
   getTitlesByType,
+  isAllowed,
   isAvailable,
 } from '../data/catalog.js';
 import useDocumentTitle from '../hooks/useDocumentTitle.js';
 import NotFoundPage from './NotFoundPage.jsx';
+import NotAvailableOnProfile from '../components/NotAvailableOnProfile.jsx';
 
 /** Name the back button after where the viewer came from. */
 function backLabelFor(from) {
@@ -38,6 +40,16 @@ export default function TitleDetailsPage() {
   const { titleId } = useParams();
   const title = getTitleById(titleId);
   if (!title) return <NotFoundPage missingTitleId={titleId} />;
+  // Search and Browse already hide titles above the profile's maturity level; a direct link must too.
+  if (!isAllowed(title)) {
+    return (
+      <NotAvailableOnProfile>
+        <p>
+          {title.title} is rated {title.contentRating}, above this profile’s maturity setting.
+        </p>
+      </NotAvailableOnProfile>
+    );
+  }
   return <TitleDetails key={title.id} title={title} />;
 }
 

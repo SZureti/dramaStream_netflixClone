@@ -49,17 +49,20 @@ export function ProfileProvider({ children }) {
   const userId = user?.id ?? null;
   const [profiles, setProfiles] = useState([]);
   const [currentId, setCurrentId] = useState(null);
-  const [loaded, setLoaded] = useState(!userId);
+  // `loaded` is derived from which account the profiles were fetched for, so it is false from
+  // the very first render after sign-in. A stored flag lagged one render behind, and for that
+  // moment a Kids profile looked unrestricted.
+  const [loadedFor, setLoadedFor] = useState(null);
+  const loaded = !userId || loadedFor === userId;
 
   useEffect(() => {
     if (!userId || !supabase) {
       setProfiles([]);
       setCurrentId(null);
-      setLoaded(true);
+      setLoadedFor(null);
       return undefined;
     }
     let cancelled = false;
-    setLoaded(false);
     (async () => {
       let { data, error } = await supabase.from('profiles').select('*').order('created_at');
       if (cancelled) return;
@@ -79,7 +82,7 @@ export function ProfileProvider({ children }) {
         const remembered = readJSON(selectedKey(userId), null);
         setCurrentId(data.some((p) => p.id === remembered) ? remembered : null);
       }
-      setLoaded(true);
+      setLoadedFor(userId);
     })();
     return () => {
       cancelled = true;
@@ -89,9 +92,16 @@ export function ProfileProvider({ children }) {
   const current = profiles.find((p) => p.id === currentId) ?? null;
 
   // Kids profiles (and lower maturity settings) only see titles they're allowed.
+  // The catalog's limit is applied in an effect, which runs after the first render that already
+  // shows the profile. Until it has been applied, report `loaded: false` so pages don't render
+  // (or call TMDB) as if the profile were unrestricted.
+  const maturity = current?.max_maturity ?? 'all';
+  const [appliedMaturity, setAppliedMaturity] = useState('all');
   useEffect(() => {
-    setMaturityLimit(current?.max_maturity ?? 'all');
-  }, [current?.max_maturity]);
+    setMaturityLimit(maturity);
+    setAppliedMaturity(maturity);
+  }, [maturity]);
+  const settled = loaded && appliedMaturity === maturity;
 
   const selectProfile = useCallback(
     (id) => {
@@ -131,7 +141,7 @@ export function ProfileProvider({ children }) {
 
   const value = useMemo(
     () => ({
-      loaded,
+      loaded: settled,
       profiles,
       current,
       needsChoice: Boolean(userId) && loaded && !current && profiles.length > 0,
@@ -140,7 +150,7 @@ export function ProfileProvider({ children }) {
       updateProfile,
       deleteProfile,
     }),
-    [loaded, profiles, current, userId, selectProfile, createProfile, updateProfile, deleteProfile],
+    [settled, loaded, profiles, current, userId, selectProfile, createProfile, updateProfile, deleteProfile],
   );
 
   return <ProfileContext.Provider value={value}>{children}</ProfileContext.Provider>;

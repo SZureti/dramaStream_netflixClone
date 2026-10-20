@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import SmartImage from '../components/SmartImage.jsx';
 import EmptyState from '../components/EmptyState.jsx';
+import NotAvailableOnProfile from '../components/NotAvailableOnProfile.jsx';
 import TmdbCard from '../components/TmdbCard.jsx';
 import { ArrowLeftIcon, SearchIcon } from '../components/Icons.jsx';
 import { formatDate, getTmdbPerson, tmdbAllowedForProfile, tmdbAvailable } from '../data/tmdb.js';
@@ -33,6 +34,15 @@ export default function TmdbPersonPage() {
   useDocumentTitle(person?.name ?? 'Actor');
 
   const goBack = () => (from && location.key !== 'default' ? navigate(-1) : navigate('/search'));
+
+  // Kids and other restricted profiles don't get TMDB content (it has no maturity rating).
+  if (tmdbAvailable && !allowed) {
+    return (
+      <NotAvailableOnProfile>
+        <p>Titles and people from TMDB aren’t shown on this profile.</p>
+      </NotAvailableOnProfile>
+    );
+  }
 
   if (!validId || !allowed || current.status === 'error') {
     return (

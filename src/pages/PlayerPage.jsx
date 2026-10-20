@@ -6,6 +6,7 @@ import { isResumable, useProgress } from '../state/ProgressContext.jsx';
 import { useProfiles } from '../state/ProfileContext.jsx';
 import useDocumentTitle from '../hooks/useDocumentTitle.js';
 import NotFoundPage from './NotFoundPage.jsx';
+import NotAvailableOnProfile from '../components/NotAvailableOnProfile.jsx';
 
 export default function PlayerPage() {
   const { titleId } = useParams();
@@ -20,13 +21,11 @@ export default function PlayerPage() {
   if (!title) return <NotFoundPage missingTitleId={titleId} />;
   if (!isAllowed(title)) {
     return (
-      <div className="page">
-        <EmptyState heading="Not available on this profile">
-          <p>
-            {title.title} is rated {title.contentRating}, above this profile’s maturity setting.
-          </p>
-        </EmptyState>
-      </div>
+      <NotAvailableOnProfile>
+        <p>
+          {title.title} is rated {title.contentRating}, above this profile’s maturity setting.
+        </p>
+      </NotAvailableOnProfile>
     );
   }
 

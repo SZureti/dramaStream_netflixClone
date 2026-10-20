@@ -65,7 +65,11 @@ export default function App() {
   const immersive = Boolean(watchMatch && getTitleById(watchMatch.params.titleId));
   const bare = isBare(pathname);
   // Signed in with several profiles but none chosen yet: ask "Who's watching?" first.
-  const { needsChoice } = useProfiles();
+  const { needsChoice, loaded: profilesLoaded } = useProfiles();
+  const { available: authAvailable, ready: authReady } = useAuth();
+  // Until we know who is signed in and which profile they chose, don't render pages: a Kids
+  // profile would otherwise be treated as unrestricted for a moment (flashing adult titles).
+  const identityPending = authAvailable && (!authReady || !profilesLoaded);
   const askWhoIsWatching = needsChoice && !bare && pathname !== '/account';
 
   return (
@@ -84,7 +88,11 @@ export default function App() {
       <RouteEffects mainRef={mainRef} />
 
       <main id="main" ref={mainRef} tabIndex={-1} className="app-main">
-        {askWhoIsWatching ? (
+        {identityPending ? (
+          <p className="page route-loading" role="status">
+            Loading…
+          </p>
+        ) : askWhoIsWatching ? (
           <Navigate to="/profiles" replace />
         ) : (
           <Suspense
@@ -154,7 +162,7 @@ export default function App() {
             </Routes>
           </Suspense>
         )}
-        {background && !askWhoIsWatching && (
+        {background && !identityPending && !askWhoIsWatching && (
           <Routes>
             <Route path="/titles/:titleId" element={<TitleModalRoute />} />
           </Routes>

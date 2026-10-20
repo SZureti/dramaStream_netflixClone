@@ -1,12 +1,7 @@
 import { expect, test } from '@playwright/test';
-import { asGuest } from './helpers.js';
+import { asGuest, mockFunction } from './helpers.js';
 
 // The Edge Functions are mocked, so these tests never touch TMDB or the network.
-const CORS = {
-  'access-control-allow-origin': '*',
-  'access-control-allow-headers': 'authorization, x-client-info, apikey, content-type',
-  'content-type': 'application/json',
-};
 
 const HITS = [
   // Already in the DramaStream catalog, so the page should hide it.
@@ -51,18 +46,6 @@ const PERSON = {
     { id: 7, type: 'movie', title: 'Another Film', year: 1999, character: 'Narrator', poster: null, rating: null },
   ],
 };
-
-/** Answer a function call with JSON (or an error status) and remember what was sent. */
-async function mockFunction(page, name, { status = 200, body }) {
-  const calls = [];
-  await page.route(`**/functions/v1/${name}`, async (route) => {
-    const request = route.request();
-    if (request.method() === 'OPTIONS') return route.fulfill({ status: 200, headers: CORS });
-    calls.push(request.postDataJSON());
-    return route.fulfill({ status, headers: CORS, body: JSON.stringify(body) });
-  });
-  return calls;
-}
 
 test.describe('TMDB titles in search', () => {
   test.beforeEach(async ({ page }) => asGuest(page));
