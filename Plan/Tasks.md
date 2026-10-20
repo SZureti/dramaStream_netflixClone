@@ -1,6 +1,6 @@
 # DramaStream tasks
 
-The work left to make DramaStream feel like the real Netflix site: 80 tasks in 15 feature areas. This file is my tracker. It lives in the repo as my own notes and isn't part of the published site.
+The work left to make DramaStream feel like the real Netflix site: 81 tasks in 15 feature areas. This file is my tracker. It lives in the repo as my own notes and isn't part of the published site.
 
 **How to use it**
 
@@ -167,6 +167,7 @@ The serverless-functions and 3rd-party-API assignments: Supabase Edge Functions 
 - [x] Show **Full cast** (photos, characters, links to actor pages) on catalog titles' details page and modal, using a generated catalog-to-TMDB id map (`src/data/tmdbIds.js`) and falling back to the plain cast names if TMDB fails. — `frontend` `ux` `phase-2`
 - [x] Block a Kids (restricted) profile from opening an adult title's details page by its address, with a "Not available on this profile" screen shared with the player, and the same screen for TMDB pages. — `frontend` `auth` `phase-1` _(Found while testing with a real Kids profile.)_
 - [x] Fix a start-up race where a Kids profile counted as unrestricted for a moment on a hard load (flashing adult pages and firing a TMDB call): pages now wait until the profile's maturity limit is applied. — `frontend` `auth` `phase-1`
+- [x] Fail closed when a signed-in account's profiles can't be loaded: show "Couldn’t load your profiles" with Try again and Sign out, instead of treating the profile as unrestricted. — `frontend` `auth` `phase-1` _(Previously an error fell back to showing everything.)_
 - [x] Hide TMDB content (search, details and actor pages) from Kids profiles (it has no maturity rating, and unrated titles count as adult). — `frontend` `auth` `phase-2`
-- [x] Test it: unit tests for the trimming, auth and Kids rule, and Playwright journeys with the functions mocked. — `testing` `phase-2` _(59 unit tests, 33 end-to-end.)_
+- [x] Test it: unit tests for the trimming, auth and Kids rule, and Playwright journeys with the functions mocked. — `testing` `phase-2` _(59 unit tests, 34 end-to-end.)_
 - [ ] Revoke the temporary Supabase CLI access token (`dramastream-cli`) once the project is finished. — `auth` `phase-1` _(It also expires 7 days after it was made. I decided to keep it until next week.)_

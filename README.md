@@ -25,7 +25,7 @@ A Netflix-style streaming catalog for **drama films, drama series and drama docu
 
 ## Phases
 
-The work was planned in [`Plan/Tasks.md`](Plan/Tasks.md) as 80 tasks in 15 feature areas, tagged `phase-1` (do first), `phase-2` (next) and `phase-3` (nice to have). **78 of 80 are done.** Left: deploying (the config is ready, see [Deploy](#deploy)) and revoking a temporary CLI access token.
+The work was planned in [`Plan/Tasks.md`](Plan/Tasks.md) as 81 tasks in 15 feature areas, tagged `phase-1` (do first), `phase-2` (next) and `phase-3` (nice to have). **79 of 81 are done.** Left: deploying (the config is ready, see [Deploy](#deploy)) and revoking a temporary CLI access token.
 
 ### Version 1: the front-end prototype (before the phases)
 
@@ -177,10 +177,10 @@ npm run preview    # serve the build
 
 ```bash
 npm test           # 59 unit tests (Vitest): catalog, search, rows, % Match, notifications, plans, PIN, validation, trailers, TMDB trimming
-npm run test:e2e   # 33 end-to-end journeys (Playwright, desktop + phone)
+npm run test:e2e   # 34 end-to-end journeys (Playwright, desktop + phone)
 ```
 
-The end-to-end tests start the dev server (or reuse one on port 5173). The first time, install the browser with `npx playwright install chromium`. They cover the welcome page, Home rows, the details modal, search, Browse, My List with sorting, ratings with % Match, Resume and Continue Watching, the Next Episode countdown, Coming Soon with Remind Me, the bell, the trailer player (with YouTube stubbed out, so the tests don't need it), the TMDB search section, details page, actor page Full cast on catalog titles, and Kids-profile restrictions (with the Edge Functions mocked, so no network or TMDB key is needed), and the phone layout.
+The end-to-end tests start the dev server (or reuse one on port 5173). The first time, install the browser with `npx playwright install chromium`. They cover the welcome page, Home rows, the details modal, search, Browse, My List with sorting, ratings with % Match, Resume and Continue Watching, the Next Episode countdown, Coming Soon with Remind Me, the bell, the trailer player (with YouTube stubbed out, so the tests don't need it), the TMDB search section, details page, actor page Full cast on catalog titles, Kids-profile restrictions, and a failed profile load (with the Edge Functions mocked, so no network or TMDB key is needed), and the phone layout.
 
 ## Database (Supabase)
 
@@ -312,7 +312,7 @@ Posters, backgrounds, logos and episode stills were downloaded once from TMDB's 
 
 ## Planning docs
 
-- [`Plan/Tasks.md`](Plan/Tasks.md): the 80-task checklist, by feature area and phase.
+- [`Plan/Tasks.md`](Plan/Tasks.md): the 81-task checklist, by feature area and phase.
 - [`Plan/Plan.md`](Plan/Plan.md): planning questions, user stories and decisions.
 - [`design.md`](design.md): the original product plan and acceptance criteria.
 - [`app_outline/`](app_outline/) and [`supabase/`](supabase/): the Databases & Supabase class homework (task-manager spec and database).

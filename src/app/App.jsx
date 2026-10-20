@@ -22,6 +22,7 @@ const ActivityPage = lazy(() => import('../pages/ActivityPage.jsx'));
 const TmdbDetailsPage = lazy(() => import('../pages/TmdbDetailsPage.jsx'));
 const TmdbPersonPage = lazy(() => import('../pages/TmdbPersonPage.jsx'));
 import RequireAuth from '../components/RequireAuth.jsx';
+import EmptyState from '../components/EmptyState.jsx';
 const ProfilesPage = lazy(() => import('../pages/ProfilesPage.jsx'));
 const ProfileEditPage = lazy(() => import('../pages/ProfileEditPage.jsx'));
 import { useProfiles } from '../state/ProfileContext.jsx';
@@ -65,8 +66,8 @@ export default function App() {
   const immersive = Boolean(watchMatch && getTitleById(watchMatch.params.titleId));
   const bare = isBare(pathname);
   // Signed in with several profiles but none chosen yet: ask "Who's watching?" first.
-  const { needsChoice, loaded: profilesLoaded } = useProfiles();
-  const { available: authAvailable, ready: authReady } = useAuth();
+  const { needsChoice, loaded: profilesLoaded, loadError: profilesFailed, retry: retryProfiles } = useProfiles();
+  const { available: authAvailable, ready: authReady, signOut } = useAuth();
   // Until we know who is signed in and which profile they chose, don't render pages: a Kids
   // profile would otherwise be treated as unrestricted for a moment (flashing adult titles).
   const identityPending = authAvailable && (!authReady || !profilesLoaded);
@@ -92,6 +93,25 @@ export default function App() {
           <p className="page route-loading" role="status">
             Loading…
           </p>
+        ) : profilesFailed ? (
+          // Without the profile we can't tell which titles it may see, so don't show any.
+          <div className="page">
+            <EmptyState
+              heading="Couldn’t load your profiles"
+              actions={
+                <>
+                  <button type="button" className="btn btn--primary" onClick={retryProfiles}>
+                    Try again
+                  </button>
+                  <button type="button" className="btn btn--secondary" onClick={() => signOut()}>
+                    Sign out
+                  </button>
+                </>
+              }
+            >
+              <p>We need your profile to know what you can watch. Check your connection and try again.</p>
+            </EmptyState>
+          </div>
         ) : askWhoIsWatching ? (
           <Navigate to="/profiles" replace />
         ) : (
@@ -162,7 +182,7 @@ export default function App() {
             </Routes>
           </Suspense>
         )}
-        {background && !identityPending && !askWhoIsWatching && (
+        {background && !identityPending && !profilesFailed && !askWhoIsWatching && (
           <Routes>
             <Route path="/titles/:titleId" element={<TitleModalRoute />} />
           </Routes>

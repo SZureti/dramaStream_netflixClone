@@ -53,6 +53,11 @@ export function ProfileProvider({ children }) {
   // the very first render after sign-in. A stored flag lagged one render behind, and for that
   // moment a Kids profile looked unrestricted.
   const [loadedFor, setLoadedFor] = useState(null);
+  // If the profiles can't be fetched we can't know the profile's maturity level, so the app
+  // shows a retry screen rather than carrying on as if the profile were unrestricted.
+  const [loadError, setLoadError] = useState(false);
+  const [attempt, setAttempt] = useState(0);
+  const retry = useCallback(() => setAttempt((n) => n + 1), []);
   const loaded = !userId || loadedFor === userId;
 
   useEffect(() => {
@@ -60,9 +65,13 @@ export function ProfileProvider({ children }) {
       setProfiles([]);
       setCurrentId(null);
       setLoadedFor(null);
+      setLoadError(false);
       return undefined;
     }
     let cancelled = false;
+    setLoadError(false);
+    // A retry starts from "not loaded", so pages stay hidden while the request is in flight.
+    if (attempt > 0) setLoadedFor(null);
     (async () => {
       let { data, error } = await supabase.from('profiles').select('*').order('created_at');
       if (cancelled) return;
@@ -77,6 +86,7 @@ export function ProfileProvider({ children }) {
       if (error) {
         announce('Couldn’t load your profiles.');
         setProfiles([]);
+        setLoadError(true);
       } else {
         setProfiles(data);
         const remembered = readJSON(selectedKey(userId), null);
@@ -87,7 +97,7 @@ export function ProfileProvider({ children }) {
     return () => {
       cancelled = true;
     };
-  }, [userId, user?.email, announce]);
+  }, [userId, user?.email, announce, attempt]);
 
   const current = profiles.find((p) => p.id === currentId) ?? null;
 
@@ -142,6 +152,8 @@ export function ProfileProvider({ children }) {
   const value = useMemo(
     () => ({
       loaded: settled,
+      loadError,
+      retry,
       profiles,
       current,
       needsChoice: Boolean(userId) && loaded && !current && profiles.length > 0,
@@ -150,7 +162,7 @@ export function ProfileProvider({ children }) {
       updateProfile,
       deleteProfile,
     }),
-    [settled, loaded, profiles, current, userId, selectProfile, createProfile, updateProfile, deleteProfile],
+    [settled, loaded, loadError, retry, profiles, current, userId, selectProfile, createProfile, updateProfile, deleteProfile],
   );
 
   return <ProfileContext.Provider value={value}>{children}</ProfileContext.Provider>;
