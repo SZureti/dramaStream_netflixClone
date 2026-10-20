@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import SmartImage from '../components/SmartImage.jsx';
+import TmdbCastList from '../components/TmdbCastList.jsx';
 import EmptyState from '../components/EmptyState.jsx';
 import { ArrowLeftIcon, SearchIcon } from '../components/Icons.jsx';
 import { formatMinutes, getTmdbDetails, tmdbAllowedForProfile, tmdbAvailable } from '../data/tmdb.js';
@@ -116,19 +117,7 @@ export default function TmdbDetailsPage() {
             <h2 id="tmdb-cast-heading" className="section-title">
               Cast
             </h2>
-            <ul className="tmdb-cast__list">
-              {details.cast.map((c) => (
-                <li key={`${c.id}-${c.character}`}>
-                  <Link to={`/person/${c.id}`} state={{ from: location.pathname }} className="tmdb-cast__link">
-                    <div className="tmdb-cast__photo">
-                      <SmartImage src={c.photo} alt="" fallbackText={c.name} width="185" height="278" loading="lazy" />
-                    </div>
-                    <p className="tmdb-cast__name">{c.name}</p>
-                  </Link>
-                  {c.character && <p className="tmdb-cast__role">{c.character}</p>}
-                </li>
-              ))}
-            </ul>
+            <TmdbCastList cast={details.cast} from={location.pathname} />
           </section>
         )}
 

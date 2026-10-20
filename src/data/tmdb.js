@@ -22,17 +22,34 @@ export async function searchTmdb(query) {
   return Array.isArray(data?.results) ? data.results : [];
 }
 
+// One request per title for the life of the page: the modal, the details page and
+// React's dev double-render all share it.
+const detailsCache = new Map();
+
 /**
  * Full details (overview, genres, cast) for one TMDB title, via the
  * `tmdb-details` Edge Function. `type` is 'movie' or 'tv'. Resolves to the
  * details object; rejects when TMDB doesn't know the id or the call fails.
  */
-export async function getTmdbDetails(type, id) {
-  if (!supabase) throw new Error('Not connected to Supabase');
-  const { data, error } = await supabase.functions.invoke('tmdb-details', { body: { type, id } });
-  if (error) throw error;
-  if (!data?.details) throw new Error('No details returned');
-  return data.details;
+export function getTmdbDetails(type, id) {
+  if (!supabase) return Promise.reject(new Error('Not connected to Supabase'));
+  const key = `${type}/${id}`;
+  if (!detailsCache.has(key)) {
+    const request = supabase.functions
+      .invoke('tmdb-details', { body: { type, id } })
+      .then(({ data, error }) => {
+        if (error) throw error;
+        if (!data?.details) throw new Error('No details returned');
+        return data.details;
+      })
+      // A failed lookup isn't remembered, so a later visit can try again.
+      .catch((err) => {
+        detailsCache.delete(key);
+        throw err;
+      });
+    detailsCache.set(key, request);
+  }
+  return detailsCache.get(key);
 }
 
 /**

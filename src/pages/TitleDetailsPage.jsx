@@ -9,6 +9,7 @@ import ThumbsRating from '../components/ThumbsRating.jsx';
 import EpisodeList from '../components/EpisodeList.jsx';
 import RemindButton from '../components/RemindButton.jsx';
 import TrailerButton from '../components/TrailerButton.jsx';
+import CatalogCast from '../components/CatalogCast.jsx';
 import { RATINGS, useReviews } from '../state/ReviewsContext.jsx';
 import { isResumable, useProgress } from '../state/ProgressContext.jsx';
 import { ArrowLeftIcon, PlayIcon } from '../components/Icons.jsx';
@@ -197,6 +198,8 @@ function TitleDetails({ title }) {
             ))}
           </dl>
         </section>
+
+        <CatalogCast title={title} />
 
         <ReviewsSection title={title} />
 

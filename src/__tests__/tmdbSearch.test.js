@@ -2,7 +2,8 @@ import { describe, expect, it } from 'vitest';
 import { tmdbAuth, trimResults } from '../../supabase/functions/tmdb-search/trim.ts';
 import { trimDetails } from '../../supabase/functions/tmdb-details/trim.ts';
 import { trimPerson } from '../../supabase/functions/tmdb-person/trim.ts';
-import { setMaturityLimit } from '../data/catalog.js';
+import { LOCAL_CATALOG, setMaturityLimit } from '../data/catalog.js';
+import { TMDB_IDS, tmdbRefFor } from '../data/tmdbIds.js';
 import { formatDate, formatMinutes, tmdbAllowedForProfile, withoutCatalogTitles } from '../data/tmdb.js';
 
 const movie = {
@@ -228,5 +229,29 @@ describe('formatDate', () => {
     expect(formatDate('1956-03-07')).toBe('March 7, 1956');
     expect(formatDate(null)).toBe('');
     expect(formatDate('nope')).toBe('');
+  });
+});
+
+describe('catalog to TMDB ids', () => {
+  it('has a movie or tv id for every catalog title', () => {
+    for (const t of LOCAL_CATALOG) {
+      const ref = tmdbRefFor(t.id);
+      expect(ref, t.id).toBeTruthy();
+      expect(['movie', 'tv']).toContain(ref.type);
+      expect(Number.isInteger(ref.id) && ref.id > 0, t.id).toBe(true);
+    }
+  });
+
+  it('matches the title type: series are tv, films and documentaries are movies', () => {
+    for (const t of LOCAL_CATALOG) {
+      expect(tmdbRefFor(t.id).type, t.id).toBe(t.type === 'series' ? 'tv' : 'movie');
+    }
+  });
+
+  it('maps no two titles to the same TMDB entry, and nothing extra', () => {
+    const keys = Object.values(TMDB_IDS).map((r) => `${r.type}/${r.id}`);
+    expect(new Set(keys).size).toBe(keys.length);
+    expect(Object.keys(TMDB_IDS).sort()).toEqual(LOCAL_CATALOG.map((t) => t.id).sort());
+    expect(tmdbRefFor('not-a-title')).toBeNull();
   });
 });

@@ -173,4 +173,54 @@ test.describe('TMDB titles in search', () => {
     await expect(page.getByRole('heading', { name: "Couldn't load this person" })).toBeVisible();
     expect(calls).toHaveLength(0);
   });
+
+  test('a catalog title shows Full cast from TMDB, and an actor opens their page', async ({ page }) => {
+    const calls = await mockFunction(page, 'tmdb-details', {
+      body: {
+        details: {
+          ...DETAILS,
+          id: 496243,
+          type: 'movie',
+          title: 'Parasite',
+          cast: [
+            { id: 201, name: 'Song Kang-ho', character: 'Kim Ki-taek', photo: null },
+            { id: 202, name: 'Choi Woo-shik', character: 'Ki-woo', photo: null },
+          ],
+        },
+      },
+    });
+    await mockFunction(page, 'tmdb-person', { body: { person: { ...PERSON, id: 201, name: 'Song Kang-ho' } } });
+    await page.goto('/titles/parasite');
+
+    const full = page.getByRole('region', { name: 'Full cast' });
+    await expect(full.locator('.tmdb-cast__name')).toHaveText(['Song Kang-ho', 'Choi Woo-shik']);
+    await expect(full).toContainText('Kim Ki-taek');
+    // The plain cast names in About are still there.
+    await expect(page.getByText('Song Kang-ho, Lee Sun-kyun')).toBeVisible();
+    expect(calls.length).toBeGreaterThan(0);
+    for (const call of calls) expect(call).toEqual({ type: 'movie', id: 496243 });
+
+    await full.getByRole('link', { name: 'Song Kang-ho' }).click();
+    await expect(page).toHaveURL(/\/person\/201$/);
+    await expect(page.getByRole('heading', { level: 1, name: 'Song Kang-ho' })).toBeVisible();
+  });
+
+  test('the title modal also shows Full cast', async ({ page }) => {
+    await mockFunction(page, 'tmdb-details', {
+      body: { details: { ...DETAILS, cast: [{ id: 201, name: 'Song Kang-ho', character: 'Kim Ki-taek', photo: null }] } },
+    });
+    await page.goto('/search?q=parasite');
+    await page.locator('.results .card__link', { hasText: 'Parasite' }).first().click();
+    const dialog = page.getByRole('dialog');
+    await expect(dialog.getByRole('heading', { name: 'Full cast' })).toBeVisible();
+    await expect(dialog.getByRole('link', { name: 'Song Kang-ho' })).toBeVisible();
+  });
+
+  test('if TMDB fails, a catalog title keeps its plain cast and shows no Full cast', async ({ page }) => {
+    await mockFunction(page, 'tmdb-details', { status: 502, body: { error: 'TMDB responded with status 500.' } });
+    await page.goto('/titles/parasite');
+    await expect(page.getByText('Song Kang-ho, Lee Sun-kyun')).toBeVisible();
+    await page.waitForTimeout(1200);
+    await expect(page.getByRole('heading', { name: 'Full cast' })).toHaveCount(0);
+  });
 });

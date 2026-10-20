@@ -15,6 +15,7 @@ import { moodsFor } from '../data/moods.js';
 import { similarTitles } from '../data/rows.js';
 import { useReviews } from '../state/ReviewsContext.jsx';
 import { isResumable, useProgress } from '../state/ProgressContext.jsx';
+import CatalogCast from './CatalogCast.jsx';
 
 /**
  * Netflix-style details over the page the viewer came from. A native <dialog>
@@ -157,6 +158,8 @@ export default function TitleModal({ title }) {
               </ul>
             </section>
           )}
+
+          <CatalogCast title={title} headingLevel={3} />
 
           <section className="title-modal__section" aria-labelledby="about-modal">
             <h3 id="about-modal" className="section-title">

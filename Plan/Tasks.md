@@ -1,6 +1,6 @@
 # DramaStream tasks
 
-The work left to make DramaStream feel like the real Netflix site: 78 tasks in 15 feature areas. This file is my tracker. It lives in the repo as my own notes and isn't part of the published site.
+The work left to make DramaStream feel like the real Netflix site: 79 tasks in 15 feature areas. This file is my tracker. It lives in the repo as my own notes and isn't part of the published site.
 
 **How to use it**
 
@@ -164,6 +164,7 @@ The serverless-functions and 3rd-party-API assignments: Supabase Edge Functions 
 - [x] Add a TMDB details page at `/tmdb/:type/:id` with cast and the TMDB credit line, linked from the search cards. — `frontend` `ux` `phase-2`
 - [x] Add a `tmdb-person` function (profile, bio, birth details, up to 20 best-known credits without talk-show or "Self" appearances; 404 for unknown ids). — `backend` `phase-2`
 - [x] Add an actor page at `/person/:id`, reached by clicking any cast member, with known-for titles that open their TMDB details. — `frontend` `ux` `phase-2`
+- [x] Show **Full cast** (photos, characters, links to actor pages) on catalog titles' details page and modal, using a generated catalog-to-TMDB id map (`src/data/tmdbIds.js`) and falling back to the plain cast names if TMDB fails. — `frontend` `ux` `phase-2`
 - [x] Hide TMDB content (search, details and actor pages) from Kids profiles (it has no maturity rating, and unrated titles count as adult). — `frontend` `auth` `phase-2`
-- [x] Test it: unit tests for the trimming, auth and Kids rule, and Playwright journeys with the functions mocked. — `testing` `phase-2` _(56 unit tests, 26 end-to-end.)_
+- [x] Test it: unit tests for the trimming, auth and Kids rule, and Playwright journeys with the functions mocked. — `testing` `phase-2` _(59 unit tests, 29 end-to-end.)_
 - [ ] Revoke the temporary Supabase CLI access token (`dramastream-cli`) once the project is finished. — `auth` `phase-1` _(It also expires 7 days after it was made. I decided to keep it until next week.)_
