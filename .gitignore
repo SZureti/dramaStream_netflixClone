@@ -7,3 +7,9 @@ dist
 test-results
 playwright-report
 .playwright-mcp/
+
+# Secrets (Edge Function keys); never commit
+.env
+.env.local
+.env*.local
+supabase/functions/.env

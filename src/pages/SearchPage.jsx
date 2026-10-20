@@ -3,13 +3,19 @@ import { useSearchParams } from 'react-router-dom';
 import SearchForm from '../components/SearchForm.jsx';
 import TitleCard from '../components/TitleCard.jsx';
 import EmptyState from '../components/EmptyState.jsx';
+import TmdbCard from '../components/TmdbCard.jsx';
 import { SearchIcon } from '../components/Icons.jsx';
 import { getCatalog, searchCatalog, searchRelated } from '../data/catalog.js';
+import { searchTmdb, tmdbAvailable, withoutCatalogTitles } from '../data/tmdb.js';
 import useDocumentTitle from '../hooks/useDocumentTitle.js';
 
 const SUGGESTIONS = ['Breaking Bad', 'Moonlight', 'The Crown', 'Free Solo', 'Whiplash', 'Succession'];
 
 const normalizeLower = (s) => s.toLowerCase();
+
+// Wait for a pause in typing before asking TMDB, and skip one-letter queries.
+const TMDB_DELAY_MS = 400;
+const TMDB_MIN_CHARS = 2;
 
 export default function SearchPage() {
   const [params, setParams] = useSearchParams();
@@ -22,6 +28,7 @@ export default function SearchPage() {
   const results = searchCatalog(query);
   const related = searchRelated(query).filter((r) => normalizeLower(r) !== normalizeLower(query.trim()));
   const inputRef = useRef(null);
+  const [tmdb, setTmdb] = useState({ query: '', status: 'idle', hits: [] });
   const lastPushed = useRef(urlQuery);
 
   // Pick up URL changes that didn't come from typing here (e.g. a "Search"
@@ -31,6 +38,26 @@ export default function SearchPage() {
     lastPushed.current = urlQuery;
     setQueryState(urlQuery);
   }, [urlQuery]);
+
+  // Live TMDB results below our own catalog matches. Failures only hide this
+  // extra section; the catalog search above keeps working on its own.
+  useEffect(() => {
+    if (!tmdbAvailable || trimmed.length < TMDB_MIN_CHARS) return undefined;
+    let cancelled = false;
+    const timer = setTimeout(() => {
+      setTmdb({ query: trimmed, status: 'loading', hits: [] });
+      searchTmdb(trimmed)
+        .then((hits) => !cancelled && setTmdb({ query: trimmed, status: 'done', hits }))
+        .catch(() => !cancelled && setTmdb({ query: trimmed, status: 'error', hits: [] }));
+    }, TMDB_DELAY_MS);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [trimmed]);
+
+  const tmdbCurrent = tmdb.query === trimmed ? tmdb : { status: 'idle', hits: [] };
+  const tmdbHits = withoutCatalogTitles(tmdbCurrent.hits, results);
 
   useDocumentTitle(trimmed ? `Search: ${trimmed}` : 'Search');
 
@@ -139,6 +166,30 @@ export default function SearchPage() {
             {results.map((t) => (
               <li key={t.id}>
                 <TitleCard title={t} showCategory eager />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {trimmed && tmdbCurrent.status === 'loading' && (
+        <p className="search-tmdb__status" role="status">
+          Searching TMDB for more…
+        </p>
+      )}
+
+      {trimmed && tmdbHits.length > 0 && (
+        <section className="results" aria-labelledby="tmdb-heading">
+          <h2 id="tmdb-heading" className="section-title">
+            More from TMDB
+          </h2>
+          <p className="search-tmdb__note">
+            These titles aren&apos;t in the DramaStream catalog yet, so they can&apos;t be played or added to My List.
+          </p>
+          <ul className="card-grid">
+            {tmdbHits.map((h) => (
+              <li key={`${h.type}-${h.id}`}>
+                <TmdbCard hit={h} />
               </li>
             ))}
           </ul>

@@ -2618,3 +2618,14 @@
     border-radius: 0;
   }
 }
+
+/* Live TMDB results on the Search page */
+.search-tmdb__status,
+.search-tmdb__note {
+  margin: 0 0 0.75rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.card--tmdb .card__frame {
+  cursor: default;
+}
