@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { tmdbAuth, trimResults } from '../../supabase/functions/tmdb-search/trim.ts';
 import { trimDetails } from '../../supabase/functions/tmdb-details/trim.ts';
+import { trimPerson } from '../../supabase/functions/tmdb-person/trim.ts';
 import { setMaturityLimit } from '../data/catalog.js';
-import { formatMinutes, tmdbAllowedForProfile, withoutCatalogTitles } from '../data/tmdb.js';
+import { formatDate, formatMinutes, tmdbAllowedForProfile, withoutCatalogTitles } from '../data/tmdb.js';
 
 const movie = {
   id: 1,
@@ -86,7 +87,7 @@ describe('tmdb-details trimDetails', () => {
         { job: 'Director', name: 'Bong Joon Ho' },
         { job: 'Producer', name: 'Someone Else' },
       ],
-      cast: Array.from({ length: 20 }, (_, i) => ({ name: `Actor ${i}`, character: `Role ${i}`, profile_path: i ? null : '/a.jpg' })),
+      cast: Array.from({ length: 20 }, (_, i) => ({ id: 1000 + i, name: `Actor ${i}`, character: `Role ${i}`, profile_path: i ? null : '/a.jpg' })),
     },
   };
 
@@ -106,7 +107,7 @@ describe('tmdb-details trimDetails', () => {
       directors: ['Bong Joon Ho'],
     });
     expect(d.cast).toHaveLength(12);
-    expect(d.cast[0]).toEqual({ name: 'Actor 0', character: 'Role 0', photo: 'https://image.tmdb.org/t/p/w185/a.jpg' });
+    expect(d.cast[0]).toEqual({ id: 1000, name: 'Actor 0', character: 'Role 0', photo: 'https://image.tmdb.org/t/p/w185/a.jpg' });
     expect(d.cast[1].photo).toBeNull();
   });
 
@@ -156,5 +157,76 @@ describe('tmdbAllowedForProfile', () => {
     setMaturityLimit('older-kids');
     expect(tmdbAllowedForProfile()).toBe(false);
     setMaturityLimit('all');
+  });
+});
+
+describe('tmdb-person trimPerson', () => {
+  const credit = (over) => ({
+    id: 1,
+    media_type: 'movie',
+    title: 'A Film',
+    release_date: '2010-01-01',
+    character: 'Someone',
+    popularity: 10,
+    poster_path: '/x.jpg',
+    vote_average: 7.26,
+    vote_count: 100,
+    genre_ids: [18],
+    ...over,
+  });
+  const raw = {
+    id: 17419,
+    name: 'Bryan Cranston',
+    profile_path: '/bc.jpg',
+    biography: 'An actor.',
+    birthday: '1956-03-07',
+    deathday: null,
+    place_of_birth: 'Hollywood, California, USA',
+    known_for_department: 'Acting',
+    combined_credits: {
+      cast: [
+        credit({ id: 1, title: 'Low', popularity: 1 }),
+        credit({ id: 2, title: 'High', popularity: 99 }),
+        credit({ id: 2, title: 'High again', popularity: 98 }), // same id: dropped
+        credit({ id: 3, media_type: 'tv', title: undefined, release_date: undefined, name: 'A Series', first_air_date: '2008-01-20', popularity: 50 }),
+        credit({ id: 4, title: 'Talk Show Guest', genre_ids: [10767], popularity: 500 }),
+        credit({ id: 5, title: 'Documentary', character: 'Himself', popularity: 400 }),
+        { id: 6, media_type: 'person', name: 'Nope' },
+      ],
+    },
+  };
+
+  it('builds the profile with image URLs', () => {
+    expect(trimPerson(raw)).toMatchObject({
+      id: 17419,
+      name: 'Bryan Cranston',
+      photo: 'https://image.tmdb.org/t/p/w342/bc.jpg',
+      biography: 'An actor.',
+      birthday: '1956-03-07',
+      deathday: null,
+      birthplace: 'Hollywood, California, USA',
+      knownFor: 'Acting',
+    });
+  });
+
+  it('keeps acting credits by popularity, dropping talk shows, self roles and duplicates', () => {
+    const titles = trimPerson(raw).credits.map((c) => c.title);
+    expect(titles).toEqual(['High', 'A Series', 'Low']);
+    expect(trimPerson(raw).credits[1]).toMatchObject({ type: 'tv', year: 2008, character: 'Someone', rating: 7.3 });
+  });
+
+  it('caps credits at 20, clips long biographies, and tolerates an empty payload', () => {
+    const many = { ...raw, biography: 'x'.repeat(5000), combined_credits: { cast: Array.from({ length: 40 }, (_, i) => credit({ id: i })) } };
+    expect(trimPerson(many).credits).toHaveLength(20);
+    expect(trimPerson(many).biography.length).toBeLessThanOrEqual(1500);
+    expect(trimPerson({})).toMatchObject({ name: '', photo: null, birthday: null, credits: [] });
+  });
+});
+
+describe('formatDate', () => {
+  it('formats TMDB dates without time-zone drift', () => {
+    expect(formatDate('1956-03-07')).toBe('March 7, 1956');
+    expect(formatDate(null)).toBe('');
+    expect(formatDate('nope')).toBe('');
   });
 });

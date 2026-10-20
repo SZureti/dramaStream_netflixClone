@@ -2,6 +2,7 @@
 // append_to_response=credits) into the fields the details page shows.
 
 export interface CastMember {
+  id: number; // TMDB person id, for the actor page
   name: string;
   character: string;
   photo: string | null;
@@ -54,6 +55,7 @@ export function trimDetails(type: "movie" | "tv", raw: any): TmdbDetails {
     .slice(0, MAX_CAST)
     // deno-lint-ignore no-explicit-any
     .map((c: any) => ({
+      id: c.id,
       name: String(c.name),
       character: String(c.character ?? ""),
       photo: c.profile_path ? `${PHOTO_BASE}${c.profile_path}` : null,

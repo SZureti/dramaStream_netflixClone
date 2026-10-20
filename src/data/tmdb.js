@@ -35,6 +35,27 @@ export async function getTmdbDetails(type, id) {
   return data.details;
 }
 
+/**
+ * An actor's profile and best-known films and series, via the `tmdb-person`
+ * Edge Function. Resolves to the person object; rejects when TMDB doesn't know
+ * the id or the call fails.
+ */
+export async function getTmdbPerson(id) {
+  if (!supabase) throw new Error('Not connected to Supabase');
+  const { data, error } = await supabase.functions.invoke('tmdb-person', { body: { id } });
+  if (error) throw error;
+  if (!data?.person) throw new Error('No person returned');
+  return data.person;
+}
+
+/** "March 27, 1958" from TMDB's YYYY-MM-DD, or '' when missing. */
+export function formatDate(iso) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso ?? '');
+  if (!m) return '';
+  const date = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
 /** "2h 13m" / "58 min" from minutes, or '' when unknown. */
 export function formatMinutes(min) {
   if (!min) return '';

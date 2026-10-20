@@ -32,8 +32,23 @@ const DETAILS = {
   backdrop: null,
   directors: ['Some Creator'],
   cast: [
-    { name: 'Kazuhiko Inoue', character: 'Buzz Nikvest', photo: null },
-    { name: 'Akemi Okamura', character: 'Reiko Michaelson', photo: null },
+    { id: 101, name: 'Kazuhiko Inoue', character: 'Buzz Nikvest', photo: null },
+    { id: 102, name: 'Akemi Okamura', character: 'Reiko Michaelson', photo: null },
+  ],
+};
+
+const PERSON = {
+  id: 101,
+  name: 'Kazuhiko Inoue',
+  photo: null,
+  biography: 'A voice actor known for anime.',
+  birthday: '1954-02-09',
+  deathday: null,
+  birthplace: 'Tokyo, Japan',
+  knownFor: 'Acting',
+  credits: [
+    { id: 42507, type: 'tv', title: 'Parasite Dolls', year: 2003, character: 'Buzz Nikvest', poster: null, rating: 6.6 },
+    { id: 7, type: 'movie', title: 'Another Film', year: 1999, character: 'Narrator', poster: null, rating: null },
   ],
 };
 
@@ -124,6 +139,38 @@ test.describe('TMDB titles in search', () => {
     const calls = await mockFunction(page, 'tmdb-details', { body: { details: DETAILS } });
     await page.goto('/tmdb/person/1');
     await expect(page.getByRole('heading', { name: "Couldn't load this title" })).toBeVisible();
+    expect(calls).toHaveLength(0);
+  });
+
+  test('a cast member opens an actor page with bio and known-for titles', async ({ page }) => {
+    await mockFunction(page, 'tmdb-details', { body: { details: DETAILS } });
+    const personCalls = await mockFunction(page, 'tmdb-person', { body: { person: PERSON } });
+    await page.goto('/tmdb/tv/42507');
+    await page.getByRole('link', { name: 'Kazuhiko Inoue' }).click();
+
+    await expect(page).toHaveURL(/\/person\/101$/);
+    await expect(page.getByRole('heading', { level: 1, name: 'Kazuhiko Inoue' })).toBeVisible();
+    await expect(page.getByText('A voice actor known for anime.')).toBeVisible();
+    await expect(page.getByText('February 9, 1954 · Tokyo, Japan')).toBeVisible();
+    const known = page.getByRole('region', { name: 'Known for' });
+    await expect(known.locator('.card__title')).toHaveText(['Parasite Dolls', 'Another Film']);
+    await expect(known).toContainText('as Buzz Nikvest');
+    expect(personCalls.length).toBeGreaterThan(0);
+    for (const call of personCalls) expect(call).toEqual({ id: '101' });
+
+    // A known-for title leads back to its TMDB details page.
+    await known.getByRole('link', { name: 'Parasite Dolls' }).click();
+    await expect(page).toHaveURL(/\/tmdb\/tv\/42507$/);
+  });
+
+  test('an actor that cannot load, or a bad id, shows a friendly message', async ({ page }) => {
+    await mockFunction(page, 'tmdb-person', { status: 404, body: { error: 'No person with id 1 on TMDB.' } });
+    await page.goto('/person/1');
+    await expect(page.getByRole('heading', { name: "Couldn't load this person" })).toBeVisible();
+
+    const calls = await mockFunction(page, 'tmdb-person', { body: { person: PERSON } });
+    await page.goto('/person/abc');
+    await expect(page.getByRole('heading', { name: "Couldn't load this person" })).toBeVisible();
     expect(calls).toHaveLength(0);
   });
 });
