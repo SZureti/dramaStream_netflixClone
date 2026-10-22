@@ -72,7 +72,7 @@ describe('% Match', () => {
 
 describe('plans and profile lock', () => {
   it('knows the three mock plans', () => {
-    expect(planById('premium')).toMatchObject({ screens: 4, price: 'Free' });
+    expect(planById('premium')).toMatchObject({ screens: 4, price: '$22.99/mo' });
     expect(planById('nope')).toBeNull();
   });
 

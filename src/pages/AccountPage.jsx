@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ProfileAvatar from '../components/ProfileAvatar.jsx';
 import PlanPicker from '../components/PlanPicker.jsx';
+import { supabase } from '../lib/supabase.js';
 import { planById } from '../data/plans.js';
 import { useAuth } from '../state/AuthContext.jsx';
 import { useStatus } from '../state/StatusContext.jsx';
@@ -12,7 +13,7 @@ const maturityLabel = (v) => MATURITY_LEVELS.find((m) => m.value === v)?.label ?
 
 export default function AccountPage() {
   useDocumentTitle('Account');
-  const { user, signOut, signOutEverywhere, changePlan } = useAuth();
+  const { user, signOut, signOutEverywhere, startCheckout, openBillingPortal } = useAuth();
   const { profiles } = useProfiles();
   const { announce } = useStatus();
   const navigate = useNavigate();
@@ -21,6 +22,17 @@ export default function AccountPage() {
   const [changing, setChanging] = useState(false);
   const [nextPlan, setNextPlan] = useState(plan.id);
   const [busy, setBusy] = useState(false);
+  const [sub, setSub] = useState(null); // this account's Stripe subscription row, if any
+  const subscribed = ['active', 'trialing', 'past_due'].includes(sub?.status);
+
+  useEffect(() => {
+    if (!supabase) return;
+    supabase
+      .from('subscriptions')
+      .select('plan,status,cancel_at_period_end,current_period_end')
+      .maybeSingle()
+      .then(({ data }) => setSub(data));
+  }, [user.id]);
 
   async function handleSignOut(everywhere) {
     setBusy(true);
@@ -34,16 +46,14 @@ export default function AccountPage() {
     navigate('/', { replace: true });
   }
 
-  async function savePlan() {
+  // Hosted Stripe pages: Checkout to subscribe, the Customer Portal to change plan, pay or cancel.
+  async function goToStripe(open) {
     setBusy(true);
-    const { error } = await changePlan(nextPlan);
-    setBusy(false);
+    const { error } = await open();
     if (error) {
+      setBusy(false);
       announce(error);
-      return;
     }
-    setChanging(false);
-    announce(`Plan changed to ${planById(nextPlan).name}`);
   }
 
   return (
@@ -72,21 +82,38 @@ export default function AccountPage() {
           <div>
             <dt>Plan</dt>
             <dd>
-              {plan.name} · {plan.resolution} · {plan.screens} {plan.screens === 1 ? 'screen' : 'screens'} · Free{' '}
-              {!changing && (
-                <button type="button" className="link-btn account-card__link" onClick={() => setChanging(true)}>
-                  Change plan
+              {(subscribed && planById(sub.plan)) ? planById(sub.plan).name : plan.name} · {plan.resolution} · {plan.screens} {plan.screens === 1 ? 'screen' : 'screens'} ·{' '}
+              {subscribed ? planById(sub.plan)?.price : 'Not subscribed'}{' '}
+              {subscribed ? (
+                <button type="button" className="link-btn account-card__link" onClick={() => goToStripe(openBillingPortal)} disabled={busy}>
+                  Manage billing
                 </button>
+              ) : (
+                !changing && (
+                  <button type="button" className="link-btn account-card__link" onClick={() => setChanging(true)}>
+                    Subscribe
+                  </button>
+                )
               )}
             </dd>
           </div>
+          {sub?.status && (
+            <div>
+              <dt>Billing</dt>
+              <dd>
+                {sub.status}
+                {sub.cancel_at_period_end ? ' · cancels' : ' · renews'}{' '}
+                {sub.current_period_end && new Date(sub.current_period_end).toLocaleDateString('en-US')}
+              </dd>
+            </div>
+          )}
         </dl>
         {changing && (
           <div className="account-card__plan">
-            <PlanPicker value={nextPlan} onChange={setNextPlan} legend="Change plan" />
+            <PlanPicker value={nextPlan} onChange={setNextPlan} legend="Choose a plan" />
             <div className="account-card__actions">
-              <button type="button" className="btn btn--primary btn--sm" onClick={savePlan} disabled={busy}>
-                Save plan
+              <button type="button" className="btn btn--primary btn--sm" onClick={() => goToStripe(() => startCheckout(nextPlan))} disabled={busy}>
+                Continue to checkout
               </button>
               <button type="button" className="btn btn--secondary btn--sm" onClick={() => setChanging(false)}>
                 Cancel

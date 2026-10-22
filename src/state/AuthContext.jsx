@@ -3,6 +3,16 @@ import { supabase } from '../lib/supabase.js';
 
 const AuthContext = createContext(null);
 
+async function redirectTo(fn, body) {
+  if (!supabase) return { error: 'Billing isn’t available right now.' };
+  const { data, error } = await supabase.functions.invoke(fn, {
+    body: { ...body, returnUrl: `${window.location.origin}/account` },
+  });
+  if (error || !data?.url) return { error: 'Couldn’t open billing. Please try again.' };
+  window.location.assign(data.url);
+  return { error: null };
+}
+
 // Supabase's messages are written for developers; these are for viewers.
 function friendlyError(error) {
   const msg = error?.message ?? '';
@@ -75,6 +85,9 @@ export function AuthProvider({ children }) {
       signOutEverywhere: () => run(() => supabase.auth.signOut({ scope: 'global' })),
       // The mock plan lives in the user's metadata.
       changePlan: (plan) => run(() => supabase.auth.updateUser({ data: { plan } })),
+      // Billing runs through Stripe-hosted pages; the Edge Functions return their URLs.
+      startCheckout: (plan) => redirectTo('create-checkout-session', { plan }),
+      openBillingPortal: () => redirectTo('create-portal-session', {}),
       sendPasswordReset: (email) =>
         run(() => supabase.auth.resetPasswordForEmail(email, { redirectTo: `${origin}/reset-password` })),
       updatePassword: async (password) => {

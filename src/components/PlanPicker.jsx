@@ -1,6 +1,6 @@
 import { PLANS } from '../data/plans.js';
 
-/** Netflix-style plan cards as radio buttons. Every plan is free in this demo. */
+/** Netflix-style plan cards as radio buttons. Prices are monthly; tax is added at checkout. */
 export default function PlanPicker({ value, onChange, legend = 'Choose the plan that’s right for you' }) {
   return (
     <fieldset className="plans">
@@ -28,7 +28,7 @@ export default function PlanPicker({ value, onChange, legend = 'Choose the plan 
           </label>
         ))}
       </div>
-      <p className="field-hint">This is a demo: plans are free and no payment details are collected.</p>
+      <p className="field-hint">Demo only: payments run in Stripe test mode, so no real card is charged.</p>
     </fieldset>
   );
 }

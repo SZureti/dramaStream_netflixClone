@@ -20,7 +20,7 @@ export default function SignUpPage() {
   const [formError, setFormError] = useState(null);
   const [busy, setBusy] = useState(false);
   const [sentTo, setSentTo] = useState(null);
-  // Netflix asks for a plan first; ours are free and only label the account.
+  // Netflix asks for a plan first; the choice labels the account; paying happens from Account (Stripe test mode).
   const [step, setStep] = useState('plan');
   const [plan, setPlan] = useState('standard');
 
