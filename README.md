@@ -1,6 +1,6 @@
 # DramaStream — Netflix-Inspired Streaming Site
 
-A Netflix-style streaming catalog for **drama films, drama series and drama documentaries**, built for the Code Platoon Netflix Clone assignment and extended in four phases into a full-stack app: React + Vite + React Router on the front end, and **Supabase** (Postgres, Row Level Security, Auth, Edge Functions) behind it, with live search and details from the **TMDB API**.
+Drama Stream is a Netflix-style streaming catalog for **drama films, drama series and drama documentaries**, built for the Code Platoon Netflix Clone assignment and extended in four phases into a full-stack app: React + Vite + React Router on the front end, and **Supabase** (Postgres, Row Level Security, Auth, Edge Functions) behind it, with live search and details from the **TMDB API**.
 
 > This is an educational, Netflix-inspired project. It is not affiliated with Netflix, and it streams no films or episodes: the player is a clearly labelled mock-up.
 
